@@ -1,11 +1,163 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Your Name</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="meta_title_home">Your Name - Portfolio</title>
+    <meta name="description" content="Welcome to my personal portfolio. Discover my projects, skills, and achievements." data-i18n-key="meta_description_home">
+    <meta name="keywords" content="portfolio, web developer, personal website, projects">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-username.github.io/">
+    <meta property="og:title" content="Your Name - Portfolio">
+    <meta property="og:description" content="Welcome to my personal portfolio.">
+    <meta property="og:image" content="https://your-username.github.io/assets/images/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-username.github.io/">
+    <meta property="twitter:title" content="Your Name - Portfolio">
+    <meta property="twitter:description" content="Welcome to my personal portfolio.">
+    <meta property="twitter:image" content="https://your-username.github.io/assets/images/social-preview.jpg">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Your Name",
+      "url": "https://your-username.github.io/",
+      "sameAs": [
+        "https://github.com/your-username",
+        "https://linkedin.com/in/your-profile"
+      ],
+      "jobTitle": "Web Developer"
+    }
+    </script>
 </head>
 <body>
-  <h1>Hello, I'm Your Name</h1>
-  <p>This is my portfolio.</p>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero container">
+            <div class="hero-text">
+                <h1 class="animate-typing" data-i18n-key="home_greeting">Hello, I'm Your Name.</h1>
+                <p data-i18n-key="home_intro">I'm a passionate developer creating modern web experiences. Welcome to my digital space.</p>
+                <a href="#contact" class="btn btn-primary" data-i18n-key="home_contact_btn">Get in Touch</a>
+            </div>
+             <div class="hero-image-container">
+                <img src="assets/images/profile-photo.jpg" alt="Your Name" class="hero-image">
+            </div>
+        </section>
+
+        <!-- Quick Navigation Cards -->
+        <section class="container card-grid">
+            <a href="about.html" class="nav-card animate-on-scroll">
+                <h3 data-i18n-key="card_about_title">About Me</h3>
+                <p data-i18n-key="card_about_desc">Learn more about my journey, skills, and passions.</p>
+            </a>
+            <a href="projects.html" class="nav-card animate-on-scroll">
+                <h3 data-i18n-key="card_projects_title">My Projects</h3>
+                <p data-i18n-key="card_projects_desc">Explore a selection of my recent work.</p>
+            </a>
+            <a href="achievements.html" class="nav-card animate-on-scroll">
+                <h3 data-i18n-key="card_achievements_title">Personal Bests</h3>
+                <p data-i18n-key="card_achievements_desc">Check out my athletic and academic accomplishments.</p>
+            </a>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section container">
+            <h2 class="section-title animate-on-scroll" data-i18n-key="skills_title">Technologies I Use</h2>
+            <div class="skills-grid">
+                <!-- Add more skills as needed. Use SVGs for best quality. -->
+                <div class="skill-item animate-on-scroll">
+                    <img src="assets/icons/html5.svg" alt="HTML5 Icon">
+                    <span>HTML5</span>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <img src="assets/icons/css3.svg" alt="CSS3 Icon">
+                    <span>CSS3</span>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <img src="assets/icons/javascript.svg" alt="JavaScript Icon">
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <img src="assets/icons/react.svg" alt="React Icon">
+                    <span>React</span>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <img src="assets/icons/nodejs.svg" alt="Node.js Icon">
+                    <span>Node.js</span>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <img src="assets/icons/git.svg" alt="Git Icon">
+                    <span>Git</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Project -->
+        <section class="featured-project container">
+            <h2 class="section-title animate-on-scroll" data-i18n-key="featured_title">Featured Project</h2>
+            <div class="project-card-large animate-on-scroll">
+                <img src="assets/images/project-preview.png" alt="Featured Project Screenshot">
+                <div class="project-info">
+                    <h3 data-i18n-key="featured_project_title">Awesome Project Name</h3>
+                    <p data-i18n-key="featured_project_desc">A brief but compelling description of your best project, highlighting the problem it solves and its key features.</p>
+                    <div class="tech-stack">
+                        <span>React</span> <span>Node.js</span> <span>PostgreSQL</span>
+                    </div>
+                    <a href="projects/project-template.html" class="btn" data-i18n-key="view_project_btn">View Project</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/your-username" target="_blank" aria-label="GitHub"><img src="assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://linkedin.com/in/your-profile" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:your.email@example.com" aria-label="Email"><img src="assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2024 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

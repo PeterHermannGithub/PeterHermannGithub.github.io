@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- UPDATE THIS: Title and Meta Description for the project -->
+    <title data-i18n-key="project_template_meta_title">Project Name - Your Name</title>
+    <meta name="description" content="Detailed description of this specific project." data-i18n-key="project_template_meta_desc">
+    
+    <!-- Links to CSS, Fonts, etc. (Same as other pages) -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-page.css"> <!-- Specific styles for project pages -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+</head>
+<body>
+
+    <!-- The header is identical on all pages for consistency -->
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme"></button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-page-main">
+        <div class="container">
+            
+            <!-- 1. Project Header -->
+            <header class="project-header">
+                <h1 data-i18n-key="project_template_title">Project Title Goes Here</h1>
+                <p class="project-tagline" data-i18n-key="project_template_tagline">A short, catchy tagline summarizing the project's purpose.</p>
+                <div class="project-links">
+                    <a href="#" target="_blank" class="btn btn-primary" data-i18n-key="project_btn_live_demo">Live Demo</a>
+                    <a href="#" target="_blank" class="btn" data-i18n-key="project_btn_source_code">Source Code</a>
+                </div>
+            </header>
+
+            <!-- 2. Main Project Image or Video -->
+            <div class="project-hero-media">
+                <img src="../assets/images/project-preview-large.png" alt="A large, high-quality screenshot of the project.">
+                <!-- Or embed a video:
+                <video controls autoplay loop muted>
+                    <source src="../assets/videos/project-demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video> 
+                -->
+            </div>
+
+            <!-- 3. Detailed Information Sections -->
+            <div class="project-details-grid">
+                
+                <!-- Left Column: Description & Story -->
+                <div class="project-details-col">
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_about">About This Project</h2>
+                        <p data-i18n-key="project_template_about_p1">
+                            This is where you write a detailed description. Explain the problem you wanted to solve. Who is the target audience? What is the main goal of the application? Go into more detail than you did on the project card.
+                        </p>
+                        <p data-i18n-key="project_template_about_p2">
+                            You can have multiple paragraphs to describe the development process, the key features, and the overall journey of building this project from concept to deployment.
+                        </p>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_challenges">Challenges & What I Learned</h2>
+                        <p data-i18n-key="project_template_challenges">
+                            Discuss the main technical or design challenges you faced. For example: "Implementing real-time updates with WebSockets was challenging because..." or "Ensuring the UI was accessible across all devices required careful planning and testing." This shows problem-solving skills. Conclude with the key takeaways and skills you gained.
+                        </p>
+                    </section>
+                </div>
+                
+                <!-- Right Column: Tech Stack & Details -->
+                <aside class="project-details-col">
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_stack">Technology Stack</h3>
+                        <ul class="tech-stack-list">
+                            <li>React</li>
+                            <li>Node.js & Express</li>
+                            <li>MongoDB</li>
+                            <li>Styled Components</li>
+                            <li>JWT for Authentication</li>
+                            <li>Deployed on Vercel</li>
+                        </ul>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_future">Future Improvements</h3>
+                        <ul class="future-improvements-list">
+                            <li data-i18n-key="project_template_future1">Implement a dark mode feature.</li>
+                            <li data-i18n-key="project_template_future2">Add user profile customization.</li>
+                            <li data-i18n-key_template_future3">Refactor state management using Redux Toolkit.</li>
+                        </ul>
+                    </section>
+                </aside>
+                
+            </div>
+
+            <!-- 4. Screenshot Gallery -->
+            <section class="project-gallery">
+                <h2 class="section-title" data-i18n-key="project_section_gallery">Gallery</h2>
+                <div class="gallery-grid">
+                    <img src="../assets/images/project-screenshot-1.png" alt="Description of screenshot 1.">
+                    <img src="../assets/images/project-screenshot-2.png" alt="Description of screenshot 2.">
+                    <img src="../assets/images/project-screenshot-3.png" alt="Description of screenshot 3.">
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- The footer is also identical on all pages -->
+    <footer id="contact">
+        <!-- ... (copy footer code from index.html) ... -->
+    </footer>
+
+    <!-- Scripts (note the ../ path to go up one directory) -->
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    <!-- IMPORTANT: Add new translation keys to i18n.js! -->
+
+</body>
+</html>
