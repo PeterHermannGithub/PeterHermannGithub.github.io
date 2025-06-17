@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="meta_title_about">About Me - Peter Pal Hermann</title>
+    <meta name="description" content="Learn about my journey as a data scientist and developer. Discover my skills, experience, and passion for technology." data-i18n-key="meta_description_about">
+    <meta name="keywords" content="about, data scientist, developer, skills, experience, technology, programming">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/about.html">
+    <meta property="og:title" content="About Me - Peter Pal Hermann">
+    <meta property="og:description" content="Learn about my journey as a data scientist and developer.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/about.html">
+    <meta property="twitter:title" content="About Me - Peter Pal Hermann">
+    <meta property="twitter:description" content="Learn about my journey as a data scientist and developer.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Me - Peter Pal Hermann",
+      "url": "https://PeterHermannGithub.github.io/about.html",
+      "author": {
+        "@type": "Person",
+        "name": "Peter Pal Hermann",
+        "jobTitle": "Data Scientist"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="about.html" class="active" data-i18n-key="nav_about">About</a></li>
+                <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header container">
+            <h1 data-i18n-key="about_title">About Me</h1>
+            <p data-i18n-key="about_subtitle">Passionate about data science, software development, and creating innovative solutions.</p>
+        </section>
+
+        <!-- About Content -->
+        <section class="about-content container">
+            <div class="about-grid">
+                
+                <!-- Profile Section -->
+                <div class="about-profile">
+                    <div class="profile-image-container">
+                        <img src="assets/images/profile-photo.jpg" alt="Peter Pal Hermann" class="profile-image">
+                    </div>
+                    <div class="profile-info">
+                        <h2 data-i18n-key="about_intro_title">Hello, I'm Peter</h2>
+                        <p data-i18n-key="about_intro_text">I'm a data scientist and developer passionate about leveraging technology to solve real-world problems. With expertise in machine learning, web development, and automation, I enjoy creating solutions that make a meaningful impact.</p>
+                        
+                        <!-- Quick Facts -->
+                        <div class="quick-facts">
+                            <div class="fact">
+                                <span class="fact-label" data-i18n-key="about_location_label">Location:</span>
+                                <span class="fact-value" data-i18n-key="about_location_value">Hungary</span>
+                            </div>
+                            <div class="fact">
+                                <span class="fact-label" data-i18n-key="about_role_label">Role:</span>
+                                <span class="fact-value" data-i18n-key="about_role_value">Data Scientist & Developer</span>
+                            </div>
+                            <div class="fact">
+                                <span class="fact-label" data-i18n-key="about_experience_label">Experience:</span>
+                                <span class="fact-value" data-i18n-key="about_experience_value">3+ Years</span>
+                            </div>
+                        </div>
+
+                        <!-- CV Download -->
+                        <div class="cv-download">
+                            <a href="assets/cv/Peter_Hermann_CV.pdf" download class="btn btn-primary" data-i18n-key="about_download_cv">Download CV</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills & Expertise -->
+                <div class="skills-expertise">
+                    <h2 data-i18n-key="about_skills_title">Skills & Expertise</h2>
+                    
+                    <!-- Programming Languages -->
+                    <div class="skill-category">
+                        <h3 data-i18n-key="about_programming_title">Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Kotlin</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Science & ML -->
+                    <div class="skill-category">
+                        <h3 data-i18n-key="about_datascience_title">Data Science & Machine Learning</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">Jupyter</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">TensorFlow</span>
+                        </div>
+                    </div>
+
+                    <!-- Web Development -->
+                    <div class="skill-category">
+                        <h3 data-i18n-key="about_webdev_title">Web Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">Git</span>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Technologies -->
+                    <div class="skill-category">
+                        <h3 data-i18n-key="about_tools_title">Tools & Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Android Studio</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">FFmpeg</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section class="experience-section container">
+            <h2 data-i18n-key="about_experience_title">Experience & Journey</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-date" data-i18n-key="about_timeline_2024">2024</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n-key="about_portfolio_title">Portfolio Development</h3>
+                        <p data-i18n-key="about_portfolio_desc">Created multiple projects including Android apps, web automation tools, and data analysis systems. Focused on end-to-end development and deployment.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-i18n-key="about_timeline_2023">2023</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n-key="about_automation_title">Automation & AI Integration</h3>
+                        <p data-i18n-key="about_automation_desc">Developed AI-powered content generation systems and automation pipelines. Integrated multiple APIs including OpenAI, ElevenLabs, and YouTube for content creation workflows.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-i18n-key="about_timeline_2022">2022</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n-key="about_datascience_journey_title">Data Science Journey</h3>
+                        <p data-i18n-key="about_datascience_journey_desc">Began intensive focus on data analysis and machine learning. Built recommendation systems and data visualization tools for various domains including entertainment and analytics.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-i18n-key="about_timeline_2021">2021</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n-key="about_programming_start_title">Programming Foundation</h3>
+                        <p data-i18n-key="about_programming_start_desc">Started programming journey with Python and web technologies. Built first projects focusing on problem-solving and learning fundamental concepts.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interests & Philosophy -->
+        <section class="interests-section container">
+            <div class="interests-grid">
+                
+                <div class="interests-content">
+                    <h2 data-i18n-key="about_interests_title">Interests & Philosophy</h2>
+                    <p data-i18n-key="about_philosophy_text">I believe in the power of technology to create positive change. Whether it's building intuitive mobile apps, analyzing complex datasets, or automating repetitive tasks, I'm driven by the opportunity to solve real problems and improve people's lives through code.</p>
+                    
+                    <h3 data-i18n-key="about_when_not_coding_title">When I'm Not Coding</h3>
+                    <ul class="interests-list">
+                        <li data-i18n-key="about_interest_sports">Passionate about sports and fitness</li>
+                        <li data-i18n-key="about_interest_learning">Continuous learning and exploring new technologies</li>
+                        <li data-i18n-key="about_interest_music">Enjoying music and audiobooks</li>
+                        <li data-i18n-key="about_interest_travel">Traveling and experiencing different cultures</li>
+                    </ul>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">6+</span>
+                        <span class="stat-label" data-i18n-key="about_stat_projects">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label" data-i18n-key="about_stat_technologies">Technologies</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label" data-i18n-key="about_stat_years">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label" data-i18n-key="about_stat_learning">Learning</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section container">
+            <h2 data-i18n-key="about_cta_title">Let's Work Together</h2>
+            <p data-i18n-key="about_cta_text">I'm always excited to collaborate on interesting projects and discuss new opportunities. Let's connect and explore how we can create something amazing together.</p>
+            <a href="#contact" class="btn btn-primary" data-i18n-key="about_cta_btn">Get in Touch</a>
+        </section>
+
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
