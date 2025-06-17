@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="meta_title_achievements">Achievements - Peter Pal Hermann</title>
+    <meta name="description" content="Explore my athletic achievements, academic accomplishments, and personal milestones in sports and technology." data-i18n-key="meta_description_achievements">
+    <meta name="keywords" content="achievements, sports, athletics, academic, accomplishments, personal bests, running, swimming">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/achievements.html">
+    <meta property="og:title" content="Achievements - Peter Pal Hermann">
+    <meta property="og:description" content="Explore my athletic achievements, academic accomplishments, and personal milestones.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/achievements.html">
+    <meta property="twitter:title" content="Achievements - Peter Pal Hermann">
+    <meta property="twitter:description" content="Explore my athletic achievements, academic accomplishments, and personal milestones.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Achievements - Peter Pal Hermann",
+      "url": "https://PeterHermannGithub.github.io/achievements.html",
+      "author": {
+        "@type": "Person",
+        "name": "Peter Pal Hermann"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="achievements.html" class="active" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header container">
+            <h1 data-i18n-key="achievements_title">My Achievements</h1>
+            <p data-i18n-key="achievements_subtitle">Athletic accomplishments, academic milestones, and personal records that drive my passion for excellence.</p>
+        </section>
+
+        <!-- Achievement Categories -->
+        <section class="container">
+            <div class="achievement-filters">
+                <button class="filter-btn active" data-filter="all" data-i18n-key="filter_all_achievements">All Achievements</button>
+                <button class="filter-btn" data-filter="athletic" data-i18n-key="filter_athletic">Athletic</button>
+                <button class="filter-btn" data-filter="academic" data-i18n-key="filter_academic">Academic</button>
+                <button class="filter-btn" data-filter="personal" data-i18n-key="filter_personal">Personal</button>
+                <button class="filter-btn" data-filter="professional" data-i18n-key="filter_professional">Professional</button>
+            </div>
+        </section>
+
+        <!-- Achievements Grid -->
+        <section class="achievements-grid container">
+            
+            <!-- Athletic Achievements -->
+            <div class="achievement-card featured" data-category="athletic">
+                <div class="achievement-icon">🏃‍♂️</div>
+                <div class="achievement-content">
+                    <h3 data-i18n-key="achievement_marathon_title">Marathon Personal Best</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-highlight">3:25:42</span>
+                        <span class="stat-label" data-i18n-key="achievement_marathon_time">Marathon Time</span>
+                    </div>
+                    <p data-i18n-key="achievement_marathon_desc">Completed the Budapest Marathon with a personal best time, demonstrating months of dedicated training and perseverance.</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date" data-i18n-key="achievement_marathon_date">October 2023</span>
+                        <span class="achievement-location" data-i18n-key="achievement_marathon_location">Budapest, Hungary</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-card" data-category="athletic">
+                <div class="achievement-icon">🏊‍♂️</div>
+                <div class="achievement-content">
+                    <h3 data-i18n-key="achievement_swimming_title">1500m Freestyle Record</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-highlight">18:42</span>
+                        <span class="stat-label" data-i18n-key="achievement_swimming_time">1500m Time</span>
+                    </div>
+                    <p data-i18n-key="achievement_swimming_desc">Set a personal record in 1500m freestyle swimming, showcasing endurance and technique improvements.</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date" data-i18n-key="achievement_swimming_date">June 2023</span>
+                        <span class="achievement-location" data-i18n-key="achievement_swimming_location">Local Swimming Club</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-card" data-category="athletic">
+                <div class="achievement-icon">🚴‍♂️</div>
+                <div class="achievement-content">
+                    <h3 data-i18n-key="achievement_cycling_title">Century Ride Challenge</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-highlight">160km</span>
+                        <span class="stat-label" data-i18n-key="achievement_cycling_distance">Distance Covered</span>
+                    </div>
+                    <p data-i18n-key="achievement_cycling_desc">Completed a challenging 160km cycling route through the Hungarian countryside in a single day.</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date" data-i18n-key="achievement_cycling_date">August 2023</span>
+                        <span class="achievement-location" data-i18n-key="achievement_cycling_location">Hungarian Countryside</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Achievements -->
+            <div class="achievement-card" data-category="academic">
+                <div class="achievement-icon">🎓</div>
+                <div class="achievement-content">
+                    <h3 data-i18n-key="achievement_degree_title">Computer Science Degree</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-highlight" data-i18n-key="achievement_degree_grade">Magna Cum Laude</span>
+                        <span class="stat-label" data-i18n-key="achievement_degree_honors">With Honors</span>
+                    </div>
+                    <p data-i18n-key="achievement_degree_desc">Graduated with high honors in Computer Science, specializing in data science and machine learning applications.</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date" data-i18n-key="achievement_degree_date">2022</span>
+                        <span class="achievement-location" data-i18n-key="achievement_degree_location">University</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-card" data-category="academic">
+                <div class="achievement-icon">🏆</div>
+                <div class="achievement-content">
+                    <h3 data-i18n-key="achievement_hackathon_title">Hackathon Winner</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-highlight" data-i18n-key="achievement_hackathon_place">1st Place</span>
+                        <span class="stat-label" data-i18n-key="achievement_hackathon_category">AI Category</span>
+                    </div>
+                    <p data-i18n-key="achievement_hackathon_desc">Won first place in a 48-hour hackathon by developing an innovative AI-powered solution for data analysis.</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date" data-i18n-key="achievement_hackathon_date">November 2022</span>
+                        <span class="achievement-location" data-i18n-key="achievement_hackathon_location">Tech Conference</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Achievements -->
+            <div class="achievement-card" data-category="professional">
+                <div class="achievement-icon">💻</div>
+                <div class="achievement-content">
+                    <h3 data-i18n-key="achievement_projects_title">Portfolio Development</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-highlight">6+</span>
+                        <span class="stat-label" data-i18n-key="achievement_projects_count">Major Projects</span>
+                    </div>
+                    <p data-i18n-key="achievement_projects_desc">Successfully developed and deployed multiple full-stack applications across web, mobile, and automation domains.</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date" data-i18n-key="achievement_projects_date">2021-2024</span>
+                        <span class="achievement-location" data-i18n-key="achievement_projects_location">Personal Development</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-card" data-category="professional">
+                <div class="achievement-icon">🤖</div>
+                <div class="achievement-content">
+                    <h3 data-i18n-key="achievement_ai_title">AI Integration Mastery</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-highlight">5+</span>
+                        <span class="stat-label" data-i18n-key="achievement_ai_apis">AI APIs Integrated</span>
+                    </div>
+                    <p data-i18n-key="achievement_ai_desc">Successfully integrated multiple AI services including OpenAI, ElevenLabs, and Google Cloud for automated content creation.</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date" data-i18n-key="achievement_ai_date">2023-2024</span>
+                        <span class="achievement-location" data-i18n-key="achievement_ai_location">Various Projects</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Achievements -->
+            <div class="achievement-card" data-category="personal">
+                <div class="achievement-icon">🌟</div>
+                <div class="achievement-content">
+                    <h3 data-i18n-key="achievement_consistency_title">Coding Consistency</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-highlight">365+</span>
+                        <span class="stat-label" data-i18n-key="achievement_consistency_days">Days Streak</span>
+                    </div>
+                    <p data-i18n-key="achievement_consistency_desc">Maintained a daily coding practice for over a year, continuously improving skills and building projects.</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date" data-i18n-key="achievement_consistency_date">2023-2024</span>
+                        <span class="achievement-location" data-i18n-key="achievement_consistency_location">Daily Practice</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-card" data-category="personal">
+                <div class="achievement-icon">🎯</div>
+                <div class="achievement-content">
+                    <h3 data-i18n-key="achievement_goals_title">Fitness Goals Achievement</h3>
+                    <div class="achievement-stats">
+                        <span class="stat-highlight">100%</span>
+                        <span class="stat-label" data-i18n-key="achievement_goals_completion">Goals Completed</span>
+                    </div>
+                    <p data-i18n-key="achievement_goals_desc">Successfully achieved all major fitness goals set for 2023, including strength, endurance, and flexibility targets.</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date" data-i18n-key="achievement_goals_date">2023</span>
+                        <span class="achievement-location" data-i18n-key="achievement_goals_location">Personal Development</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Achievement Statistics -->
+        <section class="achievement-stats-section container">
+            <h2 data-i18n-key="achievements_stats_title">Achievement Statistics</h2>
+            <div class="stats-overview">
+                
+                <div class="stat-category">
+                    <div class="stat-icon">🏃‍♂️</div>
+                    <h3 data-i18n-key="stats_athletic_title">Athletic Performance</h3>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label" data-i18n-key="stats_races_completed">Races Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label" data-i18n-key="stats_km_running">KM Running</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label" data-i18n-key="stats_swimming_sessions">Swimming Sessions</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3000+</span>
+                            <span class="stat-label" data-i18n-key="stats_km_cycling">KM Cycling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-category">
+                    <div class="stat-icon">💻</div>
+                    <h3 data-i18n-key="stats_tech_title">Technical Achievements</h3>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">6+</span>
+                            <span class="stat-label" data-i18n-key="stats_projects_built">Projects Built</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label" data-i18n-key="stats_technologies_learned">Technologies Learned</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label" data-i18n-key="stats_commits_made">Git Commits</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label" data-i18n-key="stats_apis_integrated">APIs Integrated</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Motivation Section -->
+        <section class="motivation-section container">
+            <div class="motivation-content">
+                <h2 data-i18n-key="achievements_motivation_title">What Drives Me</h2>
+                <p data-i18n-key="achievements_motivation_text">Every achievement represents a journey of dedication, learning, and growth. Whether it's pushing physical limits in athletics or solving complex technical challenges, I believe in setting ambitious goals and working consistently towards them. These accomplishments reflect not just the destinations reached, but the character built along the way.</p>
+                
+                <div class="motivation-principles">
+                    <div class="principle">
+                        <h3 data-i18n-key="principle_consistency_title">Consistency</h3>
+                        <p data-i18n-key="principle_consistency_desc">Small daily improvements compound into extraordinary results over time.</p>
+                    </div>
+                    <div class="principle">
+                        <h3 data-i18n-key="principle_challenge_title">Challenge</h3>
+                        <p data-i18n-key="principle_challenge_desc">Embracing difficult goals pushes boundaries and reveals hidden potential.</p>
+                    </div>
+                    <div class="principle">
+                        <h3 data-i18n-key="principle_balance_title">Balance</h3>
+                        <p data-i18n-key="principle_balance_desc">Excellence in multiple areas creates a well-rounded and fulfilling life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section container">
+            <h2 data-i18n-key="achievements_cta_title">Ready for New Challenges</h2>
+            <p data-i18n-key="achievements_cta_text">I'm always looking for the next opportunity to grow, learn, and achieve something meaningful. Let's connect and explore how we can create success together.</p>
+            <a href="#contact" class="btn btn-primary" data-i18n-key="achievements_cta_btn">Get in Touch</a>
+        </section>
+
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
