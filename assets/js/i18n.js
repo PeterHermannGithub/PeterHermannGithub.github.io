@@ -23,8 +23,8 @@ const translations = {
         skills_title: "Technologies I Use",
         // Featured Project
         featured_title: "Featured Project",
-        featured_project_title: "Awesome Project Name",
-        featured_project_desc: "A brief but compelling description of my best project, highlighting the problem it solves and its key features.",
+        featured_project_title: "YouTube Content Automation",
+        featured_project_desc: "AI-powered pipeline for creating educational historical content at scale. Combines OpenAI, ElevenLabs, and DALL-E for automated script generation, voice synthesis, and video creation.",
         view_project_btn: "View Project",
         // Footer
         contact_title: "Let's Connect",
@@ -80,7 +80,7 @@ const translations = {
         about_ml_title: "Machine Learning & AI",
         about_ai_apis_title: "AI APIs & Services",
         about_mobile_title: "Mobile Development",
-        about_webdev_title: "Web Development",
+        about_extension_title: "Browser Extension Development",
         about_dataviz_title: "Data Visualization",
         about_automation_title: "Automation & Processing",
         about_financial_title: "Financial & Compliance",
@@ -447,8 +447,8 @@ const translations = {
         skills_title: "Használt technológiák",
         // Featured Project
         featured_title: "Kiemelt Projekt",
-        featured_project_title: "Fantasztikus Projekt Név",
-        featured_project_desc: "Rövid, de meggyőző leírása a legjobb projektjeimnek, kiemelve a megoldott problémát és a főbb funkciókat.",
+        featured_project_title: "YouTube Tartalom Automatizálás",
+        featured_project_desc: "AI-alapú pipeline oktatási történelmi tartalom nagyléptékű készítéséhez. Kombinálja az OpenAI-t, ElevenLabs-ot és DALL-E-t automatikus script generáláshoz, hangszintézishez és videókészítéshez.",
         view_project_btn: "Projekt megtekintése",
         // Footer
         contact_title: "Kapcsolat",
@@ -504,7 +504,7 @@ const translations = {
         about_ml_title: "Gépi Tanulás és MI",
         about_ai_apis_title: "MI API-k és Szolgáltatások",
         about_mobile_title: "Mobilfejlesztés",
-        about_webdev_title: "Webfejlesztés",
+        about_extension_title: "Böngésző Bővítmény Fejlesztés",
         about_dataviz_title: "Adatvizualizáció",
         about_automation_title: "Automatizálás és Feldolgozás",
         about_financial_title: "Pénzügyi és Compliance",
