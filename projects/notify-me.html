@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="project_notify_meta_title">Notify Me Android App - Peter Pal Hermann</title>
+    <meta name="description" content="Android notification app with WorkManager integration for background tasks. Features modern Material Design and fragment-based architecture." data-i18n-key="project_notify_meta_desc">
+    <meta name="keywords" content="Android app, notifications, WorkManager, Material Design, Kotlin, mobile development">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/projects/notify-me.html">
+    <meta property="og:title" content="Notify Me Android App - Peter Pal Hermann">
+    <meta property="og:description" content="Android notification app with WorkManager integration for background tasks.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/project-notify-me.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/projects/notify-me.html">
+    <meta property="twitter:title" content="Notify Me Android App - Peter Pal Hermann">
+    <meta property="twitter:description" content="Android notification app with WorkManager integration for background tasks.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/project-notify-me.png">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme"></button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-page-main">
+        <div class="container">
+            
+            <!-- Project Header -->
+            <header class="project-header">
+                <h1 data-i18n-key="project_notify_title">Notify Me - Android App</h1>
+                <p class="project-tagline" data-i18n-key="project_notify_tagline">Smart notification management with background task scheduling</p>
+                <div class="project-links">
+                    <a href="https://github.com/PeterHermannGithub/Notify_me" target="_blank" class="btn btn-primary" data-i18n-key="view_source_code">Source Code</a>
+                    <a href="#" class="btn" data-i18n-key="download_apk">Download APK</a>
+                </div>
+            </header>
+
+            <!-- Main Project Image -->
+            <div class="project-hero-media">
+                <img src="../assets/images/project-notify-me.png" alt="Notify Me Android App Screenshot">
+            </div>
+
+            <!-- Project Details -->
+            <div class="project-details-grid">
+                
+                <!-- Left Column: Description & Story -->
+                <div class="project-details-col">
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_about">About This Project</h2>
+                        <p data-i18n-key="project_notify_about_p1">
+                            Notify Me is an Android application designed to provide smart notification management with sophisticated background task scheduling. Built using modern Android development practices, the app leverages WorkManager for reliable background processing and features a clean Material Design interface.
+                        </p>
+                        <p data-i18n-key="project_notify_about_p2">
+                            The application demonstrates advanced Android concepts including fragment-based architecture, ViewPager2 navigation, and efficient background task management. It serves as a practical example of how to build scalable Android applications with proper separation of concerns and modern UI patterns.
+                        </p>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_features">Key Features</h2>
+                        <ul class="feature-list">
+                            <li data-i18n-key="project_notify_feature1">WorkManager integration for reliable background tasks</li>
+                            <li data-i18n-key="project_notify_feature2">Fragment-based architecture with ViewPager2</li>
+                            <li data-i18n-key="project_notify_feature3">Material Design 3 components throughout</li>
+                            <li data-i18n-key="project_notify_feature4">TabLayout navigation for intuitive user experience</li>
+                            <li data-i18n-key="project_notify_feature5">Notification scheduling and management</li>
+                            <li data-i18n-key="project_notify_feature6">Modern Android development practices</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_challenges">Technical Challenges</h2>
+                        <p data-i18n-key="project_notify_challenges">
+                            The main challenge was implementing reliable background task execution while respecting Android's battery optimization constraints. WorkManager provided the solution by intelligently scheduling tasks based on device state and user behavior. Additionally, ensuring proper fragment lifecycle management and state preservation across configuration changes required careful architecture planning.
+                        </p>
+                    </section>
+                </div>
+                
+                <!-- Right Column: Tech Stack & Details -->
+                <aside class="project-details-col">
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_stack">Technology Stack</h3>
+                        <ul class="tech-stack-list">
+                            <li>Kotlin</li>
+                            <li>Android SDK (API 26+)</li>
+                            <li>WorkManager</li>
+                            <li>Material Design 3</li>
+                            <li>ViewPager2</li>
+                            <li>Fragment Architecture</li>
+                            <li>AndroidX Libraries</li>
+                        </ul>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_architecture">Architecture Highlights</h3>
+                        <ul class="architecture-list">
+                            <li data-i18n-key="project_notify_arch1">MainActivity with TabLayout navigation</li>
+                            <li data-i18n-key="project_notify_arch2">Fragment-based modular design</li>
+                            <li data-i18n-key="project_notify_arch3">ViewPagerAdapter for fragment management</li>
+                            <li data-i18n-key="project_notify_arch4">NotificationWorker for background tasks</li>
+                            <li data-i18n-key="project_notify_arch5">Settings management system</li>
+                        </ul>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_development">Development Highlights</h3>
+                        <ul class="development-list">
+                            <li data-i18n-key="project_notify_dev1">Gradle version catalog (libs.versions.toml)</li>
+                            <li data-i18n-key="project_notify_dev2">Target SDK 35 with backward compatibility</li>
+                            <li data-i18n-key="project_notify_dev3">Modern build configuration</li>
+                            <li data-i18n-key="project_notify_dev4">Material Design theming</li>
+                        </ul>
+                    </section>
+                </aside>
+                
+            </div>
+
+            <!-- Code Snippets -->
+            <section class="code-showcase">
+                <h2 data-i18n-key="project_section_code">Code Highlights</h2>
+                <div class="code-grid">
+                    <div class="code-example">
+                        <h3 data-i18n-key="project_notify_code_worker">WorkManager Implementation</h3>
+                        <pre><code>class NotificationWorker(
+    context: Context,
+    params: WorkerParameters
+) : Worker(context, params) {
+    
+    override fun doWork(): Result {
+        // Background notification logic
+        return Result.success()
+    }
+}</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <h3 data-i18n-key="project_notify_code_fragment">Fragment Architecture</h3>
+                        <pre><code>class MainFragment : Fragment() {
+    
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return inflater.inflate(
+            R.layout.fragment_main, 
+            container, 
+            false
+        )
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="../assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="../assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="../assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

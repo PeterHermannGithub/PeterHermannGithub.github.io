@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="project_history_meta_title">YouTube Content Automation - Peter Pal Hermann</title>
+    <meta name="description" content="Automated pipeline for generating historical YouTube content. Uses AI for script generation, voice synthesis, and video creation." data-i18n-key="project_history_meta_desc">
+    <meta name="keywords" content="YouTube automation, AI content generation, OpenAI, ElevenLabs, video creation, automation pipeline">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/projects/history-automation.html">
+    <meta property="og:title" content="YouTube Content Automation - Peter Pal Hermann">
+    <meta property="og:description" content="Automated pipeline for generating historical YouTube content using AI.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/project-history-automation.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/projects/history-automation.html">
+    <meta property="twitter:title" content="YouTube Content Automation - Peter Pal Hermann">
+    <meta property="twitter:description" content="Automated pipeline for generating historical YouTube content using AI.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/project-history-automation.png">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme"></button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-page-main">
+        <div class="container">
+            
+            <!-- Project Header -->
+            <header class="project-header">
+                <h1 data-i18n-key="project_history_title">YouTube Content Automation</h1>
+                <p class="project-tagline" data-i18n-key="project_history_tagline">AI-powered pipeline for creating engaging historical content at scale</p>
+                <div class="project-links">
+                    <a href="https://github.com/PeterHermannGithub/history_channel_automation" target="_blank" class="btn btn-primary" data-i18n-key="view_source_code">Source Code</a>
+                    <a href="#pipeline" class="btn" data-i18n-key="view_pipeline">View Pipeline</a>
+                </div>
+            </header>
+
+            <!-- Main Project Image -->
+            <div class="project-hero-media">
+                <img src="../assets/images/project-history-automation.png" alt="YouTube Content Automation Dashboard">
+            </div>
+
+            <!-- Project Details -->
+            <div class="project-details-grid">
+                
+                <!-- Left Column: Description & Story -->
+                <div class="project-details-col">
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_about">About This Project</h2>
+                        <p data-i18n-key="project_history_about_p1">
+                            The YouTube Content Automation project is a comprehensive AI-driven pipeline that automatically generates educational historical content for YouTube. From initial research to final video upload, the system handles every aspect of content creation using cutting-edge AI technologies and automation tools.
+                        </p>
+                        <p data-i18n-key="project_history_about_p2">
+                            This project demonstrates the potential of AI in content creation workflows, combining OpenAI's language models for script generation, ElevenLabs for natural voice synthesis, DALL-E for visual content creation, and automated video editing. The result is a scalable system capable of producing high-quality educational content with minimal human intervention.
+                        </p>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_features">Pipeline Features</h2>
+                        <ul class="feature-list">
+                            <li data-i18n-key="project_history_feature1">Automated script generation with OpenAI GPT</li>
+                            <li data-i18n-key="project_history_feature2">High-quality voice synthesis using ElevenLabs</li>
+                            <li data-i18n-key="project_history_feature3">AI-generated visuals with DALL-E integration</li>
+                            <li data-i18n-key="project_history_feature4">Automated video editing with FFmpeg</li>
+                            <li data-i18n-key="project_history_feature5">YouTube API integration for direct uploads</li>
+                            <li data-i18n-key="project_history_feature6">Historical data sourcing and fact-checking</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_challenges">Technical Challenges</h2>
+                        <p data-i18n-key="project_history_challenges">
+                            The primary challenge was coordinating multiple AI services while maintaining content quality and historical accuracy. Each API has different rate limits, response formats, and quality variations that required sophisticated error handling and quality control. Additionally, ensuring the generated content met YouTube's guidelines and educational standards required careful prompt engineering and content validation systems.
+                        </p>
+                    </section>
+                </div>
+                
+                <!-- Right Column: Tech Stack & Details -->
+                <aside class="project-details-col">
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_stack">Technology Stack</h3>
+                        <ul class="tech-stack-list">
+                            <li>Python 3.8+</li>
+                            <li>OpenAI GPT API</li>
+                            <li>ElevenLabs TTS</li>
+                            <li>DALL-E Image Generation</li>
+                            <li>FFmpeg (video processing)</li>
+                            <li>YouTube Data API</li>
+                            <li>Pandas (data management)</li>
+                        </ul>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_workflow">Automation Workflow</h3>
+                        <ul class="workflow-list">
+                            <li data-i18n-key="project_history_workflow1">City data collection and preprocessing</li>
+                            <li data-i18n-key="project_history_workflow2">Historical research and fact compilation</li>
+                            <li data-i18n-key="project_history_workflow3">AI script generation and optimization</li>
+                            <li data-i18n-key="project_history_workflow4">Voice synthesis with emotion control</li>
+                            <li data-i18n-key="project_history_workflow5">Visual content generation and curation</li>
+                            <li data-i18n-key="project_history_workflow6">Video assembly and post-processing</li>
+                        </ul>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_output">Content Output</h3>
+                        <ul class="output-list">
+                            <li data-i18n-key="project_history_output1">5-10 minute educational videos</li>
+                            <li data-i18n-key="project_history_output2">Professional voice narration</li>
+                            <li data-i18n-key="project_history_output3">Custom AI-generated visuals</li>
+                            <li data-i18n-key="project_history_output4">Historically accurate content</li>
+                        </ul>
+                    </section>
+                </aside>
+                
+            </div>
+
+            <!-- Automation Pipeline -->
+            <section class="automation-pipeline">
+                <h2 data-i18n-key="project_section_pipeline">Content Creation Pipeline</h2>
+                <div class="pipeline-steps">
+                    <div class="pipeline-step">
+                        <div class="step-icon">🏛️</div>
+                        <h3 data-i18n-key="project_history_pipeline1_title">Data Collection</h3>
+                        <p data-i18n-key="project_history_pipeline1_desc">Gather historical data about cities, events, and cultural significance from reliable sources</p>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-step">
+                        <div class="step-icon">✍️</div>
+                        <h3 data-i18n-key="project_history_pipeline2_title">Script Generation</h3>
+                        <p data-i18n-key="project_history_pipeline2_desc">OpenAI generates engaging, educational scripts based on historical data and storytelling prompts</p>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-step">
+                        <div class="step-icon">🎙️</div>
+                        <h3 data-i18n-key="project_history_pipeline3_title">Voice Synthesis</h3>
+                        <p data-i18n-key="project_history_pipeline3_desc">ElevenLabs converts scripts to natural-sounding narration with appropriate tone and pacing</p>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-step">
+                        <div class="step-icon">🎨</div>
+                        <h3 data-i18n-key="project_history_pipeline4_title">Visual Creation</h3>
+                        <p data-i18n-key="project_history_pipeline4_desc">DALL-E generates custom images and illustrations that complement the historical narrative</p>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-step">
+                        <div class="step-icon">🎬</div>
+                        <h3 data-i18n-key="project_history_pipeline5_title">Video Assembly</h3>
+                        <p data-i18n-key="project_history_pipeline5_desc">FFmpeg combines audio, visuals, and transitions into professional-quality video content</p>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-step">
+                        <div class="step-icon">📺</div>
+                        <h3 data-i18n-key="project_history_pipeline6_title">YouTube Upload</h3>
+                        <p data-i18n-key="project_history_pipeline6_desc">Automated upload to YouTube with optimized titles, descriptions, and tags for discoverability</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Metrics -->
+            <section class="performance-metrics">
+                <h2 data-i18n-key="project_section_metrics">Performance Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-value">95%</div>
+                        <h3 data-i18n-key="project_history_metric1_title">Automation Rate</h3>
+                        <p data-i18n-key="project_history_metric1_desc">End-to-end content creation with minimal human intervention</p>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">2hrs</div>
+                        <h3 data-i18n-key="project_history_metric2_title">Production Time</h3>
+                        <p data-i18n-key="project_history_metric2_desc">Average time from concept to published video</p>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">5</div>
+                        <h3 data-i18n-key="project_history_metric3_title">API Integrations</h3>
+                        <p data-i18n-key="project_history_metric3_desc">Seamlessly coordinated AI services and platforms</p>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">100%</div>
+                        <h3 data-i18n-key="project_history_metric4_title">Quality Control</h3>
+                        <p data-i18n-key="project_history_metric4_desc">Automated fact-checking and content validation</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Code Snippets -->
+            <section class="code-showcase">
+                <h2 data-i18n-key="project_section_code">Code Highlights</h2>
+                <div class="code-grid">
+                    <div class="code-example">
+                        <h3 data-i18n-key="project_history_code_openai">OpenAI Integration</h3>
+                        <pre><code>def generate_script(city_data):
+    prompt = f"Create engaging historical content about {city_data['name']}"
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <h3 data-i18n-key="project_history_code_elevenlabs">Voice Synthesis</h3>
+                        <pre><code>def synthesize_voice(text, voice_id):
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
+    response = requests.post(url, json={
+        "text": text,
+        "voice_settings": {"stability": 0.75, "similarity_boost": 0.75}
+    })
+    return response.content</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="../assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="../assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="../assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

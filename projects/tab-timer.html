@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="project_timer_meta_title">Tab Timer Chrome Extension - Peter Pal Hermann</title>
+    <meta name="description" content="Chrome extension for tracking time spent on website domains. Features service worker architecture and persistent storage." data-i18n-key="project_timer_meta_desc">
+    <meta name="keywords" content="Chrome extension, time tracking, productivity, browser extension, JavaScript, Manifest V3">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/projects/tab-timer.html">
+    <meta property="og:title" content="Tab Timer Chrome Extension - Peter Pal Hermann">
+    <meta property="og:description" content="Chrome extension for tracking time spent on website domains.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/project-tab-timer.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/projects/tab-timer.html">
+    <meta property="twitter:title" content="Tab Timer Chrome Extension - Peter Pal Hermann">
+    <meta property="twitter:description" content="Chrome extension for tracking time spent on website domains.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/project-tab-timer.png">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme"></button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-page-main">
+        <div class="container">
+            
+            <!-- Project Header -->
+            <header class="project-header">
+                <h1 data-i18n-key="project_timer_title">Tab Timer Chrome Extension</h1>
+                <p class="project-tagline" data-i18n-key="project_timer_tagline">Track your browsing habits and boost productivity with intelligent time monitoring</p>
+                <div class="project-links">
+                    <a href="https://github.com/PeterHermannGithub/tab-timer-extension" target="_blank" class="btn btn-primary" data-i18n-key="view_source_code">Source Code</a>
+                    <a href="#install" class="btn" data-i18n-key="install_extension">Install Extension</a>
+                </div>
+            </header>
+
+            <!-- Main Project Image -->
+            <div class="project-hero-media">
+                <img src="../assets/images/project-tab-timer.png" alt="Tab Timer Chrome Extension Interface">
+            </div>
+
+            <!-- Project Details -->
+            <div class="project-details-grid">
+                
+                <!-- Left Column: Description & Story -->
+                <div class="project-details-col">
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_about">About This Project</h2>
+                        <p data-i18n-key="project_timer_about_p1">
+                            Tab Timer is a Chrome extension designed to help users understand and optimize their web browsing habits. By automatically tracking time spent on different domains, it provides valuable insights into digital behavior patterns and helps identify areas for improved productivity.
+                        </p>
+                        <p data-i18n-key="project_timer_about_p2">
+                            Built using Chrome's Manifest V3 architecture, this extension demonstrates modern browser extension development practices with service workers, persistent storage, and efficient background processing. The lightweight design ensures minimal impact on browser performance while providing comprehensive time tracking functionality.
+                        </p>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_features">Key Features</h2>
+                        <ul class="feature-list">
+                            <li data-i18n-key="project_timer_feature1">Automatic domain-based time tracking</li>
+                            <li data-i18n-key="project_timer_feature2">Service worker architecture for efficient background processing</li>
+                            <li data-i18n-key="project_timer_feature3">Persistent data storage with Chrome Storage API</li>
+                            <li data-i18n-key="project_timer_feature4">Clean, intuitive popup interface</li>
+                            <li data-i18n-key="project_timer_feature5">Daily, weekly, and monthly time reports</li>
+                            <li data-i18n-key="project_timer_feature6">Idle time detection and exclusion</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_challenges">Development Challenges</h2>
+                        <p data-i18n-key="project_timer_challenges">
+                            The main challenge was adapting to Chrome's Manifest V3 requirements, which introduced significant changes to extension architecture. Moving from background pages to service workers required rethinking data persistence and event handling. Additionally, accurately tracking time while respecting user privacy and minimizing performance impact required careful optimization of tracking algorithms and storage strategies.
+                        </p>
+                    </section>
+                </div>
+                
+                <!-- Right Column: Tech Stack & Details -->
+                <aside class="project-details-col">
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_stack">Technology Stack</h3>
+                        <ul class="tech-stack-list">
+                            <li>JavaScript ES6+</li>
+                            <li>Chrome Extension Manifest V3</li>
+                            <li>Service Workers</li>
+                            <li>Chrome Storage API</li>
+                            <li>Chrome Tabs API</li>
+                            <li>HTML5 & CSS3</li>
+                            <li>Chrome Alarms API</li>
+                        </ul>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_architecture">Extension Architecture</h3>
+                        <ul class="architecture-list">
+                            <li data-i18n-key="project_timer_arch1">background.js - Service worker for tracking logic</li>
+                            <li data-i18n-key="project_timer_arch2">popup.html/js - User interface for viewing data</li>
+                            <li data-i18n-key="project_timer_arch3">manifest.json - Extension configuration and permissions</li>
+                            <li data-i18n-key="project_timer_arch4">Storage management for persistent data</li>
+                            <li data-i18n-key="project_timer_arch5">Event listeners for tab changes</li>
+                        </ul>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_privacy">Privacy & Performance</h3>
+                        <ul class="privacy-list">
+                            <li data-i18n-key="project_timer_privacy1">No data sent to external servers</li>
+                            <li data-i18n-key="project_timer_privacy2">Domain-level tracking only (no URLs)</li>
+                            <li data-i18n-key="project_timer_privacy3">Lightweight background processing</li>
+                            <li data-i18n-key="project_timer_privacy4">User-controlled data retention</li>
+                        </ul>
+                    </section>
+                </aside>
+                
+            </div>
+
+            <!-- Feature Showcase -->
+            <section class="feature-showcase">
+                <h2 data-i18n-key="project_section_showcase">Feature Showcase</h2>
+                <div class="showcase-grid">
+                    <div class="showcase-item">
+                        <div class="showcase-icon">⏱️</div>
+                        <h3 data-i18n-key="project_timer_showcase1_title">Real-time Tracking</h3>
+                        <p data-i18n-key="project_timer_showcase1_desc">Automatically tracks time spent on each domain with second-level precision</p>
+                    </div>
+                    <div class="showcase-item">
+                        <div class="showcase-icon">📊</div>
+                        <h3 data-i18n-key="project_timer_showcase2_title">Visual Reports</h3>
+                        <p data-i18n-key="project_timer_showcase2_desc">Clean, organized display of time data with domain rankings and percentages</p>
+                    </div>
+                    <div class="showcase-item">
+                        <div class="showcase-icon">🔒</div>
+                        <h3 data-i18n-key="project_timer_showcase3_title">Privacy First</h3>
+                        <p data-i18n-key="project_timer_showcase3_desc">All data stored locally, no tracking or external data transmission</p>
+                    </div>
+                    <div class="showcase-item">
+                        <div class="showcase-icon">⚡</div>
+                        <h3 data-i18n-key="project_timer_showcase4_title">Lightweight</h3>
+                        <p data-i18n-key="project_timer_showcase4_desc">Minimal memory footprint and CPU usage with efficient service worker design</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation Guide -->
+            <section class="installation-guide" id="install">
+                <h2 data-i18n-key="project_section_installation">Installation Guide</h2>
+                <div class="install-steps">
+                    <div class="install-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 data-i18n-key="project_timer_install1_title">Download Extension</h3>
+                            <p data-i18n-key="project_timer_install1_desc">Clone or download the extension files from the GitHub repository</p>
+                        </div>
+                    </div>
+                    <div class="install-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 data-i18n-key="project_timer_install2_title">Enable Developer Mode</h3>
+                            <p data-i18n-key="project_timer_install2_desc">Open Chrome Extensions page and enable Developer Mode toggle</p>
+                        </div>
+                    </div>
+                    <div class="install-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 data-i18n-key="project_timer_install3_title">Load Extension</h3>
+                            <p data-i18n-key="project_timer_install3_desc">Click "Load unpacked" and select the extension directory</p>
+                        </div>
+                    </div>
+                    <div class="install-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 data-i18n-key="project_timer_install4_title">Start Tracking</h3>
+                            <p data-i18n-key="project_timer_install4_desc">Extension will automatically begin tracking your browsing time</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Code Snippets -->
+            <section class="code-showcase">
+                <h2 data-i18n-key="project_section_code">Code Highlights</h2>
+                <div class="code-grid">
+                    <div class="code-example">
+                        <h3 data-i18n-key="project_timer_code_service">Service Worker</h3>
+                        <pre><code>chrome.tabs.onActivated.addListener((activeInfo) => {
+  chrome.tabs.get(activeInfo.tabId, (tab) => {
+    if (tab.url) {
+      const domain = new URL(tab.url).hostname;
+      trackTime(domain);
+    }
+  });
+});</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <h3 data-i18n-key="project_timer_code_storage">Data Storage</h3>
+                        <pre><code>function saveTimeData(domain, timeSpent) {
+  chrome.storage.local.get([domain], (result) => {
+    const currentTime = result[domain] || 0;
+    chrome.storage.local.set({
+      [domain]: currentTime + timeSpent
+    });
+  });
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="../assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="../assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="../assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

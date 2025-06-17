@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="project_audiobook_meta_title">PDF to Audiobook Converter - Peter Pal Hermann</title>
+    <meta name="description" content="Python script that converts PDFs to audiobooks with multiple TTS engines. Features character voice differentiation and dialogue detection." data-i18n-key="project_audiobook_meta_desc">
+    <meta name="keywords" content="PDF converter, audiobook, TTS, Python, text-to-speech, PyMuPDF, automation">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/projects/audiobook-converter.html">
+    <meta property="og:title" content="PDF to Audiobook Converter - Peter Pal Hermann">
+    <meta property="og:description" content="Python script that converts PDFs to audiobooks with multiple TTS engines.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/project-audiobook.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/projects/audiobook-converter.html">
+    <meta property="twitter:title" content="PDF to Audiobook Converter - Peter Pal Hermann">
+    <meta property="twitter:description" content="Python script that converts PDFs to audiobooks with multiple TTS engines.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/project-audiobook.png">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme"></button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-page-main">
+        <div class="container">
+            
+            <!-- Project Header -->
+            <header class="project-header">
+                <h1 data-i18n-key="project_audiobook_title">PDF to Audiobook Converter</h1>
+                <p class="project-tagline" data-i18n-key="project_audiobook_tagline">Transform any PDF into an immersive audiobook with AI-powered voice synthesis</p>
+                <div class="project-links">
+                    <a href="https://github.com/PeterHermannGithub/Text_to_audiobook" target="_blank" class="btn btn-primary" data-i18n-key="view_source_code">Source Code</a>
+                    <a href="#demo" class="btn" data-i18n-key="view_demo">View Demo</a>
+                </div>
+            </header>
+
+            <!-- Main Project Image -->
+            <div class="project-hero-media">
+                <img src="../assets/images/project-audiobook.png" alt="PDF to Audiobook Converter Interface">
+            </div>
+
+            <!-- Project Details -->
+            <div class="project-details-grid">
+                
+                <!-- Left Column: Description & Story -->
+                <div class="project-details-col">
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_about">About This Project</h2>
+                        <p data-i18n-key="project_audiobook_about_p1">
+                            The PDF to Audiobook Converter is a sophisticated Python application that transforms static PDF documents into engaging audiobooks. Using advanced text-to-speech technologies, it creates natural-sounding narrations with character voice differentiation and intelligent dialogue processing.
+                        </p>
+                        <p data-i18n-key="project_audiobook_about_p2">
+                            This project solves the accessibility challenge of consuming written content through audio. Whether for visually impaired users, multitaskers, or anyone who prefers audio learning, this tool makes literature and documents accessible in a new format while maintaining the richness of the original text through voice modulation and character recognition.
+                        </p>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_features">Key Features</h2>
+                        <ul class="feature-list">
+                            <li data-i18n-key="project_audiobook_feature1">Multiple TTS engine support (pyttsx3, Google Cloud, ElevenLabs)</li>
+                            <li data-i18n-key="project_audiobook_feature2">Intelligent dialogue detection and speaker identification</li>
+                            <li data-i18n-key="project_audiobook_feature3">Character voice mapping with distinct voices</li>
+                            <li data-i18n-key="project_audiobook_feature4">PDF text extraction with PyMuPDF</li>
+                            <li data-i18n-key="project_audiobook_feature5">Audio file management and chapter organization</li>
+                            <li data-i18n-key="project_audiobook_feature6">Customizable voice parameters and speed control</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_challenges">Technical Challenges</h2>
+                        <p data-i18n-key="project_audiobook_challenges">
+                            The primary challenge was developing accurate dialogue detection algorithms to distinguish between narrative text and character speech. This required natural language processing techniques to identify speech patterns, quotation marks, and dialogue tags. Additionally, managing multiple TTS engines with different APIs and rate limits while maintaining consistent audio quality across the entire audiobook proved complex.
+                        </p>
+                    </section>
+                </div>
+                
+                <!-- Right Column: Tech Stack & Details -->
+                <aside class="project-details-col">
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_stack">Technology Stack</h3>
+                        <ul class="tech-stack-list">
+                            <li>Python 3.8+</li>
+                            <li>PyMuPDF (text extraction)</li>
+                            <li>pyttsx3 (local TTS)</li>
+                            <li>Google Cloud TTS</li>
+                            <li>ElevenLabs API</li>
+                            <li>Regular Expressions</li>
+                            <li>Audio Processing Libraries</li>
+                        </ul>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_architecture">Architecture Components</h3>
+                        <ul class="architecture-list">
+                            <li data-i18n-key="project_audiobook_arch1">PDFTextExtractor class for document parsing</li>
+                            <li data-i18n-key="project_audiobook_arch2">DialogueProcessor for speech detection</li>
+                            <li data-i18n-key="project_audiobook_arch3">CharacterVoiceMapper for voice assignment</li>
+                            <li data-i18n-key="project_audiobook_arch4">TTSEngine hierarchy for multiple providers</li>
+                            <li data-i18n-key="project_audiobook_arch5">AudiobookCreator orchestration class</li>
+                        </ul>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_usage">Usage Examples</h3>
+                        <ul class="usage-list">
+                            <li data-i18n-key="project_audiobook_usage1">Convert novels with character voices</li>
+                            <li data-i18n-key="project_audiobook_usage2">Create educational content audiobooks</li>
+                            <li data-i18n-key="project_audiobook_usage3">Accessibility tool for visually impaired</li>
+                            <li data-i18n-key="project_audiobook_usage4">Batch processing for libraries</li>
+                        </ul>
+                    </section>
+                </aside>
+                
+            </div>
+
+            <!-- Process Flow -->
+            <section class="process-flow">
+                <h2 data-i18n-key="project_section_process">Conversion Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3 data-i18n-key="project_audiobook_step1_title">PDF Analysis</h3>
+                        <p data-i18n-key="project_audiobook_step1_desc">Extract and clean text from PDF, preserving structure and formatting cues</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3 data-i18n-key="project_audiobook_step2_title">Dialogue Detection</h3>
+                        <p data-i18n-key="project_audiobook_step2_desc">Identify speakers and dialogue sections using NLP techniques</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3 data-i18n-key="project_audiobook_step3_title">Voice Mapping</h3>
+                        <p data-i18n-key="project_audiobook_step3_desc">Assign unique voices to characters and narrator based on analysis</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3 data-i18n-key="project_audiobook_step4_title">Audio Generation</h3>
+                        <p data-i18n-key="project_audiobook_step4_desc">Convert text to speech using selected TTS engine with voice modulation</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Code Snippets -->
+            <section class="code-showcase">
+                <h2 data-i18n-key="project_section_code">Code Highlights</h2>
+                <div class="code-grid">
+                    <div class="code-example">
+                        <h3 data-i18n-key="project_audiobook_code_extractor">PDF Text Extraction</h3>
+                        <pre><code>class PDFTextExtractor:
+    def extract_text(self, pdf_path):
+        doc = fitz.open(pdf_path)
+        text = ""
+        for page in doc:
+            text += page.get_text()
+        return self.clean_text(text)</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <h3 data-i18n-key="project_audiobook_code_dialogue">Dialogue Processing</h3>
+                        <pre><code>class DialogueProcessor:
+    def detect_dialogue(self, text):
+        dialogue_pattern = r'"([^"]*)"'
+        matches = re.finditer(dialogue_pattern, text)
+        return [(m.start(), m.end(), m.group(1)) 
+                for m in matches]</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="../assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="../assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="../assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
