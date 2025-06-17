@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="meta_title_projects">Projects - Peter Pal Hermann</title>
+    <meta name="description" content="Explore my portfolio of projects including web development, data science, and automation solutions." data-i18n-key="meta_description_projects">
+    <meta name="keywords" content="projects, portfolio, web development, data science, automation, programming">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/projects.html">
+    <meta property="og:title" content="Projects - Peter Pal Hermann">
+    <meta property="og:description" content="Explore my portfolio of projects including web development, data science, and automation solutions.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/projects.html">
+    <meta property="twitter:title" content="Projects - Peter Pal Hermann">
+    <meta property="twitter:description" content="Explore my portfolio of projects including web development, data science, and automation solutions.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Projects - Peter Pal Hermann",
+      "url": "https://PeterHermannGithub.github.io/projects.html",
+      "author": {
+        "@type": "Person",
+        "name": "Peter Pal Hermann"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="projects.html" class="active" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header container">
+            <h1 data-i18n-key="projects_title">My Projects</h1>
+            <p data-i18n-key="projects_subtitle">A collection of projects I've built using various technologies and frameworks.</p>
+        </section>
+
+        <!-- Filter Buttons -->
+        <section class="container">
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all" data-i18n-key="filter_all">All Projects</button>
+                <button class="filter-btn" data-filter="web" data-i18n-key="filter_web">Web Development</button>
+                <button class="filter-btn" data-filter="mobile" data-i18n-key="filter_mobile">Mobile Apps</button>
+                <button class="filter-btn" data-filter="data" data-i18n-key="filter_data">Data Science</button>
+                <button class="filter-btn" data-filter="automation" data-i18n-key="filter_automation">Automation</button>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-grid container">
+            
+            <!-- Project 1: Portfolio Website -->
+            <div class="project-card animate-on-scroll" data-category="web">
+                <img src="assets/images/project-portfolio.png" alt="Portfolio Website Screenshot" class="project-image">
+                <div class="project-info">
+                    <h3 data-i18n-key="project_portfolio_title">Portfolio Website</h3>
+                    <p data-i18n-key="project_portfolio_desc">A modern, bilingual portfolio website built with vanilla HTML, CSS, and JavaScript. Features dark mode, responsive design, and internationalization.</p>
+                    <div class="tech-stack">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>GitHub Pages</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://PeterHermannGithub.github.io" target="_blank" class="btn btn-primary" data-i18n-key="view_live_btn">View Live</a>
+                        <a href="https://github.com/PeterHermannGithub/PeterHermannGithub.github.io" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Notify Me Android App -->
+            <div class="project-card animate-on-scroll" data-category="mobile">
+                <img src="assets/images/project-notify-me.png" alt="Notify Me App Screenshot" class="project-image">
+                <div class="project-info">
+                    <h3 data-i18n-key="project_notify_title">Notify Me - Android App</h3>
+                    <p data-i18n-key="project_notify_desc">An Android notification app with WorkManager integration for background tasks. Features modern Material Design and fragment-based architecture.</p>
+                    <div class="tech-stack">
+                        <span>Kotlin</span>
+                        <span>Android</span>
+                        <span>WorkManager</span>
+                        <span>Material Design</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/notify-me.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
+                        <a href="https://github.com/PeterHermannGithub/Notify_me" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Text to Audiobook -->
+            <div class="project-card animate-on-scroll" data-category="automation">
+                <img src="assets/images/project-audiobook.png" alt="Text to Audiobook Screenshot" class="project-image">
+                <div class="project-info">
+                    <h3 data-i18n-key="project_audiobook_title">PDF to Audiobook Converter</h3>
+                    <p data-i18n-key="project_audiobook_desc">Python script that converts PDFs to audiobooks with multiple TTS engines. Features character voice differentiation and dialogue detection.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>PyMuPDF</span>
+                        <span>pyttsx3</span>
+                        <span>Google Cloud TTS</span>
+                        <span>ElevenLabs</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/audiobook-converter.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
+                        <a href="https://github.com/PeterHermannGithub/Text_to_audiobook" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Anime Database Analysis -->
+            <div class="project-card animate-on-scroll" data-category="data">
+                <img src="assets/images/project-anime-db.png" alt="Anime Database Analysis Screenshot" class="project-image">
+                <div class="project-info">
+                    <h3 data-i18n-key="project_anime_title">Anime Database Analysis</h3>
+                    <p data-i18n-key="project_anime_desc">Data analysis and similarity matching system for anime data. Uses machine learning techniques for content recommendation and analysis.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>Pandas</span>
+                        <span>Jupyter</span>
+                        <span>Machine Learning</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/anime-analysis.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
+                        <a href="https://github.com/PeterHermannGithub/anime_database" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: History Channel Automation -->
+            <div class="project-card animate-on-scroll" data-category="automation">
+                <img src="assets/images/project-history-automation.png" alt="History Channel Automation Screenshot" class="project-image">
+                <div class="project-info">
+                    <h3 data-i18n-key="project_history_title">YouTube Content Automation</h3>
+                    <p data-i18n-key="project_history_desc">Automated pipeline for generating historical YouTube content. Uses AI for script generation, voice synthesis, and video creation.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>OpenAI API</span>
+                        <span>ElevenLabs</span>
+                        <span>FFmpeg</span>
+                        <span>YouTube API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/history-automation.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
+                        <a href="https://github.com/PeterHermannGithub/history_channel_automation" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Tab Timer Extension -->
+            <div class="project-card animate-on-scroll" data-category="web">
+                <img src="assets/images/project-tab-timer.png" alt="Tab Timer Extension Screenshot" class="project-image">
+                <div class="project-info">
+                    <h3 data-i18n-key="project_timer_title">Tab Timer Chrome Extension</h3>
+                    <p data-i18n-key="project_timer_desc">Chrome extension for tracking time spent on website domains. Features service worker architecture and persistent storage.</p>
+                    <div class="tech-stack">
+                        <span>JavaScript</span>
+                        <span>Chrome API</span>
+                        <span>Manifest V3</span>
+                        <span>HTML/CSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/tab-timer.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
+                        <a href="https://github.com/PeterHermannGithub/tab-timer-extension" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section container">
+            <h2 data-i18n-key="projects_cta_title">Interested in Working Together?</h2>
+            <p data-i18n-key="projects_cta_text">I'm always open to discussing new opportunities and interesting projects.</p>
+            <a href="#contact" class="btn btn-primary" data-i18n-key="projects_cta_btn">Get in Touch</a>
+        </section>
+
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
