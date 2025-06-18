@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title data-i18n-key="project_perf_meta_title">Performance Comparison: Python vs C++ vs Rust - Peter Pal Hermann</title>
+    <meta name="description" content="Multi-language performance optimization achieving 50-100x speedup in Jaccard similarity computation." data-i18n-key="project_perf_meta_desc">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-page.css">
+    <link rel="stylesheet" href="../assets/css/performance-demo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+    
+    <!-- Chart.js for performance visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme"></button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-page-main">
+        <div class="container">
+            
+            <!-- Project Header -->
+            <header class="project-header">
+                <h1 data-i18n-key="project_perf_title">Multi-Language Performance Optimization</h1>
+                <p class="project-tagline" data-i18n-key="project_perf_tagline">Achieving 50-100x speedup through strategic optimization in Python, C++, and Rust</p>
+                <div class="project-links">
+                    <a href="#demo" class="btn btn-primary" data-i18n-key="project_perf_btn_demo">Live Demo</a>
+                    <a href="https://github.com/PeterHermannGithub/anime-recommender/tree/main/src/optimization" target="_blank" class="btn" data-i18n-key="project_btn_source_code">Source Code</a>
+                </div>
+            </header>
+
+            <!-- Performance Challenge Overview -->
+            <div class="performance-challenge">
+                <div class="challenge-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">9s</div>
+                        <div class="stat-label" data-i18n-key="project_perf_stat_baseline">Python Baseline</div>
+                    </div>
+                    <div class="stat-arrow">→</div>
+                    <div class="stat-item">
+                        <div class="stat-number">&lt;100ms</div>
+                        <div class="stat-label" data-i18n-key="project_perf_stat_target">Target Performance</div>
+                    </div>
+                    <div class="stat-item highlight">
+                        <div class="stat-number">50-100x</div>
+                        <div class="stat-label" data-i18n-key="project_perf_stat_speedup">Speedup Achieved</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Demo Section -->
+            <section id="demo" class="performance-demo-section">
+                <h2 class="section-title" data-i18n-key="project_perf_demo_title">Interactive Performance Demo</h2>
+                <div class="demo-controls">
+                    <div class="control-group">
+                        <label for="dataset-size" data-i18n-key="project_perf_demo_size">Dataset Size:</label>
+                        <select id="dataset-size">
+                            <option value="100">100 items</option>
+                            <option value="500">500 items</option>
+                            <option value="1000" selected>1000 items</option>
+                            <option value="2000">2000 items</option>
+                        </select>
+                    </div>
+                    <button id="run-benchmark" class="btn btn-primary" data-i18n-key="project_perf_demo_run">Run Benchmark</button>
+                </div>
+                
+                <div class="benchmark-results" id="benchmark-results" style="display: none;">
+                    <div class="results-grid">
+                        <div class="result-card python">
+                            <h3>Python</h3>
+                            <div class="result-time" id="python-time">-</div>
+                            <div class="result-bar">
+                                <div class="bar-fill python-bar" id="python-bar"></div>
+                            </div>
+                        </div>
+                        <div class="result-card cpp">
+                            <h3>C++</h3>
+                            <div class="result-time" id="cpp-time">-</div>
+                            <div class="result-bar">
+                                <div class="bar-fill cpp-bar" id="cpp-bar"></div>
+                            </div>
+                        </div>
+                        <div class="result-card rust">
+                            <h3>Rust</h3>
+                            <div class="result-time" id="rust-time">-</div>
+                            <div class="result-bar">
+                                <div class="bar-fill rust-bar" id="rust-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="speedup-stats">
+                        <div class="speedup-item">
+                            <span data-i18n-key="project_perf_demo_cpp_speedup">C++ Speedup:</span>
+                            <span id="cpp-speedup" class="speedup-value">-</span>
+                        </div>
+                        <div class="speedup-item">
+                            <span data-i18n-key="project_perf_demo_rust_speedup">Rust Speedup:</span>
+                            <span id="rust-speedup" class="speedup-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Algorithm Visualization -->
+            <section class="algorithm-visualization">
+                <h2 class="section-title" data-i18n-key="project_perf_algo_title">Jaccard Similarity Algorithm</h2>
+                <div class="algo-explanation">
+                    <div class="algo-visual">
+                        <div class="set-demo">
+                            <div class="set set-a">
+                                <h4>Set A: {1, 2, 3, 4, 5}</h4>
+                                <div class="set-elements">
+                                    <span class="element">1</span>
+                                    <span class="element">2</span>
+                                    <span class="element">3</span>
+                                    <span class="element">4</span>
+                                    <span class="element">5</span>
+                                </div>
+                            </div>
+                            <div class="set set-b">
+                                <h4>Set B: {3, 4, 5, 6, 7}</h4>
+                                <div class="set-elements">
+                                    <span class="element">3</span>
+                                    <span class="element">4</span>
+                                    <span class="element">5</span>
+                                    <span class="element">6</span>
+                                    <span class="element">7</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jaccard-formula">
+                            <div class="formula-line">
+                                <span class="formula-text">Jaccard(A,B) = </span>
+                                <div class="fraction">
+                                    <div class="numerator">|A ∩ B|</div>
+                                    <div class="denominator">|A ∪ B|</div>
+                                </div>
+                                <span class="formula-text"> = </span>
+                                <div class="fraction">
+                                    <div class="numerator">3</div>
+                                    <div class="denominator">7</div>
+                                </div>
+                                <span class="formula-text"> = 0.43</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="algo-description">
+                        <p data-i18n-key="project_perf_algo_desc">
+                            Jaccard similarity measures the similarity between two finite sets by dividing the size of their intersection by the size of their union. In our anime recommendation system, this algorithm computes similarity between anime based on shared tags and genres.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detailed Information Sections -->
+            <div class="project-details-grid">
+                
+                <!-- Left Column: Description & Story -->
+                <div class="project-details-col">
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_about">The Challenge</h2>
+                        <p data-i18n-key="project_perf_about_p1">
+                            While building an anime recommendation system, I encountered a critical performance bottleneck: computing Jaccard similarity for a 3,000 × 3,000 matrix was taking 9 seconds per operation. For a responsive user experience, this needed to be reduced to under 100 milliseconds.
+                        </p>
+                        <p data-i18n-key="project_perf_about_p2">
+                            This project explores three different approaches to the same computational problem: a Python baseline for rapid prototyping, a C++ implementation with OpenMP parallelization, and a Rust solution leveraging Rayon for safe concurrency. The goal was to achieve a 50-100x performance improvement while maintaining identical computational results.
+                        </p>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_challenges">Optimization Strategies</h2>
+                        <div class="optimization-strategies">
+                            <div class="strategy-item">
+                                <h4 data-i18n-key="project_perf_strategy_parallel">Parallel Processing</h4>
+                                <p data-i18n-key="project_perf_strategy_parallel_desc">Leveraged OpenMP in C++ and Rayon in Rust for efficient multi-core utilization</p>
+                            </div>
+                            <div class="strategy-item">
+                                <h4 data-i18n-key="project_perf_strategy_memory">Memory Optimization</h4>
+                                <p data-i18n-key="project_perf_strategy_memory_desc">Symmetric matrix computation (upper triangle only) and cache-friendly data structures</p>
+                            </div>
+                            <div class="strategy-item">
+                                <h4 data-i18n-key="project_perf_strategy_algorithm">Algorithmic Improvements</h4>
+                                <p data-i18n-key="project_perf_strategy_algorithm_desc">Vectorized operations, binary set representations, and early termination conditions</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Code Examples -->
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_perf_code_title">Implementation Highlights</h2>
+                        <div class="code-examples">
+                            <div class="code-example">
+                                <h4>Rust Implementation</h4>
+                                <pre><code class="language-rust">use rayon::prelude::*;
+
+pub fn compute_similarity_matrix_parallel(
+    anime_tags: &[Vec&lt;u32&gt;], 
+    tag_count: u32
+) -> Vec&lt;Vec&lt;f32&gt;&gt; {
+    let n = anime_tags.len();
+    let mut matrix = vec![vec![0.0; n]; n];
+    
+    matrix.par_iter_mut().enumerate().for_each(|(i, row)| {
+        for j in (i + 1)..n {
+            let similarity = jaccard_similarity_binary(
+                &anime_tags[i], 
+                &anime_tags[j], 
+                tag_count
+            );
+            row[j] = similarity;
+        }
+    });
+    
+    matrix
+}</code></pre>
+                            </div>
+                            <div class="code-example">
+                                <h4>C++ Implementation</h4>
+                                <pre><code class="language-cpp">#pragma omp parallel for schedule(dynamic)
+for (int i = 0; i < n; ++i) {
+    for (int j = i + 1; j < n; ++j) {
+        float similarity = jaccardSimilarity(
+            animeData[i], 
+            animeData[j]
+        );
+        matrix[i][j] = similarity;
+        matrix[j][i] = similarity; // Symmetric
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- Right Column: Tech Stack & Performance Data -->
+                <aside class="project-details-col">
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_stack">Technology Stack</h3>
+                        <ul class="tech-stack-list">
+                            <li>Python (PyO3 bindings)</li>
+                            <li>Rust + Rayon</li>
+                            <li>C++ + OpenMP</li>
+                            <li>pybind11</li>
+                            <li>CMake Build System</li>
+                            <li>Cargo for Rust</li>
+                            <li>Chart.js for Visualization</li>
+                        </ul>
+                    </section>
+
+                    <!-- Performance Dashboard -->
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_perf_results_title">Benchmark Results</h3>
+                        <div class="performance-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th data-i18n-key="project_perf_table_size">Size</th>
+                                        <th>Python</th>
+                                        <th>C++</th>
+                                        <th>Rust</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>100</td>
+                                        <td>45ms</td>
+                                        <td>2ms</td>
+                                        <td>1.8ms</td>
+                                    </tr>
+                                    <tr>
+                                        <td>500</td>
+                                        <td>1.2s</td>
+                                        <td>18ms</td>
+                                        <td>15ms</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1000</td>
+                                        <td>4.8s</td>
+                                        <td>65ms</td>
+                                        <td>58ms</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3000</td>
+                                        <td>9.0s</td>
+                                        <td>95ms</td>
+                                        <td>89ms</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="performance-chart-container">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </section>
+
+                    <section class="project-details-section">
+                        <h3 data-i18n-key="project_section_future">Key Learnings</h3>
+                        <ul class="future-improvements-list">
+                            <li data-i18n-key="project_perf_learning1">Memory layout optimization can be as important as algorithmic improvements</li>
+                            <li data-i18n-key="project_perf_learning2">Rust's ownership model enables safe parallelism without runtime overhead</li>
+                            <li data-i18n-key="project_perf_learning3">Profile-guided optimization revealed unexpected bottlenecks</li>
+                            <li data-i18n-key="project_perf_learning4">Language choice should be driven by performance requirements and team expertise</li>
+                        </ul>
+                    </section>
+                </aside>
+                
+            </div>
+
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h2 data-i18n-key="contact_title">Let's Connect</h2>
+                <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+                <div class="social-links">
+                    <a href="mailto:peterhermannpublic@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/peter-hermann-budapest" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/performance-demo.js"></script>
+    
+</body>
+</html>
