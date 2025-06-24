@@ -60,9 +60,34 @@
                     <!-- Icons will be injected by JS -->
                 </button>
                 <button id="lang-toggle" aria-label="Toggle language">EN</button>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
             </div>
         </nav>
     </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close mobile menu">×</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
+            <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
+            <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+        </ul>
+        <div class="mobile-nav-controls">
+            <button id="mobile-theme-toggle" aria-label="Toggle theme">
+                <!-- Icons will be injected by JS -->
+            </button>
+            <button id="mobile-lang-toggle" aria-label="Toggle language">EN</button>
+        </div>
+    </nav>
 
     <main>
         <!-- Page Header -->

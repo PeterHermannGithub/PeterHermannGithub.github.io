@@ -37,8 +37,91 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animatedElements.forEach(el => observer.observe(el));
     
-    // --- 3. ACTIVE NAV LINK HIGHLIGHTING ---
-    const navLinks = document.querySelectorAll('.nav-links a');
+    // --- 3. MOBILE NAVIGATION ---
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+    const mobileNavMenu = document.getElementById('mobile-nav-menu');
+    const mobileNavClose = document.getElementById('mobile-nav-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+    
+    // Mobile theme and language toggles
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+    
+    function openMobileMenu() {
+        mobileMenuToggle.classList.add('active');
+        mobileNavOverlay.classList.add('active');
+        mobileNavMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Sync mobile controls with desktop
+        if (mobileThemeToggle) {
+            mobileThemeToggle.innerHTML = themeToggle.innerHTML;
+        }
+        if (mobileLangToggle) {
+            mobileLangToggle.textContent = document.getElementById('lang-toggle').textContent;
+        }
+    }
+    
+    function closeMobileMenu() {
+        mobileMenuToggle.classList.remove('active');
+        mobileNavOverlay.classList.remove('active');
+        mobileNavMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Mobile menu event listeners
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', openMobileMenu);
+    }
+    
+    if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', closeMobileMenu);
+    }
+    
+    if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Close mobile menu when clicking nav links
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+    
+    // Mobile theme toggle functionality
+    if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', () => {
+            themeToggle.click();
+            mobileThemeToggle.innerHTML = themeToggle.innerHTML;
+        });
+    }
+    
+    // Mobile language toggle functionality
+    if (mobileLangToggle) {
+        mobileLangToggle.addEventListener('click', () => {
+            document.getElementById('lang-toggle').click();
+            setTimeout(() => {
+                mobileLangToggle.textContent = document.getElementById('lang-toggle').textContent;
+            }, 50);
+        });
+    }
+    
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNavMenu.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && mobileNavMenu.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+
+    // --- 4. ACTIVE NAV LINK HIGHLIGHTING ---
+    const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     
     navLinks.forEach(link => {
