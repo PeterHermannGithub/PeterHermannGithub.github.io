@@ -41,6 +41,7 @@ git push origin main
 - **🌍 Bilingual Support**: Complete English/Hungarian translations with automatic language detection
 - **🎨 Dual Themes**: Light/dark mode with system preference detection and manual toggle
 - **📱 Fully Responsive**: Mobile-first design optimized for all devices
+- **🏆 Interactive Achievement Proofs**: Click achievement cards to view verification documents and certificates
 - **🚀 SEO Ready**: Comprehensive meta tags, Open Graph, and JSON-LD structured data
 - **⚡ Performance Optimized**: Minimal dependencies, efficient CSS, smooth animations
 - **🎯 Accessibility**: Semantic HTML, ARIA labels, keyboard navigation support
@@ -51,19 +52,20 @@ git push origin main
 ├── index.html              # Homepage with hero section and skills
 ├── about.html              # Professional background and experience
 ├── projects.html           # Project portfolio with filtering
-├── achievements.html       # Academic, professional, and athletic accomplishments
+├── achievements.html       # Academic, professional, and athletic accomplishments with interactive proof system
 ├── projects/
 │   ├── project-template.html    # Template for new project pages
 │   ├── anime-recommender.html   # Featured project showcase
 │   └── [other-projects].html   # Individual project detail pages
 ├── assets/
 │   ├── css/
-│   │   ├── style.css           # Main stylesheet with CSS variables
+│   │   ├── style.css           # Main stylesheet with CSS variables and proof modal styles
 │   │   └── project-page.css    # Project detail page styles
 │   ├── js/
-│   │   ├── main.js            # Core functionality (themes, animations)
-│   │   └── i18n.js            # Complete translation system
+│   │   ├── main.js            # Core functionality (themes, animations, proof modal system)
+│   │   └── i18n.js            # Complete translation system with proof UI translations
 │   ├── images/                # Photos, screenshots, graphics
+│   │   └── proofs/            # Achievement proof images directory
 │   ├── icons/                 # SVG icon library
 │   └── cv/                    # Downloadable resume files
 └── README.md                  # This file
@@ -134,10 +136,17 @@ Replace placeholder images in `assets/images/`:
 - **social-preview.jpg** (1200x630px) - Social media preview image
 - **project-[name].png** (1200x800px) - Project screenshots
 
+**Achievement proof images in `assets/images/proofs/`:**
+- **degree-certificate.jpg** (400x600px) - University diploma/certificate
+- **employee-award.jpg** (400x600px) - Professional awards/recognition
+- **rust-performance.png** (800x600px) - Technical performance benchmarks
+- **running-certificate.jpg** (400x600px) - Athletic achievement proof
+
 **Image optimization tips:**
 - Use WebP format when possible with JPEG fallbacks
 - Compress images for web (recommended: < 500KB each)
 - Include descriptive alt text for accessibility
+- Proof images automatically display in modal system when available
 
 ## 🌐 **Translation System**
 

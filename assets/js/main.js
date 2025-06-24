@@ -172,4 +172,125 @@ document.addEventListener('DOMContentLoaded', () => {
         filterProjects('all');
     }
 
+    // ============================================
+    // Achievement Proof Modal System
+    // ============================================
+
+    const proofModal = document.getElementById('proof-modal');
+    const proofModalOverlay = document.querySelector('.proof-modal-overlay');
+    const proofModalClose = document.querySelector('.proof-modal-close');
+    const proofModalImage = document.getElementById('proof-modal-image');
+    const proofModalFallback = document.querySelector('.proof-modal-fallback');
+    const proofModalBody = document.querySelector('.proof-modal-body');
+    const achievementCards = document.querySelectorAll('.achievement-card[data-proof-image]');
+
+    function openProofModal(imagePath, achievementTitle) {
+        if (!proofModal) return;
+
+        // Set modal title
+        const modalTitle = document.getElementById('proof-modal-title');
+        if (modalTitle && achievementTitle) {
+            modalTitle.textContent = `${achievementTitle} - Proof`;
+        }
+
+        // Show modal
+        proofModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+        // Add loading state
+        proofModalBody.classList.add('loading');
+        proofModalImage.style.display = 'none';
+        proofModalFallback.classList.remove('active');
+
+        // Try to load the proof image
+        const fullImagePath = `assets/images/proofs/${imagePath}`;
+        const testImage = new Image();
+
+        testImage.onload = function() {
+            // Image loaded successfully
+            proofModalImage.src = fullImagePath;
+            proofModalImage.alt = `Proof of ${achievementTitle}`;
+            proofModalImage.style.display = 'block';
+            proofModalBody.classList.remove('loading');
+        };
+
+        testImage.onerror = function() {
+            // Image failed to load, show fallback
+            proofModalImage.style.display = 'none';
+            proofModalFallback.classList.add('active');
+            proofModalBody.classList.remove('loading');
+        };
+
+        testImage.src = fullImagePath;
+    }
+
+    function closeProofModal() {
+        if (!proofModal) return;
+
+        proofModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+        
+        // Reset modal state
+        setTimeout(() => {
+            proofModalImage.src = '';
+            proofModalFallback.classList.remove('active');
+            proofModalBody.classList.remove('loading');
+        }, 300); // Wait for modal animation
+    }
+
+    // Add click event listeners to achievement cards
+    achievementCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Don't trigger if clicking on links or buttons within the card
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+                return;
+            }
+
+            const proofImage = card.getAttribute('data-proof-image');
+            const titleElement = card.querySelector('h3');
+            const achievementTitle = titleElement ? titleElement.textContent : 'Achievement';
+
+            if (proofImage) {
+                openProofModal(proofImage, achievementTitle);
+            }
+        });
+
+        // Add visual feedback for clickable cards
+        card.style.cursor = 'pointer';
+    });
+
+    // Close modal when clicking overlay
+    if (proofModalOverlay) {
+        proofModalOverlay.addEventListener('click', closeProofModal);
+    }
+
+    // Close modal when clicking close button
+    if (proofModalClose) {
+        proofModalClose.addEventListener('click', closeProofModal);
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && proofModal && proofModal.classList.contains('active')) {
+            closeProofModal();
+        }
+    });
+
+    // Prevent modal content clicks from closing modal
+    const proofModalContent = document.querySelector('.proof-modal-content');
+    if (proofModalContent) {
+        proofModalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+
+    // Handle image load errors gracefully
+    if (proofModalImage) {
+        proofModalImage.addEventListener('error', () => {
+            proofModalImage.style.display = 'none';
+            proofModalFallback.classList.add('active');
+            proofModalBody.classList.remove('loading');
+        });
+    }
+
 });
