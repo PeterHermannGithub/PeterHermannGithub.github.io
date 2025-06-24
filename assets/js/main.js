@@ -130,4 +130,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- 5. PROJECT FILTERING ---
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    function filterProjects(category) {
+        projectCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            const shouldShow = category === 'all' || cardCategory === category;
+            
+            if (shouldShow) {
+                card.style.display = 'block';
+                card.classList.add('fade-in');
+                // Re-trigger scroll animation if element comes into view
+                if (card.classList.contains('animate-on-scroll') && !card.classList.contains('is-visible')) {
+                    observer.observe(card);
+                }
+            } else {
+                card.style.display = 'none';
+                card.classList.remove('fade-in');
+            }
+        });
+    }
+
+    function setActiveFilter(activeButton) {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        activeButton.classList.add('active');
+    }
+
+    // Add event listeners to filter buttons
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.getAttribute('data-filter');
+            filterProjects(category);
+            setActiveFilter(button);
+        });
+    });
+
+    // Initialize with "all" filter active
+    if (filterButtons.length > 0) {
+        filterProjects('all');
+    }
+
 });

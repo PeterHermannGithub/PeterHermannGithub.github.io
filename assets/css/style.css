@@ -897,6 +897,21 @@ footer {
     }
 }
 
+/* Project filtering animations */
+.project-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card:not(.fade-in) {
+    opacity: 0.7;
+    transform: translateY(10px);
+}
+
 .project-card {
     background: var(--bg-secondary-color);
     border-radius: var(--border-radius);
