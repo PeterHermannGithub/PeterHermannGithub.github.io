@@ -1,0 +1,28 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rust gear icon with characteristic styling -->
+  <g transform="translate(32,32)">
+    <!-- Outer gear teeth -->
+    <path d="M-20 -4L-22 -8L-18 -12L-14 -8L-16 -4Z" fill="#CE422B"/>
+    <path d="M-4 -20L-8 -22L-12 -18L-8 -14L-4 -16Z" fill="#CE422B"/>
+    <path d="M4 -20L8 -22L12 -18L8 -14L4 -16Z" fill="#CE422B"/>
+    <path d="M20 -4L22 -8L18 -12L14 -8L16 -4Z" fill="#CE422B"/>
+    <path d="M20 4L22 8L18 12L14 8L16 4Z" fill="#CE422B"/>
+    <path d="M4 20L8 22L12 18L8 14L4 16Z" fill="#CE422B"/>
+    <path d="M-4 20L-8 22L-12 18L-8 14L-4 16Z" fill="#CE422B"/>
+    <path d="M-20 4L-22 8L-18 12L-14 8L-16 4Z" fill="#CE422B"/>
+    
+    <!-- Main gear body -->
+    <circle cx="0" cy="0" r="16" fill="#F74C00"/>
+    
+    <!-- Inner circle -->
+    <circle cx="0" cy="0" r="12" fill="#FFFFFF"/>
+    
+    <!-- Center hole -->
+    <circle cx="0" cy="0" r="6" fill="#CE422B"/>
+    
+    <!-- Rust "R" letter -->
+    <g transform="scale(0.8)">
+      <path d="M-4 -6L-4 6L-2 6L-2 1L1 1L3 6L5 6L2 0.5C3.5 0 4 -1.5 4 -3C4 -5.5 2 -6 0 -6L-4 -6Z M-2 -4L0 -4C1 -4 2 -3.5 2 -3C2 -2.5 1 -2 0 -2L-2 -2L-2 -4Z" fill="#CE422B"/>
+    </g>
+  </g>
+</svg>

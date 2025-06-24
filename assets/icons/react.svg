@@ -1,0 +1,17 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- React atomic logo -->
+  <g transform="translate(32,32)">
+    <!-- Electron orbits -->
+    <ellipse cx="0" cy="0" rx="24" ry="8" stroke="#61DAFB" stroke-width="2" fill="none"/>
+    <ellipse cx="0" cy="0" rx="24" ry="8" stroke="#61DAFB" stroke-width="2" fill="none" transform="rotate(60)"/>
+    <ellipse cx="0" cy="0" rx="24" ry="8" stroke="#61DAFB" stroke-width="2" fill="none" transform="rotate(-60)"/>
+    
+    <!-- Nucleus -->
+    <circle cx="0" cy="0" r="3" fill="#61DAFB"/>
+    
+    <!-- Electrons -->
+    <circle cx="24" cy="0" r="2" fill="#61DAFB"/>
+    <circle cx="-12" cy="21" r="2" fill="#61DAFB"/>
+    <circle cx="-12" cy="-21" r="2" fill="#61DAFB"/>
+  </g>
+</svg>

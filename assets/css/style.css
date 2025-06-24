@@ -241,12 +241,14 @@ section {
     }
     
     .hero-text h1 {
-        font-size: clamp(1.75rem, 5vw, 2rem);
+        font-size: clamp(1.5rem, 4vw, 1.8rem);
+        line-height: 1.3;
+        word-break: break-word;
     }
     
     .hero-image {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
     
     .skill-item img {
@@ -348,6 +350,54 @@ section {
 .project-card-large img {
     width: 50%;
     object-fit: cover;
+}
+
+/* Fallback for missing project images */
+.project-card-large img,
+.project-image {
+    background-color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.project-card-large img:before,
+.project-image:before {
+    content: "Project Screenshot";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--border-color);
+    color: var(--text-muted-color);
+}
+
+/* Hide alt text when image fails to load */
+.project-card-large img[src*="project-"],
+.project-image[src*="project-"] {
+    position: relative;
+}
+
+.project-card-large img[src*="project-"]:after,
+.project-image[src*="project-"]:after {
+    content: "📷 Project Screenshot Coming Soon";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--border-color);
+    color: var(--text-muted-color);
+    font-size: 1rem;
+    font-weight: 500;
 }
 .project-card-large .project-info {
     padding: 2rem;
@@ -615,6 +665,15 @@ footer {
         gap: 2rem;
     }
     
+    /* Fix typing animation text overflow on mobile */
+    .animate-typing {
+        white-space: normal;
+        overflow: visible;
+        animation: none;
+        border-right: none;
+        word-break: break-word;
+    }
+    
     .project-card-large {
         flex-direction: column;
     }
@@ -622,6 +681,13 @@ footer {
     .project-card-large img {
         width: 100%;
         height: 250px;
+    }
+}
+
+/* Progressive enhancement for typing animation (900px) */
+@media (max-width: 900px) {
+    .animate-typing {
+        animation-duration: 2s; /* Faster animation on medium screens */
     }
 }
 
