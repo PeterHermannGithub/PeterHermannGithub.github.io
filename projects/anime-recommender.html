@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="project_anime_recommender_meta_title">Enterprise Anime Recommendation Engine - Peter Pal Hermann</title>
+    <meta name="description" content="Enterprise-scale recommendation system processing 649M similarity pairs across 37k anime with Pure Rust engine and sub-100ms API responses." data-i18n-key="project_anime_recommender_meta_desc">
+    <meta name="keywords" content="anime recommender, rust engine, fastapi, react, enterprise system, machine learning, recommendation system, pure rust, microservices">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/projects/anime-recommender.html">
+    <meta property="og:title" content="Enterprise Anime Recommendation Engine - Peter Pal Hermann">
+    <meta property="og:description" content="Processing 649M similarity pairs across 37k anime with Pure Rust engine and sub-100ms API responses.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/project-anime-recommender.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/projects/anime-recommender.html">
+    <meta property="twitter:title" content="Enterprise Anime Recommendation Engine - Peter Pal Hermann">
+    <meta property="twitter:description" content="Processing 649M similarity pairs across 37k anime with Pure Rust engine.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/project-anime-recommender.png">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+    
+    <style>
+        .v2-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .v2-stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .v2-stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .v2-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .v2-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .architecture-diagram {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+        .code-highlight {
+            background: var(--code-bg, #f8f8f8);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .tech-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .tech-category h4 {
+            margin: 0 0 1rem 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        .tech-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .tech-list li {
+            padding: 0.25rem 0;
+            color: var(--text-color);
+        }
+        .performance-comparison {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--secondary-bg, #f5f5f5) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .breakthrough-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .breakthrough-highlight h3 {
+            color: white;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme"></button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-page-main">
+        <div class="container">
+            
+            <!-- Project Header -->
+            <header class="project-header">
+                <h1 data-i18n-key="project_anime_recommender_title">Enterprise-Scale Anime Recommendation Engine</h1>
+                <p class="project-tagline" data-i18n-key="project_anime_recommender_tagline">Processing 649M similarity pairs across 37k anime with 5GB on-disk matrix and sub-100ms API responses</p>
+                <div class="project-links">
+                    <a href="https://github.com/PeterHermannGithub/anime-recommender" target="_blank" class="btn btn-primary" data-i18n-key="view_source_code">Source Code</a>
+                    <a href="#demo" class="btn" data-i18n-key="view_demo">Live Demo</a>
+                </div>
+            </header>
+
+            <!-- V2 Performance Statistics -->
+            <div class="v2-stats-grid">
+                <div class="v2-stat-card">
+                    <span class="v2-stat-number">37,030</span>
+                    <span class="v2-stat-label">Anime Coverage</span>
+                </div>
+                <div class="v2-stat-card">
+                    <span class="v2-stat-number">649M+</span>
+                    <span class="v2-stat-label">Similarity Pairs</span>
+                </div>
+                <div class="v2-stat-card">
+                    <span class="v2-stat-number">&lt;100ms</span>
+                    <span class="v2-stat-label">Hot API Response</span>
+                </div>
+                <div class="v2-stat-card">
+                    <span class="v2-stat-number">500x</span>
+                    <span class="v2-stat-label">Memory Efficiency</span>
+                </div>
+                <div class="v2-stat-card">
+                    <span class="v2-stat-number">5GB</span>
+                    <span class="v2-stat-label">Matrix Size (HDF5)</span>
+                </div>
+                <div class="v2-stat-card">
+                    <span class="v2-stat-number">36x</span>
+                    <span class="v2-stat-label">Performance Improvement</span>
+                </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="project-details-grid">
+                
+                <!-- Left Column: Architecture & Innovation -->
+                <div class="project-details-col">
+                    
+                    <div class="breakthrough-highlight">
+                        <h3>🦀 Pure Rust Engine Breakthrough</h3>
+                        <p>Achieved the seemingly impossible: processing 649,141,288 similarity pairs with streaming JSON architecture. The V2 engine eliminates Python-Rust data transfer bottlenecks entirely, delivering 36x performance improvement while maintaining constant memory usage through innovative streaming techniques.</p>
+                    </div>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_about">V2 System Architecture</h2>
+                        <p data-i18n-key="project_anime_recommender_about_p1">
+                            This enterprise-grade recommendation system represents a breakthrough in performance engineering. The V2 architecture combines a Pure Rust similarity engine with a FastAPI backend and React 19 frontend, processing 649 million similarity calculations across 37,030 anime entries.
+                        </p>
+                        
+                        <div class="architecture-diagram">
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐<br>
+│   Data Pipeline │    │   Rust Engine    │    │   Real-time API │<br>
+│   (Python)      │───▶│   (Pure Rust)    │───▶│   (FastAPI)     │<br>
+│                 │    │                  │    │                 │<br>
+│ • 37k anime     │    │ • 649M pairs     │    │ • &lt;100ms hot    │<br>
+│ • Unified data  │    │ • Streaming JSON │    │ • On-demand     │<br>
+│ • is_clean flag │    │ • 5GB matrix     │    │ • 500x efficiency│<br>
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                        </div>
+                        
+                        <p data-i18n-key="project_anime_recommender_about_p2">
+                            The core innovation is the "On-Demand Reading + OS File Caching" principle: heavy computation happens offline in Rust, while the real-time API reads tiny slices of the pre-computed 5GB matrix as needed. The first request loads data into OS cache, making subsequent requests lightning fast.
+                        </p>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_features">V2 Key Innovations</h2>
+                        <ul class="feature-list">
+                            <li><strong>Pure Rust Engine v1.2.0:</strong> Streaming JSON writer handles 649M pairs without memory explosion</li>
+                            <li><strong>Multi-Feature Algorithm:</strong> Weighted similarity combining tags (60%), score (20%), year (15%), type (5%)</li>
+                            <li><strong>"Filter Candidates First":</strong> 20x query performance by processing 200-1000 candidates vs 37k total</li>
+                            <li><strong>Hybrid Request Classification:</strong> Clean/full tiers for optimal performance/quality trade-offs</li>
+                            <li><strong>Enterprise Security:</strong> CSRF protection, structured logging, distributed rate limiting</li>
+                            <li><strong>Docker Containerization:</strong> Microservices-ready deployment with Redis integration</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2>Performance Journey: From Failure to Breakthrough</h2>
+                        <div class="performance-comparison">
+                            <h4>Evolution Timeline</h4>
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <th style="text-align: left; padding: 0.5rem;">Implementation</th>
+                                    <th style="text-align: left; padding: 0.5rem;">Runtime</th>
+                                    <th style="text-align: left; padding: 0.5rem;">Outcome</th>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 0.5rem;">Python Original</td>
+                                    <td style="padding: 0.5rem;">30+ minutes</td>
+                                    <td style="padding: 0.5rem; color: #e74c3c;">❌ OOM Failures</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 0.5rem;">Python-Rust Hybrid</td>
+                                    <td style="padding: 0.5rem;">18x penalty</td>
+                                    <td style="padding: 0.5rem; color: #e74c3c;">❌ Data Transfer Overhead</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 0.5rem;">Pure Rust v1.0</td>
+                                    <td style="padding: 0.5rem;">&lt;2 minutes</td>
+                                    <td style="padding: 0.5rem; color: #27ae60;">✅ Success (1k anime)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem;"><strong>Pure Rust v1.2</strong></td>
+                                    <td style="padding: 0.5rem;"><strong>16 minutes</strong></td>
+                                    <td style="padding: 0.5rem; color: #27ae60;"><strong>✅ BREAKTHROUGH (649M pairs)</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- Right Column: Technical Details -->
+                <div class="project-details-col">
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_tech">Technology Stack</h2>
+                        <div class="tech-stack-grid">
+                            <div class="tech-category">
+                                <h4>🦀 Rust Engine</h4>
+                                <ul class="tech-list">
+                                    <li>Pure Rust 1.87.0</li>
+                                    <li>Rayon Parallel Processing</li>
+                                    <li>Streaming JSON Writer</li>
+                                    <li>Minimal Dependencies</li>
+                                </ul>
+                            </div>
+                            <div class="tech-category">
+                                <h4>⚡ Backend</h4>
+                                <ul class="tech-list">
+                                    <li>FastAPI + Python</li>
+                                    <li>Dependency Injection</li>
+                                    <li>Structured Logging</li>
+                                    <li>Rate Limiting</li>
+                                </ul>
+                            </div>
+                            <div class="tech-category">
+                                <h4>🌐 Frontend</h4>
+                                <ul class="tech-list">
+                                    <li>React 19</li>
+                                    <li>TypeScript</li>
+                                    <li>Styled Components</li>
+                                    <li>Modern UI/UX</li>
+                                </ul>
+                            </div>
+                            <div class="tech-category">
+                                <h4>🐳 Infrastructure</h4>
+                                <ul class="tech-list">
+                                    <li>Docker Containerization</li>
+                                    <li>Redis Integration</li>
+                                    <li>HDF5 Data Format</li>
+                                    <li>Enterprise Security</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2>Code Highlights</h2>
+                        
+                        <h4>V2 Multi-Feature Similarity (Rust)</h4>
+                        <div class="code-highlight">
+/// V2: Multi-feature weighted similarity calculation<br>
+/// Combines tag, score, year, and type similarities<br>
+fn compute_v2_multifeature_similarity(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;anime_a: &AnimeData, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;anime_b: &AnimeData, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;_index: &InvertedIndex<br>
+) -> f32 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Feature weights based on V2 specification<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const TAG_WEIGHT: f32 = 0.60;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const SCORE_WEIGHT: f32 = 0.20;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const YEAR_WEIGHT: f32 = 0.15;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const TYPE_WEIGHT: f32 = 0.05;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Weighted combination of multiple features<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let final_similarity =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(TAG_WEIGHT * compute_weighted_tag_similarity(anime_a, anime_b)) +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(SCORE_WEIGHT * (1.0 - (anime_a.normalized_score - anime_b.normalized_score).abs())) +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(YEAR_WEIGHT * (1.0 - (anime_a.normalized_year - anime_b.normalized_year).abs())) +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(TYPE_WEIGHT * anime_a.type_category.similarity(&anime_b.type_category));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;final_similarity.min(1.0).max(0.0) // Ensure bounds [0,1]<br>
+}
+                        </div>
+                        
+                        <h4>"Filter Candidates First" Algorithm (Python)</h4>
+                        <div class="code-highlight">
+# Phase 1: Aggregate candidates (200-1000 vs 37k total)<br>
+candidate_ids = self._aggregate_candidate_ids(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;engine_inputs, algorithm, 1000<br>
+)<br>
+<br>
+# Phase 2: Pre-filter by criteria (50-200 qualified)<br>
+qualified_candidates = self._pre_filter_candidates(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;candidate_ids, filters, exclude_ids, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;engine_inputs, request_type<br>
+)<br>
+<br>
+# Phase 3: Compute similarities (targeted vs full matrix)<br>
+candidate_scores = self._compute_targeted_similarities(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;qualified_candidates, engine_inputs, algorithm<br>
+)<br>
+<br>
+# Result: 20x performance improvement for complex queries
+                        </div>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2 data-i18n-key="project_section_challenges">Engineering Challenges Solved</h2>
+                        <p><strong>Memory Explosion Crisis:</strong> The original approach failed when attempting to serialize 649M similarity pairs. The breakthrough came with streaming JSON architecture - writing output piece by piece with constant 128KB memory usage.</p>
+                        
+                        <p><strong>Data Transfer Bottleneck:</strong> Python-Rust hybrid suffered 18x performance penalty due to serialization overhead. Pure Rust eliminated this entirely by handling data loading, computation, and output in a single runtime.</p>
+                        
+                        <p><strong>Real-time Performance:</strong> With 5GB matrices, loading everything into memory was impossible. The on-demand reading approach combined with OS file caching achieves sub-100ms responses after the first "warming" request.</p>
+                    </section>
+                    
+                    <section class="project-details-section">
+                        <h2>Production Deployment</h2>
+                        <p>The system is fully containerized with Docker Compose, featuring:</p>
+                        <ul class="feature-list">
+                            <li><strong>Backend:</strong> FastAPI with dependency injection and structured logging</li>
+                            <li><strong>Frontend:</strong> React 19 with production-optimized Nginx serving</li>
+                            <li><strong>Database:</strong> Redis for rate limiting and caching</li>
+                            <li><strong>Security:</strong> CSRF protection, security headers, comprehensive error handling</li>
+                            <li><strong>Monitoring:</strong> Request tracking, performance metrics, health checks</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-i18n-key="footer_connect">Connect</h4>
+                    <a href="https://github.com/PeterHermannGithub" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/peterpalhermanndev" target="_blank">LinkedIn</a>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n-key="footer_projects">Projects</h4>
+                    <a href="projects.html" data-i18n-key="nav_projects">All Projects</a>
+                    <a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Peter Pal Hermann. <span data-i18n-key="footer_rights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/i18n.js"></script>
+
+</body>
+</html>
