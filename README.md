@@ -1,49 +1,210 @@
-# Modern GitHub Pages Portfolio Template
+# Modern Bilingual Portfolio Website
 
-A modern, responsive, and feature-rich personal website template designed for GitHub Pages. It's built with plain HTML, CSS, and JavaScript, requiring no build steps.
+A professional, responsive portfolio website built with vanilla HTML, CSS, and JavaScript. Features complete bilingual support (English/Hungarian), dark/light themes, and modern web design patterns.
 
-##  Core Features
+## 🚀 **Quick Start**
 
--   **Bilingual Support (EN/HU):**
-    -   Auto-detects browser language.
-    -   Manual language switcher (EN/HU).
-    -   All content is translatable via a central JS file.
--   **Dual-Theme System (Light/Dark):**
-    -   Auto-detects system preference (`prefers-color-scheme`).
-    -   Manual theme switcher (Sun/Moon icon).
-    -   User preferences are saved in `localStorage`.
--   **Fully Responsive:** Mobile-first design that looks great on all devices.
--   **SEO & Accessibility Ready:** Includes meta tags, Open Graph tags, JSON-LD structured data, and semantic HTML.
--   **Interactive & Animated:** Subtle animations on scroll, interactive elements, and a clean, modern aesthetic.
+### 1. Clone and Customize
+```bash
+# Clone the repository
+git clone https://github.com/PeterHermannGithub/PeterHermannGithub.github.io.git
+cd PeterHermannGithub.github.io
 
-##  How to Use
+# For your own portfolio, create a new repository named: username.github.io
+```
 
-1.  **Download/Clone:** Clone this repository or download the ZIP file.
-2.  **Customize Content:**
-    -   **Languages (`assets/js/i18n.js`):** Open this file and edit the `translations` object to change any text on the website. This is the central hub for all content.
-    -   **Images:** Replace the placeholder images in `assets/images/` with your own. Update image paths in the HTML files.
-    -   **CV:** Place your CV PDF in `assets/cv/` and update the link in `about.html`.
-    -   **Projects:** To add a new project, copy the `projects/project-template.html` file, rename it (e.g., `my-new-app.html`), and link to it from the main `projects.html` page.
-3.  **Deploy to GitHub Pages:**
-    -   Create a new public repository on GitHub named `<your-username>.github.io`.
-    -   Push all the files from this template to that repository.
-    -   Your website will be live at `https://<your-username>.github.io` within a few minutes.
+### 2. Local Development
+```bash
+# No build process required! Use any local server:
 
-##  File Structure
+# Python
+python -m http.server 8000
 
-├── index.html            # Home Page
-├── about.html            # About Me Page
-├── achievements.html     # Achievements Page
-├── projects.html         # Projects Hub Page
+# VS Code Live Server extension
+# Right-click index.html → "Open with Live Server"
+
+# Node.js
+npx live-server --port=8000
+```
+
+### 3. Deploy to GitHub Pages
+```bash
+# Push to your username.github.io repository
+git remote set-url origin https://github.com/yourusername/yourusername.github.io.git
+git push origin main
+
+# Your site will be live at: https://yourusername.github.io
+```
+
+## ✨ **Key Features**
+
+- **🌍 Bilingual Support**: Complete English/Hungarian translations with automatic language detection
+- **🎨 Dual Themes**: Light/dark mode with system preference detection and manual toggle
+- **📱 Fully Responsive**: Mobile-first design optimized for all devices
+- **🚀 SEO Ready**: Comprehensive meta tags, Open Graph, and JSON-LD structured data
+- **⚡ Performance Optimized**: Minimal dependencies, efficient CSS, smooth animations
+- **🎯 Accessibility**: Semantic HTML, ARIA labels, keyboard navigation support
+
+## 📁 **File Structure**
+
+```
+├── index.html              # Homepage with hero section and skills
+├── about.html              # Professional background and experience
+├── projects.html           # Project portfolio with filtering
+├── achievements.html       # Academic, professional, and athletic accomplishments
 ├── projects/
-│   └── project-template.html # Template for a single project
+│   ├── project-template.html    # Template for new project pages
+│   ├── anime-recommender.html   # Featured project showcase
+│   └── [other-projects].html   # Individual project detail pages
 ├── assets/
 │   ├── css/
-│   │   └── style.css       # All styles
+│   │   ├── style.css           # Main stylesheet with CSS variables
+│   │   └── project-page.css    # Project detail page styles
 │   ├── js/
-│   │   ├── main.js         # Core logic (theme, animations)
-│   │   └── i18n.js         # Internationalization (language) logic
-│   ├── images/             # Your photos, project screenshots, etc.
-│   ├── icons/              # SVG icons (sun, moon, flags)
-│   └── cv/                 # Your downloadable resume
-└── README.md
+│   │   ├── main.js            # Core functionality (themes, animations)
+│   │   └── i18n.js            # Complete translation system
+│   ├── images/                # Photos, screenshots, graphics
+│   ├── icons/                 # SVG icon library
+│   └── cv/                    # Downloadable resume files
+└── README.md                  # This file
+```
+
+## 🛠️ **Customization Guide**
+
+### Update Personal Information
+**Edit these sections across all HTML files:**
+- Replace "Peter Pal Hermann" with your name
+- Update social media links in footer sections
+- Modify job title and professional descriptions
+- Replace email address and contact information
+
+### Add New Projects
+```bash
+# 1. Copy the template
+cp projects/project-template.html projects/your-project.html
+
+# 2. Customize your-project.html with:
+#    - Project title and description
+#    - Technology stack details
+#    - Screenshots and demo links
+#    - Code examples and features
+
+# 3. Add project card to projects.html in the appropriate category
+
+# 4. Add translations to assets/js/i18n.js for both English and Hungarian
+```
+
+### Modify Languages
+**Current: English ↔ Hungarian**
+
+To change or add languages, edit `assets/js/i18n.js`:
+```javascript
+const translations = {
+    en: {
+        nav_home: "Home",
+        // ... all English translations
+    },
+    your_language: {
+        nav_home: "Your Translation",
+        // ... all translations in your language
+    }
+};
+```
+
+### Customize Theme Colors
+Edit CSS variables in `assets/css/style.css`:
+```css
+:root {
+    --primary-color: #3b82f6;      /* Your brand color */
+    --bg-color: #f4f7f9;           /* Light background */
+    --text-color: #1a202c;         /* Text color */
+    /* ... other color variables */
+}
+```
+
+### Add New Skills/Technologies
+1. **Update skills grid** in `index.html` and `about.html`
+2. **Add SVG icons** to `assets/icons/` (64x64px recommended)
+3. **Include translations** for new skills in `i18n.js`
+
+## 🖼️ **Adding Your Images**
+
+Replace placeholder images in `assets/images/`:
+- **profile-photo.jpg** (400x400px) - Your professional headshot
+- **social-preview.jpg** (1200x630px) - Social media preview image
+- **project-[name].png** (1200x800px) - Project screenshots
+
+**Image optimization tips:**
+- Use WebP format when possible with JPEG fallbacks
+- Compress images for web (recommended: < 500KB each)
+- Include descriptive alt text for accessibility
+
+## 🌐 **Translation System**
+
+All content is translatable through the centralized system in `assets/js/i18n.js`:
+
+```html
+<!-- Add to any HTML element -->
+<h2 data-i18n-key="unique_key">Default English Text</h2>
+```
+
+```javascript
+// Add to translations object
+en: {
+    unique_key: "English Translation"
+},
+hu: {
+    unique_key: "Magyar Fordítás"
+}
+```
+
+## 🎨 **Theme System**
+
+The website automatically detects user's system preference (light/dark) and provides a manual toggle. Themes use CSS custom properties for efficient switching:
+
+- **Automatic detection** via `prefers-color-scheme`
+- **Manual toggle** with localStorage persistence
+- **Smooth transitions** between theme states
+- **Icon feedback** (sun/moon) for current theme
+
+## 📈 **SEO Features**
+
+Includes comprehensive SEO optimization:
+- **Meta tags** for search engines and social media
+- **Open Graph** and **Twitter Cards** for rich previews
+- **JSON-LD structured data** for enhanced search results
+- **Semantic HTML** with proper heading hierarchy
+- **Fast loading** with optimized assets
+
+## 🔧 **Development Notes**
+
+- **No build process** - edit files directly and refresh browser
+- **Mobile-first** responsive design with strategic breakpoints
+- **Progressive enhancement** - works without JavaScript
+- **Cross-browser compatible** (Chrome, Firefox, Safari, Edge)
+- **GitHub Pages ready** - automatic deployment on push
+
+## 📋 **Browser Support**
+
+- **Modern browsers**: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+- **Mobile browsers**: iOS Safari, Chrome Mobile, Samsung Internet
+- **Progressive enhancement**: Basic functionality works on older browsers
+- **JavaScript optional**: Core content accessible without JS
+
+## 🚀 **Performance**
+
+- **Minimal dependencies**: Only Google Fonts external resource
+- **Efficient CSS**: Custom properties and minimal specificity
+- **Optimized images**: WebP with fallbacks, proper compression
+- **Lazy loading**: Scroll-based animations only when needed
+- **Fast deployment**: Static files with CDN via GitHub Pages
+
+## 📞 **Support & Documentation**
+
+For complete technical documentation, implementation details, and troubleshooting guides, see the **CLAUDE.md** file in this repository.
+
+For questions about customization or deployment, check the GitHub Issues section or review the inline code comments throughout the project files.
+
+---
+
+**Note**: This README.md and CLAUDE.md are the only two documentation files for this project. All development information is consolidated into these two sources.
