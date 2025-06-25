@@ -710,10 +710,6 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 2rem;
     }
-    
-    .achievements-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
 }
     /* General mobile improvements */
     main {
@@ -1392,6 +1388,7 @@ footer {
 /* ------------------- */
 /* 10. Achievements Page */
 /* ------------------- */
+/* Filter buttons for achievements page */
 .achievement-filters {
     display: flex;
     justify-content: center;
@@ -1400,18 +1397,69 @@ footer {
     flex-wrap: wrap;
 }
 
-/* Reuse existing filter-btn styles from projects page */
-
-/* Achievements Grid */
-.achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
+.achievement-filters .filter-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--border-color);
+    background: var(--bg-secondary-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
-/* Smaller screens - single column */
-@media (max-width: 480px) {
+.achievement-filters .filter-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.achievement-filters .filter-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Smooth animations for achievement filtering */
+.achievement-card.fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.achievement-card:not(.fade-in) {
+    opacity: 0.6;
+    transform: scale(0.95);
+}
+
+/* Achievements Grid - Responsive Design */
+.achievements-grid {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Large screens - maintain 3 columns with better spacing */
+@media (min-width: 1200px) {
+    .achievements-grid {
+        gap: 2.5rem;
+        max-width: 1400px;
+        margin: 0 auto 4rem auto;
+    }
+}
+
+/* Tablet - 2 columns */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Mobile - single column */
+@media (max-width: 767px) {
     .achievements-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1423,9 +1471,14 @@ footer {
     border-radius: var(--border-radius);
     padding: 2rem;
     border: 1px solid var(--border-color);
-    transition: all var(--transition-speed) ease;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    height: fit-content;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
 }
 
 .achievement-card:hover {
@@ -1613,15 +1666,22 @@ footer {
     margin: 0;
 }
 
-/* Mobile Responsiveness for Achievements Page */
+/* Enhanced Mobile Responsiveness for Achievements Page */
 @media (max-width: 768px) {
-    .achievements-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .achievement-filters {
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .achievement-filters .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        min-height: 44px; /* Touch-friendly */
     }
     
     .achievement-card {
         padding: 1.5rem;
+        min-height: 250px;
     }
     
     .achievement-icon {
@@ -1685,15 +1745,7 @@ footer {
     transform: scale(1.05);
 }
 
-.achievement-card {
-    cursor: pointer;
-    position: relative;
-}
-
-.achievement-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px var(--shadow-color);
-}
+/* Duplicate styles removed - consolidated above */
 
 /* Proof Modal */
 .proof-modal {

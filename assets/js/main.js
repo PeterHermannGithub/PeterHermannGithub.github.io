@@ -130,12 +130,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 5. PROJECT FILTERING ---
+    // --- 5. PROJECT AND ACHIEVEMENT FILTERING ---
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
+    const achievementCards = document.querySelectorAll('.achievement-card');
 
     function filterProjects(category) {
         projectCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            const shouldShow = category === 'all' || cardCategory === category;
+            
+            if (shouldShow) {
+                card.style.display = 'block';
+                card.classList.add('fade-in');
+                // Re-trigger scroll animation if element comes into view
+                if (card.classList.contains('animate-on-scroll') && !card.classList.contains('is-visible')) {
+                    observer.observe(card);
+                }
+            } else {
+                card.style.display = 'none';
+                card.classList.remove('fade-in');
+            }
+        });
+    }
+
+    function filterAchievements(category) {
+        achievementCards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
             const shouldShow = category === 'all' || cardCategory === category;
             
@@ -162,14 +182,25 @@ document.addEventListener('DOMContentLoaded', () => {
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             const category = button.getAttribute('data-filter');
-            filterProjects(category);
+            // Determine if we're on projects or achievements page
+            if (projectCards.length > 0) {
+                filterProjects(category);
+            }
+            if (achievementCards.length > 0) {
+                filterAchievements(category);
+            }
             setActiveFilter(button);
         });
     });
 
     // Initialize with "all" filter active
     if (filterButtons.length > 0) {
-        filterProjects('all');
+        if (projectCards.length > 0) {
+            filterProjects('all');
+        }
+        if (achievementCards.length > 0) {
+            filterAchievements('all');
+        }
     }
 
     // ============================================
