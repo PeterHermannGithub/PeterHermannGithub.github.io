@@ -184,13 +184,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const proofModalBody = document.querySelector('.proof-modal-body');
     const achievementCards = document.querySelectorAll('.achievement-card[data-proof-image]');
 
-    function openProofModal(imagePath, achievementTitle) {
+    function openProofModal(imagePath, achievementTitle, isBilingual = false) {
         if (!proofModal) return;
 
-        // Set modal title
+        // Detect current language
+        const currentLang = localStorage.getItem('lang') || 'en';
+        
+        // For bilingual certificates, select appropriate version
+        let finalImagePath = imagePath;
+        if (isBilingual) {
+            // Remove any existing extension and add language-specific version
+            const baseName = imagePath.replace(/\.(jpg|jpeg|png)$/i, '');
+            finalImagePath = `${baseName}-${currentLang}.jpg`;
+        }
+
+        // Set modal title with language awareness
         const modalTitle = document.getElementById('proof-modal-title');
         if (modalTitle && achievementTitle) {
-            modalTitle.textContent = `${achievementTitle} - Proof`;
+            const proofText = currentLang === 'hu' ? 'Bizonyíték' : 'Proof';
+            modalTitle.textContent = `${achievementTitle} - ${proofText}`;
         }
 
         // Show modal
@@ -203,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         proofModalFallback.classList.remove('active');
 
         // Try to load the proof image
-        const fullImagePath = `assets/images/proofs/${imagePath}`;
+        const fullImagePath = `assets/images/proofs/${finalImagePath}`;
         const testImage = new Image();
 
         testImage.onload = function() {
@@ -215,10 +227,33 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         testImage.onerror = function() {
-            // Image failed to load, show fallback
-            proofModalImage.style.display = 'none';
-            proofModalFallback.classList.add('active');
-            proofModalBody.classList.remove('loading');
+            // If bilingual image fails, try fallback to English version
+            if (isBilingual && currentLang === 'hu') {
+                const baseName = imagePath.replace(/\.(jpg|jpeg|png)$/i, '');
+                const fallbackPath = `assets/images/proofs/${baseName}-en.jpg`;
+                const fallbackImage = new Image();
+                
+                fallbackImage.onload = function() {
+                    proofModalImage.src = fallbackPath;
+                    proofModalImage.alt = `Proof of ${achievementTitle}`;
+                    proofModalImage.style.display = 'block';
+                    proofModalBody.classList.remove('loading');
+                };
+                
+                fallbackImage.onerror = function() {
+                    // Final fallback to placeholder
+                    proofModalImage.style.display = 'none';
+                    proofModalFallback.classList.add('active');
+                    proofModalBody.classList.remove('loading');
+                };
+                
+                fallbackImage.src = fallbackPath;
+            } else {
+                // Image failed to load, show fallback
+                proofModalImage.style.display = 'none';
+                proofModalFallback.classList.add('active');
+                proofModalBody.classList.remove('loading');
+            }
         };
 
         testImage.src = fullImagePath;
@@ -247,11 +282,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const proofImage = card.getAttribute('data-proof-image');
+            const isBilingual = card.getAttribute('data-proof-bilingual') === 'true';
             const titleElement = card.querySelector('h3');
             const achievementTitle = titleElement ? titleElement.textContent : 'Achievement';
 
             if (proofImage) {
-                openProofModal(proofImage, achievementTitle);
+                openProofModal(proofImage, achievementTitle, isBilingual);
             }
         });
 

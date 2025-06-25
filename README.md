@@ -137,10 +137,16 @@ Replace placeholder images in `assets/images/`:
 - **project-[name].png** (1200x800px) - Project screenshots
 
 **Achievement proof images in `assets/images/proofs/`:**
-- **degree-certificate.jpg** (400x600px) - University diploma/certificate
+- **degree-certificate-en.jpg & degree-certificate-hu.jpg** (400x600px) - Bilingual university diploma/certificate
 - **employee-award.jpg** (400x600px) - Professional awards/recognition
 - **rust-performance.png** (800x600px) - Technical performance benchmarks
 - **running-certificate.jpg** (400x600px) - Athletic achievement proof
+
+**Bilingual certificate system:**
+- Use language suffixes: `-en.jpg` for English, `-hu.jpg` for Hungarian
+- Reference base name in HTML: `data-proof-image="degree-certificate"`
+- Add bilingual flag: `data-proof-bilingual="true"`
+- System automatically displays appropriate version based on user's language preference
 
 **Image optimization tips:**
 - Use WebP format when possible with JPEG fallbacks
