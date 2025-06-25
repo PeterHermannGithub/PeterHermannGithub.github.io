@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Functionality Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .pass { background: #d4edda; color: #155724; }
+        .fail { background: #f8d7da; color: #721c24; }
+        .warning { background: #fff3cd; color: #856404; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .pass-count { color: #28a745; }
+        .fail-count { color: #dc3545; }
+        .warning-count { color: #ffc107; }
+    </style>
+</head>
+<body>
+    <h1>🧪 PeterHermannGithub.github.io Website Test Suite</h1>
+    
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number pass-count" id="passCount">0</div>
+            <div>Tests Passed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number fail-count" id="failCount">0</div>
+            <div>Tests Failed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number warning-count" id="warningCount">0</div>
+            <div>Warnings</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="totalCount">0</div>
+            <div>Total Tests</div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>🚀 Test Controls</h2>
+        <button onclick="runAllTests()">Run All Tests</button>
+        <button onclick="testThemeSystem()">Test Theme System</button>
+        <button onclick="testResponsiveDesign()">Test Responsive Design</button>
+        <button onclick="testProofModal()">Test Proof Modal</button>
+        <button onclick="testAssets()">Test Assets</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+
+    <div class="test-container">
+        <h2>📋 Test Results</h2>
+        <div id="testResults"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>🌐 Live Preview</h2>
+        <select id="pageSelector" onchange="loadPage()">
+            <option value="index.html">Home Page</option>
+            <option value="about.html">About Page</option>
+            <option value="projects.html">Projects Page</option>
+            <option value="achievements.html">Achievements Page</option>
+        </select>
+        <iframe id="previewFrame" src="index.html"></iframe>
+    </div>
+
+    <script>
+        let testStats = { pass: 0, fail: 0, warning: 0, total: 0 };
+
+        function updateStats() {
+            document.getElementById('passCount').textContent = testStats.pass;
+            document.getElementById('failCount').textContent = testStats.fail;
+            document.getElementById('warningCount').textContent = testStats.warning;
+            document.getElementById('totalCount').textContent = testStats.total;
+        }
+
+        function logResult(message, type = 'info') {
+            const results = document.getElementById('testResults');
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            results.appendChild(div);
+            results.scrollTop = results.scrollHeight;
+            
+            testStats.total++;
+            if (type === 'pass') testStats.pass++;
+            else if (type === 'fail') testStats.fail++;
+            else if (type === 'warning') testStats.warning++;
+            
+            updateStats();
+        }
+
+        function clearResults() {
+            document.getElementById('testResults').innerHTML = '';
+            testStats = { pass: 0, fail: 0, warning: 0, total: 0 };
+            updateStats();
+        }
+
+        function loadPage() {
+            const selector = document.getElementById('pageSelector');
+            const frame = document.getElementById('previewFrame');
+            frame.src = selector.value;
+            logResult(`Loading page: ${selector.value}`, 'info');
+        }
+
+        async function testAssets() {
+            logResult('🖼️ Testing Asset Availability...', 'info');
+            
+            const requiredAssets = [
+                'assets/css/style.css',
+                'assets/js/main.js',
+                'assets/js/i18n.js',
+                'assets/images/favicon.svg'
+            ];
+
+            const missingAssets = [
+                'assets/images/profile-photo.jpg',
+                'assets/images/social-preview.jpg',
+                'assets/images/project-anime-recommender.png',
+                'assets/images/project-portfolio.png',
+                'assets/images/project-notify-me.png',
+                'assets/images/project-audiobook.png',
+                'assets/images/project-history-automation.png',
+                'assets/images/project-tab-timer.png'
+            ];
+
+            const proofAssets = [
+                'assets/images/proofs/degree-certificate-en.jpg',
+                'assets/images/proofs/degree-certificate-hu.jpg',
+                'assets/images/proofs/employee-award.jpg',
+                'assets/images/proofs/running-certificate.jpg'
+            ];
+
+            // Test required assets
+            for (const asset of requiredAssets) {
+                try {
+                    const response = await fetch(asset);
+                    if (response.ok) {
+                        logResult(`✅ Required asset exists: ${asset}`, 'pass');
+                    } else {
+                        logResult(`❌ Required asset missing: ${asset}`, 'fail');
+                    }
+                } catch (error) {
+                    logResult(`❌ Error loading required asset: ${asset}`, 'fail');
+                }
+            }
+
+            // Test missing assets (should fail as expected)
+            for (const asset of missingAssets) {
+                try {
+                    const response = await fetch(asset);
+                    if (response.ok) {
+                        logResult(`🔄 Previously missing asset now exists: ${asset}`, 'warning');
+                    } else {
+                        logResult(`⚠️ Expected missing asset: ${asset}`, 'warning');
+                    }
+                } catch (error) {
+                    logResult(`⚠️ Confirmed missing asset: ${asset}`, 'warning');
+                }
+            }
+
+            // Test proof assets
+            for (const asset of proofAssets) {
+                try {
+                    const response = await fetch(asset);
+                    if (response.ok) {
+                        logResult(`✅ Proof asset exists: ${asset}`, 'pass');
+                    } else {
+                        logResult(`❌ Proof asset missing: ${asset}`, 'fail');
+                    }
+                } catch (error) {
+                    logResult(`❌ Error loading proof asset: ${asset}`, 'fail');
+                }
+            }
+        }
+
+        function testThemeSystem() {
+            logResult('🌗 Testing Theme System...', 'info');
+            
+            const iframe = document.getElementById('previewFrame');
+            
+            setTimeout(() => {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    const htmlElement = iframeDoc.documentElement;
+                    const themeToggle = iframeDoc.getElementById('theme-toggle');
+                    
+                    if (themeToggle) {
+                        logResult('✅ Theme toggle button found', 'pass');
+                        
+                        // Test initial theme state
+                        const initialDark = htmlElement.classList.contains('dark-mode');
+                        logResult(`🔍 Initial theme: ${initialDark ? 'Dark' : 'Light'}`, 'info');
+                        
+                        // Simulate theme toggle
+                        themeToggle.click();
+                        
+                        setTimeout(() => {
+                            const newDark = htmlElement.classList.contains('dark-mode');
+                            if (newDark !== initialDark) {
+                                logResult('✅ Theme switching works correctly', 'pass');
+                            } else {
+                                logResult('❌ Theme switching failed', 'fail');
+                            }
+                            
+                            // Test CSS custom properties
+                            const computedStyle = iframeDoc.defaultView.getComputedStyle(iframeDoc.body);
+                            const bgColor = computedStyle.getPropertyValue('background-color');
+                            
+                            if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
+                                logResult('✅ CSS custom properties working', 'pass');
+                            } else {
+                                logResult('❌ CSS custom properties not working', 'fail');
+                            }
+                        }, 100);
+                        
+                    } else {
+                        logResult('❌ Theme toggle button not found', 'fail');
+                    }
+                } catch (error) {
+                    logResult(`❌ Theme system test error: ${error.message}`, 'fail');
+                }
+            }, 1000);
+        }
+
+        function testResponsiveDesign() {
+            logResult('📱 Testing Responsive Design...', 'info');
+            
+            const iframe = document.getElementById('previewFrame');
+            const originalWidth = iframe.style.width;
+            
+            // Test mobile viewport
+            iframe.style.width = '375px';
+            logResult('📱 Testing mobile viewport (375px)', 'info');
+            
+            setTimeout(() => {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    const mobileMenuToggle = iframeDoc.getElementById('mobile-menu-toggle');
+                    
+                    if (mobileMenuToggle) {
+                        const isVisible = iframeDoc.defaultView.getComputedStyle(mobileMenuToggle).display !== 'none';
+                        if (isVisible) {
+                            logResult('✅ Mobile navigation visible on mobile viewport', 'pass');
+                        } else {
+                            logResult('❌ Mobile navigation not visible on mobile viewport', 'fail');
+                        }
+                    } else {
+                        logResult('❌ Mobile menu toggle not found', 'fail');
+                    }
+                } catch (error) {
+                    logResult(`❌ Mobile test error: ${error.message}`, 'fail');
+                }
+                
+                // Restore original width
+                setTimeout(() => {
+                    iframe.style.width = originalWidth;
+                    logResult('🖥️ Restored desktop viewport', 'info');
+                }, 500);
+            }, 1000);
+        }
+
+        function testProofModal() {
+            logResult('🖼️ Testing Proof Modal System...', 'info');
+            
+            // Load achievements page first
+            const iframe = document.getElementById('previewFrame');
+            iframe.src = 'achievements.html';
+            
+            setTimeout(() => {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    const proofModal = iframeDoc.getElementById('proof-modal');
+                    const achievementCards = iframeDoc.querySelectorAll('.achievement-card[data-proof-image]');
+                    
+                    if (proofModal) {
+                        logResult('✅ Proof modal structure found', 'pass');
+                    } else {
+                        logResult('❌ Proof modal structure missing', 'fail');
+                    }
+                    
+                    logResult(`🔍 Found ${achievementCards.length} achievement cards with proof`, 'info');
+                    
+                    if (achievementCards.length > 0) {
+                        // Test clicking first achievement card
+                        const firstCard = achievementCards[0];
+                        const proofImage = firstCard.getAttribute('data-proof-image');
+                        
+                        logResult(`🖱️ Testing click on achievement with proof: ${proofImage}`, 'info');
+                        firstCard.click();
+                        
+                        setTimeout(() => {
+                            const modalActive = proofModal.classList.contains('active');
+                            if (modalActive) {
+                                logResult('✅ Proof modal opens correctly', 'pass');
+                                
+                                // Test closing modal
+                                const closeBtn = iframeDoc.querySelector('.proof-modal-close');
+                                if (closeBtn) {
+                                    closeBtn.click();
+                                    setTimeout(() => {
+                                        const stillActive = proofModal.classList.contains('active');
+                                        if (!stillActive) {
+                                            logResult('✅ Proof modal closes correctly', 'pass');
+                                        } else {
+                                            logResult('❌ Proof modal failed to close', 'fail');
+                                        }
+                                    }, 300);
+                                }
+                            } else {
+                                logResult('❌ Proof modal failed to open', 'fail');
+                            }
+                        }, 500);
+                    }
+                    
+                } catch (error) {
+                    logResult(`❌ Proof modal test error: ${error.message}`, 'fail');
+                }
+            }, 2000);
+        }
+
+        async function runAllTests() {
+            clearResults();
+            logResult('🧪 Starting comprehensive website test suite...', 'info');
+            
+            await testAssets();
+            
+            setTimeout(() => {
+                testThemeSystem();
+                
+                setTimeout(() => {
+                    testResponsiveDesign();
+                    
+                    setTimeout(() => {
+                        testProofModal();
+                        
+                        setTimeout(() => {
+                            logResult('🏁 All tests completed!', 'info');
+                            
+                            const { pass, fail, warning, total } = testStats;
+                            const score = total > 0 ? Math.round((pass / total) * 100) : 0;
+                            
+                            if (score >= 80) {
+                                logResult(`🎉 Overall Score: ${score}% - Website is functioning well!`, 'pass');
+                            } else if (score >= 60) {
+                                logResult(`⚠️ Overall Score: ${score}% - Website needs some improvements`, 'warning');
+                            } else {
+                                logResult(`❌ Overall Score: ${score}% - Website has significant issues`, 'fail');
+                            }
+                        }, 3000);
+                    }, 2000);
+                }, 2000);
+            }, 1000);
+        }
+
+        // Initialize
+        updateStats();
+        logResult('🚀 Website Test Suite Ready - Click "Run All Tests" to begin', 'info');
+    </script>
+</body>
+</html>
