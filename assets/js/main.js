@@ -194,8 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let finalImagePath = imagePath;
         if (isBilingual) {
             // Remove any existing extension and add language-specific version
-            const baseName = imagePath.replace(/\.(jpg|jpeg|png)$/i, '');
-            finalImagePath = `${baseName}-${currentLang}.jpg`;
+            const baseName = imagePath.replace(/\.(jpg|jpeg|png|pdf)$/i, '');
+            const extension = imagePath.match(/\.(jpg|jpeg|png|pdf)$/i)?.[1] || 'jpg';
+            finalImagePath = `${baseName}-${currentLang}.${extension}`;
         }
 
         // Set modal title with language awareness
@@ -214,8 +215,18 @@ document.addEventListener('DOMContentLoaded', () => {
         proofModalImage.style.display = 'none';
         proofModalFallback.classList.remove('active');
 
-        // Try to load the proof image
+        // Check if it's a PDF file and handle differently
         const fullImagePath = `assets/images/proofs/${finalImagePath}`;
+        const isPDF = finalImagePath.toLowerCase().endsWith('.pdf');
+        
+        if (isPDF) {
+            // For PDFs, open in new tab instead of modal
+            window.open(fullImagePath, '_blank');
+            closeProofModal();
+            return;
+        }
+        
+        // Try to load the proof image
         const testImage = new Image();
 
         testImage.onload = function() {
@@ -229,8 +240,17 @@ document.addEventListener('DOMContentLoaded', () => {
         testImage.onerror = function() {
             // If bilingual image fails, try fallback to English version
             if (isBilingual && currentLang === 'hu') {
-                const baseName = imagePath.replace(/\.(jpg|jpeg|png)$/i, '');
-                const fallbackPath = `assets/images/proofs/${baseName}-en.jpg`;
+                const baseName = imagePath.replace(/\.(jpg|jpeg|png|pdf)$/i, '');
+                const extension = imagePath.match(/\.(jpg|jpeg|png|pdf)$/i)?.[1] || 'jpg';
+                const fallbackPath = `assets/images/proofs/${baseName}-en.${extension}`;
+                
+                // Check if fallback is PDF
+                if (extension.toLowerCase() === 'pdf') {
+                    window.open(fallbackPath, '_blank');
+                    closeProofModal();
+                    return;
+                }
+                
                 const fallbackImage = new Image();
                 
                 fallbackImage.onload = function() {
