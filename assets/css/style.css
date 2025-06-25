@@ -176,6 +176,13 @@ img {
     width: 20px;
     height: 20px;
     fill: currentColor;
+    transition: fill var(--transition-speed) ease;
+}
+
+/* Specific theme toggle button styling */
+#theme-toggle svg,
+#mobile-theme-toggle svg {
+    pointer-events: none; /* Prevent SVG from intercepting clicks */
 }
 #lang-toggle {
     font-weight: 600;

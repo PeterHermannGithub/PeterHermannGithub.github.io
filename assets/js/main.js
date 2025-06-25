@@ -1,25 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. THEME SWITCHER ---
+    console.log('🌗 Theme System: Initializing...');
+    
     const themeToggle = document.getElementById('theme-toggle');
-    const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 011.06-1.06l1.591 1.59a.75.75 0 01-1.06 1.061l-1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.894 17.894a.75.75 0 011.06 1.06l-1.59 1.591a.75.75 0 01-1.061-1.06l1.59-1.591zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM6.106 17.894a.75.75 0 011.06-1.06l-1.591 1.59a.75.75 0 01-1.06 1.061l1.591-1.59zM3.75 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H4.5a.75.75 0 01-.75-.75zM6.106 6.106a.75.75 0 01-1.06 1.06l-1.591-1.59a.75.75 0 111.06-1.061l1.591 1.59z"/></svg>`;
-    const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>`;
+    console.log('🔍 Theme Toggle Button:', themeToggle ? 'Found ✅' : 'Missing ❌');
+    
+    if (!themeToggle) {
+        console.error('❌ Theme toggle button not found! Theme system will not work.');
+        return; // Exit early if theme toggle doesn't exist
+    }
+    
+    const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="currentColor" d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 011.06-1.06l1.591 1.59a.75.75 0 01-1.06 1.061l-1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.894 17.894a.75.75 0 011.06 1.06l-1.59 1.591a.75.75 0 01-1.061-1.06l1.59-1.591zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM6.106 17.894a.75.75 0 011.06-1.06l-1.591 1.59a.75.75 0 01-1.06 1.061l1.591-1.59zM3.75 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H4.5a.75.75 0 01-.75-.75zM6.106 6.106a.75.75 0 01-1.06 1.06l-1.591-1.59a.75.75 0 111.06-1.061l1.591 1.59z"/></svg>`;
+    const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="currentColor" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>`;
 
     const setTheme = (isDark) => {
+        console.log(`🎨 Setting theme: ${isDark ? 'Dark' : 'Light'}`);
+        
+        // Apply/remove dark-mode class
         document.documentElement.classList.toggle('dark-mode', isDark);
-        themeToggle.innerHTML = isDark ? sunIcon : moonIcon;
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        console.log('📋 Dark mode class applied:', document.documentElement.classList.contains('dark-mode'));
+        
+        // Update button icon
+        if (themeToggle) {
+            themeToggle.innerHTML = isDark ? sunIcon : moonIcon;
+            console.log('🔆 Button icon updated:', isDark ? 'Sun (for dark mode)' : 'Moon (for light mode)');
+        }
+        
+        // Save to localStorage with error handling
+        try {
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            console.log('💾 Theme saved to localStorage:', localStorage.getItem('theme'));
+        } catch (error) {
+            console.error('❌ Failed to save theme to localStorage:', error);
+        }
+        
+        // Log computed background color to verify CSS is working
+        const computedStyle = window.getComputedStyle(document.body);
+        const bgColor = computedStyle.backgroundColor;
+        console.log('🎨 Body background color:', bgColor);
     };
 
+    // Add click event listener with debugging
     themeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.contains('dark-mode');
-        setTheme(!isDark);
+        console.log('🖱️ Theme toggle clicked!');
+        const currentlyDark = document.documentElement.classList.contains('dark-mode');
+        console.log('📊 Current state: Currently dark?', currentlyDark);
+        setTheme(!currentlyDark);
     });
 
-    // Initial theme setup
-    const savedTheme = localStorage.getItem('theme');
+    // Initial theme setup with enhanced debugging
+    console.log('🔧 Setting up initial theme...');
+    
+    let savedTheme = null;
+    try {
+        savedTheme = localStorage.getItem('theme');
+        console.log('💾 Saved theme from localStorage:', savedTheme);
+    } catch (error) {
+        console.error('❌ Failed to read from localStorage:', error);
+    }
+    
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+    console.log('🖥️ System prefers dark mode:', prefersDark);
+    
+    const shouldUseDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+    console.log('🎯 Final decision: Use dark mode?', shouldUseDark);
+    
+    setTheme(shouldUseDark);
+    console.log('✅ Theme system initialization complete!');
 
     // --- 2. SCROLL ANIMATIONS ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -47,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile theme and language toggles
     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
     const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+    console.log('📱 Mobile theme toggle:', mobileThemeToggle ? 'Found ✅' : 'Missing ❌');
     
     function openMobileMenu() {
         mobileMenuToggle.classList.add('active');
@@ -55,8 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden';
         
         // Sync mobile controls with desktop
-        if (mobileThemeToggle) {
+        if (mobileThemeToggle && themeToggle) {
             mobileThemeToggle.innerHTML = themeToggle.innerHTML;
+            console.log('📱 Mobile theme toggle synced with desktop');
         }
         if (mobileLangToggle) {
             mobileLangToggle.textContent = document.getElementById('lang-toggle').textContent;
@@ -89,11 +139,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Mobile theme toggle functionality
-    if (mobileThemeToggle) {
+    if (mobileThemeToggle && themeToggle) {
         mobileThemeToggle.addEventListener('click', () => {
+            console.log('📱 Mobile theme toggle clicked!');
             themeToggle.click();
-            mobileThemeToggle.innerHTML = themeToggle.innerHTML;
+            // Sync the mobile button icon after theme change
+            setTimeout(() => {
+                mobileThemeToggle.innerHTML = themeToggle.innerHTML;
+                console.log('📱 Mobile theme icon updated');
+            }, 50);
         });
+    } else if (mobileThemeToggle) {
+        console.warn('⚠️ Mobile theme toggle exists but desktop toggle missing');
     }
     
     // Mobile language toggle functionality

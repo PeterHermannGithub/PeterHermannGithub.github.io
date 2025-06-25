@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme System Test</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: var(--bg-secondary-color);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .theme-indicator {
+            font-size: 1.5em;
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+        }
+        .manual-test {
+            margin: 20px 0;
+            padding: 15px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+        }
+        .console-output {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            text-align: left;
+            margin: 20px 0;
+            height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation with theme toggle -->
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="index.html" class="logo">Theme Test</a>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button onclick="runTests()">Run Tests</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="test-container">
+        <h1>🌗 Dark/Light Mode Test</h1>
+        
+        <div class="theme-indicator">
+            <strong>Current Theme:</strong> <span id="current-theme">Loading...</span><br>
+            <strong>Background Color:</strong> <span id="bg-color">Loading...</span><br>
+            <strong>Text Color:</strong> <span id="text-color">Loading...</span>
+        </div>
+
+        <div class="manual-test">
+            <h3>Manual Test Instructions:</h3>
+            <ol style="text-align: left;">
+                <li>Click the theme toggle button above ☝️</li>
+                <li>Observe immediate background color change</li>
+                <li>Check that the button icon switches</li>
+                <li>Reload page - theme should persist</li>
+                <li>Check browser console for debug messages</li>
+            </ol>
+        </div>
+
+        <div class="console-output" id="console-log">
+            <div>🧪 Theme Test Console Output:</div>
+        </div>
+
+        <button onclick="clearConsole()" style="margin: 10px;">Clear Console</button>
+        <button onclick="testThemeToggle()" style="margin: 10px;">Test Theme Toggle</button>
+        <button onclick="checkLocalStorage()" style="margin: 10px;">Check LocalStorage</button>
+    </div>
+
+    <script>
+        // Capture console logs
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+        
+        function logToDiv(message, type = 'log') {
+            const div = document.getElementById('console-log');
+            const timestamp = new Date().toLocaleTimeString();
+            const prefix = type === 'error' ? '❌' : type === 'warn' ? '⚠️' : '📝';
+            div.innerHTML += `<div>[${timestamp}] ${prefix} ${message}</div>`;
+            div.scrollTop = div.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            logToDiv(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            logToDiv(args.join(' '), 'error');
+        };
+        
+        console.warn = function(...args) {
+            originalConsoleWarn.apply(console, args);
+            logToDiv(args.join(' '), 'warn');
+        };
+
+        function updateThemeIndicator() {
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            const bgColor = window.getComputedStyle(document.body).backgroundColor;
+            const textColor = window.getComputedStyle(document.body).color;
+            
+            document.getElementById('current-theme').textContent = isDark ? 'Dark Mode 🌙' : 'Light Mode ☀️';
+            document.getElementById('bg-color').textContent = bgColor;
+            document.getElementById('text-color').textContent = textColor;
+        }
+
+        function testThemeToggle() {
+            console.log('🧪 Manual theme toggle test started');
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                const beforeDark = document.documentElement.classList.contains('dark-mode');
+                console.log(`🔍 Before click: ${beforeDark ? 'Dark' : 'Light'} mode`);
+                
+                themeToggle.click();
+                
+                setTimeout(() => {
+                    const afterDark = document.documentElement.classList.contains('dark-mode');
+                    console.log(`🔍 After click: ${afterDark ? 'Dark' : 'Light'} mode`);
+                    
+                    if (beforeDark !== afterDark) {
+                        console.log('✅ Theme toggle test PASSED');
+                    } else {
+                        console.error('❌ Theme toggle test FAILED - no change detected');
+                    }
+                    updateThemeIndicator();
+                }, 100);
+            } else {
+                console.error('❌ Theme toggle button not found');
+            }
+        }
+
+        function checkLocalStorage() {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                console.log(`💾 LocalStorage theme: ${savedTheme || 'Not set'}`);
+                
+                // Test write
+                localStorage.setItem('theme-test', 'test-value');
+                const testValue = localStorage.getItem('theme-test');
+                localStorage.removeItem('theme-test');
+                
+                if (testValue === 'test-value') {
+                    console.log('✅ LocalStorage read/write test PASSED');
+                } else {
+                    console.error('❌ LocalStorage read/write test FAILED');
+                }
+            } catch (error) {
+                console.error('❌ LocalStorage error:', error.message);
+            }
+        }
+
+        function clearConsole() {
+            document.getElementById('console-log').innerHTML = '<div>🧪 Theme Test Console Output:</div>';
+        }
+
+        function runTests() {
+            console.log('🚀 Starting comprehensive theme tests...');
+            updateThemeIndicator();
+            
+            setTimeout(() => {
+                testThemeToggle();
+                setTimeout(() => {
+                    checkLocalStorage();
+                    console.log('🏁 All tests completed!');
+                }, 500);
+            }, 100);
+        }
+
+        // Update indicator every second
+        setInterval(updateThemeIndicator, 1000);
+        
+        // Initial update
+        setTimeout(updateThemeIndicator, 500);
+        
+        console.log('🎯 Theme test page loaded - click "Run Tests" to start');
+    </script>
+
+    <!-- Load the actual theme system -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

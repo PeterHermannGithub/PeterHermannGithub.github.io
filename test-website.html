@@ -239,31 +239,59 @@
                     if (themeToggle) {
                         logResult('✅ Theme toggle button found', 'pass');
                         
+                        // Check if button has content (SVG icon)
+                        const buttonContent = themeToggle.innerHTML.trim();
+                        if (buttonContent && buttonContent.includes('svg')) {
+                            logResult('✅ Theme toggle has SVG icon', 'pass');
+                        } else {
+                            logResult('❌ Theme toggle missing SVG icon', 'fail');
+                        }
+                        
                         // Test initial theme state
                         const initialDark = htmlElement.classList.contains('dark-mode');
                         logResult(`🔍 Initial theme: ${initialDark ? 'Dark' : 'Light'}`, 'info');
+                        
+                        // Get initial background color
+                        const initialBgColor = iframeDoc.defaultView.getComputedStyle(iframeDoc.body).backgroundColor;
+                        logResult(`🎨 Initial background color: ${initialBgColor}`, 'info');
                         
                         // Simulate theme toggle
                         themeToggle.click();
                         
                         setTimeout(() => {
                             const newDark = htmlElement.classList.contains('dark-mode');
+                            const newBgColor = iframeDoc.defaultView.getComputedStyle(iframeDoc.body).backgroundColor;
+                            
                             if (newDark !== initialDark) {
-                                logResult('✅ Theme switching works correctly', 'pass');
+                                logResult('✅ Theme class toggle works correctly', 'pass');
                             } else {
-                                logResult('❌ Theme switching failed', 'fail');
+                                logResult('❌ Theme class toggle failed', 'fail');
                             }
                             
-                            // Test CSS custom properties
-                            const computedStyle = iframeDoc.defaultView.getComputedStyle(iframeDoc.body);
-                            const bgColor = computedStyle.getPropertyValue('background-color');
-                            
-                            if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
-                                logResult('✅ CSS custom properties working', 'pass');
+                            if (newBgColor !== initialBgColor) {
+                                logResult('✅ Background color changed correctly', 'pass');
+                                logResult(`🎨 New background color: ${newBgColor}`, 'info');
                             } else {
-                                logResult('❌ CSS custom properties not working', 'fail');
+                                logResult('❌ Background color did not change', 'fail');
                             }
-                        }, 100);
+                            
+                            // Check localStorage
+                            const savedTheme = iframeDoc.defaultView.localStorage.getItem('theme');
+                            if (savedTheme) {
+                                logResult(`✅ Theme saved to localStorage: ${savedTheme}`, 'pass');
+                            } else {
+                                logResult('❌ Theme not saved to localStorage', 'fail');
+                            }
+                            
+                            // Test icon change
+                            const newButtonContent = themeToggle.innerHTML.trim();
+                            if (newButtonContent !== buttonContent) {
+                                logResult('✅ Theme toggle icon updated', 'pass');
+                            } else {
+                                logResult('❌ Theme toggle icon did not update', 'fail');
+                            }
+                            
+                        }, 300); // Increased timeout for transitions
                         
                     } else {
                         logResult('❌ Theme toggle button not found', 'fail');
@@ -271,7 +299,7 @@
                 } catch (error) {
                     logResult(`❌ Theme system test error: ${error.message}`, 'fail');
                 }
-            }, 1000);
+            }, 1500); // Increased timeout for page load
         }
 
         function testResponsiveDesign() {
