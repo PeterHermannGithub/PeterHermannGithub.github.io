@@ -10,7 +10,7 @@ const translations = {
         nav_achievements: "Achievements",
         // Hero Section
         home_greeting: "Hello, I'm Peter Pal Hermann.",
-        home_intro: "I'm a passionate developer. Welcome to my digital space.",
+        home_intro: "I'm a Data Scientist & AI Specialist specializing in risk modeling and performance optimization. I build full-stack applications to showcase my data science breakthroughs.",
         home_contact_btn: "Get in Touch",
         // Nav Cards
         card_about_title: "About Me",
@@ -20,11 +20,11 @@ const translations = {
         card_achievements_title: "Personal Bests",
         card_achievements_desc: "Check out my athletic and academic accomplishments.",
         // Skills
-        skills_title: "Technologies I Use",
+        skills_title: "Data Science Technologies",
         // Featured Project
         featured_title: "Featured Project",
-        featured_project_title: "YouTube Content Automation",
-        featured_project_desc: "AI-powered pipeline for creating educational historical content at scale. Combines OpenAI, ElevenLabs, and DALL-E for automated script generation, voice synthesis, and video creation.",
+        featured_project_title: "Enterprise-Scale Anime Recommendation Engine",
+        featured_project_desc: "Breakthrough Pure Rust engine processing 649M similarity pairs across 37k anime with streaming JSON architecture. Achieved 36x performance improvement over Python with enterprise-grade FastAPI backend.",
         view_project_btn: "View Project",
         // Footer
         contact_title: "Let's Connect",
@@ -33,9 +33,9 @@ const translations = {
         meta_title_projects: "Projects - Peter Pal Hermann",
         meta_description_projects: "Explore my portfolio of projects including web development, data science, and automation solutions.",
         projects_title: "My Projects",
-        projects_subtitle: "A collection of projects I've built using various technologies and frameworks.",
+        projects_subtitle: "Data science projects with full-stack implementations to demonstrate real-world applications and performance optimizations.",
         filter_all: "All Projects",
-        filter_web: "Web Development",
+        filter_web: "Portfolio Tools",
         filter_mobile: "Mobile Apps",
         filter_data: "Data Science",
         filter_automation: "Automation",
@@ -44,7 +44,7 @@ const translations = {
         view_details_btn: "View Details",
         // Project Descriptions
         project_portfolio_title: "Portfolio Website",
-        project_portfolio_desc: "A modern, bilingual portfolio website built with vanilla HTML, CSS, and JavaScript. Features dark mode, responsive design, and internationalization.",
+        project_portfolio_desc: "Professional showcase platform for data science work. Built with vanilla HTML, CSS, and JavaScript to demonstrate full-stack capabilities beyond core data science expertise.",
         project_notify_title: "Notify Me - Android App",
         project_notify_desc: "An Android notification app with WorkManager integration for background tasks. Features modern Material Design and fragment-based architecture.",
         project_audiobook_title: "PDF to Audiobook Converter",
@@ -55,6 +55,8 @@ const translations = {
         project_history_desc: "Automated pipeline for generating historical YouTube content. Uses AI for script generation, voice synthesis, and video creation.",
         project_timer_title: "Tab Timer Chrome Extension",
         project_timer_desc: "Chrome extension for tracking time spent on website domains. Features service worker architecture and persistent storage.",
+        project_anime_recommender_title: "Enterprise-Scale Anime Recommendation Engine",
+        project_anime_recommender_desc: "Data science breakthrough: Pure Rust similarity engine processing 649M pairs in 16 minutes (36x faster than Python). Real-world recommendation system with sub-100ms API responses and enterprise architecture.",
         projects_cta_title: "Interested in Working Together?",
         projects_cta_text: "I'm always open to discussing new opportunities and interesting projects.",
         projects_cta_btn: "Get in Touch",
@@ -488,7 +490,7 @@ const translations = {
         nav_achievements: "Eredmények",
         // Hero Section
         home_greeting: "Szia, Hermann Péter Pál vagyok.",
-        home_intro: "Üdv a digitális térben.",
+        home_intro: "Adattudós és MI Specialista vagyok, kockázatmodellezési és teljesítményoptimalizálási specializációval. Teljes stack alkalmazásokat építek az adattudományi áttöréseim bemutatására.",
         home_contact_btn: "Vedd fel a kapcsolatot",
         // Nav Cards
         card_about_title: "Rólam",
@@ -498,11 +500,11 @@ const translations = {
         card_achievements_title: "Személyes csúcsok",
         card_achievements_desc: "Nézd meg a sport- és tanulmányi eredményeimet.",
         // Skills
-        skills_title: "Használt technológiák",
+        skills_title: "Adattudományi Technológiák",
         // Featured Project
         featured_title: "Kiemelt Projekt",
-        featured_project_title: "YouTube Tartalom Automatizálás",
-        featured_project_desc: "AI-alapú pipeline oktatási történelmi tartalom nagyléptékű készítéséhez. Kombinálja az OpenAI-t, ElevenLabs-ot és DALL-E-t automatikus script generáláshoz, hangszintézishez és videókészítéshez.",
+        featured_project_title: "Vállalati Szintű Anime Ajánlómotor",
+        featured_project_desc: "Adattudományi áttörés: Pure Rust hasonlósági motor 649M párt feldolgoz 16 perc alatt (36x gyorsabb a Python-nál). Streaming JSON architektúrával és vállalati szintű FastAPI backend-del.",
         view_project_btn: "Projekt megtekintése",
         // Footer
         contact_title: "Kapcsolat",
@@ -511,9 +513,9 @@ const translations = {
         meta_title_projects: "Projektek - Hermann Péter Pál",
         meta_description_projects: "Fedezd fel a projekt portfóliómat, amely webfejlesztést, adattudományt és automatizálási megoldásokat tartalmaz.",
         projects_title: "Projektjeim",
-        projects_subtitle: "Különböző technológiákkal és keretrendszerekkel készített projektjeim gyűjteménye.",
+        projects_subtitle: "Adattudományi projektek teljes stack implementációkkal a valós alkalmazások és teljesítményoptimalizálások bemutatására.",
         filter_all: "Összes Projekt",
-        filter_web: "Webfejlesztés",
+        filter_web: "Portfólió Eszközök",
         filter_mobile: "Mobilalkalmazások",
         filter_data: "Adattudomány",
         filter_automation: "Automatizálás",
@@ -522,7 +524,7 @@ const translations = {
         view_details_btn: "Részletek",
         // Project Descriptions
         project_portfolio_title: "Portfólió Weboldal",
-        project_portfolio_desc: "Modern, kétnyelvű portfólió weboldal vanilla HTML, CSS és JavaScript használatával. Sötét mód, reszponzív design és nemzetköziesítés funkciókat tartalmaz.",
+        project_portfolio_desc: "Professzionális bemutató platform az adattudományi munkámhoz. Vanilla HTML, CSS és JavaScript-tel építve a teljes stack képességek bemutatására az alap adattudományi szakértelem mellett.",
         project_notify_title: "Notify Me - Android App",
         project_notify_desc: "Android értesítési alkalmazás WorkManager integrációval háttérfeladatokhoz. Modern Material Design és fragment alapú architektúrával.",
         project_audiobook_title: "PDF Hangoskönyv Konverter",
@@ -533,6 +535,8 @@ const translations = {
         project_history_desc: "Automatizált pipeline történelmi YouTube tartalom generálásához. AI-t használ script generáláshoz, hangszintézishez és videókészítéshez.",
         project_timer_title: "Tab Timer Chrome Bővítmény",
         project_timer_desc: "Chrome bővítmény weboldal domaineken töltött idő követéséhez. Service worker architektúra és perzisztens tárolás funkciókat tartalmaz.",
+        project_anime_recommender_title: "Vállalati Szintű Anime Ajánlómotor",
+        project_anime_recommender_desc: "Adattudományi áttörés: Pure Rust hasonlósági motor 649M párt feldolgoz 16 perc alatt (36x gyorsabb a Python-nál). Valós ajánlórendszer sub-100ms API válaszokkal és vállalati architektúrával.",
         projects_cta_title: "Érdekel az együttműködés?",
         projects_cta_text: "Mindig nyitott vagyok új lehetőségek és érdekes projektek megbeszélésére.",
         projects_cta_btn: "Vedd fel a kapcsolatot",
