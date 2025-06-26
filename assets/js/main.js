@@ -238,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners to filter buttons
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
+            console.log('🔽 Filter button clicked:', button.getAttribute('data-filter'));
             const category = button.getAttribute('data-filter');
             // Determine if we're on projects or achievements page
             if (projectCards.length > 0) {
@@ -247,6 +248,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 filterAchievements(category);
             }
             setActiveFilter(button);
+        });
+
+        // Add mobile touch feedback for filter buttons
+        button.addEventListener('touchstart', (e) => {
+            button.style.transform = 'scale(0.95)';
+        });
+        
+        button.addEventListener('touchend', (e) => {
+            setTimeout(() => {
+                button.style.transform = '';
+            }, 150);
         });
     });
 
@@ -395,8 +407,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const achievementTitle = titleElement ? titleElement.textContent : 'Achievement';
 
             if (proofImage) {
+                console.log('📱 Achievement card clicked:', achievementTitle);
                 openProofModal(proofImage, achievementTitle, isBilingual);
             }
+        });
+
+        // Enhanced mobile touch feedback
+        card.addEventListener('touchstart', (e) => {
+            card.style.transform = 'scale(0.98)';
+        });
+        
+        card.addEventListener('touchend', (e) => {
+            setTimeout(() => {
+                card.style.transform = '';
+            }, 150);
         });
 
         // Add visual feedback for clickable cards

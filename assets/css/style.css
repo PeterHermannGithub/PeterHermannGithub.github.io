@@ -758,10 +758,11 @@ footer {
     }
     
     .filter-btn {
-        padding: 0.75rem 1.25rem;
+        padding: 0.875rem 1.25rem;
         font-size: 0.9rem;
-        min-height: 44px;
-        min-width: 60px;
+        min-height: 48px; /* Increased for better mobile touch */
+        min-width: 70px;
+        border-radius: 6px; /* Slightly larger for easier tapping */
     }
     
     .page-header {
@@ -1681,9 +1682,10 @@ footer {
     }
     
     .achievement-filters .filter-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-        min-height: 44px; /* Touch-friendly */
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        min-height: 48px; /* Enhanced touch-friendly */
+        border-radius: 6px;
     }
     
     .achievement-card {
@@ -1937,8 +1939,8 @@ footer {
     .proof-modal-close {
         top: 0.5rem;
         right: 0.5rem;
-        width: 35px;
-        height: 35px;
+        width: 44px; /* Better mobile touch target */
+        height: 44px;
         font-size: 1.3rem;
     }
     
@@ -1987,6 +1989,67 @@ footer {
     border-top: 4px solid var(--primary-color);
     border-radius: 50%;
     animation: proofSpinner 1s linear infinite;
+}
+
+/* Mobile Touch Enhancements */
+@media (max-width: 480px) {
+    /* Enhanced mobile filter buttons */
+    .filter-btn {
+        font-size: 0.8rem;
+        padding: 1rem 0.75rem;
+        min-height: 48px;
+        margin: 0.25rem;
+        flex: 1;
+        max-width: 120px;
+    }
+    
+    .project-filters,
+    .achievement-filters {
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    
+    /* Mobile-optimized achievement cards */
+    .achievement-card {
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .achievement-card .proof-indicator {
+        font-size: 0.85rem;
+        padding: 0.75rem 1rem;
+        margin-top: 1rem;
+        display: block;
+        text-align: center;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+    }
+    
+    /* Enhanced mobile proof modal */
+    .proof-modal-content {
+        max-width: 98vw;
+        max-height: 98vh;
+        margin: 0.5rem;
+    }
+    
+    .proof-modal-header {
+        padding: 1rem;
+    }
+    
+    .proof-modal-body {
+        padding: 1rem;
+        min-height: 200px;
+    }
+    
+    .proof-modal-footer {
+        padding: 0.75rem 1rem;
+    }
+    
+    .proof-modal-hint {
+        font-size: 0.8rem;
+    }
 }
 
 @keyframes proofSpinner {

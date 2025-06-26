@@ -327,6 +327,30 @@
                     } else {
                         logResult('❌ Mobile menu toggle not found', 'fail');
                     }
+
+                    // Test filter buttons touch targets
+                    const filterButtons = iframeDoc.querySelectorAll('.filter-btn');
+                    let mobileFilterIssues = 0;
+                    
+                    filterButtons.forEach((btn, index) => {
+                        const rect = btn.getBoundingClientRect();
+                        if (rect.height < 44) {
+                            mobileFilterIssues++;
+                        }
+                    });
+                    
+                    if (mobileFilterIssues === 0 && filterButtons.length > 0) {
+                        logResult('✅ Filter buttons are touch-friendly on mobile', 'pass');
+                    } else if (filterButtons.length > 0) {
+                        logResult(`❌ ${mobileFilterIssues} filter buttons need mobile improvement`, 'fail');
+                    }
+
+                    // Test achievement cards on mobile
+                    const achievementCards = iframeDoc.querySelectorAll('.achievement-card[data-proof-image]');
+                    if (achievementCards.length > 0) {
+                        logResult(`✅ Found ${achievementCards.length} achievement cards with proof`, 'pass');
+                    }
+                    
                 } catch (error) {
                     logResult(`❌ Mobile test error: ${error.message}`, 'fail');
                 }

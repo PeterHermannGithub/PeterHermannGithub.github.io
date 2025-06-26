@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Features Test</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .mobile-test-container {
+            max-width: 100%;
+            margin: 20px auto;
+            padding: 15px;
+            background: var(--bg-secondary-color);
+            border-radius: 8px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .pass { background: #d4edda; color: #155724; }
+        .fail { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .touch-target {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            padding: 10px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .viewport-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        /* Mock achievement card for testing */
+        .test-achievement-card {
+            background: var(--bg-secondary-color);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .test-achievement-card:hover {
+            transform: translateY(-2px);
+        }
+        .test-achievement-card .proof-indicator {
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-top: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation with theme toggle -->
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="index.html" class="logo">Mobile Test</a>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">Mobile Test</a>
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close mobile menu">×</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+        </ul>
+        <div class="mobile-nav-controls">
+            <button id="mobile-theme-toggle" aria-label="Toggle theme">
+                <!-- Icons will be injected by JS -->
+            </button>
+        </div>
+    </nav>
+
+    <div class="viewport-info" id="viewport-info">
+        Loading...
+    </div>
+
+    <div class="mobile-test-container">
+        <h1>📱 Mobile Features Test</h1>
+        
+        <!-- Filter Buttons Test -->
+        <div class="test-section">
+            <h2>🔽 Filter Buttons Test</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="data">Data Science</button>
+                <button class="filter-btn" data-filter="automation">Automation</button>
+            </div>
+            <div id="filter-results"></div>
+        </div>
+
+        <!-- Achievement Filters Test -->
+        <div class="test-section">
+            <h2>🏆 Achievement Filters Test</h2>
+            <div class="achievement-filters">
+                <button class="filter-btn active" data-filter="all">All Achievements</button>
+                <button class="filter-btn" data-filter="athletic">Athletic</button>
+                <button class="filter-btn" data-filter="academic">Academic</button>
+                <button class="filter-btn" data-filter="professional">Professional</button>
+            </div>
+            <div id="achievement-filter-results"></div>
+        </div>
+
+        <!-- Touch Target Size Test -->
+        <div class="test-section">
+            <h2>👆 Touch Target Test</h2>
+            <p>All interactive elements should be at least 44px × 44px for mobile accessibility:</p>
+            <div id="touch-test-results"></div>
+        </div>
+
+        <!-- Proof Modal Test -->
+        <div class="test-section">
+            <h2>🖼️ Proof Modal Test</h2>
+            <div class="test-achievement-card" data-proof-image="degree-certificate" data-proof-bilingual="true">
+                <h3>Test Achievement Card</h3>
+                <p>Click this card to test the proof modal on mobile</p>
+                <div class="proof-indicator">📷 Click to view proof</div>
+            </div>
+            <div id="proof-test-results"></div>
+        </div>
+
+        <!-- Mobile Navigation Test -->
+        <div class="test-section">
+            <h2>📱 Mobile Navigation Test</h2>
+            <button class="touch-target" onclick="testMobileNav()">Test Mobile Menu</button>
+            <div id="nav-test-results"></div>
+        </div>
+
+        <!-- Results Summary -->
+        <div class="test-section">
+            <h2>📊 Test Results Summary</h2>
+            <div id="summary-results"></div>
+            <button class="touch-target" onclick="runAllTests()" style="width: 100%; margin-top: 15px;">
+                🧪 Run All Mobile Tests
+            </button>
+        </div>
+    </div>
+
+    <!-- Proof Modal (copied from achievements.html) -->
+    <div id="proof-modal" class="proof-modal">
+        <div class="proof-modal-overlay"></div>
+        <div class="proof-modal-content">
+            <button class="proof-modal-close" aria-label="Close proof modal">&times;</button>
+            <div class="proof-modal-header">
+                <h3 id="proof-modal-title">Achievement Proof</h3>
+            </div>
+            <div class="proof-modal-body">
+                <img id="proof-modal-image" src="" alt="Achievement proof" />
+                <div class="proof-modal-fallback">
+                    <div class="proof-placeholder">
+                        <div class="proof-placeholder-icon">📷</div>
+                        <h4>Proof Coming Soon</h4>
+                        <p>This achievement proof will be available shortly.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="proof-modal-footer">
+                <p class="proof-modal-hint">Press ESC to close or tap outside the image</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let testResults = [];
+
+        function logResult(test, result, type = 'info') {
+            const resultDiv = document.getElementById(test + '-results');
+            if (resultDiv) {
+                const div = document.createElement('div');
+                div.className = `test-result ${type}`;
+                div.textContent = result;
+                resultDiv.appendChild(div);
+            }
+            testResults.push({test, result, type});
+        }
+
+        function updateViewportInfo() {
+            const info = document.getElementById('viewport-info');
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const isMobile = width <= 768;
+            info.innerHTML = `
+                ${width} × ${height}px<br>
+                ${isMobile ? '📱 Mobile' : '🖥️ Desktop'}<br>
+                Touch: ${('ontouchstart' in window) ? 'Yes' : 'No'}
+            `;
+        }
+
+        function testFilterButtons() {
+            logResult('filter', '🔍 Testing filter button functionality...', 'info');
+            
+            const projectFilters = document.querySelectorAll('.project-filters .filter-btn');
+            const achievementFilters = document.querySelectorAll('.achievement-filters .filter-btn');
+            
+            // Test touch target sizes
+            let touchIssues = 0;
+            
+            [...projectFilters, ...achievementFilters].forEach((btn, index) => {
+                const rect = btn.getBoundingClientRect();
+                const isTouch = rect.width >= 44 && rect.height >= 44;
+                
+                if (!isTouch) {
+                    touchIssues++;
+                    logResult('filter', `❌ Filter button ${index + 1}: ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px (too small)`, 'fail');
+                } else {
+                    logResult('filter', `✅ Filter button ${index + 1}: ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px (good)`, 'pass');
+                }
+            });
+
+            // Test button click functionality
+            if (projectFilters.length > 1) {
+                projectFilters[1].click();
+                setTimeout(() => {
+                    const isActive = projectFilters[1].classList.contains('active');
+                    if (isActive) {
+                        logResult('filter', '✅ Filter button click and active state works', 'pass');
+                    } else {
+                        logResult('filter', '❌ Filter button click failed', 'fail');
+                    }
+                }, 100);
+            }
+
+            logResult('filter', `📊 Touch target issues: ${touchIssues} buttons need improvement`, touchIssues > 0 ? 'fail' : 'pass');
+        }
+
+        function testTouchTargets() {
+            logResult('touch-test', '👆 Testing touch target sizes...', 'info');
+            
+            const interactiveElements = document.querySelectorAll('button, a, .achievement-card, [onclick]');
+            let violations = 0;
+            let total = 0;
+
+            interactiveElements.forEach((element, index) => {
+                const rect = element.getBoundingClientRect();
+                const isGoodSize = rect.width >= 44 && rect.height >= 44;
+                total++;
+                
+                if (!isGoodSize && rect.width > 0 && rect.height > 0) {
+                    violations++;
+                    logResult('touch-test', 
+                        `❌ Element ${index + 1} (${element.tagName}): ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px`, 
+                        'fail'
+                    );
+                }
+            });
+
+            const passRate = ((total - violations) / total * 100).toFixed(1);
+            logResult('touch-test', 
+                `📊 Touch accessibility: ${passRate}% (${total - violations}/${total} elements compliant)`, 
+                violations === 0 ? 'pass' : (violations < total * 0.2 ? 'info' : 'fail')
+            );
+        }
+
+        function testProofModal() {
+            logResult('proof-test', '🖼️ Testing proof modal on mobile...', 'info');
+            
+            const testCard = document.querySelector('.test-achievement-card');
+            const modal = document.getElementById('proof-modal');
+            
+            if (!testCard || !modal) {
+                logResult('proof-test', '❌ Test card or modal not found', 'fail');
+                return;
+            }
+
+            // Test card click
+            testCard.click();
+            
+            setTimeout(() => {
+                const isModalActive = modal.classList.contains('active');
+                if (isModalActive) {
+                    logResult('proof-test', '✅ Proof modal opens correctly', 'pass');
+                    
+                    // Test modal responsiveness
+                    const modalContent = modal.querySelector('.proof-modal-content');
+                    const rect = modalContent.getBoundingClientRect();
+                    const viewport = {width: window.innerWidth, height: window.innerHeight};
+                    
+                    const fitsScreen = rect.width <= viewport.width * 0.95 && rect.height <= viewport.height * 0.95;
+                    logResult('proof-test', 
+                        `${fitsScreen ? '✅' : '❌'} Modal size: ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px`, 
+                        fitsScreen ? 'pass' : 'fail'
+                    );
+                    
+                    // Test close button
+                    const closeBtn = modal.querySelector('.proof-modal-close');
+                    const closeBtnRect = closeBtn.getBoundingClientRect();
+                    const closeGoodSize = closeBtnRect.width >= 44 && closeBtnRect.height >= 44;
+                    
+                    logResult('proof-test', 
+                        `${closeGoodSize ? '✅' : '❌'} Close button: ${closeBtnRect.width.toFixed(0)}×${closeBtnRect.height.toFixed(0)}px`,
+                        closeGoodSize ? 'pass' : 'fail'
+                    );
+                    
+                    // Close modal
+                    closeBtn.click();
+                    
+                    setTimeout(() => {
+                        const isClosed = !modal.classList.contains('active');
+                        logResult('proof-test', 
+                            `${isClosed ? '✅' : '❌'} Modal closes correctly`,
+                            isClosed ? 'pass' : 'fail'
+                        );
+                    }, 300);
+                } else {
+                    logResult('proof-test', '❌ Proof modal failed to open', 'fail');
+                }
+            }, 500);
+        }
+
+        function testMobileNav() {
+            logResult('nav-test', '📱 Testing mobile navigation...', 'info');
+            
+            const mobileToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-nav-menu');
+            
+            if (!mobileToggle || !mobileMenu) {
+                logResult('nav-test', '❌ Mobile navigation elements not found', 'fail');
+                return;
+            }
+
+            // Test menu toggle
+            mobileToggle.click();
+            
+            setTimeout(() => {
+                const isMenuActive = mobileMenu.classList.contains('active');
+                if (isMenuActive) {
+                    logResult('nav-test', '✅ Mobile menu opens correctly', 'pass');
+                    
+                    // Test close
+                    const closeBtn = document.getElementById('mobile-nav-close');
+                    if (closeBtn) {
+                        closeBtn.click();
+                        setTimeout(() => {
+                            const isClosed = !mobileMenu.classList.contains('active');
+                            logResult('nav-test', 
+                                `${isClosed ? '✅' : '❌'} Mobile menu closes correctly`,
+                                isClosed ? 'pass' : 'fail'
+                            );
+                        }, 300);
+                    }
+                } else {
+                    logResult('nav-test', '❌ Mobile menu failed to open', 'fail');
+                }
+            }, 300);
+        }
+
+        function generateSummary() {
+            const summary = document.getElementById('summary-results');
+            const passCount = testResults.filter(r => r.type === 'pass').length;
+            const failCount = testResults.filter(r => r.type === 'fail').length;
+            const total = testResults.length;
+            const score = total > 0 ? Math.round((passCount / total) * 100) : 0;
+            
+            let status = 'info';
+            if (score >= 90) status = 'pass';
+            else if (score < 70) status = 'fail';
+            
+            summary.innerHTML = `
+                <div class="test-result ${status}">
+                    📊 Overall Mobile Score: ${score}%<br>
+                    ✅ Passed: ${passCount} | ❌ Failed: ${failCount} | 📝 Total: ${total}
+                </div>
+            `;
+        }
+
+        function runAllTests() {
+            testResults = [];
+            
+            // Clear previous results
+            document.querySelectorAll('[id$="-results"]').forEach(div => {
+                if (div.id !== 'summary-results') div.innerHTML = '';
+            });
+            
+            updateViewportInfo();
+            
+            setTimeout(() => testFilterButtons(), 100);
+            setTimeout(() => testTouchTargets(), 500);
+            setTimeout(() => testProofModal(), 1000);
+            setTimeout(() => testMobileNav(), 2000);
+            setTimeout(() => generateSummary(), 3000);
+        }
+
+        // Update viewport info on resize
+        window.addEventListener('resize', updateViewportInfo);
+        updateViewportInfo();
+
+        // Auto-run basic tests on load
+        setTimeout(() => {
+            logResult('filter', '📱 Mobile test page loaded. Click "Run All Mobile Tests" for comprehensive testing.', 'info');
+            updateViewportInfo();
+        }, 500);
+    </script>
+
+    <!-- Load the actual theme and functionality scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
