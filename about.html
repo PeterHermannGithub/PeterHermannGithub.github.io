@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
     <!-- SEO Meta Tags -->
     <title data-i18n-key="meta_title_about">About Me - Peter Pal Hermann</title>
     <meta name="description" content="Learn about my journey as a data scientist and AI specialist. Risk modeller at Fundamenta, former Morgan Stanley analyst with MSc Computer Science." data-i18n-key="meta_description_about">
@@ -23,6 +29,17 @@
     <meta property="twitter:description" content="Learn about my journey as a data scientist and developer.">
     <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
+    <!-- Critical: Prevent theme flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+    
     <!-- Styles, Fonts, and Icons -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,6 +63,8 @@
     </script>
 </head>
 <body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header class="sticky-header">
         <nav class="container">
@@ -89,7 +108,7 @@
         </div>
     </nav>
 
-    <main>
+    <main id="main-content">
         <!-- Page Header -->
         <section class="page-header container">
             <h1 data-i18n-key="about_title">About Me</h1>
@@ -430,7 +449,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/i18n.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/i18n.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
