@@ -923,6 +923,9 @@ html.dark-mode .social-links a img {
     justify-content: center; /* THIS IS THE KEY: Centers the items */
     gap: 2rem; 
     margin-bottom: 4rem;
+    max-width: 1200px;     /* Constrain width for better centering */
+    margin-left: auto;     /* Center the grid container itself */
+    margin-right: auto;    /* Center the grid container itself */
 }
 
 /* Smaller screens - reduce grid minimum */
@@ -930,6 +933,8 @@ html.dark-mode .social-links a img {
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        max-width: 100%;       /* Full width on mobile */
+        margin: 0 auto 4rem auto; /* Maintain centering */
     }
 }
 
@@ -955,6 +960,8 @@ html.dark-mode .social-links a img {
     box-shadow: 0 4px 20px var(--shadow-color);
     transition: all var(--transition-speed) ease;
     border: 1px solid var(--border-color);
+    max-width: 400px;       /* Constrain card width for better grid layout */
+    width: 100%;            /* Ensure cards fill available space */
 }
 
 .project-card:hover {
@@ -1056,8 +1063,9 @@ html.dark-mode .social-links a img {
     padding: 4rem 0;
     background: var(--bg-secondary-color);
     border-radius: var(--border-radius);
-    margin: 4rem 0;
+    margin: 4rem auto;     /* Center the section horizontally */
     border: 1px solid var(--border-color);
+    max-width: 1200px;     /* Constrain width for better centering */
 }
 
 .cta-section h2 {
@@ -1088,6 +1096,7 @@ html.dark-mode .social-links a img {
     margin: 4rem 0;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .about-grid {
@@ -1095,6 +1104,9 @@ html.dark-mode .social-links a img {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
+    max-width: 1200px;     /* Constrain width for better centering */
+    margin: 0 auto;        /* Center the grid within its container */
+    width: 100%;
 }
 
 /* Profile Section */
@@ -1200,11 +1212,12 @@ html.dark-mode .social-links a img {
 
 /* Experience Timeline */
 .experience-section {
-    margin: 4rem 0;
+    margin: 4rem auto;     /* Center the section horizontally */
     padding: 4rem 0;
     background: var(--bg-secondary-color);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
+    max-width: 1200px;     /* Constrain width for better centering */
 }
 
 .experience-section h2 {
@@ -1283,7 +1296,8 @@ html.dark-mode .social-links a img {
 
 /* Interests Section */
 .interests-section {
-    margin: 4rem 0;
+    margin: 4rem auto;     /* Center the section horizontally */
+    max-width: 1200px;     /* Constrain width for better centering */
 }
 
 .interests-grid {
@@ -1372,6 +1386,8 @@ html.dark-mode .social-links a img {
     .about-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+        max-width: 100%;       /* Full width on mobile */
+        margin: 0 auto;        /* Maintain centering */
     }
     
     .profile-image {
@@ -1411,6 +1427,17 @@ html.dark-mode .social-links a img {
     .interests-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    /* Maintain section centering on mobile */
+    .experience-section,
+    .interests-section,
+    .achievement-stats-section,
+    .motivation-section,
+    .cta-section {
+        max-width: 100%;       /* Full width on mobile */
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .stats-grid {
@@ -1479,7 +1506,9 @@ html.dark-mode .social-links a img {
     display: flex;         /* Use Flexbox instead of Grid */
     flex-wrap: wrap;       /* Allow items to wrap to the next line */
     justify-content: center; /* THIS IS THE KEY: Centers the items */
-    gap: 2rem;  
+    gap: 2rem;
+    max-width: 1200px;     /* Constrain width for better centering */
+    margin: 0 auto 4rem auto; /* Center the grid container itself */
 }
 
 /* Large screens - maintain 3 columns with better spacing */
@@ -1504,6 +1533,8 @@ html.dark-mode .social-links a img {
     .achievements-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        max-width: 100%;       /* Full width on mobile */
+        margin: 0 auto 4rem auto; /* Maintain centering */
     }
 }
 
@@ -1520,6 +1551,8 @@ html.dark-mode .social-links a img {
     min-height: 300px;
     display: flex;
     flex-direction: column;
+    max-width: 400px;       /* Constrain card width for better grid layout */
+    width: 100%;            /* Ensure cards fill available space */
 }
 
 .achievement-card:hover {
@@ -1606,11 +1639,12 @@ html.dark-mode .social-links a img {
 
 /* Achievement Statistics Section */
 .achievement-stats-section {
-    margin: 4rem 0;
+    margin: 4rem auto;     /* Center the section horizontally */
     padding: 4rem 0;
     background: var(--bg-secondary-color);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
+    max-width: 1200px;     /* Constrain width for better centering */
 }
 
 .achievement-stats-section h2 {
@@ -1654,7 +1688,8 @@ html.dark-mode .social-links a img {
 
 /* Motivation Section */
 .motivation-section {
-    margin: 4rem 0;
+    margin: 4rem auto;     /* Center the section horizontally */
+    max-width: 1200px;     /* Constrain width for better centering */
 }
 
 .motivation-content h2 {
