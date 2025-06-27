@@ -1086,6 +1086,8 @@ html.dark-mode .social-links a img {
 /* ------------------- */
 .about-content {
     margin: 4rem 0;
+    display: flex;
+    justify-content: center;
 }
 
 .about-grid {
