@@ -1093,6 +1093,8 @@ html.dark-mode .social-links a img {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
+    max-width: 1200px; /* Adjust this value as needed */
+    margin: 0 auto;
 }
 
 /* Profile Section */
