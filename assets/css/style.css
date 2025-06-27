@@ -479,11 +479,17 @@ footer {
     gap: 1.5rem;
     margin: 1.5rem 0;
 }
+/* Find this rule in your style.css */
 .social-links a img {
     width: 28px;
     height: 28px;
-    filter: var(--bg-color) == #1a202c ? invert(1) : none; /* Simple invert for dark mode */
+    /* The incorrect filter line will be here. REMOVE IT. */
     transition: transform 0.3s;
+}
+
+/* ADD THIS NEW RULE to handle the dark mode icon color */
+html.dark-mode .social-links a img {
+    filter: invert(1);
 }
 .social-links a:hover img {
     transform: scale(1.1);
@@ -736,8 +742,13 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 2rem;
     }
+    /* ✅ FIX: The incorrect closing brace was removed from here. */
 }
-    /* General mobile improvements */
+
+/* ✅ FIX: All the following mobile styles are now correctly wrapped
+   in a media query for screens 768px and smaller. */
+@media (max-width: 768px) {
+    /* General mobile improvements from your original code */
     main {
         padding-top: 2rem;
         padding-bottom: 2rem;
@@ -747,6 +758,7 @@ footer {
         margin-bottom: 2rem;
     }
     
+    /* This overrides the 1024px hero-text h1 for smaller screens */
     .hero-text h1 {
         font-size: clamp(2rem, 6vw, 2.5rem);
     }
@@ -765,6 +777,7 @@ footer {
         margin-bottom: 2rem;
     }
     
+    /* This overrides the 1024px projects-grid for smaller screens */
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -779,9 +792,9 @@ footer {
     .filter-btn {
         padding: 0.875rem 1.25rem;
         font-size: 0.9rem;
-        min-height: 48px; /* Increased for better mobile touch */
+        min-height: 48px;
         min-width: 70px;
-        border-radius: 6px; /* Slightly larger for easier tapping */
+        border-radius: 6px;
     }
     
     .page-header {
@@ -840,7 +853,6 @@ footer {
         height: 48px;
     }
     
-    /* Larger touch targets for mobile */
     .card-grid {
         grid-template-columns: 1fr;
         gap: 1rem;

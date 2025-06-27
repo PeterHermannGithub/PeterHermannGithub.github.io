@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const proofModalImage = document.getElementById('proof-modal-image');
     const proofModalFallback = document.querySelector('.proof-modal-fallback');
     const proofModalBody = document.querySelector('.proof-modal-body');
-    const achievementCards = document.querySelectorAll('.achievement-card[data-proof-image]');
+    const clickableAchievementCards  = document.querySelectorAll('.achievement-card[data-proof-image]');
 
     function openProofModal(imagePath, achievementTitle, isBilingual = false) {
         if (!proofModal) return;
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add click event listeners to achievement cards
-    achievementCards.forEach(card => {
+    clickableAchievementCards .forEach(card => {
         card.addEventListener('click', (e) => {
             // Don't trigger if clicking on links or buttons within the card
             if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {

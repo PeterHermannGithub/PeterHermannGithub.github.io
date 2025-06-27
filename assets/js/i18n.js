@@ -980,11 +980,14 @@ const setLanguage = (lang) => {
 
 const languageToggle = document.getElementById('lang-toggle');
 
-languageToggle.addEventListener('click', () => {
-    const currentLang = localStorage.getItem('lang') || 'en';
-    const newLang = currentLang === 'en' ? 'hu' : 'en';
-    setLanguage(newLang);
-});
+if (languageToggle) {
+    languageToggle.addEventListener('click', () => {
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const newLang = currentLang === 'en' ? 'hu' : 'en';
+        setLanguage(newLang);
+    });
+}
+
 
 // Initial language setup
 const initialLang = localStorage.getItem('lang') || (navigator.language.startsWith('hu') ? 'hu' : 'en');
