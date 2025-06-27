@@ -1094,127 +1094,103 @@ html.dark-mode .social-links a img {
 /* ------------------- */
 .about-content {
     margin: 4rem 0;
-}
-
-.about-grid {
-    display: flex;
-    flex-direction: column;    /* Simple vertical stacking */
-    gap: 2rem;                 /* Reduced gap since cards have their own margins */
-    width: 100%;
-}
-
-/* Profile Section */
-.about-profile {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 800px;          /* Constrain width like project cards */
-    margin: 0 auto 4rem auto;  /* Center the section block */
-    padding: 3rem;             /* Add internal padding for card appearance */
-    background: var(--bg-secondary-color);  /* Card-like background */
-    border-radius: var(--border-radius);    /* Rounded corners */
-    border: 1px solid var(--border-color);  /* Subtle border */
-    box-shadow: 0 4px 20px var(--shadow-color); /* Card shadow */
-}
-
-.profile-image-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 1rem;
 }
 
-.profile-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--primary-color);
-    background: var(--border-color);
+/* Single Centered Card Layout */
+.about-card {
+    max-width: 900px;
+    width: 100%;
+    background: var(--bg-secondary-color);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    padding: 4rem;
+    margin: 0 auto;
 }
 
-.profile-info h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+/* Hero Section */
+.about-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.about-hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
     color: var(--text-color);
-    text-align: center;        /* Center headings for visual hierarchy */
 }
 
-.profile-info p {
+.about-hero p {
+    font-size: 1.1rem;
     color: var(--text-muted-color);
     line-height: 1.7;
-    margin-bottom: 2rem;
-    text-align: left;          /* Left-align text for better readability */
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.quick-facts {
+/* Stats Section */
+.about-stats {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
-    max-width: 600px;          /* Constrain width for better readability */
-    margin-left: auto;         /* Center the quick facts */
-    margin-right: auto;
-}
-
-.fact {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.75rem 0;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
 
-.fact-label {
-    font-weight: 600;
-    color: var(--text-color);
+.about-stats .stat-item {
+    text-align: center;
 }
 
-.fact-value {
+.about-stats .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.about-stats .stat-label {
+    font-size: 0.9rem;
     color: var(--text-muted-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.cv-download {
-    margin-top: 1rem;
-    text-align: center;        /* Center the CV download button */
+/* Skills Section */
+.skills-section {
+    margin-bottom: 4rem;
 }
 
-/* Skills & Expertise */
-.skills-expertise {
-    max-width: 800px;          /* Constrain width like project cards */
-    margin: 0 auto 4rem auto;  /* Center the section block */
-    padding: 3rem;             /* Add internal padding for card appearance */
-    background: var(--bg-secondary-color);  /* Card-like background */
-    border-radius: var(--border-radius);    /* Rounded corners */
-    border: 1px solid var(--border-color);  /* Subtle border */
-    box-shadow: 0 4px 20px var(--shadow-color); /* Card shadow */
-}
-
-.skills-expertise h2 {
+.skills-section h3 {
     font-size: 2rem;
     margin-bottom: 2rem;
     color: var(--text-color);
-    text-align: center;        /* Center main heading for visual hierarchy */
+    text-align: center;
 }
 
 .skill-category {
     margin-bottom: 2rem;
 }
 
-.skill-category h3 {
+.skill-category h4 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
-    text-align: left;          /* Left-align category headings for better scan-ability */
 }
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    justify-content: flex-start;    /* Left-align skill tags for better readability */
+    justify-content: flex-start;
 }
 
 .skill-tag {
-    background: var(--bg-secondary-color);
+    background: var(--bg-color);
     border: 2px solid var(--border-color);
     padding: 0.5rem 1rem;
     border-radius: 25px;
@@ -1225,6 +1201,137 @@ html.dark-mode .social-links a img {
 
 .skill-tag:hover {
     border-color: var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Experience Highlights */
+.experience-highlights {
+    margin-bottom: 3rem;
+}
+
+.experience-highlights h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.experience-item {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.experience-header h4 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.experience-year {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.experience-item p {
+    color: var(--text-muted-color);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Education Section */
+.education-section {
+    margin-bottom: 3rem;
+}
+
+.education-section h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.education-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.education-item {
+    padding: 1.5rem;
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.education-item strong {
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.education-detail {
+    display: block;
+    color: var(--text-muted-color);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Quick Facts */
+.quick-facts {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+}
+
+.fact-row {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.fact {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-muted-color);
+}
+
+.fact-icon {
+    font-size: 1.2rem;
+}
+
+/* Call to Action */
+.about-cta {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.about-cta .btn {
+    margin: 0 0.5rem;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
     background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
@@ -1403,84 +1510,42 @@ html.dark-mode .social-links a img {
 
 /* Mobile Responsiveness for About Page */
 @media (max-width: 768px) {
-    .about-grid {
-        gap: 1rem;             /* Reduced gap on mobile */
-    }
-    
-    /* Mobile adjustments for card-based sections */
-    .about-profile,
-    .skills-expertise {
-        max-width: 100%;       /* Full width on mobile */
-        margin: 0 auto 2rem auto;  /* Reduced bottom margin */
+    .about-card {
+        margin: 0 1rem;        /* Add side margins on mobile */
         padding: 2rem;         /* Reduced padding for mobile */
+        max-width: 100%;       /* Full width minus margins */
     }
     
-    .quick-facts {
-        max-width: 100%;       /* Full width on mobile */
-        margin: 0 0 2rem 0;    /* Reset margins for mobile */
+    .about-hero h2 {
+        font-size: 2rem;       /* Smaller heading on mobile */
     }
     
-    .profile-image {
-        width: 150px;
-        height: 150px;
+    .about-hero p {
+        font-size: 1rem;       /* Smaller text on mobile */
     }
     
-    .timeline::before {
-        left: 20px;
+    .about-stats {
+        flex-direction: column; /* Stack stats vertically on mobile */
+        gap: 1.5rem;
+        text-align: center;
     }
     
-    .timeline-item {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 3rem;
-    }
-    
-    .timeline-item:nth-child(even) {
-        flex-direction: column;
-    }
-    
-    .timeline-date {
-        position: absolute;
-        left: -2rem;
-        top: 1rem;
-        flex: none;
-        width: 80px;
-        font-size: 1rem;
-        padding: 0.3rem;
-    }
-    
-    .timeline-content {
-        margin: 0;
-        width: 100%;
-    }
-    
-    .interests-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    /* Maintain section centering on mobile */
-    .experience-section,
-    .interests-section,
-    .achievement-stats-section,
-    .motivation-section,
-    .cta-section {
-        max-width: 100%;       /* Full width on mobile */
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
+    .fact-row {
+        flex-direction: column; /* Stack facts vertically on mobile */
         gap: 1rem;
+        text-align: center;
     }
     
-    .stat-item {
-        padding: 1.5rem 0.5rem;
+    .experience-header {
+        flex-direction: column; /* Stack header elements on mobile */
+        align-items: flex-start;
+        gap: 0.5rem;
     }
     
-    .stat-number {
-        font-size: 2rem;
+    .about-cta .btn {
+        display: block;         /* Full width buttons on mobile */
+        margin: 0.5rem 0;
+        width: 100%;
     }
 }
 
