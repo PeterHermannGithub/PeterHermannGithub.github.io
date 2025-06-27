@@ -1094,18 +1094,12 @@ html.dark-mode .social-links a img {
 /* ------------------- */
 .about-content {
     margin: 4rem 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
 }
 
 .about-grid {
-    display: grid;
-    grid-template-columns: 1fr;    /* Single column layout for proper centering */
-    gap: 4rem;
-    align-items: start;
-    max-width: 1200px;     /* Constrain width for better centering */
-    margin: 0 auto;        /* Center the grid within its container */
+    display: flex;
+    flex-direction: column;    /* Simple vertical stacking */
+    gap: 2rem;                 /* Reduced gap since cards have their own margins */
     width: 100%;
 }
 
@@ -1114,7 +1108,13 @@ html.dark-mode .social-links a img {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    text-align: center;        /* Center-align profile content */
+    max-width: 800px;          /* Constrain width like project cards */
+    margin: 0 auto 4rem auto;  /* Center the section block */
+    padding: 3rem;             /* Add internal padding for card appearance */
+    background: var(--bg-secondary-color);  /* Card-like background */
+    border-radius: var(--border-radius);    /* Rounded corners */
+    border: 1px solid var(--border-color);  /* Subtle border */
+    box-shadow: 0 4px 20px var(--shadow-color); /* Card shadow */
 }
 
 .profile-image-container {
@@ -1136,14 +1136,14 @@ html.dark-mode .social-links a img {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--text-color);
-    text-align: center;        /* Explicitly center profile heading */
+    text-align: center;        /* Center headings for visual hierarchy */
 }
 
 .profile-info p {
     color: var(--text-muted-color);
     line-height: 1.7;
     margin-bottom: 2rem;
-    text-align: center;        /* Explicitly center profile text */
+    text-align: left;          /* Left-align text for better readability */
 }
 
 .quick-facts {
@@ -1179,14 +1179,20 @@ html.dark-mode .social-links a img {
 
 /* Skills & Expertise */
 .skills-expertise {
-    text-align: center;        /* Center-align skills section */
+    max-width: 800px;          /* Constrain width like project cards */
+    margin: 0 auto 4rem auto;  /* Center the section block */
+    padding: 3rem;             /* Add internal padding for card appearance */
+    background: var(--bg-secondary-color);  /* Card-like background */
+    border-radius: var(--border-radius);    /* Rounded corners */
+    border: 1px solid var(--border-color);  /* Subtle border */
+    box-shadow: 0 4px 20px var(--shadow-color); /* Card shadow */
 }
 
 .skills-expertise h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
     color: var(--text-color);
-    text-align: center;        /* Explicitly center skills heading */
+    text-align: center;        /* Center main heading for visual hierarchy */
 }
 
 .skill-category {
@@ -1197,14 +1203,14 @@ html.dark-mode .social-links a img {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
-    text-align: center;        /* Center skill category headings */
+    text-align: left;          /* Left-align category headings for better scan-ability */
 }
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    justify-content: center;    /* Center the skill tags within each category */
+    justify-content: flex-start;    /* Left-align skill tags for better readability */
 }
 
 .skill-tag {
@@ -1398,16 +1404,15 @@ html.dark-mode .social-links a img {
 /* Mobile Responsiveness for About Page */
 @media (max-width: 768px) {
     .about-grid {
-        grid-template-columns: 1fr;  /* Already single-column on desktop now */
-        gap: 2rem;
-        max-width: 100%;       /* Full width on mobile */
-        margin: 0 auto;        /* Maintain centering */
+        gap: 1rem;             /* Reduced gap on mobile */
     }
     
-    /* Mobile adjustments for centered content */
+    /* Mobile adjustments for card-based sections */
     .about-profile,
     .skills-expertise {
-        text-align: center;    /* Ensure centering on mobile */
+        max-width: 100%;       /* Full width on mobile */
+        margin: 0 auto 2rem auto;  /* Reduced bottom margin */
+        padding: 2rem;         /* Reduced padding for mobile */
     }
     
     .quick-facts {
