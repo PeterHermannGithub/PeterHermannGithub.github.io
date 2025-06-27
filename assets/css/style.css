@@ -1101,7 +1101,7 @@ html.dark-mode .social-links a img {
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;    /* Single column layout for proper centering */
     gap: 4rem;
     align-items: start;
     max-width: 1200px;     /* Constrain width for better centering */
@@ -1114,6 +1114,7 @@ html.dark-mode .social-links a img {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    text-align: center;        /* Center-align profile content */
 }
 
 .profile-image-container {
@@ -1148,6 +1149,9 @@ html.dark-mode .social-links a img {
     flex-direction: column;
     gap: 0.75rem;
     margin-bottom: 2rem;
+    max-width: 600px;          /* Constrain width for better readability */
+    margin-left: auto;         /* Center the quick facts */
+    margin-right: auto;
 }
 
 .fact {
@@ -1171,6 +1175,10 @@ html.dark-mode .social-links a img {
 }
 
 /* Skills & Expertise */
+.skills-expertise {
+    text-align: center;        /* Center-align skills section */
+}
+
 .skills-expertise h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -1384,10 +1392,21 @@ html.dark-mode .social-links a img {
 /* Mobile Responsiveness for About Page */
 @media (max-width: 768px) {
     .about-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* Already single-column on desktop now */
         gap: 2rem;
         max-width: 100%;       /* Full width on mobile */
         margin: 0 auto;        /* Maintain centering */
+    }
+    
+    /* Mobile adjustments for centered content */
+    .about-profile,
+    .skills-expertise {
+        text-align: center;    /* Ensure centering on mobile */
+    }
+    
+    .quick-facts {
+        max-width: 100%;       /* Full width on mobile */
+        margin: 0 0 2rem 0;    /* Reset margins for mobile */
     }
     
     .profile-image {
