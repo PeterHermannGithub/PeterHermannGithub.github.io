@@ -918,9 +918,10 @@ html.dark-mode .social-links a img {
 
 /* Projects Grid */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    display: flex;         /* Use Flexbox instead of Grid */
+    flex-wrap: wrap;       /* Allow items to wrap to the next line */
+    justify-content: center; /* THIS IS THE KEY: Centers the items */
+    gap: 2rem; 
     margin-bottom: 4rem;
 }
 
@@ -1473,11 +1474,10 @@ html.dark-mode .social-links a img {
 
 /* Achievements Grid - Responsive Design */
 .achievements-grid {
-    display: grid;
-    gap: 2rem;
-    margin-bottom: 4rem;
-    /* Desktop: 3 columns */
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;         /* Use Flexbox instead of Grid */
+    flex-wrap: wrap;       /* Allow items to wrap to the next line */
+    justify-content: center; /* THIS IS THE KEY: Centers the items */
+    gap: 2rem;  
 }
 
 /* Large screens - maintain 3 columns with better spacing */
@@ -1619,8 +1619,9 @@ html.dark-mode .social-links a img {
 }
 
 .stats-overview {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 3rem;
     max-width: 1000px;
     margin: 0 auto;
