@@ -1092,22 +1092,16 @@ html.dark-mode .social-links a img {
 /* ------------------- */
 /*     9. About Page   */
 /* ------------------- */
-.about-content {
-    margin: 4rem 0;
-    display: flex;
-    justify-content: center;
-}
-
-/* Single Centered Card Layout */
+/* About Card - Now uses container class directly like Projects/Achievements */
 .about-card {
-    max-width: 900px;
-    width: 100%;
     background: var(--bg-secondary-color);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 20px var(--shadow-color);
     padding: 4rem;
-    margin: 0 auto;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    /* Container class handles: max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; */
 }
 
 /* Hero Section */
@@ -1180,13 +1174,14 @@ html.dark-mode .social-links a img {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
+    text-align: center;
 }
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .skill-tag {
@@ -1511,9 +1506,10 @@ html.dark-mode .social-links a img {
 /* Mobile Responsiveness for About Page */
 @media (max-width: 768px) {
     .about-card {
-        margin: 0 1rem;        /* Add side margins on mobile */
         padding: 2rem;         /* Reduced padding for mobile */
-        max-width: 100%;       /* Full width minus margins */
+        margin-top: 2rem;      /* Reduced top margin on mobile */
+        margin-bottom: 2rem;   /* Reduced bottom margin on mobile */
+        /* Container class handles responsive padding automatically */
     }
     
     .about-hero h2 {
