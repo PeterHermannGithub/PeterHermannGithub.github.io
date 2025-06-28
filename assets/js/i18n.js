@@ -503,8 +503,8 @@ const translations = {
         skills_title: "Adattudományi Technológiák",
         // Featured Project
         featured_title: "Kiemelt Projekt",
-        featured_project_title: "Vállalati Szintű Anime Ajánlómotor",
-        featured_project_desc: "Adattudományi áttörés: Pure Rust hasonlósági motor 649M párt feldolgoz 16 perc alatt (36x gyorsabb a Python-nál). Streaming JSON architektúrával és vállalati szintű FastAPI backend-del.",
+        featured_project_title: "Anime Ajánlómotor",
+        featured_project_desc: "Adattudományi áttörés: Pure Rust hasonlósági motor 649M párt feldolgoz. Streaming JSON architektúrával és FastAPI backend-del.",
         view_project_btn: "Projekt megtekintése",
         // Footer
         contact_title: "Kapcsolat",
@@ -535,8 +535,8 @@ const translations = {
         project_history_desc: "Automatizált pipeline történelmi YouTube tartalom generálásához. AI-t használ script generáláshoz, hangszintézishez és videókészítéshez.",
         project_timer_title: "Tab Timer Chrome Bővítmény",
         project_timer_desc: "Chrome bővítmény weboldal domaineken töltött idő követéséhez. Service worker architektúra és perzisztens tárolás funkciókat tartalmaz.",
-        project_anime_recommender_title: "Vállalati Szintű Anime Ajánlómotor",
-        project_anime_recommender_desc: "Adattudományi áttörés: Pure Rust hasonlósági motor 649M párt feldolgoz 16 perc alatt (36x gyorsabb a Python-nál). Valós ajánlórendszer sub-100ms API válaszokkal és vállalati architektúrával.",
+        project_anime_recommender_title: "Anime Ajánlómotor",
+        project_anime_recommender_desc: "Adattudományi áttörés: Pure Rust hasonlósági motor 649M párt feldolgoz 16 perc alatt (36x gyorsabb a Python-nál). Valós ajánlórendszer sub-100ms API válaszokkal.",
         projects_cta_title: "Érdekel az együttműködés?",
         projects_cta_text: "Mindig nyitott vagyok új lehetőségek és érdekes projektek megbeszélésére.",
         projects_cta_btn: "Vedd fel a kapcsolatot",
