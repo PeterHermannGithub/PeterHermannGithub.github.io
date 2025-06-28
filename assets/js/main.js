@@ -332,10 +332,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="pdf-loading-icon">📄</div>
                     <h4>Opening PDF Document</h4>
                     <p>The document will open in a new tab...</p>
-                    <button class="pdf-open-btn" onclick="window.open('${fullImagePath}', '_blank'); closeProofModal();">Open PDF Manually</button>
+                    <button class="pdf-open-btn">Open PDF Manually</button>
                 </div>
             `;
             proofModalBody.appendChild(pdfMessage);
+            
+            // Add event listener to the manual open button
+            const manualOpenBtn = pdfMessage.querySelector('.pdf-open-btn');
+            if (manualOpenBtn) {
+                manualOpenBtn.addEventListener('click', () => {
+                    window.open(fullImagePath, '_blank');
+                    closeProofModal();
+                });
+            }
             
             // Automatically try to open PDF after a short delay
             setTimeout(() => {
@@ -387,10 +396,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="pdf-loading-icon">📄</div>
                             <h4>Opening PDF Document (English Version)</h4>
                             <p>The document will open in a new tab...</p>
-                            <button class="pdf-open-btn" onclick="window.open('${fallbackPath}', '_blank'); closeProofModal();">Open PDF Manually</button>
+                            <button class="pdf-open-btn">Open PDF Manually</button>
                         </div>
                     `;
                     proofModalBody.appendChild(pdfMessage);
+                    
+                    // Add event listener to the fallback manual open button
+                    const fallbackManualOpenBtn = pdfMessage.querySelector('.pdf-open-btn');
+                    if (fallbackManualOpenBtn) {
+                        fallbackManualOpenBtn.addEventListener('click', () => {
+                            window.open(fallbackPath, '_blank');
+                            closeProofModal();
+                        });
+                    }
                     
                     setTimeout(() => {
                         const pdfWindow = window.open(fallbackPath, '_blank');
