@@ -2067,6 +2067,65 @@ html.dark-mode .social-links a img {
     font-style: italic;
 }
 
+/* PDF Loading Message Styles */
+.pdf-loading-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.pdf-loading-content {
+    max-width: 400px;
+}
+
+.pdf-loading-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    animation: pulse 2s infinite;
+}
+
+.pdf-loading-content h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.pdf-loading-content p {
+    font-size: 1rem;
+    color: var(--text-muted-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.pdf-open-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pdf-open-btn:hover {
+    background: var(--primary-hover-color);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
 /* Mobile Responsive Proof Modal */
 @media (max-width: 768px) {
     .proof-modal-content {

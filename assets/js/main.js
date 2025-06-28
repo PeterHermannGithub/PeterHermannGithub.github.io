@@ -320,9 +320,42 @@ document.addEventListener('DOMContentLoaded', () => {
         const isPDF = finalImagePath.toLowerCase().endsWith('.pdf');
         
         if (isPDF) {
-            // For PDFs, open in new tab instead of modal
-            window.open(fullImagePath, '_blank');
-            closeProofModal();
+            // For PDFs, show a loading message and then open in new tab
+            proofModalBody.classList.add('loading');
+            proofModalImage.style.display = 'none';
+            
+            // Add PDF loading message
+            const pdfMessage = document.createElement('div');
+            pdfMessage.className = 'pdf-loading-message';
+            pdfMessage.innerHTML = `
+                <div class="pdf-loading-content">
+                    <div class="pdf-loading-icon">📄</div>
+                    <h4>Opening PDF Document</h4>
+                    <p>The document will open in a new tab...</p>
+                    <button class="pdf-open-btn" onclick="window.open('${fullImagePath}', '_blank'); closeProofModal();">Open PDF Manually</button>
+                </div>
+            `;
+            proofModalBody.appendChild(pdfMessage);
+            
+            // Automatically try to open PDF after a short delay
+            setTimeout(() => {
+                const pdfWindow = window.open(fullImagePath, '_blank');
+                
+                // Check if PDF opened successfully
+                setTimeout(() => {
+                    if (!pdfWindow || pdfWindow.closed) {
+                        // PDF failed to open, show manual option
+                        const messageEl = pdfMessage.querySelector('p');
+                        if (messageEl) {
+                            messageEl.textContent = 'Please click the button below to open the PDF document:';
+                        }
+                    } else {
+                        // PDF opened successfully, close modal
+                        closeProofModal();
+                    }
+                }, 500);
+            }, 800);
+            
             return;
         }
         
@@ -346,8 +379,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Check if fallback is PDF
                 if (extension.toLowerCase() === 'pdf') {
-                    window.open(fallbackPath, '_blank');
-                    closeProofModal();
+                    // Use improved PDF handling for fallback too
+                    const pdfMessage = document.createElement('div');
+                    pdfMessage.className = 'pdf-loading-message';
+                    pdfMessage.innerHTML = `
+                        <div class="pdf-loading-content">
+                            <div class="pdf-loading-icon">📄</div>
+                            <h4>Opening PDF Document (English Version)</h4>
+                            <p>The document will open in a new tab...</p>
+                            <button class="pdf-open-btn" onclick="window.open('${fallbackPath}', '_blank'); closeProofModal();">Open PDF Manually</button>
+                        </div>
+                    `;
+                    proofModalBody.appendChild(pdfMessage);
+                    
+                    setTimeout(() => {
+                        const pdfWindow = window.open(fallbackPath, '_blank');
+                        setTimeout(() => {
+                            if (!pdfWindow || pdfWindow.closed) {
+                                const messageEl = pdfMessage.querySelector('p');
+                                if (messageEl) {
+                                    messageEl.textContent = 'Please click the button below to open the PDF document:';
+                                }
+                            } else {
+                                closeProofModal();
+                            }
+                        }, 500);
+                    }, 800);
                     return;
                 }
                 
@@ -390,6 +447,10 @@ document.addEventListener('DOMContentLoaded', () => {
             proofModalImage.src = '';
             proofModalFallback.classList.remove('active');
             proofModalBody.classList.remove('loading');
+            
+            // Clean up any PDF loading messages
+            const pdfMessages = proofModalBody.querySelectorAll('.pdf-loading-message');
+            pdfMessages.forEach(msg => msg.remove());
         }, 300); // Wait for modal animation
     }
 
