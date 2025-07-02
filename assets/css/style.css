@@ -1646,6 +1646,11 @@ html.dark-mode .social-links a img {
     /* Remove height: fit-content and min-height to allow equal heights */
 }
 
+/* Add space for proof indicator to prevent text overlap */
+.achievement-card[data-proof-image] {
+    padding-bottom: 4.5rem;  /* Extra space at bottom for proof indicator */
+}
+
 .achievement-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px var(--shadow-color);
@@ -1715,6 +1720,11 @@ html.dark-mode .social-links a img {
     margin-bottom: auto;  /* Push meta to bottom */
 }
 
+/* Ensure long descriptions don't overlap with proof indicator */
+.achievement-card[data-proof-image] .achievement-content p {
+    margin-bottom: 1rem;  /* Consistent spacing above meta */
+}
+
 .achievement-meta {
     display: flex;
     justify-content: space-between;
@@ -1723,6 +1733,12 @@ html.dark-mode .social-links a img {
     border-top: 1px solid var(--border-color);
     font-size: 0.9rem;
     margin-top: auto;  /* Push to bottom of flex container */
+}
+
+/* Ensure achievement meta doesn't overlap with proof indicator */
+.achievement-card[data-proof-image] .achievement-meta {
+    padding-right: 8rem;  /* Space for proof indicator on the right */
+    padding-bottom: 0.5rem;  /* Extra bottom padding */
 }
 
 .achievement-date {
@@ -2239,6 +2255,16 @@ html.dark-mode .social-links a img {
     .achievement-card {
         padding: 1.25rem;
         margin-bottom: 1rem;
+    }
+    
+    /* Reset padding on mobile since proof indicator becomes block element */
+    .achievement-card[data-proof-image] {
+        padding-bottom: 1.25rem;  /* Reset to normal mobile padding */
+    }
+    
+    .achievement-card[data-proof-image] .achievement-meta {
+        padding-right: 0;  /* Reset right padding on mobile */
+        padding-bottom: 0;  /* Reset bottom padding on mobile */
     }
     
     .achievement-card .proof-indicator {
