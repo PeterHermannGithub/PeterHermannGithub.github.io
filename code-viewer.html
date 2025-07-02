@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="code_viewer_title">Code Viewer - Anime Recommender | Peter Pal Hermann</title>
+    <meta name="description" content="Interactive VS Code-style viewer showcasing enterprise-scale Python code from the anime recommendation system." data-i18n-key="code_viewer_description">
+    <meta name="keywords" content="code viewer, python, machine learning, fastapi, enterprise software, portfolio">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/code-viewer.html">
+    <meta property="og:title" content="Code Viewer - Anime Recommender | Peter Pal Hermann">
+    <meta property="og:description" content="Interactive VS Code-style viewer showcasing enterprise-scale Python code.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/code-viewer.html">
+    <meta property="twitter:title" content="Code Viewer - Anime Recommender">
+    <meta property="twitter:description" content="Interactive VS Code-style viewer showcasing enterprise-scale Python code.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Critical: Prevent theme flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+    
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/code-viewer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Code Viewer - Anime Recommender",
+      "url": "https://PeterHermannGithub.github.io/code-viewer.html",
+      "description": "Interactive code viewer showcasing enterprise Python development",
+      "author": {
+        "@type": "Person",
+        "name": "Peter Pal Hermann"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Peter Pal Hermann Portfolio",
+        "url": "https://PeterHermannGithub.github.io"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close mobile menu">×</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
+            <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
+            <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+        </ul>
+        <div class="mobile-nav-controls">
+            <button id="mobile-theme-toggle" aria-label="Toggle theme">
+                <!-- Icons will be injected by JS -->
+            </button>
+            <button id="mobile-lang-toggle" aria-label="Toggle language">EN</button>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header container">
+            <div class="breadcrumb">
+                <a href="projects.html" data-i18n-key="nav_projects">Projects</a>
+                <span class="breadcrumb-separator">></span>
+                <a href="projects/anime-recommender.html" data-i18n-key="project_anime_recommender_title">Anime Recommender</a>
+                <span class="breadcrumb-separator">></span>
+                <span data-i18n-key="code_viewer_breadcrumb">Code Viewer</span>
+            </div>
+            <h1 data-i18n-key="code_viewer_heading">Code Viewer: Anime Recommender</h1>
+            <p data-i18n-key="code_viewer_subtitle">Interactive VS Code-style interface showcasing enterprise-scale Python development patterns and machine learning implementation.</p>
+        </section>
+
+        <!-- VS Code Interface -->
+        <section class="vscode-container" id="vscode-container">
+            <!-- Loading State -->
+            <div class="vscode-loading" id="vscode-loading">
+                <div class="loading-spinner"></div>
+                <p data-i18n-key="code_viewer_loading">Loading code viewer...</p>
+            </div>
+
+            <!-- Main VS Code Interface -->
+            <div class="vscode-interface" id="vscode-interface" style="display: none;">
+                <!-- Sidebar -->
+                <div class="vscode-sidebar" id="vscode-sidebar">
+                    <div class="sidebar-header">
+                        <div class="sidebar-title">
+                            <span class="sidebar-icon">📁</span>
+                            <span data-i18n-key="code_viewer_explorer">EXPLORER</span>
+                        </div>
+                        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+                            <span class="toggle-icon">‹</span>
+                        </button>
+                    </div>
+                    <div class="file-tree" id="file-tree">
+                        <!-- File tree will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Main Editor Area -->
+                <div class="vscode-editor-area" id="vscode-editor-area">
+                    <!-- Tab Bar -->
+                    <div class="tab-bar" id="tab-bar">
+                        <!-- Tabs will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Editor Content -->
+                    <div class="editor-container">
+                        <!-- Welcome Screen -->
+                        <div class="welcome-screen" id="welcome-screen">
+                            <div class="welcome-content">
+                                <h2 data-i18n-key="code_viewer_welcome_title">Welcome to Code Viewer</h2>
+                                <p data-i18n-key="code_viewer_welcome_text">Explore the anime recommendation system's source code. Click on files in the Explorer to view their contents.</p>
+                                <div class="welcome-features">
+                                    <div class="feature">
+                                        <span class="feature-icon">🧠</span>
+                                        <span data-i18n-key="code_viewer_feature_ml">Machine Learning Pipeline</span>
+                                    </div>
+                                    <div class="feature">
+                                        <span class="feature-icon">🚀</span>
+                                        <span data-i18n-key="code_viewer_feature_api">FastAPI Backend</span>
+                                    </div>
+                                    <div class="feature">
+                                        <span class="feature-icon">🏗️</span>
+                                        <span data-i18n-key="code_viewer_feature_architecture">Enterprise Architecture</span>
+                                    </div>
+                                    <div class="feature">
+                                        <span class="feature-icon">🧪</span>
+                                        <span data-i18n-key="code_viewer_feature_testing">Comprehensive Testing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Code Editor -->
+                        <div class="code-editor" id="code-editor" style="display: none;">
+                            <div class="editor-header">
+                                <div class="file-info">
+                                    <span class="file-icon" id="file-icon">📄</span>
+                                    <span class="file-path" id="file-path">Select a file</span>
+                                </div>
+                                <div class="editor-actions">
+                                    <button class="action-btn" id="copy-code-btn" title="Copy code" data-i18n-title="code_viewer_copy_tooltip">
+                                        <span class="action-icon">📋</span>
+                                    </button>
+                                    <button class="action-btn" id="fullscreen-btn" title="Toggle fullscreen" data-i18n-title="code_viewer_fullscreen_tooltip">
+                                        <span class="action-icon">⛶</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="code-content-wrapper">
+                                <div class="line-numbers" id="line-numbers">
+                                    <!-- Line numbers will be generated by JavaScript -->
+                                </div>
+                                <pre class="code-content" id="code-content"><code class="language-python" id="code-display">
+                                    <!-- Code will be populated by JavaScript -->
+                                </code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Bar -->
+                    <div class="status-bar" id="status-bar">
+                        <div class="status-left">
+                            <span class="status-item" id="file-type">Python</span>
+                            <span class="status-item" id="line-count">0 lines</span>
+                            <span class="status-item" id="file-size">0 KB</span>
+                        </div>
+                        <div class="status-right">
+                            <span class="status-item" data-i18n-key="code_viewer_encoding">UTF-8</span>
+                            <span class="status-item" data-i18n-key="code_viewer_eol">LF</span>
+                            <span class="status-item" data-i18n-key="code_viewer_spaces">Spaces: 4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile File Selector -->
+            <div class="mobile-file-selector" id="mobile-file-selector">
+                <div class="mobile-selector-header">
+                    <h3 data-i18n-key="code_viewer_select_file">Select File</h3>
+                    <button class="mobile-selector-close" id="mobile-selector-close">×</button>
+                </div>
+                <div class="mobile-file-list" id="mobile-file-list">
+                    <!-- Mobile file list will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Info Section -->
+        <section class="project-info container">
+            <h2 data-i18n-key="code_viewer_about_title">About This Code</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3 data-i18n-key="code_viewer_tech_stack_title">Technology Stack</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python 3.9+</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">sentence-transformers</span>
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3 data-i18n-key="code_viewer_features_title">Key Features</h3>
+                    <ul>
+                        <li data-i18n-key="code_viewer_feature_embeddings">Multi-variant embedding support</li>
+                        <li data-i18n-key="code_viewer_feature_ml_pipeline">Professional ML training pipeline</li>
+                        <li data-i18n-key="code_viewer_feature_dependency_injection">Dependency injection architecture</li>
+                        <li data-i18n-key="code_viewer_feature_async">Async/await performance optimization</li>
+                        <li data-i18n-key="code_viewer_feature_testing">Comprehensive test coverage</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3 data-i18n-key="code_viewer_metrics_title">Performance Metrics</h3>
+                    <ul>
+                        <li data-i18n-key="code_viewer_metric_dataset">37,030 anime dataset</li>
+                        <li data-i18n-key="code_viewer_metric_response">< 150ms API responses</li>
+                        <li data-i18n-key="code_viewer_metric_accuracy">68.4% ML test accuracy</li>
+                        <li data-i18n-key="code_viewer_metric_memory">< 2GB memory usage</li>
+                        <li data-i18n-key="code_viewer_metric_embeddings">768-dim embeddings</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Links -->
+        <section class="navigation-links container">
+            <div class="link-grid">
+                <a href="projects/anime-recommender.html" class="nav-link-card">
+                    <span class="link-icon">📖</span>
+                    <div class="link-content">
+                        <h3 data-i18n-key="code_viewer_project_details">Project Details</h3>
+                        <p data-i18n-key="code_viewer_project_details_desc">Learn more about the anime recommender system</p>
+                    </div>
+                </a>
+                <a href="https://github.com/PeterHermannGithub/anime-recommender" target="_blank" class="nav-link-card">
+                    <span class="link-icon">🔗</span>
+                    <div class="link-content">
+                        <h3 data-i18n-key="code_viewer_github_repo">GitHub Repository</h3>
+                        <p data-i18n-key="code_viewer_github_repo_desc">View the complete source code and documentation</p>
+                    </div>
+                </a>
+                <a href="projects.html" class="nav-link-card">
+                    <span class="link-icon">🎯</span>
+                    <div class="link-content">
+                        <h3 data-i18n-key="code_viewer_more_projects">More Projects</h3>
+                        <p data-i18n-key="code_viewer_more_projects_desc">Explore other projects in my portfolio</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/code-viewer.js" defer></script>
+</body>
+</html>
