@@ -258,6 +258,7 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+    margin-bottom: 5rem;  /* Add extra space below navigation cards */
 }
 
 /* Small mobile devices (360px) */
@@ -856,6 +857,7 @@ html.dark-mode .social-links a img {
     .card-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+        margin-bottom: 3rem;  /* Reduced spacing on mobile for better proportion */
     }
     
     .skills-grid {
