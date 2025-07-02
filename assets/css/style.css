@@ -1597,6 +1597,7 @@ html.dark-mode .social-links a img {
     display: flex;         /* Use Flexbox instead of Grid */
     flex-wrap: wrap;       /* Allow items to wrap to the next line */
     justify-content: center; /* THIS IS THE KEY: Centers the items */
+    align-items: stretch;  /* Make all flex items equal height */
     gap: 2rem;
     max-width: 1200px;     /* Constrain width for better centering */
     margin: 0 auto 4rem auto; /* Center the grid container itself */
@@ -1638,12 +1639,11 @@ html.dark-mode .social-links a img {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    height: fit-content;
-    min-height: 300px;
     display: flex;
     flex-direction: column;
     max-width: 400px;       /* Constrain card width for better grid layout */
     width: 100%;            /* Ensure cards fill available space */
+    /* Remove height: fit-content and min-height to allow equal heights */
 }
 
 .achievement-card:hover {
@@ -1668,6 +1668,12 @@ html.dark-mode .social-links a img {
     font-size: 3rem;
     margin-bottom: 1.5rem;
     display: block;
+}
+
+.achievement-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .achievement-content h3 {
@@ -1706,7 +1712,7 @@ html.dark-mode .social-links a img {
 .achievement-content p {
     color: var(--text-muted-color);
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: auto;  /* Push meta to bottom */
 }
 
 .achievement-meta {
@@ -1716,6 +1722,7 @@ html.dark-mode .social-links a img {
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
     font-size: 0.9rem;
+    margin-top: auto;  /* Push to bottom of flex container */
 }
 
 .achievement-date {
