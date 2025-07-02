@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
     <!-- SEO Meta Tags -->
     <title data-i18n-key="project_anime_recommender_meta_title">Enterprise Anime Recommendation Engine - Peter Pal Hermann</title>
     <meta name="description" content="Enterprise-scale recommendation system processing 649M similarity pairs across 37k anime with Pure Rust engine and sub-100ms API responses." data-i18n-key="project_anime_recommender_meta_desc">
@@ -30,6 +36,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+    
+    <!-- Critical: Prevent theme flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
     
     <style>
         .v2-stats-grid {
@@ -411,8 +428,8 @@ candidate_scores = self._compute_targeted_similarities(<br>
     </footer>
 
     <!-- Scripts -->
-    <script src="../assets/js/theme.js"></script>
-    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/i18n.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
 
 </body>
 </html>
