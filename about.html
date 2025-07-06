@@ -108,14 +108,19 @@
             <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
         </ul>
         <div class="mobile-nav-controls">
-            <!-- Mobile Search -->
+            <!-- ✅ FIX: Mobile Search with results container -->
             <div class="mobile-search-container">
                 <input type="text" id="mobile-site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
+                <div class="search-results mobile-search-results" id="mobile-search-results" aria-live="polite">
+                    <!-- Mobile search results will be populated here -->
+                </div>
             </div>
-            <button id="mobile-theme-toggle" aria-label="Toggle theme">
-                <!-- Icons will be injected by JS -->
-            </button>
-            <button id="mobile-lang-toggle" aria-label="Toggle language">EN</button>
+            <div>
+                <button id="mobile-theme-toggle" aria-label="Toggle theme">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button id="mobile-lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
         </div>
     </nav>
 

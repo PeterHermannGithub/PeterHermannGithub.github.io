@@ -785,12 +785,14 @@ html.dark-mode .social-links a img {
     align-items: center;
     padding-top: 2rem;
     border-top: 1px solid var(--border-color);
+    width: 100%;
 }
 
-/* Mobile Search */
+/* ✅ FIX: Enhanced Mobile Search */
 .mobile-search-container {
     width: 100%;
     margin-bottom: 1rem;
+    position: relative;
 }
 
 #mobile-site-search {
@@ -803,6 +805,7 @@ html.dark-mode .social-links a img {
     font-size: 1rem;
     transition: all var(--transition-speed) ease;
     outline: none;
+    box-sizing: border-box;
 }
 
 #mobile-site-search:focus {
@@ -814,9 +817,76 @@ html.dark-mode .social-links a img {
     color: var(--text-muted-color);
 }
 
+/* ✅ FIX: Mobile Search Results */
+.mobile-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1002;
+    display: none;
+    margin-top: 0.25rem;
+}
+
+.mobile-search-results.show {
+    display: block;
+}
+
+/* ✅ FIX: Mobile navigation button layout */
 .mobile-nav-controls > div:not(.mobile-search-container) {
     display: flex;
     gap: 1rem;
+    width: 100%;
+    justify-content: center;
+}
+
+/* ✅ FIX: Mobile toggle buttons styling */
+#mobile-theme-toggle,
+#mobile-lang-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted-color);
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--transition-speed) ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+#mobile-theme-toggle:hover,
+#mobile-lang-toggle:hover {
+    background-color: var(--bg-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+#mobile-theme-toggle svg,
+#mobile-lang-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: fill var(--transition-speed) ease;
+    pointer-events: none;
+}
+
+/* ✅ FIX: Mobile controls container */
+.mobile-nav-controls > div:last-child {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 /* Tablet devices (768px) */

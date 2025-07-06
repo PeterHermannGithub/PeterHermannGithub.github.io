@@ -1149,6 +1149,7 @@ const setLanguage = (lang) => {
     });
 };
 
+// ✅ FIX: Single global variable declarations to avoid conflicts
 const languageToggle = document.getElementById('lang-toggle');
 const mobileLangToggle = document.getElementById('mobile-lang-toggle');
 
@@ -1158,9 +1159,13 @@ const toggleLanguage = () => {
     const newLang = currentLang === 'en' ? 'hu' : 'en';
     setLanguage(newLang);
     
-    // Update mobile toggle text if it exists
+    // ✅ FIX: Ensure both toggles are synced properly
     if (mobileLangToggle) {
         mobileLangToggle.textContent = newLang.toUpperCase();
+    }
+    
+    if (languageToggle) {
+        languageToggle.textContent = newLang.toUpperCase();
     }
 };
 

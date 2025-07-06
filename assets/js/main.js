@@ -589,15 +589,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- SEARCH FUNCTIONALITY ---
     console.log('🔍 Search System: Initializing...');
     
-    // Search elements
+    // ✅ FIX: Search elements with mobile search results support
     const searchInput = document.getElementById('site-search');
     const mobileSearchInput = document.getElementById('mobile-site-search');
     const searchResults = document.getElementById('search-results');
+    const mobileSearchResults = document.getElementById('mobile-search-results');
     
     console.log('🔍 Search Elements:', {
         desktop: searchInput ? 'Found ✅' : 'Missing ❌',
         mobile: mobileSearchInput ? 'Found ✅' : 'Missing ❌',
-        results: searchResults ? 'Found ✅' : 'Missing ❌'
+        desktopResults: searchResults ? 'Found ✅' : 'Missing ❌',
+        mobileResults: mobileSearchResults ? 'Found ✅' : 'Missing ❌'
     });
 
     // Search index and configuration
@@ -803,20 +805,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return score;
     }
 
-    // Display search results
+    // ✅ FIX: Display search results with mobile support
     function displaySearchResults(results, query) {
-        if (!searchResults) return;
-        
         const currentLang = localStorage.getItem('lang') || 'en';
         const t = window.translations?.[currentLang] || window.translations?.en || {};
         
+        // Determine which search results container to use
+        const activeResultsContainer = window.innerWidth <= 768 ? mobileSearchResults : searchResults;
+        const fallbackContainer = window.innerWidth <= 768 ? searchResults : mobileSearchResults;
+        
+        if (!activeResultsContainer && !fallbackContainer) return;
+        
+        const targetContainer = activeResultsContainer || fallbackContainer;
+        
         if (results.length === 0) {
-            searchResults.innerHTML = `
+            const noResultsHTML = `
                 <div class="search-no-results">
                     ${t.search_no_results || 'No results found'} "${query}"
                 </div>
             `;
-            searchResults.classList.add('show');
+            targetContainer.innerHTML = noResultsHTML;
+            targetContainer.classList.add('show');
             return;
         }
         
@@ -828,12 +837,12 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
         
-        searchResults.innerHTML = resultsHTML;
-        searchResults.classList.add('show');
+        targetContainer.innerHTML = resultsHTML;
+        targetContainer.classList.add('show');
         currentHighlightIndex = -1;
         
         // Add click listeners to results
-        searchResults.querySelectorAll('.search-result-item').forEach(item => {
+        targetContainer.querySelectorAll('.search-result-item').forEach(item => {
             item.addEventListener('click', () => {
                 const url = item.dataset.url;
                 navigateToResult(url);
