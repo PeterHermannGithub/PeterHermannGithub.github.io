@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileThemeToggle.innerHTML = themeToggle.innerHTML;
             console.log('📱 Mobile theme toggle synced with desktop:', mobileThemeToggle.innerHTML);
         }
+        // ✅ FIX: Language sync handled by i18n.js - no manual sync needed
         if (mobileLangToggle) {
             const langToggle = document.getElementById('lang-toggle');
             if (langToggle) {
@@ -175,15 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Mobile language toggle functionality
-    if (mobileLangToggle) {
-        mobileLangToggle.addEventListener('click', () => {
-            document.getElementById('lang-toggle').click();
-            setTimeout(() => {
-                mobileLangToggle.textContent = document.getElementById('lang-toggle').textContent;
-            }, 50);
-        });
-    }
+    // ✅ FIX: Mobile language toggle is handled by i18n.js - removed conflicting event listener
+    // Language toggle functionality is managed in i18n.js to avoid conflicts
     
     // Close mobile menu on escape key
     document.addEventListener('keydown', (e) => {
@@ -827,16 +821,31 @@ document.addEventListener('DOMContentLoaded', () => {
         return score;
     }
 
-    // ✅ FIX: Display search results with mobile support and sidebar detection
+    // ✅ FIX: Enhanced search results display with proper desktop/mobile detection
     function displaySearchResults(results, query) {
         const currentLang = localStorage.getItem('lang') || 'en';
         const t = window.translations?.[currentLang] || window.translations?.en || {};
         
         // Determine which search results container to use
-        // Check if mobile sidebar is active OR if we're on mobile screen
+        // Priority: 1) Check which search input was used, 2) Check mobile sidebar state, 3) Check screen size
         const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
         const isMobileScreen = window.innerWidth <= 768;
-        const shouldUseMobileResults = isMobileSidebarActive || isMobileScreen;
+        
+        // ✅ FIX: More intelligent container selection
+        let shouldUseMobileResults = false;
+        
+        // If mobile sidebar is active on desktop, use mobile results for mobile search input
+        if (isMobileSidebarActive && !isMobileScreen) {
+            // Desktop with mobile sidebar open - check which input has focus or was used
+            const mobileInputActive = document.activeElement === mobileSearchInput || 
+                                    (mobileSearchInput && mobileSearchInput.value.length > 0 && 
+                                     searchInput && searchInput.value.length === 0);
+            shouldUseMobileResults = mobileInputActive;
+        } else if (isMobileScreen) {
+            // Mobile screen - always use mobile results
+            shouldUseMobileResults = true;
+        }
+        // Desktop without mobile sidebar - use desktop results (shouldUseMobileResults = false)
         
         const activeResultsContainer = shouldUseMobileResults ? mobileSearchResults : searchResults;
         const fallbackContainer = shouldUseMobileResults ? searchResults : mobileSearchResults;
@@ -907,12 +916,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ✅ FIX: Handle keyboard navigation in search results for both containers
+    // ✅ FIX: Enhanced keyboard navigation with proper container detection
     function handleSearchKeyboard(e) {
-        // Check which search results container is currently active
+        // Use same logic as displaySearchResults for consistency
         const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
         const isMobileScreen = window.innerWidth <= 768;
-        const shouldUseMobileResults = isMobileSidebarActive || isMobileScreen;
+        
+        let shouldUseMobileResults = false;
+        
+        if (isMobileSidebarActive && !isMobileScreen) {
+            // Desktop with mobile sidebar open - check which input has focus
+            const mobileInputActive = document.activeElement === mobileSearchInput || 
+                                    (mobileSearchInput && mobileSearchInput.value.length > 0 && 
+                                     searchInput && searchInput.value.length === 0);
+            shouldUseMobileResults = mobileInputActive;
+        } else if (isMobileScreen) {
+            shouldUseMobileResults = true;
+        }
         
         const activeContainer = shouldUseMobileResults ? mobileSearchResults : searchResults;
         const items = activeContainer?.querySelectorAll('.search-result-item');
@@ -951,11 +971,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Setup search input handlers
+    // ✅ FIX: Enhanced setup search input handlers with debugging
     function setupSearchInput(input) {
-        if (!input) return;
+        if (!input) {
+            console.log('⚠️ setupSearchInput called with null/undefined input');
+            return;
+        }
         
-        console.log(`🔍 Setting up search input: ${input.id}`);
+        console.log(`🔍 Setting up search input: ${input.id} (${input.type})`);
+        console.log(`🔍 Input element exists: ${!!input}`);
+        console.log(`🔍 Input parent: ${input.parentElement?.className || 'none'}`);
         
         // Search on input
         input.addEventListener('input', (e) => {
@@ -1007,14 +1032,31 @@ document.addEventListener('DOMContentLoaded', () => {
         setupSearchInput(searchInput);
         setupSearchInput(mobileSearchInput);
         
-        // Sync mobile and desktop search
+        // ✅ FIX: Enhanced sync between mobile and desktop search with conflict prevention
         if (searchInput && mobileSearchInput) {
+            console.log('🔗 Setting up search input synchronization');
+            
+            let syncInProgress = false;
+            
             searchInput.addEventListener('input', (e) => {
+                if (syncInProgress) return;
+                syncInProgress = true;
                 mobileSearchInput.value = e.target.value;
+                console.log('🔗 Desktop → Mobile sync:', e.target.value);
+                setTimeout(() => { syncInProgress = false; }, 10);
             });
             
             mobileSearchInput.addEventListener('input', (e) => {
+                if (syncInProgress) return;
+                syncInProgress = true;
                 searchInput.value = e.target.value;
+                console.log('🔗 Mobile → Desktop sync:', e.target.value);
+                setTimeout(() => { syncInProgress = false; }, 10);
+            });
+        } else {
+            console.log('⚠️ Search input sync not available:', {
+                desktop: !!searchInput,
+                mobile: !!mobileSearchInput
             });
         }
         
@@ -1033,16 +1075,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // ✅ FIX: Global keyboard shortcuts with sidebar detection
+        // ✅ FIX: Enhanced global keyboard shortcuts with proper focus detection
         document.addEventListener('keydown', (e) => {
             // Ctrl+K or Cmd+K to focus search
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
                 
-                // Check if mobile sidebar is active OR if we're on mobile screen
+                // Use same logic as other functions for consistency
                 const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
                 const isMobileScreen = window.innerWidth <= 768;
-                const shouldUseMobileSearch = isMobileSidebarActive || isMobileScreen;
+                
+                let shouldUseMobileSearch = false;
+                
+                if (isMobileSidebarActive && !isMobileScreen) {
+                    // Desktop with mobile sidebar open - focus mobile search
+                    shouldUseMobileSearch = true;
+                } else if (isMobileScreen) {
+                    // Mobile screen - use mobile search
+                    shouldUseMobileSearch = true;
+                }
+                // Desktop without sidebar - use desktop search (shouldUseMobileSearch = false)
                 
                 const activeSearch = shouldUseMobileSearch ? mobileSearchInput : searchInput;
                 if (activeSearch) {
