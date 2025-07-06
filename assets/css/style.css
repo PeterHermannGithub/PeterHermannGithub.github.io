@@ -1712,6 +1712,18 @@ html.dark-mode .social-links a img {
     transition: all 0.3s ease;
     font-weight: 600;
     font-size: 0.9rem;
+    
+    /* ✅ IMMEDIATE FIX: Proper text centering */
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* ✅ Touch-friendly base settings */
+    min-height: 44px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .achievement-filters .filter-btn:hover {
@@ -2014,6 +2026,12 @@ html.dark-mode .social-links a img {
         font-size: 0.85rem;
         min-height: 48px; /* Enhanced touch-friendly */
         border-radius: 6px;
+        
+        /* ✅ SHORT-TERM FIX: Ensure consistent centering on tablet */
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .achievement-card {
@@ -2380,20 +2398,35 @@ html.dark-mode .social-links a img {
 
 /* Mobile Touch Enhancements */
 @media (max-width: 480px) {
-    /* Enhanced mobile filter buttons */
-    .filter-btn {
+    /* ✅ IMMEDIATE & SHORT-TERM FIX: Enhanced mobile filter buttons */
+    .achievement-filters .filter-btn {
         font-size: 0.8rem;
-        padding: 1rem 0.75rem;
+        padding: 0.75rem 0.5rem;
         min-height: 48px;
-        margin: 0.25rem;
+        margin: 0.125rem;
         flex: 1;
-        max-width: 120px;
+        max-width: 150px;  /* ✅ Increased from 120px */
+        min-width: 85px;   /* ✅ Adequate touch target */
+        
+        /* ✅ Enhanced text handling */
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        /* ✅ LONG-TERM: Touch feedback */
+        transition: all 0.2s ease;
+        transform-origin: center;
     }
     
     .project-filters,
     .achievement-filters {
-        gap: 0.5rem;
+        gap: 0.25rem;  /* ✅ Tighter gap for mobile */
         justify-content: center;
+        padding: 0 0.5rem;  /* ✅ Container padding */
     }
     
     /* Mobile-optimized achievement cards */
@@ -2446,6 +2479,75 @@ html.dark-mode .social-links a img {
     
     .proof-modal-hint {
         font-size: 0.8rem;
+    }
+}
+
+/* ✅ LONG-TERM: Touch feedback animations for all screen sizes */
+.achievement-filters .filter-btn:active {
+    transform: scale(0.95);
+    transition-duration: 0.1s;
+}
+
+.achievement-filters .filter-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* ✅ MEDIUM-TERM: Ultra-small screen support (≤360px) */
+@media (max-width: 360px) {
+    .achievement-filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+    
+    .achievement-filters .filter-btn {
+        width: 100%;
+        max-width: 280px;
+        min-width: unset;
+        flex: none;
+        margin: 0;
+        padding: 0.875rem 1rem;
+        font-size: 0.85rem;
+        
+        /* ✅ Enhanced ultra-small screen centering */
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* ✅ LONG-TERM: Device-specific optimizations */
+@media (max-width: 320px) {
+    /* Ultra-compact devices like iPhone SE */
+    .achievement-filters .filter-btn {
+        font-size: 0.8rem;
+        padding: 0.75rem 0.875rem;
+        max-width: 260px;
+    }
+}
+
+/* ✅ Enhanced accessibility and interaction feedback */
+@media (prefers-reduced-motion: no-preference) {
+    .achievement-filters .filter-btn {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .achievement-filters .filter-btn:hover {
+        transform: translateY(-1px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .achievement-filters .filter-btn {
+        transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+    
+    .achievement-filters .filter-btn:hover,
+    .achievement-filters .filter-btn:active {
+        transform: none;
     }
 }
 

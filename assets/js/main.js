@@ -175,7 +175,53 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth > 768 && mobileNavMenu.classList.contains('active')) {
             closeMobileMenu();
         }
+        
+        // ✅ MEDIUM-TERM: Responsive text optimization for filter buttons
+        optimizeFilterButtonText();
     });
+    
+    // ✅ MEDIUM-TERM: Mobile text optimization for achievement filter buttons
+    const optimizeFilterButtonText = () => {
+        // Only apply on achievements page
+        if (!window.location.pathname.includes('achievements')) return;
+        
+        const filterButtons = document.querySelectorAll('.achievement-filters .filter-btn');
+        const isMobile = window.innerWidth <= 480;
+        
+        filterButtons.forEach(button => {
+            const key = button.dataset.i18nKey;
+            if (!key) return;
+            
+            // Get current language
+            const currentLang = document.documentElement.lang || 'en';
+            
+            // Use mobile-optimized translations for problematic buttons
+            let optimizedKey = key;
+            if (isMobile) {
+                switch (key) {
+                    case 'filter_all_achievements':
+                        optimizedKey = 'filter_all_achievements_mobile';
+                        break;
+                    case 'filter_professional':
+                        optimizedKey = 'filter_professional_mobile';
+                        break;
+                    case 'filter_academic':
+                        optimizedKey = 'filter_academic_mobile';
+                        break;
+                }
+            }
+            
+            // Update button text if translation exists
+            if (window.translations && 
+                window.translations[currentLang] && 
+                window.translations[currentLang][optimizedKey]) {
+                button.textContent = window.translations[currentLang][optimizedKey];
+            }
+        });
+    };
+    
+    // ✅ Initialize mobile text optimization on page load
+    optimizeFilterButtonText();
 
     // --- 4. ACTIVE NAV LINK HIGHLIGHTING ---
     const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
