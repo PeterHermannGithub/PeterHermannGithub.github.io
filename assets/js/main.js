@@ -103,13 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileNavMenu.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Sync mobile controls with desktop
+        // ✅ FIX: Enhanced mobile controls synchronization
         if (mobileThemeToggle && themeToggle) {
             mobileThemeToggle.innerHTML = themeToggle.innerHTML;
-            console.log('📱 Mobile theme toggle synced with desktop');
+            console.log('📱 Mobile theme toggle synced with desktop:', mobileThemeToggle.innerHTML);
         }
         if (mobileLangToggle) {
-            mobileLangToggle.textContent = document.getElementById('lang-toggle').textContent;
+            const langToggle = document.getElementById('lang-toggle');
+            if (langToggle) {
+                mobileLangToggle.textContent = langToggle.textContent;
+                console.log('📱 Mobile lang toggle synced:', mobileLangToggle.textContent);
+            }
         }
     }
     
@@ -138,19 +142,37 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', closeMobileMenu);
     });
     
-    // Mobile theme toggle functionality
+    // ✅ FIX: Enhanced mobile theme toggle functionality
     if (mobileThemeToggle && themeToggle) {
-        mobileThemeToggle.addEventListener('click', () => {
+        mobileThemeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             console.log('📱 Mobile theme toggle clicked!');
+            console.log('📱 Current desktop toggle state:', document.documentElement.classList.contains('dark-mode'));
+            
+            // Trigger desktop theme toggle
             themeToggle.click();
+            
             // Sync the mobile button icon after theme change
             setTimeout(() => {
                 mobileThemeToggle.innerHTML = themeToggle.innerHTML;
-                console.log('📱 Mobile theme icon updated');
-            }, 50);
+                console.log('📱 Mobile theme icon updated to:', mobileThemeToggle.innerHTML);
+                console.log('📱 New theme state:', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+            }, 100);
         });
-    } else if (mobileThemeToggle) {
-        console.warn('⚠️ Mobile theme toggle exists but desktop toggle missing');
+        
+        // Initial sync when mobile menu is available
+        if (themeToggle.innerHTML) {
+            mobileThemeToggle.innerHTML = themeToggle.innerHTML;
+            console.log('📱 Initial mobile theme sync completed');
+        }
+    } else {
+        if (mobileThemeToggle) {
+            console.warn('⚠️ Mobile theme toggle exists but desktop toggle missing');
+        }
+        if (!mobileThemeToggle) {
+            console.log('ℹ️ Mobile theme toggle not found on this page');
+        }
     }
     
     // Mobile language toggle functionality
@@ -805,14 +827,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return score;
     }
 
-    // ✅ FIX: Display search results with mobile support
+    // ✅ FIX: Display search results with mobile support and sidebar detection
     function displaySearchResults(results, query) {
         const currentLang = localStorage.getItem('lang') || 'en';
         const t = window.translations?.[currentLang] || window.translations?.en || {};
         
         // Determine which search results container to use
-        const activeResultsContainer = window.innerWidth <= 768 ? mobileSearchResults : searchResults;
-        const fallbackContainer = window.innerWidth <= 768 ? searchResults : mobileSearchResults;
+        // Check if mobile sidebar is active OR if we're on mobile screen
+        const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
+        const isMobileScreen = window.innerWidth <= 768;
+        const shouldUseMobileResults = isMobileSidebarActive || isMobileScreen;
+        
+        const activeResultsContainer = shouldUseMobileResults ? mobileSearchResults : searchResults;
+        const fallbackContainer = shouldUseMobileResults ? searchResults : mobileSearchResults;
         
         if (!activeResultsContainer && !fallbackContainer) return;
         
@@ -850,12 +877,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hide search results
+    // ✅ FIX: Hide search results from both containers
     function hideSearchResults() {
         if (searchResults) {
             searchResults.classList.remove('show');
-            currentHighlightIndex = -1;
         }
+        if (mobileSearchResults) {
+            mobileSearchResults.classList.remove('show');
+        }
+        currentHighlightIndex = -1;
     }
 
     // Navigate to search result
@@ -877,9 +907,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Handle keyboard navigation in search results
+    // ✅ FIX: Handle keyboard navigation in search results for both containers
     function handleSearchKeyboard(e) {
-        const items = searchResults?.querySelectorAll('.search-result-item');
+        // Check which search results container is currently active
+        const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
+        const isMobileScreen = window.innerWidth <= 768;
+        const shouldUseMobileResults = isMobileSidebarActive || isMobileScreen;
+        
+        const activeContainer = shouldUseMobileResults ? mobileSearchResults : searchResults;
+        const items = activeContainer?.querySelectorAll('.search-result-item');
         if (!items || items.length === 0) return;
         
         switch (e.key) {
@@ -985,22 +1021,34 @@ document.addEventListener('DOMContentLoaded', () => {
         // Build search index
         buildSearchIndex();
         
-        // Hide results when clicking outside
+        // ✅ FIX: Hide results when clicking outside (supports both containers)
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.search-container') && !e.target.closest('.search-results')) {
+            const isSearchRelated = e.target.closest('.search-container') || 
+                                  e.target.closest('.search-results') ||
+                                  e.target.closest('.mobile-search-container') ||
+                                  e.target.closest('.mobile-search-results');
+            
+            if (!isSearchRelated) {
                 hideSearchResults();
             }
         });
         
-        // Global keyboard shortcuts
+        // ✅ FIX: Global keyboard shortcuts with sidebar detection
         document.addEventListener('keydown', (e) => {
             // Ctrl+K or Cmd+K to focus search
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
-                const activeSearch = window.innerWidth <= 768 ? mobileSearchInput : searchInput;
+                
+                // Check if mobile sidebar is active OR if we're on mobile screen
+                const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
+                const isMobileScreen = window.innerWidth <= 768;
+                const shouldUseMobileSearch = isMobileSidebarActive || isMobileScreen;
+                
+                const activeSearch = shouldUseMobileSearch ? mobileSearchInput : searchInput;
                 if (activeSearch) {
                     activeSearch.focus();
                     activeSearch.select();
+                    console.log('🔍 Focused search input:', shouldUseMobileSearch ? 'mobile' : 'desktop');
                 }
             }
         });
