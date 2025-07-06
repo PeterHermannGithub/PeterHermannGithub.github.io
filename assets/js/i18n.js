@@ -165,6 +165,11 @@ const translations = {
         filter_academic: "Academic",
         filter_personal: "Personal",
         filter_professional: "Professional",
+        
+        // ✅ MEDIUM-TERM: Mobile-optimized shorter translations
+        filter_all_achievements_mobile: "All",
+        filter_professional_mobile: "Pro",
+        filter_academic_mobile: "Academic",
         // Athletic Achievements
         achievement_running_title: "Best Running Performance",
         achievement_running_distance: "7.96km Run",
@@ -717,6 +722,11 @@ const translations = {
         filter_academic: "Tanulmányi",
         filter_personal: "Személyes",
         filter_professional: "Szakmai",
+        
+        // ✅ MEDIUM-TERM: Mobile-optimized shorter Hungarian translations
+        filter_all_achievements_mobile: "Összes",
+        filter_professional_mobile: "Szakmai",
+        filter_academic_mobile: "Tanulás",
         // Athletic Achievements
         achievement_running_title: "Legjobb Futási Teljesítmény",
         achievement_running_distance: "7,96km Futás",
@@ -1162,6 +1172,9 @@ if (mobileLangToggle) {
     mobileLangToggle.addEventListener('click', toggleLanguage);
 }
 
+
+// ✅ Make translations globally accessible for mobile optimization
+window.translations = translations;
 
 // Initial language setup
 const initialLang = localStorage.getItem('lang') || (navigator.language.startsWith('hu') ? 'hu' : 'en');

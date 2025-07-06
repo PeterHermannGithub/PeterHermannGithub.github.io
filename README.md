@@ -40,7 +40,7 @@ git push origin main
 
 - **🌍 Bilingual Support**: Complete English/Hungarian translations with automatic language detection
 - **🎨 Dual Themes**: Light/dark mode with system preference detection and manual toggle
-- **📱 Fully Responsive**: Mobile-first design optimized for all devices
+- **📱 Fully Responsive**: Mobile-first design optimized for all devices with intelligent text optimization and ultra-small screen support
 - **🏆 Interactive Achievement Proofs**: Click achievement cards to view verification documents and certificates
 - **🚀 SEO Ready**: Comprehensive meta tags, Open Graph, and JSON-LD structured data
 - **⚡ Performance Optimized**: Minimal dependencies, efficient CSS, smooth animations
@@ -194,7 +194,9 @@ Includes comprehensive SEO optimization:
 ## 🔧 **Development Notes**
 
 - **No build process** - edit files directly and refresh browser
-- **Mobile-first** responsive design with strategic breakpoints
+- **Mobile-first** responsive design with strategic breakpoints (360px, 480px, 768px, 1200px+)
+- **Smart mobile optimization**: Dynamic text shortening and ultra-small screen vertical stacking
+- **Touch-friendly design**: 48px minimum touch targets with interactive feedback
 - **Progressive enhancement** - works without JavaScript
 - **Cross-browser compatible** (Chrome, Firefox, Safari, Edge)
 - **GitHub Pages ready** - automatic deployment on push
