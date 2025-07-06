@@ -210,7 +210,6 @@
                 <div class="project-links">
                     <a href="../code-viewer.html" class="btn btn-primary" data-i18n-key="view_code_viewer_btn">Code Viewer</a>
                     <a href="https://github.com/PeterHermannGithub/anime-recommender" target="_blank" class="btn btn-secondary" data-i18n-key="view_source_code">GitHub Repository</a>
-                    <a href="#demo" class="btn" data-i18n-key="view_demo">Live Demo</a>
                 </div>
             </header>
 
@@ -247,41 +246,59 @@
                 <h2>Technical Evolution Journey</h2>
                 <p>Rapid innovation cycle from June to July 2025, showcasing continuous architectural refinement and performance optimization:</p>
                 
-                <div class="evolution-timeline" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; margin: 2rem 0; position: relative;">
-                    <div class="timeline-item" style="margin-bottom: 1.5rem; padding-left: 2rem; position: relative;">
-                        <div style="position: absolute; left: 0; top: 0.5rem; width: 12px; height: 12px; background: #e74c3c; border-radius: 50%;"></div>
-                        <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">June 18, 2025: Foundation</h4>
-                        <p style="margin: 0; color: var(--text-muted);">Initial Python similarity system - <em>established core architecture</em></p>
+                <div class="evolution-timeline" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; margin: 2rem 0;">
+                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start;">
+                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #e74c3c20; border-radius: 6px;">June 18</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">Foundation</h4>
+                            <p style="margin: 0; color: var(--text-muted);">Initial Python similarity system with Jaccard, cosine, and TF-IDF algorithms</p>
+                        </div>
                     </div>
                     
-                    <div class="timeline-item" style="margin-bottom: 1.5rem; padding-left: 2rem; position: relative;">
-                        <div style="position: absolute; left: 0; top: 0.5rem; width: 12px; height: 12px; background: #f39c12; border-radius: 50%;"></div>
-                        <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">June 21, 2025: Rust Engine Breakthrough</h4>
-                        <p style="margin: 0; color: var(--text-muted);">High-performance Rust module with streaming JSON writer - <em>solved 649M pairs processing challenge</em></p>
+                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
+                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #f39c1220; border-radius: 6px;">June 21</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">Rust Engine Breakthrough</h4>
+                            <p style="margin: 0; color: var(--text-muted);">V2 multifeature algorithm (tag 60%, score 20%, year 15%, type 5%) with streaming JSON writer - solved 649M pairs processing</p>
+                        </div>
                     </div>
                     
-                    <div class="timeline-item" style="margin-bottom: 1.5rem; padding-left: 2rem; position: relative;">
-                        <div style="position: absolute; left: 0; top: 0.5rem; width: 12px; height: 12px; background: #3498db; border-radius: 50%;"></div>
-                        <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">July 3, 2025: ML Transition</h4>
-                        <p style="margin: 0; color: var(--text-muted);">V4 fine-tuned semantic embeddings with performance instrumentation - <em>evolved beyond matrix computations</em></p>
+                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
+                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #3498db20; border-radius: 6px;">June-July</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">V3 Baseline ML</h4>
+                            <p style="margin: 0; color: var(--text-muted);">Semantic embeddings with all-mpnet-base-v2 (768-dim) - foundational ML system serving as fallback</p>
+                        </div>
                     </div>
                     
-                    <div class="timeline-item" style="margin-bottom: 1.5rem; padding-left: 2rem; position: relative;">
-                        <div style="position: absolute; left: 0; top: 0.5rem; width: 12px; height: 12px; background: #27ae60; border-radius: 50%;"></div>
-                        <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">July 5, 2025: Performance Mastery</h4>
-                        <p style="margin: 0; color: var(--text-muted);">V4.5 optimization achieving 18x speed improvement - <em>4,667ms → 264ms response times</em></p>
+                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
+                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #8e44ad20; border-radius: 6px;">July 3</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">V4 Fine-Tuned ML</h4>
+                            <p style="margin: 0; color: var(--text-muted);">Fine-tuned semantic embeddings using V2 similarity matrix as training data - achieved 68.4% test accuracy</p>
+                        </div>
                     </div>
                     
-                    <div class="timeline-item" style="padding-left: 2rem; position: relative;">
-                        <div style="position: absolute; left: 0; top: 0.5rem; width: 12px; height: 12px; background: #9b59b6; border-radius: 50%;"></div>
-                        <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">July 6, 2025: Production Excellence</h4>
-                        <p style="margin: 0; color: var(--text-muted);">V5.0 enterprise deployment + V5.1 optimizations - <em>production-ready with comprehensive monitoring</em></p>
+                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
+                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #27ae6020; border-radius: 6px;">July 5</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">V4.5 Performance Mastery</h4>
+                            <p style="margin: 0; color: var(--text-muted);">Singleton architecture optimization - eliminated factory pattern bug achieving 18x improvement (4,667ms → 264ms)</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
+                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #9b59b620; border-radius: 6px;">July 6</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">V5.0 Production Excellence</h4>
+                            <p style="margin: 0; color: var(--text-muted);">Enterprise deployment with Docker, monitoring, security headers, and comprehensive backup systems</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="evolution-insight" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; padding: 2rem; margin: 2rem 0;">
                     <h3 style="color: white; margin-top: 0;">🦀 → 🧠 Evolution Insight</h3>
-                    <p style="margin-bottom: 0;">The Rust engine phase was crucial for handling large-scale similarity computations, but the system evolved to ML embeddings for superior semantic understanding. This demonstrates architectural adaptability - solving each challenge with the optimal approach rather than being locked into a single technology.</p>
+                    <p style="margin-bottom: 0;">The Rust engine phase was crucial for handling large-scale similarity computations and became the foundation for ML advancement. The V2 similarity matrix (649M pairs) was used to generate 500,000 high-quality training triplets for V4 fine-tuning, creating a "Rosetta Stone" that translated engineered similarities into learned representations. This demonstrates architectural synergy - each phase building upon previous innovations rather than starting from scratch.</p>
                 </div>
             </section>
 
@@ -333,32 +350,32 @@
                     <section class="project-details-section">
                         <h2>Performance Journey: Architectural Evolution</h2>
                         <div class="performance-comparison">
-                            <h4>Development Timeline</h4>
+                            <h4>Response Time Evolution</h4>
                             <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
                                 <tr style="border-bottom: 1px solid var(--border-color);">
                                     <th style="text-align: left; padding: 0.5rem;">Phase</th>
-                                    <th style="text-align: left; padding: 0.5rem;">API Response</th>
-                                    <th style="text-align: left; padding: 0.5rem;">Achievement</th>
+                                    <th style="text-align: left; padding: 0.5rem;">Response Time</th>
+                                    <th style="text-align: left; padding: 0.5rem;">Technical Achievement</th>
                                 </tr>
                                 <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 0.5rem;">Initial Python System</td>
-                                    <td style="padding: 0.5rem;">~5-10 seconds</td>
-                                    <td style="padding: 0.5rem; color: #f39c12;">🟡 Foundation Established</td>
+                                    <td style="padding: 0.5rem;">Python V1 System</td>
+                                    <td style="padding: 0.5rem;">9 seconds</td>
+                                    <td style="padding: 0.5rem; color: #f39c12;">🏗️ Traditional similarity algorithms (Jaccard/cosine/TF-IDF)</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 0.5rem;">Rust Engine Phase</td>
-                                    <td style="padding: 0.5rem;">~1-2 seconds</td>
-                                    <td style="padding: 0.5rem; color: #27ae60;">✅ 649M Pairs Breakthrough</td>
+                                    <td style="padding: 0.5rem;">Rust V2 Engine</td>
+                                    <td style="padding: 0.5rem;"><strong>5.2ms average</strong></td>
+                                    <td style="padding: 0.5rem; color: #27ae60;">🦀 Multifeature algorithm + 649M pairs processing</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 0.5rem;">V4 ML Embeddings</td>
+                                    <td style="padding: 0.5rem;">V4 ML (Factory Bug)</td>
                                     <td style="padding: 0.5rem;">4,667ms</td>
-                                    <td style="padding: 0.5rem; color: #3498db;">🧠 Semantic Understanding</td>
+                                    <td style="padding: 0.5rem; color: #e74c3c;">⚠️ Per-request initialization overhead (140MB embeddings)</td>
                                 </tr>
                                 <tr>
                                     <td style="padding: 0.5rem;"><strong>V4.5 Optimized</strong></td>
-                                    <td style="padding: 0.5rem;"><strong>264ms</strong></td>
-                                    <td style="padding: 0.5rem; color: #27ae60;"><strong>✅ 18x IMPROVEMENT</strong></td>
+                                    <td style="padding: 0.5rem;"><strong>264ms / 4ms cached</strong></td>
+                                    <td style="padding: 0.5rem; color: #27ae60;"><strong>🚀 Singleton architecture + semantic embeddings</strong></td>
                                 </tr>
                             </table>
                         </div>
@@ -410,53 +427,39 @@
                     </section>
                     
                     <section class="project-details-section">
-                        <h2>Code Highlights</h2>
+                        <h2>Algorithm Evolution</h2>
+                        <p>Three distinct algorithmic approaches showcase the system's evolution from traditional NLP to advanced ML:</p>
                         
-                        <h4>V4 Semantic Embeddings (Python)</h4>
-                        <div class="code-highlight">
-# V4: Fine-tuned semantic similarity computation<br>
-@lru_cache(maxsize=1)<br>
-def load_fine_tuned_embeddings():<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"""Load 768-dimensional fine-tuned embeddings (140MB)"""<br>
-&nbsp;&nbsp;&nbsp;&nbsp;return np.load("anime_embeddings_fine_tuned.npy")<br>
-<br>
-async def compute_semantic_similarities(<br>
-&nbsp;&nbsp;&nbsp;&nbsp;input_embeddings: np.ndarray,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;top_k: int = 2000<br>
-) -> List[Tuple[int, float]]:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"""FAISS-powered vector similarity search"""<br>
-&nbsp;&nbsp;&nbsp;&nbsp;embeddings = load_fine_tuned_embeddings()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;# L2 normalize for cosine similarity<br>
-&nbsp;&nbsp;&nbsp;&nbsp;faiss.normalize_L2(input_embeddings)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;faiss.normalize_L2(embeddings)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;# Sub-millisecond vector search<br>
-&nbsp;&nbsp;&nbsp;&nbsp;similarities, indices = index.search(input_embeddings, top_k)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;return list(zip(indices[0], similarities[0]))
+                        <div class="tech-category" style="margin-bottom: 1.5rem;">
+                            <h4>🐍 Python V1: Traditional Similarity</h4>
+                            <ul class="tech-list">
+                                <li><strong>Jaccard Similarity:</strong> |intersection| / |union| for tag sets</li>
+                                <li><strong>Cosine Similarity:</strong> Binary vector approach (tags as 1/0 features)</li>
+                                <li><strong>TF-IDF Weighted:</strong> Term frequency-inverse document frequency</li>
+                                <li><strong>Performance:</strong> 9 seconds for 3,000x3,000 matrix</li>
+                            </ul>
                         </div>
                         
-                        <h4>V4.5 Singleton Architecture (FastAPI)</h4>
-                        <div class="code-highlight">
-# V4.5: Singleton pattern eliminates initialization overhead<br>
-async def create_recommendation_service() -> V4RecommendationService:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"""Initialize service once at startup (13 seconds)"""<br>
-&nbsp;&nbsp;&nbsp;&nbsp;service = V4RecommendationService()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;await service.initialize()  # Load 140MB embeddings<br>
-&nbsp;&nbsp;&nbsp;&nbsp;return service<br>
-<br>
-# Register as singleton instance (not factory)<br>
-recommendation_service = await create_recommendation_service()<br>
-container.register_instance(<br>
-&nbsp;&nbsp;&nbsp;&nbsp;IRecommendationService, recommendation_service<br>
-)<br>
-<br>
-@app.post("/api/recommend")<br>
-async def get_recommendations(<br>
-&nbsp;&nbsp;&nbsp;&nbsp;service: IRecommendationService = Depends(get_recommendation_service)<br>
-) -> RecommendationResponse:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;# Zero initialization overhead: 4,667ms → 264ms<br>
-&nbsp;&nbsp;&nbsp;&nbsp;return await service.get_recommendations(request)
+                        <div class="tech-category" style="margin-bottom: 1.5rem;">
+                            <h4>🦀 Rust V2: Multifeature Engineering</h4>
+                            <ul class="tech-list">
+                                <li><strong>Tag Similarity (60%):</strong> Weighted popularity-adjusted tag matching</li>
+                                <li><strong>Score Proximity (20%):</strong> Normalized MAL score difference</li>
+                                <li><strong>Year Proximity (15%):</strong> Release date similarity with recency bias</li>
+                                <li><strong>Type Similarity (5%):</strong> Content format compatibility (TV/Movie/OVA)</li>
+                                <li><strong>Performance:</strong> 649M pairs in 16 minutes, 5.2ms responses</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-category">
+                            <h4>🧠 ML V3/V4: Semantic Understanding</h4>
+                            <ul class="tech-list">
+                                <li><strong>V3 Baseline:</strong> all-mpnet-base-v2 embeddings (768-dim)</li>
+                                <li><strong>V4 Enhanced:</strong> Fine-tuned on V2 similarity triplets (68.4% accuracy)</li>
+                                <li><strong>Training Data:</strong> 500,000 triplets from V2 matrix "Rosetta Stone"</li>
+                                <li><strong>FAISS Search:</strong> Sub-millisecond vector similarity computation</li>
+                                <li><strong>Performance:</strong> 264ms uncached, 4ms cached responses</li>
+                            </ul>
                         </div>
                     </section>
                     
