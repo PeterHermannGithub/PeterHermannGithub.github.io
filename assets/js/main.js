@@ -540,4 +540,425 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- SEARCH FUNCTIONALITY ---
+    console.log('🔍 Search System: Initializing...');
+    
+    // Search elements
+    const searchInput = document.getElementById('site-search');
+    const mobileSearchInput = document.getElementById('mobile-site-search');
+    const searchResults = document.getElementById('search-results');
+    
+    console.log('🔍 Search Elements:', {
+        desktop: searchInput ? 'Found ✅' : 'Missing ❌',
+        mobile: mobileSearchInput ? 'Found ✅' : 'Missing ❌',
+        results: searchResults ? 'Found ✅' : 'Missing ❌'
+    });
+
+    // Search index and configuration
+    let searchIndex = [];
+    let isIndexBuilding = false;
+    let searchTimeout = null;
+    let currentHighlightIndex = -1;
+
+    // Smart keyword mappings with i18n support
+    function getKeywordMappings() {
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const t = window.translations?.[currentLang] || window.translations?.en || {};
+        
+        return {
+            'cv': { page: 'about.html', section: '', description: t.search_keyword_cv || 'Download CV' },
+            'curriculum': { page: 'about.html', section: '', description: t.search_keyword_cv || 'Download CV' },
+            'resume': { page: 'about.html', section: '', description: t.search_keyword_cv || 'Download CV' },
+            'önéletrajz': { page: 'about.html', section: '', description: t.search_keyword_cv || 'Önéletrajz letöltése' },
+            'projects': { page: 'projects.html', section: '', description: t.search_keyword_projects || 'View all projects' },
+            'projektek': { page: 'projects.html', section: '', description: t.search_keyword_projects || 'Összes projekt megtekintése' },
+            'portfolio': { page: 'projects.html', section: '', description: t.search_keyword_portfolio || 'View portfolio projects' },
+            'portfólió': { page: 'projects.html', section: '', description: t.search_keyword_portfolio || 'Portfólió projektek megtekintése' },
+            'achievements': { page: 'achievements.html', section: '', description: t.search_keyword_achievements || 'View achievements' },
+            'eredmények': { page: 'achievements.html', section: '', description: t.search_keyword_achievements || 'Eredmények megtekintése' },
+            'about': { page: 'about.html', section: '', description: t.search_keyword_about || 'About me' },
+            'rólam': { page: 'about.html', section: '', description: t.search_keyword_about || 'Rólam' },
+            'skills': { page: 'about.html', section: '', description: t.search_keyword_skills || 'Technical skills' },
+            'készségek': { page: 'about.html', section: '', description: t.search_keyword_skills || 'Technikai készségek' },
+            'experience': { page: 'about.html', section: '', description: t.search_keyword_experience || 'Work experience' },
+            'tapasztalat': { page: 'about.html', section: '', description: t.search_keyword_experience || 'Munkatapasztalat' },
+            'education': { page: 'about.html', section: '', description: t.search_keyword_education || 'Educational background' },
+            'tanulmányok': { page: 'about.html', section: '', description: t.search_keyword_education || 'Tanulmányi háttér' },
+            'anime': { page: 'projects/anime-recommender.html', section: '', description: t.search_keyword_anime || 'Anime Recommendation Engine' },
+            'rust': { page: 'projects/anime-recommender.html', section: '', description: t.search_keyword_rust || 'Rust optimization engine' },
+            'android': { page: 'projects/notify-me.html', section: '', description: t.search_keyword_android || 'Android notification app' },
+            'chrome': { page: 'projects/tab-timer.html', section: '', description: t.search_keyword_chrome || 'Chrome extension' },
+            'home': { page: 'index.html', section: '', description: t.search_keyword_home || 'Homepage' },
+            'kezdőlap': { page: 'index.html', section: '', description: t.search_keyword_home || 'Kezdőlap' }
+        };
+    }
+
+    // Build search index from all pages
+    async function buildSearchIndex() {
+        if (isIndexBuilding) return;
+        isIndexBuilding = true;
+        
+        console.log('🏗️ Building search index...');
+        
+        const pages = [
+            { url: 'index.html', title: 'Home' },
+            { url: 'about.html', title: 'About' },
+            { url: 'projects.html', title: 'Projects' },
+            { url: 'achievements.html', title: 'Achievements' },
+            { url: 'code-viewer.html', title: 'Code Viewer' },
+            { url: 'projects/anime-recommender.html', title: 'Anime Recommender' },
+            { url: 'projects/notify-me.html', title: 'Notify Me App' },
+            { url: 'projects/tab-timer.html', title: 'Tab Timer Extension' },
+            { url: 'projects/audiobook-converter.html', title: 'Audiobook Converter' },
+            { url: 'projects/history-automation.html', title: 'History Automation' }
+        ];
+
+        try {
+            for (const page of pages) {
+                try {
+                    const response = await fetch(page.url);
+                    if (response.ok) {
+                        const html = await response.text();
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        
+                        // Extract searchable content
+                        const content = extractSearchableContent(doc);
+                        
+                        // Add to search index
+                        searchIndex.push({
+                            url: page.url,
+                            title: page.title,
+                            content: content,
+                            searchText: (page.title + ' ' + content).toLowerCase()
+                        });
+                        
+                        console.log(`📄 Indexed: ${page.title} (${content.length} chars)`);
+                    }
+                } catch (error) {
+                    console.warn(`⚠️ Failed to index ${page.url}:`, error);
+                }
+            }
+            
+            console.log(`✅ Search index built: ${searchIndex.length} pages indexed`);
+            isIndexBuilding = false;
+            
+        } catch (error) {
+            console.error('❌ Error building search index:', error);
+            isIndexBuilding = false;
+        }
+    }
+
+    // Extract searchable text content from page
+    function extractSearchableContent(doc) {
+        // Remove script and style elements
+        const scripts = doc.querySelectorAll('script, style, nav, header, footer');
+        scripts.forEach(el => el.remove());
+        
+        // Get main content
+        const main = doc.querySelector('main') || doc.body;
+        
+        // Extract text content and clean it up
+        let content = main.textContent || main.innerText || '';
+        
+        // Clean up whitespace and special characters
+        content = content
+            .replace(/\s+/g, ' ')  // Multiple spaces to single space
+            .replace(/\n+/g, ' ')  // Newlines to spaces
+            .trim();
+            
+        return content;
+    }
+
+    // Perform search and return results
+    function performSearch(query) {
+        if (!query || query.length < 2) return [];
+        
+        const queryLower = query.toLowerCase();
+        const results = [];
+        const keywordMappings = getKeywordMappings();
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const t = window.translations?.[currentLang] || window.translations?.en || {};
+        
+        // Check keyword mappings first
+        if (keywordMappings[queryLower]) {
+            const mapping = keywordMappings[queryLower];
+            results.push({
+                type: 'keyword',
+                title: mapping.description,
+                page: mapping.page.replace('.html', '').replace('projects/', '').replace('index', currentLang === 'hu' ? 'Kezdőlap' : 'Home'),
+                url: mapping.page,
+                snippet: `${t.search_quick_access || 'Quick access'} ${mapping.description.toLowerCase()}`,
+                relevance: 100
+            });
+        }
+        
+        // Search through indexed content
+        searchIndex.forEach(item => {
+            const titleMatch = item.title.toLowerCase().includes(queryLower);
+            const contentMatch = item.searchText.includes(queryLower);
+            
+            if (titleMatch || contentMatch) {
+                const snippet = createSnippet(item.content, query);
+                const relevance = calculateRelevance(item, queryLower, titleMatch, contentMatch);
+                
+                results.push({
+                    type: 'content',
+                    title: item.title,
+                    page: item.title,
+                    url: item.url,
+                    snippet: snippet,
+                    relevance: relevance
+                });
+            }
+        });
+        
+        // Sort by relevance
+        return results.sort((a, b) => b.relevance - a.relevance).slice(0, 8);
+    }
+
+    // Create snippet with highlighted search terms
+    function createSnippet(content, query, maxLength = 150) {
+        const queryLower = query.toLowerCase();
+        const contentLower = content.toLowerCase();
+        const index = contentLower.indexOf(queryLower);
+        
+        if (index === -1) {
+            return content.substring(0, maxLength) + (content.length > maxLength ? '...' : '');
+        }
+        
+        const start = Math.max(0, index - 60);
+        const end = Math.min(content.length, start + maxLength);
+        
+        let snippet = content.substring(start, end);
+        if (start > 0) snippet = '...' + snippet;
+        if (end < content.length) snippet = snippet + '...';
+        
+        // Highlight search term
+        const regex = new RegExp(`(${query})`, 'gi');
+        snippet = snippet.replace(regex, '<span class="search-highlight">$1</span>');
+        
+        return snippet;
+    }
+
+    // Calculate search relevance score
+    function calculateRelevance(item, query, titleMatch, contentMatch) {
+        let score = 0;
+        
+        if (titleMatch) score += 50;
+        if (contentMatch) score += 20;
+        
+        // Boost score for exact matches
+        if (item.title.toLowerCase() === query) score += 30;
+        
+        // Boost score for matches at the beginning
+        if (item.title.toLowerCase().startsWith(query)) score += 20;
+        
+        return score;
+    }
+
+    // Display search results
+    function displaySearchResults(results, query) {
+        if (!searchResults) return;
+        
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const t = window.translations?.[currentLang] || window.translations?.en || {};
+        
+        if (results.length === 0) {
+            searchResults.innerHTML = `
+                <div class="search-no-results">
+                    ${t.search_no_results || 'No results found'} "${query}"
+                </div>
+            `;
+            searchResults.classList.add('show');
+            return;
+        }
+        
+        const resultsHTML = results.map((result, index) => `
+            <div class="search-result-item" data-url="${result.url}" data-index="${index}">
+                <div class="search-result-title">${result.title}</div>
+                <div class="search-result-page">${result.page}</div>
+                <div class="search-result-snippet">${result.snippet}</div>
+            </div>
+        `).join('');
+        
+        searchResults.innerHTML = resultsHTML;
+        searchResults.classList.add('show');
+        currentHighlightIndex = -1;
+        
+        // Add click listeners to results
+        searchResults.querySelectorAll('.search-result-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const url = item.dataset.url;
+                navigateToResult(url);
+            });
+        });
+    }
+
+    // Hide search results
+    function hideSearchResults() {
+        if (searchResults) {
+            searchResults.classList.remove('show');
+            currentHighlightIndex = -1;
+        }
+    }
+
+    // Navigate to search result
+    function navigateToResult(url) {
+        hideSearchResults();
+        
+        // Clear search inputs
+        if (searchInput) searchInput.value = '';
+        if (mobileSearchInput) mobileSearchInput.value = '';
+        
+        // Navigate to URL
+        if (url === window.location.pathname.split('/').pop() || 
+           (url === 'index.html' && window.location.pathname.endsWith('/'))) {
+            // Same page, just scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            // Different page, navigate
+            window.location.href = url;
+        }
+    }
+
+    // Handle keyboard navigation in search results
+    function handleSearchKeyboard(e) {
+        const items = searchResults?.querySelectorAll('.search-result-item');
+        if (!items || items.length === 0) return;
+        
+        switch (e.key) {
+            case 'ArrowDown':
+                e.preventDefault();
+                currentHighlightIndex = Math.min(currentHighlightIndex + 1, items.length - 1);
+                updateHighlight(items);
+                break;
+            case 'ArrowUp':
+                e.preventDefault();
+                currentHighlightIndex = Math.max(currentHighlightIndex - 1, -1);
+                updateHighlight(items);
+                break;
+            case 'Enter':
+                e.preventDefault();
+                if (currentHighlightIndex >= 0 && items[currentHighlightIndex]) {
+                    const url = items[currentHighlightIndex].dataset.url;
+                    navigateToResult(url);
+                }
+                break;
+            case 'Escape':
+                hideSearchResults();
+                if (searchInput) searchInput.blur();
+                if (mobileSearchInput) mobileSearchInput.blur();
+                break;
+        }
+    }
+
+    // Update result highlighting
+    function updateHighlight(items) {
+        items.forEach((item, index) => {
+            item.classList.toggle('highlighted', index === currentHighlightIndex);
+        });
+    }
+
+    // Setup search input handlers
+    function setupSearchInput(input) {
+        if (!input) return;
+        
+        console.log(`🔍 Setting up search input: ${input.id}`);
+        
+        // Search on input
+        input.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            
+            // Clear previous timeout
+            if (searchTimeout) {
+                clearTimeout(searchTimeout);
+            }
+            
+            // Debounce search
+            searchTimeout = setTimeout(() => {
+                if (query.length >= 2) {
+                    const results = performSearch(query);
+                    displaySearchResults(results, query);
+                } else {
+                    hideSearchResults();
+                }
+            }, 300);
+        });
+        
+        // Keyboard navigation
+        input.addEventListener('keydown', handleSearchKeyboard);
+        
+        // Hide results when input loses focus (with delay)
+        input.addEventListener('blur', () => {
+            setTimeout(() => {
+                if (!searchResults?.matches(':hover')) {
+                    hideSearchResults();
+                }
+            }, 150);
+        });
+        
+        // Show results when input gains focus (if has value)
+        input.addEventListener('focus', () => {
+            const query = input.value.trim();
+            if (query.length >= 2) {
+                const results = performSearch(query);
+                displaySearchResults(results, query);
+            }
+        });
+    }
+
+    // Initialize search system
+    function initializeSearch() {
+        console.log('🚀 Initializing search system...');
+        
+        // Setup search inputs
+        setupSearchInput(searchInput);
+        setupSearchInput(mobileSearchInput);
+        
+        // Sync mobile and desktop search
+        if (searchInput && mobileSearchInput) {
+            searchInput.addEventListener('input', (e) => {
+                mobileSearchInput.value = e.target.value;
+            });
+            
+            mobileSearchInput.addEventListener('input', (e) => {
+                searchInput.value = e.target.value;
+            });
+        }
+        
+        // Build search index
+        buildSearchIndex();
+        
+        // Hide results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container') && !e.target.closest('.search-results')) {
+                hideSearchResults();
+            }
+        });
+        
+        // Global keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+K or Cmd+K to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const activeSearch = window.innerWidth <= 768 ? mobileSearchInput : searchInput;
+                if (activeSearch) {
+                    activeSearch.focus();
+                    activeSearch.select();
+                }
+            }
+        });
+        
+        console.log('✅ Search system initialized!');
+        console.log('💡 Tip: Press Ctrl+K to focus search');
+    }
+
+    // Initialize search if elements exist
+    if (searchInput || mobileSearchInput) {
+        initializeSearch();
+    } else {
+        console.log('ℹ️ Search elements not found on this page');
+    }
+
 });

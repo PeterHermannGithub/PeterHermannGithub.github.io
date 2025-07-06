@@ -29,6 +29,23 @@ const translations = {
         // Footer
         contact_title: "Let's Connect",
         contact_text: "Find me on social media or send me an email.",
+        // Search
+        search_placeholder: "Search...",
+        search_no_results: "No results found",
+        search_quick_access: "Quick access",
+        search_keyword_cv: "Download CV",
+        search_keyword_projects: "View all projects", 
+        search_keyword_portfolio: "View portfolio projects",
+        search_keyword_achievements: "View achievements",
+        search_keyword_about: "About me",
+        search_keyword_skills: "Technical skills",
+        search_keyword_experience: "Work experience",
+        search_keyword_education: "Educational background",
+        search_keyword_anime: "Anime Recommendation Engine",
+        search_keyword_rust: "Rust optimization engine",
+        search_keyword_android: "Android notification app",
+        search_keyword_chrome: "Chrome extension",
+        search_keyword_home: "Homepage",
         // Projects Page
         meta_title_projects: "Projects - Peter Pal Hermann",
         meta_description_projects: "Explore my portfolio of projects including web development, data science, and automation solutions.",
@@ -564,6 +581,23 @@ const translations = {
         // Footer
         contact_title: "Kapcsolat",
         contact_text: "Keress meg a közösségi médiában vagy küldj egy e-mailt.",
+        // Search
+        search_placeholder: "Keresés...",
+        search_no_results: "Nincs találat",
+        search_quick_access: "Gyors hozzáférés",
+        search_keyword_cv: "Önéletrajz letöltése",
+        search_keyword_projects: "Összes projekt megtekintése", 
+        search_keyword_portfolio: "Portfólió projektek megtekintése",
+        search_keyword_achievements: "Eredmények megtekintése",
+        search_keyword_about: "Rólam",
+        search_keyword_skills: "Technikai készségek",
+        search_keyword_experience: "Munkatapasztalat",
+        search_keyword_education: "Tanulmányi háttér",
+        search_keyword_anime: "Anime Ajánlómotor",
+        search_keyword_rust: "Rust optimalizálási motor",
+        search_keyword_android: "Android értesítő alkalmazás",
+        search_keyword_chrome: "Chrome bővítmény",
+        search_keyword_home: "Kezdőlap",
         // Projects Page
         meta_title_projects: "Projektek - Hermann Péter Pál",
         meta_description_projects: "Fedezd fel a projekt portfóliómat, amely webfejlesztést, adattudományt és automatizálási megoldásokat tartalmaz.",
@@ -1071,10 +1105,19 @@ const translations = {
     }
 };
 
+// Expose translations to global scope for search system
+window.translations = translations;
+
 const setLanguage = (lang) => {
     document.documentElement.lang = lang;
     localStorage.setItem('lang', lang);
-    document.getElementById('lang-toggle').textContent = lang.toUpperCase();
+    
+    // Update both desktop and mobile language toggles
+    const langToggle = document.getElementById('lang-toggle');
+    const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+    
+    if (langToggle) langToggle.textContent = lang.toUpperCase();
+    if (mobileLangToggle) mobileLangToggle.textContent = lang.toUpperCase();
 
     document.querySelectorAll('[data-i18n-key]').forEach(element => {
         const key = element.getAttribute('data-i18n-key');
@@ -1086,16 +1129,37 @@ const setLanguage = (lang) => {
             }
         }
     });
+
+    // Handle placeholder translations
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            element.setAttribute('placeholder', translations[lang][key]);
+        }
+    });
 };
 
 const languageToggle = document.getElementById('lang-toggle');
+const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+
+// Helper function to toggle language
+const toggleLanguage = () => {
+    const currentLang = localStorage.getItem('lang') || 'en';
+    const newLang = currentLang === 'en' ? 'hu' : 'en';
+    setLanguage(newLang);
+    
+    // Update mobile toggle text if it exists
+    if (mobileLangToggle) {
+        mobileLangToggle.textContent = newLang.toUpperCase();
+    }
+};
 
 if (languageToggle) {
-    languageToggle.addEventListener('click', () => {
-        const currentLang = localStorage.getItem('lang') || 'en';
-        const newLang = currentLang === 'en' ? 'hu' : 'en';
-        setLanguage(newLang);
-    });
+    languageToggle.addEventListener('click', toggleLanguage);
+}
+
+if (mobileLangToggle) {
+    mobileLangToggle.addEventListener('click', toggleLanguage);
 }
 
 
