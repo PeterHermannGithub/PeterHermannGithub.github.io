@@ -602,6 +602,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ============================================
+    // CV Download Bilingual System
+    // ============================================
+
+    function updateCVButton() {
+        const cvButton = document.getElementById('cv-download-btn');
+        if (!cvButton || cvButton.getAttribute('data-cv-bilingual') !== 'true') {
+            return;
+        }
+
+        // Get current language
+        const currentLang = localStorage.getItem('lang') || 'en';
+        
+        // Get the base href path
+        const baseHref = cvButton.getAttribute('href');
+        
+        // Create language-specific path
+        // Convert "assets/cv/filename.pdf" to "assets/cv/filename_en.pdf" or "assets/cv/filename_hu.pdf"
+        const baseName = baseHref.replace(/\.pdf$/i, '');
+        const languageSpecificHref = `${baseName}_${currentLang}.pdf`;
+        
+        // Update the button href
+        cvButton.setAttribute('href', languageSpecificHref);
+        
+        console.log(`📄 CV button updated for language: ${currentLang}`);
+        console.log(`📄 New CV path: ${languageSpecificHref}`);
+    }
+
+    // Initialize CV button on page load
+    updateCVButton();
+    
+    // Make updateCVButton available globally for i18n.js to call
+    window.updateCVButton = updateCVButton;
+
     // --- SEARCH FUNCTIONALITY ---
     console.log('🔍 Search System: Initializing...');
     

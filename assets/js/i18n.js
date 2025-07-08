@@ -1147,6 +1147,11 @@ const setLanguage = (lang) => {
             element.setAttribute('placeholder', translations[lang][key]);
         }
     });
+    
+    // Update CV button for bilingual downloads
+    if (typeof window.updateCVButton === 'function') {
+        window.updateCVButton();
+    }
 };
 
 // ✅ FIX: Single global variable declarations to avoid conflicts
