@@ -24,7 +24,7 @@ const translations = {
         // Featured Project
         featured_title: "Featured Project",
         featured_project_title: "Production-Scale Anime Recommendation Engine",
-        featured_project_desc: "Breakthrough Pure Rust engine processing 649M similarity pairs across 37k anime with streaming JSON architecture. Achieved 36x performance improvement over Python with production-grade FastAPI backend.",
+        featured_project_desc: "Breakthrough Pure Rust engine processing 649M similarity pairs across 37k anime with streaming JSON architecture. Achieved 36x performance improvement over Python with FastAPI backend.",
         view_project_btn: "View Project",
         // Footer
         contact_title: "Let's Connect",
@@ -140,7 +140,7 @@ const translations = {
         about_stat_domains: "Domains",
         // Experience Highlights Translations
         about_rust_breakthrough_title: "🦀 Pure Rust Engine Breakthrough",
-        about_rust_breakthrough_desc: "Developed production-scale similarity engine processing 649M pairs in 16 minutes - 36x faster than Python implementation",
+        about_rust_breakthrough_desc: "Developed similarity engine processing 649M pairs in 16 minutes - 36x faster than Python implementation",
         about_best_employee_title: "🏆 Best Employee Award",
         about_best_employee_desc: "Risk Management Division, Fundamenta Housing Savings Bank - recognized for outstanding performance in risk modeling",
         about_morgan_experience_title: "🏛️ Morgan Stanley Experience",
@@ -517,10 +517,10 @@ const translations = {
         stats_languages_optimized: "Languages Optimized",
         // Code Viewer
         code_viewer_title: "Code Viewer - Anime Recommender | Peter Pal Hermann",
-        code_viewer_description: "Interactive VS Code-style viewer showcasing production-scale Python code from the anime recommendation system.",
+        code_viewer_description: "Interactive VS Code-style viewer showcasing Python code from the anime recommendation system.",
         code_viewer_breadcrumb: "Code Viewer",
         code_viewer_heading: "Code Viewer: Anime Recommender",
-        code_viewer_subtitle: "Interactive VS Code-style interface showcasing production-scale Python development patterns and machine learning implementation.",
+        code_viewer_subtitle: "Interactive VS Code-style interface showcasing Python development patterns and machine learning implementation.",
         code_viewer_loading: "Loading code viewer...",
         code_viewer_explorer: "EXPLORER",
         code_viewer_welcome_title: "Welcome to Code Viewer",
