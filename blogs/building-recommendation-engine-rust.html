@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="blog_rust_engine_meta_title">Building a Production-Scale Recommendation Engine with Rust - Peter Pal Hermann</title>
+    <meta name="description" content="Learn about building a high-performance anime recommendation engine that processes 649M similarity pairs using Rust, streaming JSON architecture, and production-grade optimization techniques." data-i18n-key="blog_rust_engine_meta_desc">
+    <meta name="keywords" content="rust, recommendation engine, performance optimization, production scale, architecture, data science, machine learning">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/blogs/building-recommendation-engine-rust.html">
+    <meta property="og:title" content="Building a Production-Scale Recommendation Engine with Rust">
+    <meta property="og:description" content="Learn about building a high-performance anime recommendation engine that processes 649M similarity pairs.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/project-anime-recommender.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/blogs/building-recommendation-engine-rust.html">
+    <meta property="twitter:title" content="Building a Production-Scale Recommendation Engine with Rust">
+    <meta property="twitter:description" content="Learn about building a high-performance anime recommendation engine that processes 649M similarity pairs.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/project-anime-recommender.png">
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+
+    <!-- Critical: Prevent theme flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') ||
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <style>
+        .blog-article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .blog-header {
+            margin-bottom: 2rem;
+        }
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .blog-date {
+            color: var(--text-muted-color);
+            font-size: 0.9rem;
+        }
+        .blog-category {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .blog-content {
+            line-height: 1.8;
+        }
+        .blog-content h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        .blog-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        .blog-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        .blog-content code {
+            background: var(--bg-secondary-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .code-block {
+            background: var(--bg-secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: var(--bg-secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted-color);
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <nav class="container">
+            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <ul class="nav-links">
+                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
+                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+                <li><a href="../blogs.html" data-i18n-key="nav_blogs">Blogs</a></li>
+            </ul>
+            <div class="nav-controls">
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
+                    <div class="search-results" id="search-results" aria-live="polite">
+                        <!-- Search results will be populated here -->
+                    </div>
+                </div>
+                <button id="theme-toggle" aria-label="Toggle theme"></button>
+                <button id="lang-toggle" aria-label="Toggle language">EN</button>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+        <div class="mobile-nav-header">
+            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close mobile menu">×</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
+            <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
+            <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
+            <li><a href="../blogs.html" data-i18n-key="nav_blogs">Blogs</a></li>
+        </ul>
+        <div class="mobile-nav-controls">
+            <!-- Mobile Search -->
+            <div class="mobile-search-container">
+                <input type="text" id="mobile-site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
+                <div class="search-results mobile-search-results" id="mobile-search-results" aria-live="polite">
+                    <!-- Mobile search results will be populated here -->
+                </div>
+            </div>
+            <div>
+                <button id="mobile-theme-toggle" aria-label="Toggle theme">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button id="mobile-lang-toggle" aria-label="Toggle language">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <article class="blog-article container">
+            <a href="../blogs.html" class="back-link" data-i18n-key="back_to_blogs">← Back to Blogs</a>
+
+            <div class="blog-header">
+                <div class="blog-meta">
+                    <span class="blog-date">October 31, 2025</span>
+                    <span class="blog-category" data-i18n-key="blog_category_data_science">Data Science</span>
+                </div>
+                <h1 data-i18n-key="blog_rust_engine_title">Building a Production-Scale Recommendation Engine with Rust</h1>
+            </div>
+
+            <div class="blog-content">
+                <p data-i18n-key="blog_rust_engine_intro">
+                    Building a recommendation engine that can handle millions of similarity comparisons while maintaining sub-100ms response times is no small feat. In this article, I'll share my journey of creating a production-scale anime recommendation engine using Rust, and the architectural decisions that made it possible.
+                </p>
+
+                <h2 data-i18n-key="blog_rust_engine_challenge">The Challenge</h2>
+                <p data-i18n-key="blog_rust_engine_challenge_desc">
+                    When I set out to build this system, I faced several key requirements:
+                </p>
+                <ul>
+                    <li data-i18n-key="blog_rust_engine_req1">Process 649 million similarity pairs across 37,000 anime titles</li>
+                    <li data-i18n-key="blog_rust_engine_req2">Maintain response times under 100 milliseconds</li>
+                    <li data-i18n-key="blog_rust_engine_req3">Handle concurrent requests efficiently</li>
+                    <li data-i18n-key="blog_rust_engine_req4">Keep memory usage reasonable despite the large dataset</li>
+                </ul>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">649M</span>
+                        <span class="stat-label" data-i18n-key="blog_stat_pairs">Similarity Pairs</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">37K</span>
+                        <span class="stat-label" data-i18n-key="blog_stat_anime">Anime Titles</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">&lt;100ms</span>
+                        <span class="stat-label" data-i18n-key="blog_stat_response">Response Time</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">18x</span>
+                        <span class="stat-label" data-i18n-key="blog_stat_improvement">Performance Gain</span>
+                    </div>
+                </div>
+
+                <h2 data-i18n-key="blog_rust_engine_why_rust">Why Rust?</h2>
+                <p data-i18n-key="blog_rust_engine_why_rust_desc">
+                    Rust was the natural choice for this project for several reasons:
+                </p>
+                <ul>
+                    <li data-i18n-key="blog_rust_reason1"><strong>Zero-cost abstractions:</strong> High-level code without runtime overhead</li>
+                    <li data-i18n-key="blog_rust_reason2"><strong>Memory safety:</strong> No null pointer exceptions or data races</li>
+                    <li data-i18n-key="blog_rust_reason3"><strong>Performance:</strong> Comparable to C/C++ with better safety guarantees</li>
+                    <li data-i18n-key="blog_rust_reason4"><strong>Concurrency:</strong> Fearless concurrency with compile-time guarantees</li>
+                </ul>
+
+                <h2 data-i18n-key="blog_rust_engine_architecture">Architecture Overview</h2>
+                <p data-i18n-key="blog_rust_engine_architecture_desc">
+                    The system follows a microservices architecture with three main components:
+                </p>
+
+                <div class="code-block">
+                    <pre>┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+│   React     │────▶│   FastAPI    │────▶│   Rust      │
+│  Frontend   │     │   Backend    │     │   Engine    │
+└─────────────┘     └──────────────┘     └─────────────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │    Redis     │
+                    │    Cache     │
+                    └──────────────┘</pre>
+                </div>
+
+                <h3 data-i18n-key="blog_rust_engine_streaming">Streaming JSON Architecture</h3>
+                <p data-i18n-key="blog_rust_engine_streaming_desc">
+                    One of the key innovations was implementing a streaming JSON parser. Instead of loading the entire 649M similarity pairs into memory, the Rust engine streams data directly from disk, processing only what's needed for each request.
+                </p>
+
+                <div class="highlight-box">
+                    <p data-i18n-key="blog_rust_engine_highlight">
+                        <strong>Key Insight:</strong> By using streaming JSON parsing, we reduced memory usage from over 12GB to less than 500MB while maintaining sub-100ms response times.
+                    </p>
+                </div>
+
+                <h2 data-i18n-key="blog_rust_engine_optimization">Optimization Techniques</h2>
+                <p data-i18n-key="blog_rust_engine_optimization_desc">
+                    Several optimization techniques contributed to the final performance:
+                </p>
+
+                <h3 data-i18n-key="blog_rust_engine_opt1">1. Memory-Mapped Files</h3>
+                <p data-i18n-key="blog_rust_engine_opt1_desc">
+                    Using memory-mapped files allowed the OS to handle caching efficiently, reducing I/O overhead.
+                </p>
+
+                <h3 data-i18n-key="blog_rust_engine_opt2">2. Redis Caching</h3>
+                <p data-i18n-key="blog_rust_engine_opt2_desc">
+                    Popular recommendations are cached in Redis, providing instant responses for frequently requested anime.
+                </p>
+
+                <h3 data-i18n-key="blog_rust_engine_opt3">3. Parallel Processing</h3>
+                <p data-i18n-key="blog_rust_engine_opt3_desc">
+                    Rust's <code>rayon</code> library enables parallel processing of similarity calculations without the complexity of manual thread management.
+                </p>
+
+                <h2 data-i18n-key="blog_rust_engine_lessons">Lessons Learned</h2>
+                <p data-i18n-key="blog_rust_engine_lessons_desc">
+                    Building this system taught me several valuable lessons:
+                </p>
+                <ul>
+                    <li data-i18n-key="blog_lesson1"><strong>Profile first, optimize later:</strong> Many assumptions about bottlenecks were wrong</li>
+                    <li data-i18n-key="blog_lesson2"><strong>Architecture matters:</strong> The streaming approach was more impactful than micro-optimizations</li>
+                    <li data-i18n-key="blog_lesson3"><strong>Rust's learning curve pays off:</strong> Initial development was slower, but maintenance is easier</li>
+                    <li data-i18n-key="blog_lesson4"><strong>Real-world testing is essential:</strong> Synthetic benchmarks don't capture all edge cases</li>
+                </ul>
+
+                <h2 data-i18n-key="blog_rust_engine_conclusion">Conclusion</h2>
+                <p data-i18n-key="blog_rust_engine_conclusion_desc">
+                    Building a production-scale recommendation engine with Rust demonstrated that performance and developer experience don't have to be mutually exclusive. By choosing the right architecture and leveraging Rust's strengths, we achieved an 18x performance improvement while maintaining code quality and safety.
+                </p>
+
+                <p data-i18n-key="blog_rust_engine_cta">
+                    If you're interested in the technical details or want to see the code, check out the <a href="../projects/anime-recommender.html">full project page</a> or visit the <a href="https://github.com/PeterHermannGithub/anime-recommender" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
+                </p>
+            </div>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../blogs.html" class="btn btn-primary" data-i18n-key="back_to_all_blogs">← Back to All Blogs</a>
+            </div>
+        </article>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 data-i18n-key="contact_title">Let's Connect</h2>
+            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
+            <div class="social-links">
+                <a href="https://github.com/PeterHermannGithub" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="../assets/icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="../assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="../assets/icons/mail.svg" alt="Email"></a>
+            </div>
+            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/i18n.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+</body>
+</html>
