@@ -687,7 +687,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'android': { page: 'projects/notify-me.html', section: '', description: t.search_keyword_android || 'Android notification app' },
             'chrome': { page: 'projects/tab-timer.html', section: '', description: t.search_keyword_chrome || 'Chrome extension' },
             'home': { page: 'index.html', section: '', description: t.search_keyword_home || 'Homepage' },
-            'kezdőlap': { page: 'index.html', section: '', description: t.search_keyword_home || 'Kezdőlap' }
+            'kezdőlap': { page: 'index.html', section: '', description: t.search_keyword_home || 'Kezdőlap' },
+            'blogs': { page: 'blogs.html', section: '', description: 'View all blog articles' },
+            'blogok': { page: 'blogs.html', section: '', description: 'Összes blog cikk megtekintése' },
+            'articles': { page: 'blogs.html', section: '', description: 'Blog articles and insights' },
+            'cikkek': { page: 'blogs.html', section: '', description: 'Blog cikkek és betekintések' }
         };
     }
 
@@ -703,12 +707,14 @@ document.addEventListener('DOMContentLoaded', () => {
             { url: 'about.html', title: 'About' },
             { url: 'projects.html', title: 'Projects' },
             { url: 'achievements.html', title: 'Achievements' },
+            { url: 'blogs.html', title: 'Blogs' },
             { url: 'code-viewer.html', title: 'Code Viewer' },
             { url: 'projects/anime-recommender.html', title: 'Anime Recommender' },
             { url: 'projects/notify-me.html', title: 'Notify Me App' },
             { url: 'projects/tab-timer.html', title: 'Tab Timer Extension' },
             { url: 'projects/audiobook-converter.html', title: 'Audiobook Converter' },
-            { url: 'projects/history-automation.html', title: 'History Automation' }
+            { url: 'projects/history-automation.html', title: 'History Automation' },
+            { url: 'blogs/building-recommendation-engine-rust.html', title: 'Building a Production-Scale Recommendation Engine with Rust' }
         ];
 
         try {
