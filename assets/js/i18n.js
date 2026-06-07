@@ -12,7 +12,7 @@ const translations = {
         // Hero Section
         home_greeting: "Hello, I'm Peter Pal Hermann.",
         home_headline: "I build things that <em>think</em>.",
-        home_intro: "Recommender systems, a Slay-the-Spire AI, and the full-stack apps that ship them. I care about models that work in production — fast, measured, and honest about their numbers.",
+        home_intro: "Recommender systems, a Slay-the-Spire AI, and the full-stack apps that ship them. I care about building models that are clear, measured, and honest about what they do.",
         home_work_btn: "See the work",
         home_contact_btn: "Get in touch",
         // Stat strip
@@ -34,7 +34,7 @@ const translations = {
         // Featured Project
         featured_title: "Featured",
         featured_project_title: "Anime Recommendation Engine",
-        featured_project_desc: "A Go backend serving multi-signal recommendations over 28k+ anime in ~58 MB of memory and 60 ms per query — a 95% memory cut over the Python version. Semantic + behavioral embeddings, MMR diversity, and a franchise graph, with a React front end.",
+        featured_project_desc: "A Go backend serving multi-signal recommendations across a large anime catalogue. Semantic and behavioral embeddings, MMR diversity, and a franchise graph, with a React front end.",
         view_project_btn: "View project",
         // Footer
         contact_title: "Let’s build something",
@@ -655,7 +655,7 @@ const translations = {
         // Hero Section
         home_greeting: "Szia, Hermann Péter Pál vagyok.",
         home_headline: "Olyan dolgokat építek, amik <em>gondolkodnak</em>.",
-        home_intro: "Ajánlórendszerek, egy Slay-the-Spire MI, és a full-stack alkalmazások, amik életre keltik őket. Olyan modellek érdekelnek, amik élesben is működnek — gyorsan, mérhetően, a számokról őszintén.",
+        home_intro: "Ajánlórendszerek, egy Slay-the-Spire MI, és a full-stack alkalmazások, amik életre keltik őket. Olyan modellek érdekelnek, amik átláthatóak, megfontoltak, és őszinték azzal kapcsolatban, amit csinálnak.",
         home_work_btn: "Nézd meg a munkáim",
         home_contact_btn: "Vedd fel a kapcsolatot",
         // Stat strip
@@ -677,7 +677,7 @@ const translations = {
         // Featured Project
         featured_title: "Kiemelt",
         featured_project_title: "Anime Ajánlómotor",
-        featured_project_desc: "Egy Go backend, ami 28k+ animére ad többjeles ajánlásokat ~58 MB memóriából, 60 ms alatt — 95%-kal kevesebb memória, mint a Python verzió. Szemantikus + viselkedési embeddingek, MMR diverzitás, franchise gráf, React frontenddel.",
+        featured_project_desc: "Egy Go backend, ami többjeles ajánlásokat ad egy nagy anime katalógusra. Szemantikus és viselkedési embeddingek, MMR diverzitás, franchise gráf, React frontenddel.",
         view_project_btn: "Projekt megtekintése",
         // Footer
         contact_title: "Építsünk valamit",
