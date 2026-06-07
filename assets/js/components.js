@@ -101,7 +101,6 @@
             '</div>' +
             '<div class="container footer-base">' +
                 '<span class="copyright">© ' + year + ' Peter Pal Hermann</span>' +
-                '<span class="footer-built">Built by hand — no template, no builder.</span>' +
             '</div>' +
         '</footer>';
 
