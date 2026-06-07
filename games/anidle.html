@@ -44,27 +44,33 @@
         </section>
 
         <section class="container anidle">
-            <!-- Series picker -->
-            <div class="anidle-controls">
-                <div class="anidle-controls-label">Series in play</div>
-                <div id="anidle-series" class="anidle-series"></div>
-                <button id="anidle-new" type="button" class="anidle-new-btn">New game</button>
-            </div>
-
-            <!-- Guess input + typeahead -->
-            <div class="anidle-input-wrap">
-                <div class="anidle-input-row">
-                    <input id="anidle-input" type="text" class="anidle-input"
-                           placeholder="Type a name — first, last, or nickname…"
-                           autocomplete="off" autocorrect="off" autocapitalize="off"
-                           spellcheck="false" role="combobox" aria-expanded="false"
-                           aria-autocomplete="list" aria-controls="anidle-suggest">
-                    <button id="anidle-guess" type="button" class="anidle-guess-btn">Guess</button>
+            <!-- Setup panel: series picker + guess input -->
+            <div class="anidle-panel">
+                <div class="anidle-panel-row">
+                    <div class="anidle-field">
+                        <span class="anidle-field-label">Series in play</span>
+                        <div id="anidle-series" class="anidle-series"></div>
+                    </div>
+                    <button id="anidle-new" type="button" class="anidle-new-btn">New game</button>
                 </div>
-                <div id="anidle-suggest" class="anidle-suggest" role="listbox" hidden></div>
-            </div>
 
-            <p id="anidle-message" class="anidle-message"></p>
+                <div class="anidle-field anidle-field-input">
+                    <span class="anidle-field-label">Your guess</span>
+                    <div class="anidle-input-wrap">
+                        <div class="anidle-input-row">
+                            <input id="anidle-input" type="text" class="anidle-input"
+                                   placeholder="Type a name — first, last, or nickname…"
+                                   autocomplete="off" autocorrect="off" autocapitalize="off"
+                                   spellcheck="false" role="combobox" aria-expanded="false"
+                                   aria-autocomplete="list" aria-controls="anidle-suggest">
+                            <button id="anidle-guess" type="button" class="anidle-guess-btn">Guess</button>
+                        </div>
+                        <div id="anidle-suggest" class="anidle-suggest" role="listbox" hidden></div>
+                    </div>
+                </div>
+
+                <p id="anidle-message" class="anidle-message"></p>
+            </div>
 
             <!-- Legend -->
             <div class="anidle-legend">
