@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+    <title>Anidle — Anime Character Guesser — Peter Pal Hermann</title>
+    <meta name="description" content="An anime character guessing game. Pick your series — Frieren, Naruto, Bleach, JJK — and guess the daily character from attribute clues.">
+
+    <!-- Critical: set theme before paint (dark is the default) -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
+
+    <main id="main-content">
+        <section class="page-header container">
+            <p class="kicker"><span class="dash">//</span> Browser game · vanilla JS, no framework</p>
+            <h1>Anidle</h1>
+            <p>Guess the hidden anime character. Each guess reveals how it lines up on series, gender, species, hair, class, affiliation, and age — green means a match. Choose which series the game pulls from.</p>
+        </section>
+
+        <section class="container anidle">
+            <!-- Series picker -->
+            <div class="anidle-controls">
+                <div class="anidle-controls-label">Series in play</div>
+                <div id="anidle-series" class="anidle-series"></div>
+                <button id="anidle-new" type="button" class="anidle-new-btn">New game</button>
+            </div>
+
+            <!-- Guess input + typeahead -->
+            <div class="anidle-input-wrap">
+                <div class="anidle-input-row">
+                    <input id="anidle-input" type="text" class="anidle-input"
+                           placeholder="Type a name — first, last, or nickname…"
+                           autocomplete="off" autocorrect="off" autocapitalize="off"
+                           spellcheck="false" role="combobox" aria-expanded="false"
+                           aria-autocomplete="list" aria-controls="anidle-suggest">
+                    <button id="anidle-guess" type="button" class="anidle-guess-btn">Guess</button>
+                </div>
+                <div id="anidle-suggest" class="anidle-suggest" role="listbox" hidden></div>
+            </div>
+
+            <p id="anidle-message" class="anidle-message"></p>
+
+            <!-- Legend -->
+            <div class="anidle-legend">
+                <span><i class="swatch is-hit"></i> match</span>
+                <span><i class="swatch is-near"></i> close (age ±5)</span>
+                <span><i class="swatch is-miss"></i> no match</span>
+                <span class="anidle-legend-note">↑ target is older · ↓ target is younger</span>
+            </div>
+
+            <!-- Results grid -->
+            <div class="anidle-grid">
+                <div id="anidle-header" class="anidle-row anidle-header-row"></div>
+                <div id="anidle-board" class="anidle-board"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
+
+    <script src="../assets/js/components.js" defer></script>
+    <script src="../assets/js/i18n.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/anidle.js" defer></script>
+</body>
+</html>

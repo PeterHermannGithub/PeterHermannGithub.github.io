@@ -3069,3 +3069,227 @@ a.game-cta::after { content: " \2192"; }
 }
 /* the proof stat block had a blue tint; neutralize to the new system */
 .achievement-stats { background: var(--bg-elevated-color); border-color: var(--border-color); }
+
+/* ----------------------------------------------------- */
+/*  Anidle — anime character guessing game (games/anidle.html) */
+/* ----------------------------------------------------- */
+.anidle { padding-bottom: clamp(3rem, 8vw, 5rem); }
+
+/* --- Controls: series toggles + new game --- */
+.anidle-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+}
+.anidle-controls-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted-color);
+    margin-right: 0.25rem;
+}
+.anidle-series { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.anidle-series-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-secondary-color);
+    color: var(--text-muted-color);
+    cursor: pointer;
+    user-select: none;
+    transition: border-color var(--transition-speed) var(--ease),
+                color var(--transition-speed) var(--ease);
+}
+.anidle-series-chip input { accent-color: var(--accent); margin: 0; cursor: pointer; }
+.anidle-series-chip.active { color: var(--text-color); border-color: var(--accent); }
+.anidle-new-btn {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: var(--accent);
+    color: var(--accent-ink);
+    cursor: pointer;
+    transition: background var(--transition-speed) var(--ease);
+}
+.anidle-new-btn:hover { background: var(--accent-hover); }
+
+/* --- Input + typeahead --- */
+.anidle-input-wrap { position: relative; max-width: 460px; margin-bottom: 0.75rem; }
+.anidle-input-row { display: flex; gap: 0.5rem; }
+.anidle-input {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--bg-secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-color);
+}
+.anidle-input:focus { outline: none; border-color: var(--accent); }
+.anidle-input:disabled { opacity: 0.5; }
+.anidle-guess-btn {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 0 1.1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elevated-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: border-color var(--transition-speed) var(--ease);
+}
+.anidle-guess-btn:hover { border-color: var(--accent); }
+.anidle-guess-btn:disabled { opacity: 0.5; cursor: default; }
+
+.anidle-suggest {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: var(--bg-secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: 0 8px 24px var(--shadow-color);
+}
+.anidle-suggest-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    padding: 0.55rem 0.8rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+.anidle-suggest-item:last-child { border-bottom: none; }
+.anidle-suggest-item:hover,
+.anidle-suggest-item.active { background: var(--bg-elevated-color); }
+.anidle-suggest-item .s-series {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted-color);
+}
+
+/* --- Message line --- */
+.anidle-message {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted-color);
+    min-height: 1.4em;
+    margin-bottom: 1rem;
+}
+.anidle-message.is-win { color: var(--accent-text); }
+.anidle-message.is-warn { color: #e0a23c; }
+
+/* --- Legend --- */
+.anidle-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted-color);
+    margin-bottom: 1.25rem;
+}
+.anidle-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.anidle-legend .swatch {
+    width: 0.85rem; height: 0.85rem; border-radius: 2px; display: inline-block;
+}
+.anidle-legend-note { letter-spacing: 0.04em; }
+
+/* --- Results grid --- */
+.anidle-grid { overflow-x: auto; }
+.anidle-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 1.4fr) repeat(7, minmax(86px, 1fr));
+    gap: 6px;
+    min-width: 720px;
+    margin-bottom: 6px;
+}
+.anidle-board { }
+.anidle-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.55rem 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-secondary-color);
+    min-height: 48px;
+    line-height: 1.2;
+}
+.anidle-head {
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted-color);
+    background: transparent;
+    border-color: transparent;
+    min-height: 0;
+    padding: 0.2rem 0.4rem;
+}
+.anidle-name {
+    justify-content: flex-start;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+.anidle-cell.is-hit {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 700;
+}
+.anidle-cell.is-near {
+    background: rgba(224, 162, 60, 0.16);
+    border-color: #e0a23c;
+    color: var(--text-color);
+}
+.anidle-cell.is-miss {
+    background: var(--bg-secondary-color);
+    color: var(--text-muted-color);
+}
+
+/* Reveal animation (respects reduced motion below) */
+.anidle-row { opacity: 1; }
+.anidle-board .anidle-row { opacity: 0; transform: translateY(-4px); }
+.anidle-board .anidle-row.revealed {
+    opacity: 1; transform: none;
+    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .anidle-board .anidle-row,
+    .anidle-board .anidle-row.revealed { transition: none; transform: none; opacity: 1; }
+}
+
+@media (max-width: 600px) {
+    .anidle-controls-label { width: 100%; }
+    .anidle-new-btn { margin-left: 0; }
+}

@@ -19,8 +19,8 @@
 (function () {
     'use strict';
 
-    // Path-aware base prefix: pages under /projects/ need to climb one level.
-    var inSubdir = /\/projects\//.test(window.location.pathname);
+    // Path-aware base prefix: pages under /projects/ or /games/ climb one level.
+    var inSubdir = /\/(projects|games)\//.test(window.location.pathname);
     var base = inSubdir ? '../' : '';
 
     // Primary navigation. `key` maps to an i18n translation key (falls back to
