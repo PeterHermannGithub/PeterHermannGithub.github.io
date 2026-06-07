@@ -207,11 +207,11 @@ html:not(.dark-mode) {
 }
 
 .file-tree-folder.expanded > .folder-icon::before {
-    content: '📂';
+    content: '';
 }
 
 .file-tree-folder.collapsed > .folder-icon::before {
-    content: '📁';
+    content: '';
 }
 
 .file-tree-item {
@@ -228,19 +228,19 @@ html:not(.dark-mode) {
 }
 
 .file-icon::before {
-    content: '🐍';
+    content: '';
 }
 
 .file-icon.python::before {
-    content: '🐍';
+    content: '';
 }
 
 .file-icon.text::before {
-    content: '📄';
+    content: '';
 }
 
 .file-icon.markdown::before {
-    content: '📝';
+    content: '';
 }
 
 .file-name {
@@ -699,7 +699,7 @@ html:not(.dark-mode) {
 }
 
 .info-card li::before {
-    content: '✓';
+    content: '';
     color: var(--primary-color);
     font-weight: bold;
     margin-right: 0.5rem;

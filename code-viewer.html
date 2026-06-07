@@ -29,14 +29,14 @@
     <meta property="twitter:description" content="Interactive VS Code-style viewer showcasing production-scale Python code.">
     <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
-    <!-- Critical: Prevent theme flash -->
+    <!-- Critical: set theme before paint (dark is the default) -->
     <script>
-        (function() {
-            const theme = localStorage.getItem('theme') || 
-                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark-mode');
-            }
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
         })();
     </script>
     
@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="assets/css/code-viewer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
     <!-- JSON-LD Structured Data -->
@@ -69,63 +69,10 @@
     </script>
 </head>
 <body>
-    <header class="sticky-header">
-        <nav class="container">
-            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
-            <ul class="nav-links">
-                <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
-                <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
-                <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
-            </ul>
-            <div class="nav-controls">
-                <!-- Search Bar -->
-                <div class="search-container">
-                    <input type="text" id="site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
-                    <div class="search-results" id="search-results" aria-live="polite">
-                        <!-- Search results will be populated here -->
-                    </div>
-                </div>
-                <button id="theme-toggle" aria-label="Toggle theme">
-                    <!-- Icons will be injected by JS -->
-                </button>
-                <button id="lang-toggle" aria-label="Toggle language">EN</button>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <!-- Mobile Navigation Menu -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-    <nav class="mobile-nav-menu" id="mobile-nav-menu">
-        <div class="mobile-nav-header">
-            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
-            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close mobile menu">×</button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
-            <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
-            <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
-        </ul>
-        <div class="mobile-nav-controls">
-            <!-- ✅ FIX: Mobile Search with results container -->
-            <div class="mobile-search-container">
-                <input type="text" id="mobile-site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
-                <div class="search-results mobile-search-results" id="mobile-search-results" aria-live="polite">
-                    <!-- Mobile search results will be populated here -->
-                </div>
-            </div>
-            <div>
-                <button id="mobile-theme-toggle" aria-label="Toggle theme">
-                    <!-- Icons will be injected by JS -->
-                </button>
-                <button id="mobile-lang-toggle" aria-label="Toggle language">EN</button>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
 
     <main id="main-content">
         <!-- Page Header -->
@@ -155,7 +102,7 @@
                 <div class="vscode-sidebar" id="vscode-sidebar">
                     <div class="sidebar-header">
                         <div class="sidebar-title">
-                            <span class="sidebar-icon">📁</span>
+                            <span class="sidebar-icon"></span>
                             <span data-i18n-key="code_viewer_explorer">EXPLORER</span>
                         </div>
                         <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
@@ -183,19 +130,19 @@
                                 <p data-i18n-key="code_viewer_welcome_text">Explore the anime recommendation system's source code. Click on files in the Explorer to view their contents.</p>
                                 <div class="welcome-features">
                                     <div class="feature">
-                                        <span class="feature-icon">🧠</span>
+                                        <span class="feature-icon"></span>
                                         <span data-i18n-key="code_viewer_feature_ml">Machine Learning Pipeline</span>
                                     </div>
                                     <div class="feature">
-                                        <span class="feature-icon">🚀</span>
+                                        <span class="feature-icon"></span>
                                         <span data-i18n-key="code_viewer_feature_api">FastAPI Backend</span>
                                     </div>
                                     <div class="feature">
-                                        <span class="feature-icon">🏗️</span>
+                                        <span class="feature-icon"></span>
                                         <span data-i18n-key="code_viewer_feature_architecture">Production Architecture</span>
                                     </div>
                                     <div class="feature">
-                                        <span class="feature-icon">🧪</span>
+                                        <span class="feature-icon"></span>
                                         <span data-i18n-key="code_viewer_feature_testing">Comprehensive Testing</span>
                                     </div>
                                 </div>
@@ -206,15 +153,15 @@
                         <div class="code-editor" id="code-editor" style="display: none;">
                             <div class="editor-header">
                                 <div class="file-info">
-                                    <span class="file-icon" id="file-icon">📄</span>
+                                    <span class="file-icon" id="file-icon"></span>
                                     <span class="file-path" id="file-path">Select a file</span>
                                 </div>
                                 <div class="editor-actions">
                                     <button class="action-btn" id="copy-code-btn" title="Copy code" data-i18n-title="code_viewer_copy_tooltip">
-                                        <span class="action-icon">📋</span>
+                                        <span class="action-icon"></span>
                                     </button>
                                     <button class="action-btn" id="fullscreen-btn" title="Toggle fullscreen" data-i18n-title="code_viewer_fullscreen_tooltip">
-                                        <span class="action-icon">⛶</span>
+                                        <span class="action-icon"></span>
                                     </button>
                                 </div>
                             </div>
@@ -301,21 +248,21 @@
         <section class="navigation-links container">
             <div class="link-grid">
                 <a href="projects/anime-recommender.html" class="nav-link-card">
-                    <span class="link-icon">📖</span>
+                    <span class="link-icon"></span>
                     <div class="link-content">
                         <h3 data-i18n-key="code_viewer_project_details">Project Details</h3>
                         <p data-i18n-key="code_viewer_project_details_desc">Learn more about the anime recommender system</p>
                     </div>
                 </a>
                 <a href="https://github.com/PeterHermannGithub/anime-recommender" target="_blank" class="nav-link-card">
-                    <span class="link-icon">🔗</span>
+                    <span class="link-icon"></span>
                     <div class="link-content">
                         <h3 data-i18n-key="code_viewer_github_repo">GitHub Repository</h3>
                         <p data-i18n-key="code_viewer_github_repo_desc">View the complete source code and documentation</p>
                     </div>
                 </a>
                 <a href="projects.html" class="nav-link-card">
-                    <span class="link-icon">🎯</span>
+                    <span class="link-icon"></span>
                     <div class="link-content">
                         <h3 data-i18n-key="code_viewer_more_projects">More Projects</h3>
                         <p data-i18n-key="code_viewer_more_projects_desc">Explore other projects in my portfolio</p>
@@ -325,20 +272,11 @@
         </section>
     </main>
     
-    <footer id="contact">
-        <div class="container">
-            <h2 data-i18n-key="contact_title">Let's Connect</h2>
-            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
-            <div class="social-links">
-                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="assets/icons/github.svg" alt="GitHub"></a>
-                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
-                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="assets/icons/mail.svg" alt="Email"></a>
-            </div>
-            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
 
     <!-- Scripts -->
+    <script src="assets/js/components.js" defer></script>
     <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/code-viewer.js" defer></script>

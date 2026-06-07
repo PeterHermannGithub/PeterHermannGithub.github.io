@@ -29,14 +29,14 @@
     <meta property="twitter:description" content="Explore my athletic achievements, academic accomplishments, and personal milestones.">
     <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
-    <!-- Critical: Prevent theme flash -->
+    <!-- Critical: set theme before paint (dark is the default) -->
     <script>
-        (function() {
-            const theme = localStorage.getItem('theme') || 
-                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark-mode');
-            }
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
         })();
     </script>
     
@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
     <!-- JSON-LD Structured Data -->
@@ -62,63 +62,10 @@
     </script>
 </head>
 <body>
-    <header class="sticky-header">
-        <nav class="container">
-            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
-            <ul class="nav-links">
-                <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
-                <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
-                <li><a href="achievements.html" class="active" data-i18n-key="nav_achievements">Achievements</a></li>
-            </ul>
-            <div class="nav-controls">
-                <!-- Search Bar -->
-                <div class="search-container">
-                    <input type="text" id="site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
-                    <div class="search-results" id="search-results" aria-live="polite">
-                        <!-- Search results will be populated here -->
-                    </div>
-                </div>
-                <button id="theme-toggle" aria-label="Toggle theme">
-                    <!-- Icons will be injected by JS -->
-                </button>
-                <button id="lang-toggle" aria-label="Toggle language">EN</button>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <!-- Mobile Navigation Menu -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-    <nav class="mobile-nav-menu" id="mobile-nav-menu">
-        <div class="mobile-nav-header">
-            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
-            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close mobile menu">×</button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
-            <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
-            <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
-        </ul>
-        <div class="mobile-nav-controls">
-            <!-- ✅ FIX: Mobile Search with results container -->
-            <div class="mobile-search-container">
-                <input type="text" id="mobile-site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
-                <div class="search-results mobile-search-results" id="mobile-search-results" aria-live="polite">
-                    <!-- Mobile search results will be populated here -->
-                </div>
-            </div>
-            <div>
-                <button id="mobile-theme-toggle" aria-label="Toggle theme">
-                    <!-- Icons will be injected by JS -->
-                </button>
-                <button id="mobile-lang-toggle" aria-label="Toggle language">EN</button>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
 
     <main id="main-content">
         <!-- Page Header -->
@@ -143,7 +90,7 @@
             
             <!-- Athletic Achievements -->
             <div class="achievement-card featured" data-category="athletic" data-proof-image="running-certificate.jpg">
-                <div class="achievement-icon">🏃‍♂️</div>
+                <div class="achievement-icon"></div>
                 <div class="achievement-content">
                     <h3 data-i18n-key="achievement_running_title">Best Running Performance</h3>
                     <div class="achievement-stats">
@@ -156,13 +103,13 @@
                         <span class="achievement-location" data-i18n-key="achievement_running_location">Szeged, Hungary</span>
                     </div>
                 </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view">📷 Click to view proof</div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
             </div>
 
 
             <!-- Academic Achievements -->
             <div class="achievement-card" data-category="academic" data-proof-image="degree-certificate" data-proof-bilingual="true">
-                <div class="achievement-icon">🎓</div>
+                <div class="achievement-icon"></div>
                 <div class="achievement-content">
                     <h3 data-i18n-key="achievement_degree_title">BSc Mathematics Degree</h3>
                     <div class="achievement-stats">
@@ -175,11 +122,11 @@
                         <span class="achievement-location" data-i18n-key="achievement_degree_location">University of Szeged</span>
                     </div>
                 </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view">📷 Click to view proof</div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
             </div>
 
             <div class="achievement-card" data-category="academic" data-proof-image="msc-progress.pdf" data-proof-bilingual="true">
-                <div class="achievement-icon">🎓</div>
+                <div class="achievement-icon"></div>
                 <div class="achievement-content">
                     <h3 data-i18n-key="achievement_msc_title">MSc Computer Science</h3>
                     <div class="achievement-stats">
@@ -192,11 +139,11 @@
                         <span class="achievement-location" data-i18n-key="achievement_msc_location">Eötvös Loránd University</span>
                     </div>
                 </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view">📷 Click to view proof</div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
             </div>
 
             <div class="achievement-card" data-category="academic" data-proof-image="erasmus-exchange.pdf">
-                <div class="achievement-icon">🌍</div>
+                <div class="achievement-icon"></div>
                 <div class="achievement-content">
                     <h3 data-i18n-key="achievement_erasmus_title">Erasmus Exchange Program</h3>
                     <div class="achievement-stats">
@@ -209,11 +156,11 @@
                         <span class="achievement-location" data-i18n-key="achievement_erasmus_location">Humboldt University, Berlin</span>
                     </div>
                 </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view">📷 Click to view proof</div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
             </div>
 
             <div class="achievement-card" data-category="professional" data-proof-image="employee-award.jpg">
-                <div class="achievement-icon">🏆</div>
+                <div class="achievement-icon"></div>
                 <div class="achievement-content">
                     <h3 data-i18n-key="achievement_employee_title">Best Employee Award</h3>
                     <div class="achievement-stats">
@@ -226,12 +173,12 @@
                         <span class="achievement-location" data-i18n-key="achievement_employee_location">Fundamenta Housing Savings Bank</span>
                     </div>
                 </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view">📷 Click to view proof</div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
             </div>
 
             <!-- Professional Achievement: V2 Breakthrough -->
             <div class="achievement-card featured" data-category="professional" data-proof-image="rust-performance.png">
-                <div class="achievement-icon">🦀</div>
+                <div class="achievement-icon"></div>
                 <div class="achievement-content">
                     <h3 data-i18n-key="achievement_v2_title">Pure Rust Engine Breakthrough</h3>
                     <div class="achievement-stats">
@@ -244,13 +191,13 @@
                         <span class="achievement-location" data-i18n-key="achievement_v2_location">Production Recommendation System</span>
                     </div>
                 </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view">📷 Click to view proof</div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
             </div>
 
 
             <!-- Professional Achievements -->
             <div class="achievement-card featured" data-category="professional" data-proof-image="performance-benchmark.png">
-                <div class="achievement-icon">⚡</div>
+                <div class="achievement-icon"></div>
                 <div class="achievement-content">
                     <h3 data-i18n-key="achievement_performance_title">Performance Optimization Mastery</h3>
                     <div class="achievement-stats">
@@ -263,7 +210,7 @@
                         <span class="achievement-location" data-i18n-key="achievement_performance_location">Anime Recommender System</span>
                     </div>
                 </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view">📷 Click to view proof</div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
             </div>
 
 
@@ -316,7 +263,7 @@
                 <img id="proof-modal-image" src="" alt="Achievement proof" />
                 <div class="proof-modal-fallback">
                     <div class="proof-placeholder">
-                        <div class="proof-placeholder-icon">📷</div>
+                        <div class="proof-placeholder-icon"></div>
                         <h4 data-i18n-key="proof_coming_soon">Proof Coming Soon</h4>
                         <p data-i18n-key="proof_placeholder_desc">This achievement proof will be available shortly. Thank you for your interest!</p>
                     </div>
@@ -328,20 +275,11 @@
         </div>
     </div>
     
-    <footer id="contact">
-        <div class="container">
-            <h2 data-i18n-key="contact_title">Let's Connect</h2>
-            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
-            <div class="social-links">
-                <a href="https://github.com/PeterHermannGithub" target="_blank" aria-label="GitHub"><img src="assets/icons/github.svg" alt="GitHub"></a>
-                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
-                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="assets/icons/mail.svg" alt="Email"></a>
-            </div>
-            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
 
     <!-- Scripts -->
+    <script src="assets/js/components.js" defer></script>
     <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 </body>

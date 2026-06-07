@@ -1,40 +1,72 @@
-/* ------------------- */
-/*  1. Global & Setup  */
-/* ------------------- */
+/* ----------------------------------------------------- */
+/*  1. Global & Setup — Editorial-Technical design system */
+/* ----------------------------------------------------- */
+/*
+ * Dark is the default theme. Light is an opt-in toggle.
+ * The brand accent is an acid lime. It is used as a fill
+ * (with --accent-ink dark text on top) and, where it needs
+ * to read as text on the page background, via --accent-text
+ * (a deeper lime in light mode for contrast).
+ */
 :root {
-    /* Light Theme */
-    --bg-color: #f4f7f9;
-    --bg-secondary-color: #ffffff;
-    --text-color: #1a202c;
-    --text-muted-color: #4a5568;
-    --primary-color: #3b82f6;
-    --primary-hover-color: #2563eb;
-    --border-color: #e2e8f0;
-    --shadow-color: rgba(0, 0, 0, 0.05);
-    
+    /* Dark Theme (default) */
+    --bg-color: #0b0c0e;
+    --bg-secondary-color: #141619;
+    --bg-elevated-color: #1c1f24;
+    --text-color: #ededec;
+    --text-muted-color: #9a9d9c;
+    --border-color: #26292e;
+    --shadow-color: rgba(0, 0, 0, 0.45);
+
+    /* Accent — acid lime / chartreuse */
+    --accent: #c8f751;
+    --accent-hover: #d8ff6b;
+    --accent-text: #c8f751;   /* accent used as text on page bg */
+    --accent-ink: #0b0c0e;    /* text/icons placed on an accent fill */
+
+    /* Back-compat aliases (legacy rules still reference these) */
+    --primary-color: var(--accent);
+    --primary-hover-color: var(--accent-hover);
+
     /* Typography */
-    --font-family: 'Inter', sans-serif;
-    --header-font-weight: 700;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+    --font-family: var(--font-body);
+    --header-font-weight: 600;
     --body-font-weight: 400;
 
-    /* Spacing & Radius */
-    --container-width: 1100px;
+    /* Spacing & Radius — sharper, editorial */
+    --container-width: 1180px;
     --container-padding: 1.5rem;
-    --border-radius: 8px;
-    --transition-speed: 0.3s;
+    --radius-sm: 3px;
+    --radius: 6px;
+    --radius-lg: 12px;
+    --border-radius: var(--radius);
+    --transition-speed: 0.25s;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html.dark-mode {
-    /* Dark Theme */
-    --bg-color: #1a202c;
-    --bg-secondary-color: #2d3748;
-    --text-color: #edf2f7;
-    --text-muted-color: #a0aec0;
-    --primary-color: #60a5fa;
-    --primary-hover-color: #3b82f6;
-    --border-color: #4a5568;
-    --shadow-color: rgba(0, 0, 0, 0.2);
+html.light-mode {
+    /* Light Theme (opt-in) */
+    --bg-color: #f6f6f1;
+    --bg-secondary-color: #ffffff;
+    --bg-elevated-color: #efefe8;
+    --text-color: #14150f;
+    --text-muted-color: #5a5c52;
+    --border-color: #e0e0d6;
+    --shadow-color: rgba(20, 21, 15, 0.08);
+
+    --accent: #c8f751;
+    --accent-hover: #b9ec33;
+    --accent-text: #4f6b00;   /* deeper lime: readable on light bg */
+    --accent-ink: #14150f;
 }
+
+/* Legacy support: older markup/scripts may toggle .dark-mode.
+   Since dark is the default here, map it to the default tokens
+   (i.e. a no-op) so nothing breaks during the migration. */
+html.dark-mode { color-scheme: dark; }
 
 * {
     box-sizing: border-box;
@@ -517,7 +549,7 @@ section {
 
 .project-card-large img[src*="project-"]:after,
 .project-image[src*="project-"]:after {
-    content: "📷 Project Screenshot Coming Soon";
+    content: "Project Screenshot Coming Soon";
     position: absolute;
     top: 0;
     left: 0;
@@ -788,7 +820,7 @@ html.dark-mode .social-links a img {
     width: 100%;
 }
 
-/* ✅ FIX: Enhanced Mobile Search */
+/* FIX: Enhanced Mobile Search */
 .mobile-search-container {
     width: 100%;
     margin-bottom: 1rem;
@@ -817,7 +849,7 @@ html.dark-mode .social-links a img {
     color: var(--text-muted-color);
 }
 
-/* ✅ FIX: Mobile Search Results */
+/* FIX: Mobile Search Results */
 .mobile-search-results {
     position: absolute;
     top: 100%;
@@ -838,7 +870,7 @@ html.dark-mode .social-links a img {
     display: block;
 }
 
-/* ✅ FIX: Mobile navigation button layout */
+/* FIX: Mobile navigation button layout */
 .mobile-nav-controls > div:not(.mobile-search-container) {
     display: flex;
     gap: 1rem;
@@ -846,7 +878,7 @@ html.dark-mode .social-links a img {
     justify-content: center;
 }
 
-/* ✅ FIX: Mobile toggle buttons styling */
+/* FIX: Mobile toggle buttons styling */
 #mobile-theme-toggle,
 #mobile-lang-toggle {
     background: none;
@@ -880,7 +912,7 @@ html.dark-mode .social-links a img {
     pointer-events: none;
 }
 
-/* ✅ FIX: Mobile controls container */
+/* FIX: Mobile controls container */
 .mobile-nav-controls > div:last-child {
     display: flex;
     gap: 1rem;
@@ -956,10 +988,10 @@ html.dark-mode .social-links a img {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 2rem;
     }
-    /* ✅ FIX: The incorrect closing brace was removed from here. */
+    /* FIX: The incorrect closing brace was removed from here. */
 }
 
-/* ✅ FIX: All the following mobile styles are now correctly wrapped
+/* FIX: All the following mobile styles are now correctly wrapped
    in a media query for screens 768px and smaller. */
 @media (max-width: 768px) {
     /* General mobile improvements from your original code */
@@ -1783,13 +1815,13 @@ html.dark-mode .social-links a img {
     font-weight: 600;
     font-size: 0.9rem;
     
-    /* ✅ IMMEDIATE FIX: Proper text centering */
+    /* IMMEDIATE FIX: Proper text centering */
     text-align: center;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     
-    /* ✅ Touch-friendly base settings */
+    /* Touch-friendly base settings */
     min-height: 44px;
     white-space: nowrap;
     overflow: hidden;
@@ -1889,7 +1921,7 @@ html.dark-mode .social-links a img {
 }
 
 .achievement-card.featured::before {
-    content: '⭐';
+    content: '';
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -2097,7 +2129,7 @@ html.dark-mode .social-links a img {
         min-height: 48px; /* Enhanced touch-friendly */
         border-radius: 6px;
         
-        /* ✅ SHORT-TERM FIX: Ensure consistent centering on tablet */
+        /* SHORT-TERM FIX: Ensure consistent centering on tablet */
         text-align: center;
         display: inline-flex;
         align-items: center;
@@ -2468,17 +2500,17 @@ html.dark-mode .social-links a img {
 
 /* Mobile Touch Enhancements */
 @media (max-width: 480px) {
-    /* ✅ IMMEDIATE & SHORT-TERM FIX: Enhanced mobile filter buttons */
+    /* IMMEDIATE & SHORT-TERM FIX: Enhanced mobile filter buttons */
     .achievement-filters .filter-btn {
         font-size: 0.8rem;
         padding: 0.75rem 0.5rem;
         min-height: 48px;
         margin: 0.125rem;
         flex: 1;
-        max-width: 150px;  /* ✅ Increased from 120px */
-        min-width: 85px;   /* ✅ Adequate touch target */
+        max-width: 150px;  /* Increased from 120px */
+        min-width: 85px;   /* Adequate touch target */
         
-        /* ✅ Enhanced text handling */
+        /* Enhanced text handling */
         text-align: center;
         display: inline-flex;
         align-items: center;
@@ -2487,16 +2519,16 @@ html.dark-mode .social-links a img {
         overflow: hidden;
         text-overflow: ellipsis;
         
-        /* ✅ LONG-TERM: Touch feedback */
+        /* LONG-TERM: Touch feedback */
         transition: all 0.2s ease;
         transform-origin: center;
     }
     
     .project-filters,
     .achievement-filters {
-        gap: 0.25rem;  /* ✅ Tighter gap for mobile */
+        gap: 0.25rem;  /* Tighter gap for mobile */
         justify-content: center;
-        padding: 0 0.5rem;  /* ✅ Container padding */
+        padding: 0 0.5rem;  /* Container padding */
     }
     
     /* Mobile-optimized achievement cards */
@@ -2552,7 +2584,7 @@ html.dark-mode .social-links a img {
     }
 }
 
-/* ✅ LONG-TERM: Touch feedback animations for all screen sizes */
+/* LONG-TERM: Touch feedback animations for all screen sizes */
 .achievement-filters .filter-btn:active {
     transform: scale(0.95);
     transition-duration: 0.1s;
@@ -2563,7 +2595,7 @@ html.dark-mode .social-links a img {
     outline-offset: 2px;
 }
 
-/* ✅ MEDIUM-TERM: Ultra-small screen support (≤360px) */
+/* MEDIUM-TERM: Ultra-small screen support (≤360px) */
 @media (max-width: 360px) {
     .achievement-filters {
         flex-direction: column;
@@ -2581,7 +2613,7 @@ html.dark-mode .social-links a img {
         padding: 0.875rem 1rem;
         font-size: 0.85rem;
         
-        /* ✅ Enhanced ultra-small screen centering */
+        /* Enhanced ultra-small screen centering */
         text-align: center;
         display: flex;
         align-items: center;
@@ -2589,7 +2621,7 @@ html.dark-mode .social-links a img {
     }
 }
 
-/* ✅ LONG-TERM: Device-specific optimizations */
+/* LONG-TERM: Device-specific optimizations */
 @media (max-width: 320px) {
     /* Ultra-compact devices like iPhone SE */
     .achievement-filters .filter-btn {
@@ -2599,7 +2631,7 @@ html.dark-mode .social-links a img {
     }
 }
 
-/* ✅ Enhanced accessibility and interaction feedback */
+/* Enhanced accessibility and interaction feedback */
 @media (prefers-reduced-motion: no-preference) {
     .achievement-filters .filter-btn {
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2625,3 +2657,415 @@ html.dark-mode .social-links a img {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* ====================================================================== */
+/*  EDITORIAL-TECHNICAL OVERHAUL (2026)                                    */
+/*  Loaded last so it wins the cascade. Owns the new visual language:      */
+/*  Space Grotesk + Space Mono, acid-lime accent, sharp editorial layout,  */
+/*  asymmetric hero, mono metadata, intentional motion.                    */
+/* ====================================================================== */
+
+/* ---- Base refinements ---- */
+body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* faint baseline-grid texture — a quiet "designed" signal, not slop */
+    background-image:
+        linear-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 100% 96px;
+    background-position: 0 -1px;
+    background-attachment: fixed;
+}
+html.light-mode body { opacity: 1; }
+
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+
+a { color: var(--accent-text); }
+a:hover { color: var(--accent-text); opacity: 0.75; }
+
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Reusable mono kicker / metadata label */
+.kicker, .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted-color);
+}
+.kicker .dash { color: var(--accent-text); }
+
+/* Section title: drop the blue gradient text; left-aligned editorial */
+.section-title {
+    text-align: left;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-top: 1.25rem;
+}
+.section-title::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 48px; height: 3px;
+    background: var(--accent);
+}
+
+/* ---- Header / Nav ---- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: color-mix(in srgb, var(--bg-color) 82%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+.site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+}
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-color);
+    font-family: var(--font-display);
+    font-weight: 600;
+}
+.logo:hover { color: var(--text-color); }
+.logo-mark {
+    display: inline-grid;
+    place-items: center;
+    width: 30px; height: 30px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: var(--radius-sm);
+}
+.logo-text { font-size: 1rem; letter-spacing: -0.01em; }
+
+.site-nav .nav-links { gap: 0.25rem; }
+.site-nav .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    text-transform: lowercase;
+    color: var(--text-muted-color);
+    padding: 0.4rem 0.7rem;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-speed) var(--ease), background var(--transition-speed) var(--ease);
+}
+.site-nav .nav-links a::before { content: "/ "; color: var(--accent-text); opacity: 0.5; }
+.site-nav .nav-links a:hover { color: var(--text-color); background: var(--bg-elevated-color); }
+.site-nav .nav-links a.active { color: var(--accent-text); }
+
+.nav-controls button {
+    border-radius: var(--radius-sm);
+    border-color: var(--border-color);
+}
+.nav-controls button:hover {
+    background: var(--bg-elevated-color);
+    border-color: var(--accent);
+    color: var(--accent-text);
+}
+#site-search {
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+#site-search:focus { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent); }
+
+/* ---- Buttons ---- */
+.btn {
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    padding: 0.8rem 1.4rem;
+    border: 1px solid transparent;
+}
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-hover); color: var(--accent-ink); transform: translateY(-2px); }
+.btn-secondary, .btn-ghost {
+    background: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+.btn-secondary:hover, .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent-text);
+    background: transparent;
+    transform: translateY(-2px);
+}
+
+/* ---- Hero (editorial, asymmetric) ---- */
+.hero-editorial {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: end;
+    min-height: min(78vh, 680px);
+    padding-top: clamp(2rem, 6vw, 4.5rem);
+    padding-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+.hero-editorial .hero-headline {
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.hero-editorial .hero-headline em {
+    font-style: italic;
+    color: var(--accent-text);
+}
+.hero-sub {
+    color: var(--text-muted-color);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    max-width: 46ch;
+    margin-bottom: 2rem;
+}
+.hero-cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+/* right column: mono index of what I build + external links */
+.hero-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+.hero-index { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--border-color); }
+.hero-index li { border-bottom: 1px solid var(--border-color); }
+.hero-index a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    padding: 0.7rem 0;
+    color: var(--text-color);
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    transition: padding-left var(--transition-speed) var(--ease), color var(--transition-speed) var(--ease);
+}
+.hero-index a:hover { padding-left: 0.5rem; color: var(--accent-text); opacity: 1; }
+.hero-index .num { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted-color); }
+.hero-aside .ext-links { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: 0.8rem; }
+
+/* ---- Stat strip ---- */
+.stat-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: clamp(3rem, 8vw, 5rem);
+    background: var(--bg-secondary-color);
+}
+.stat-cell {
+    padding: 1.4rem 1.5rem;
+    border-right: 1px solid var(--border-color);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell .stat-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text-color);
+}
+.stat-cell .stat-num span { color: var(--accent-text); }
+.stat-cell .stat-key {
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted-color);
+}
+
+/* ---- Cards: sharper, intentional hierarchy ---- */
+.nav-card, .project-card, .achievement-card, .principle, .stat-item, .project-card-large {
+    border-radius: var(--radius);
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary-color);
+    transition: border-color var(--transition-speed) var(--ease), transform var(--transition-speed) var(--ease);
+}
+.nav-card:hover, .project-card:hover, .achievement-card:hover, .principle:hover, .stat-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: none;
+}
+.nav-card { position: relative; }
+.nav-card h3 { display: flex; align-items: center; justify-content: space-between; }
+.nav-card h3::after { content: "\2192"; color: var(--accent-text); font-family: var(--font-mono); }
+
+/* tech-stack pills mono outline chips (not solid blue blobs) */
+.tech-stack span {
+    background: transparent;
+    color: var(--text-muted-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    text-transform: lowercase;
+}
+
+/* Featured project: large, editorial */
+.project-card-large { overflow: hidden; }
+.project-card-large .project-info h3 { font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -0.02em; }
+
+/* skills: restyle the icon grid into a calmer mono-labelled set */
+.skill-item { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; }
+.skill-item img { width: 44px; height: 44px; }
+
+/* ---- Footer ---- */
+.site-footer {
+    background: var(--bg-secondary-color);
+    border-top: 1px solid var(--border-color);
+    padding: clamp(3rem, 8vw, 5rem) 0 2rem;
+    margin-top: clamp(3rem, 8vw, 6rem);
+    text-align: left;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.footer-lead h2 { font-size: clamp(1.8rem, 5vw, 3rem); letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+.footer-lead p { color: var(--text-muted-color); max-width: 42ch; margin-bottom: 1.25rem; }
+.footer-email {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links .footer-label {
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text-muted-color); margin-bottom: 0.4rem;
+}
+.footer-links a { color: var(--text-color); font-family: var(--font-mono); font-size: 0.9rem; }
+.footer-links a:hover { color: var(--accent-text); opacity: 1; }
+.footer-base {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+    padding-top: 1.5rem;
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted-color);
+}
+
+/* ---- Motion: keep subtle, respect reduced-motion ---- */
+.animate-on-scroll { transform: translateY(16px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
+@media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll { opacity: 1 !important; transform: none !important; transition: none; }
+    body { background-attachment: scroll; }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 860px) {
+    .hero-editorial { grid-template-columns: 1fr; align-items: start; min-height: auto; gap: 2.5rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 768px) {
+    /* keep the new mono nav links hidden on mobile; mobile menu takes over */
+    .site-nav .nav-links { display: none; }
+    body { background-size: 100% 64px; }
+}
+
+/* Kill the blue gradient-text on interior page headers; editorial instead */
+.page-header { text-align: left; padding: clamp(3rem, 7vw, 5rem) 0 2.5rem; }
+.page-header h1 {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--text-color);
+    letter-spacing: -0.03em;
+}
+.page-header p { margin: 0; color: var(--text-muted-color); }
+.project-filters, .achievement-filters { justify-content: flex-start; }
+.filter-btn { font-family: var(--font-mono); font-size: 0.78rem; border-radius: var(--radius-sm); }
+.filter-btn.active, .filter-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+/* ---- Play / games landing ---- */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 8vw, 5rem);
+}
+.game-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    transition: border-color var(--transition-speed) var(--ease), transform var(--transition-speed) var(--ease);
+}
+.game-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.game-card.is-wip { opacity: 0.78; }
+.game-card.is-wip:hover { transform: none; border-color: var(--border-color); }
+.game-card-top { display: flex; justify-content: space-between; align-items: center; }
+.game-tag {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent-ink);
+    background: var(--accent); padding: 0.15rem 0.5rem; border-radius: var(--radius-sm);
+}
+.game-badge {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted-color);
+}
+.game-card h3 { margin: 0; font-size: 1.3rem; letter-spacing: -0.02em; }
+.game-card p { color: var(--text-muted-color); margin: 0; flex: 1; }
+.game-cta {
+    font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-text);
+    margin-top: 0.5rem;
+}
+.game-card .game-cta[aria-disabled="true"] { color: var(--text-muted-color); }
+a.game-cta::after { content: " \2192"; }
+
+/* ---- Cleanup after emoji removal: collapse now-empty icon slots ---- */
+.achievement-icon:empty,
+.stat-icon:empty,
+.fact-icon:empty,
+.proof-placeholder-icon:empty,
+.pdf-loading-icon:empty { display: none; }
+
+/* Featured achievement: replace the old star pseudo with an intentional accent marker */
+.achievement-card.featured::before { content: none; }
+.achievement-card.featured {
+    border-color: var(--accent);
+    background: var(--bg-secondary-color);
+}
+.achievement-card.featured::after {
+    content: "featured";
+    position: absolute;
+    top: 1rem; right: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    background: var(--accent);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+}
+/* the proof stat block had a blue tint; neutralize to the new system */
+.achievement-stats { background: var(--bg-elevated-color); border-color: var(--border-color); }

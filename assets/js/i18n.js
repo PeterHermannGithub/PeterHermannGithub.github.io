@@ -6,29 +6,39 @@ const translations = {
         // Navigation
         nav_home: "Home",
         nav_about: "About",
-        nav_projects: "Projects",
+        nav_projects: "Work",
+        nav_play: "Play",
         nav_achievements: "Achievements",
         // Hero Section
         home_greeting: "Hello, I'm Peter Pal Hermann.",
-        home_intro: "I'm a Data Scientist & AI Specialist specializing in risk modeling and performance optimization. I build full-stack applications to showcase my data science breakthroughs.",
-        home_contact_btn: "Get in Touch",
+        home_headline: "I build things that <em>think</em>.",
+        home_intro: "Recommender systems, a Slay-the-Spire AI, and the full-stack apps that ship them. I care about models that work in production — fast, measured, and honest about their numbers.",
+        home_work_btn: "See the work",
+        home_contact_btn: "Get in touch",
+        // Stat strip
+        stat_memory: "memory reduction (Go vs Python)",
+        stat_r2: "solar forecast model",
+        stat_tests: "tests passing on the STS bot",
+        stat_anime: "anime in the recommender",
         // Nav Cards
-        card_about_title: "About Me",
-        card_about_desc: "Learn more about my journey, skills, and passions.",
-        card_projects_title: "My Projects",
-        card_projects_desc: "Explore a selection of my recent work.",
+        card_about_title: "About",
+        card_about_desc: "Background, the tools I reach for, and how I work.",
+        card_projects_title: "Work",
+        card_projects_desc: "Recommenders, a game-playing AI, automation pipelines.",
+        card_play_title: "Play",
+        card_play_desc: "Word games I built in the browser. Go on, take a guess.",
         card_achievements_title: "Personal Bests",
         card_achievements_desc: "Check out my athletic and academic accomplishments.",
         // Skills
-        skills_title: "Data Science Technologies",
+        skills_title: "Tools I reach for",
         // Featured Project
-        featured_title: "Featured Project",
-        featured_project_title: "Production-Scale Anime Recommendation Engine",
-        featured_project_desc: "Breakthrough Pure Rust engine processing 649M similarity pairs across 37k anime with streaming JSON architecture. Achieved 36x performance improvement over Python with FastAPI backend.",
-        view_project_btn: "View Project",
+        featured_title: "Featured",
+        featured_project_title: "Anime Recommendation Engine",
+        featured_project_desc: "A Go backend serving multi-signal recommendations over 28k+ anime in ~58 MB of memory and 60 ms per query — a 95% memory cut over the Python version. Semantic + behavioral embeddings, MMR diversity, and a franchise graph, with a React front end.",
+        view_project_btn: "View project",
         // Footer
-        contact_title: "Let's Connect",
-        contact_text: "Find me on social media or send me an email.",
+        contact_title: "Let’s build something",
+        contact_text: "Open to data science & ML engineering work. Reach out and let’s talk.",
         // Search
         search_placeholder: "Search...",
         search_no_results: "No results found",
@@ -110,7 +120,7 @@ const translations = {
         about_timeline_morgan: "Oct 2021 - Aug 2022",
         about_fundamenta_title: "Risk Modeller | Fundamenta Housing Savings Bank",
         about_fundamenta_desc: "Built and maintained data-driven models for credit risk analysis, ensuring compliance with regulatory frameworks such as IFRS 9, IRB, and EBA. Optimized R and Python pipelines to automate data processing and reporting workflows, improving efficiency and accuracy.",
-        about_award_badge: "🏆 Best Employee of the Risk Management Division (2023)",
+        about_award_badge: "Best Employee of the Risk Management Division (2023)",
         about_morgan_title: "Risk Analyst | Morgan Stanley",
         about_morgan_desc: "Developed an internal knowledge base to streamline team processes and improve access to key data resources. Assisted in the redesign of the internal database, enhancing data accessibility and usability for reporting and analysis.",
         about_education_title: "Education",
@@ -139,11 +149,11 @@ const translations = {
         about_stat_years: "Years Experience",
         about_stat_domains: "Domains",
         // Experience Highlights Translations
-        about_rust_breakthrough_title: "🦀 Pure Rust Engine Breakthrough",
+        about_rust_breakthrough_title: "Pure Rust Engine Breakthrough",
         about_rust_breakthrough_desc: "Developed similarity engine processing 649M pairs in 16 minutes - 36x faster than Python implementation",
-        about_best_employee_title: "🏆 Best Employee Award",
+        about_best_employee_title: "Best Employee Award",
         about_best_employee_desc: "Risk Management Division, Fundamenta Housing Savings Bank - recognized for outstanding performance in risk modeling",
-        about_morgan_experience_title: "🏛️ Morgan Stanley Experience",
+        about_morgan_experience_title: "Morgan Stanley Experience",
         about_morgan_experience_desc: "Risk Analyst developing internal knowledge systems and database optimization for enhanced data accessibility",
         // Education Section Translations
         about_education_msc_title: "MSc Computer Science",
@@ -166,7 +176,7 @@ const translations = {
         filter_personal: "Personal",
         filter_professional: "Professional",
         
-        // ✅ MEDIUM-TERM: Mobile-optimized shorter translations
+        // MEDIUM-TERM: Mobile-optimized shorter translations
         filter_all_achievements_mobile: "All",
         filter_professional_mobile: "Pro",
         filter_academic_mobile: "Academic",
@@ -265,7 +275,7 @@ const translations = {
         achievements_cta_text: "I'm always looking for the next opportunity to grow, learn, and achieve something meaningful. Let's connect and explore how we can create success together.",
         achievements_cta_btn: "Get in Touch",
         // Proof System Translations
-        proof_click_view: "📷 Click to view proof",
+        proof_click_view: "Click to view proof",
         proof_modal_title: "Achievement Proof",
         proof_coming_soon: "Proof Coming Soon",
         proof_placeholder_desc: "This achievement proof will be available shortly. Thank you for your interest!",
@@ -576,29 +586,39 @@ const translations = {
         // Navigation
         nav_home: "Kezdőlap",
         nav_about: "Rólam",
-        nav_projects: "Projektek",
+        nav_projects: "Munkáim",
+        nav_play: "Játék",
         nav_achievements: "Eredmények",
         // Hero Section
         home_greeting: "Szia, Hermann Péter Pál vagyok.",
-        home_intro: "Adattudós és MI Specialista vagyok, kockázatmodellezési és teljesítményoptimalizálási specializációval. Teljes stack alkalmazásokat építek az adattudományi áttöréseim bemutatására.",
+        home_headline: "Olyan dolgokat építek, amik <em>gondolkodnak</em>.",
+        home_intro: "Ajánlórendszerek, egy Slay-the-Spire MI, és a full-stack alkalmazások, amik életre keltik őket. Olyan modellek érdekelnek, amik élesben is működnek — gyorsan, mérhetően, a számokról őszintén.",
+        home_work_btn: "Nézd meg a munkáim",
         home_contact_btn: "Vedd fel a kapcsolatot",
+        // Stat strip
+        stat_memory: "memória-csökkentés (Go vs Python)",
+        stat_r2: "napelem-előrejelző modell",
+        stat_tests: "teszt fut az STS boton",
+        stat_anime: "anime az ajánlóban",
         // Nav Cards
         card_about_title: "Rólam",
-        card_about_desc: "Tudj meg többet az utamról, képességeimről és szenvedélyeimről.",
-        card_projects_title: "Projektjeim",
-        card_projects_desc: "Böngéssz a legutóbbi munkáim között.",
+        card_about_desc: "Háttér, az eszközök amiket használok, és ahogy dolgozom.",
+        card_projects_title: "Munkáim",
+        card_projects_desc: "Ajánlórendszerek, játékot játszó MI, automatizációs pipeline-ok.",
+        card_play_title: "Játék",
+        card_play_desc: "Böngészőben épített szójátékok. Tippelj egyet.",
         card_achievements_title: "Személyes csúcsok",
         card_achievements_desc: "Nézd meg a sport- és tanulmányi eredményeimet.",
         // Skills
-        skills_title: "Adattudományi Technológiák",
+        skills_title: "Eszközök amiket használok",
         // Featured Project
-        featured_title: "Kiemelt Projekt",
+        featured_title: "Kiemelt",
         featured_project_title: "Anime Ajánlómotor",
-        featured_project_desc: "Adattudományi áttörés: Pure Rust hasonlósági motor 649M párt feldolgoz. Streaming JSON architektúrával és FastAPI backend-del.",
+        featured_project_desc: "Egy Go backend, ami 28k+ animére ad többjeles ajánlásokat ~58 MB memóriából, 60 ms alatt — 95%-kal kevesebb memória, mint a Python verzió. Szemantikus + viselkedési embeddingek, MMR diverzitás, franchise gráf, React frontenddel.",
         view_project_btn: "Projekt megtekintése",
         // Footer
-        contact_title: "Kapcsolat",
-        contact_text: "Keress meg a közösségi médiában vagy küldj egy e-mailt.",
+        contact_title: "Építsünk valamit",
+        contact_text: "Nyitott vagyok data science & ML mérnöki munkára. Írj nyugodtan.",
         // Search
         search_placeholder: "Keresés...",
         search_no_results: "Nincs találat",
@@ -680,7 +700,7 @@ const translations = {
         about_timeline_morgan: "2021 Okt - 2022 Aug",
         about_fundamenta_title: "Kockázatmodellező | Fundamenta Lakástakarékpénztár",
         about_fundamenta_desc: "Adatvezérelt modelleket építettem és tartottam karban hitelkockázat-elemzéshez, biztosítva a megfelelést olyan szabályozási keretrendszereknek, mint az IFRS 9, IRB és EBA. Optimalizáltam R és Python pipeline-okat az adatfeldolgozás és jelentéskészítés automatizálásához, javítva a hatékonyságot és pontosságot.",
-        about_award_badge: "🏆 A Kockázatkezelési Részleg Legjobb Munkavállalója (2023)",
+        about_award_badge: "A Kockázatkezelési Részleg Legjobb Munkavállalója (2023)",
         about_morgan_title: "Kockázatelemző | Morgan Stanley",
         about_morgan_desc: "Belső tudásbázist fejlesztettem a csapat folyamatainak egyszerűsítéséhez és a kulcs adatforrásokhoz való hozzáférés javításához. Segítettem a belső adatbázis újratervezésében, javítva az adatok elérhetőségét és használhatóságát jelentéskészítéshez és elemzéshez.",
         about_education_title: "Végzettség",
@@ -709,11 +729,11 @@ const translations = {
         about_stat_years: "Év Tapasztalat",
         about_stat_domains: "Területek",
         // Experience Highlights Translations - Hungarian
-        about_rust_breakthrough_title: "🦀 Pure Rust Motor Áttörés",
+        about_rust_breakthrough_title: "Pure Rust Motor Áttörés",
         about_rust_breakthrough_desc: "Vállalati szintű hasonlósági motor fejlesztése, amely 649M párt dolgoz fel 16 perc alatt - 36x gyorsabb a Python implementációnál",
-        about_best_employee_title: "🏆 Legjobb Munkavállaló Díj",
+        about_best_employee_title: "Legjobb Munkavállaló Díj",
         about_best_employee_desc: "Kockázatkezelési Részleg, Fundamenta Lakástakarékpénztár - elismerés a kockázatmodellezésben nyújtott kiváló teljesítményért",
-        about_morgan_experience_title: "🏛️ Morgan Stanley Tapasztalat",
+        about_morgan_experience_title: "Morgan Stanley Tapasztalat",
         about_morgan_experience_desc: "Kockázatelemző belső tudásrendszerek fejlesztésében és adatbázis optimalizálásban a jobb adatelérhetőségért",
         // Education Section Translations - Hungarian
         about_education_msc_title: "MSc Informatika",
@@ -736,7 +756,7 @@ const translations = {
         filter_personal: "Személyes",
         filter_professional: "Szakmai",
         
-        // ✅ MEDIUM-TERM: Mobile-optimized shorter Hungarian translations
+        // MEDIUM-TERM: Mobile-optimized shorter Hungarian translations
         filter_all_achievements_mobile: "Összes",
         filter_professional_mobile: "Szakmai",
         filter_academic_mobile: "Tanulás",
@@ -835,7 +855,7 @@ const translations = {
         achievements_cta_text: "Mindig keresem a következő lehetőséget a növekedésre, tanulásra és valami jelentőségteljes elérésére. Kapcsolódjunk össze és fedezzük fel, hogyan teremthetünk együtt sikert.",
         achievements_cta_btn: "Vedd fel a kapcsolatot",
         // Proof System Translations - Hungarian
-        proof_click_view: "📷 Kattints a bizonyíték megtekintéséhez",
+        proof_click_view: "Kattints a bizonyíték megtekintéséhez",
         proof_modal_title: "Eredmény Bizonyítéka",
         proof_coming_soon: "Bizonyíték Hamarosan",
         proof_placeholder_desc: "Ez az eredmény bizonyítéka hamarosan elérhető lesz. Köszönjük az érdeklődését!",
@@ -1180,7 +1200,7 @@ const setLanguage = (lang) => {
     }
 };
 
-// ✅ FIX: Single global variable declarations to avoid conflicts
+// FIX: Single global variable declarations to avoid conflicts
 const languageToggle = document.getElementById('lang-toggle');
 const mobileLangToggle = document.getElementById('mobile-lang-toggle');
 
@@ -1190,7 +1210,7 @@ const toggleLanguage = () => {
     const newLang = currentLang === 'en' ? 'hu' : 'en';
     setLanguage(newLang);
     
-    // ✅ FIX: Ensure both toggles are synced properly
+    // FIX: Ensure both toggles are synced properly
     if (mobileLangToggle) {
         mobileLangToggle.textContent = newLang.toUpperCase();
     }
@@ -1209,7 +1229,7 @@ if (mobileLangToggle) {
 }
 
 
-// ✅ Make translations globally accessible for mobile optimization
+// Make translations globally accessible for mobile optimization
 window.translations = translations;
 
 // Initial language setup

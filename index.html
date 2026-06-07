@@ -3,48 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    
+
     <!-- SEO Meta Tags -->
-    <title data-i18n-key="meta_title_home">Peter Pal Hermann - Portfolio</title>
-    <meta name="description" content="Welcome to my personal portfolio. Discover my projects, skills, and achievements." data-i18n-key="meta_description_home">
-    <meta name="keywords" content="portfolio, web developer, personal website, projects">
-    
+    <title data-i18n-key="meta_title_home">Peter Pal Hermann — Data Scientist</title>
+    <meta name="description" content="Peter Pal Hermann — Data Scientist & ML engineer. I build recommenders, game-playing AI, and full-stack apps to ship my data science work." data-i18n-key="meta_description_home">
+    <meta name="keywords" content="data scientist, machine learning, portfolio, recommender systems, Peter Hermann">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://PeterHermannGithub.github.io/">
-    <meta property="og:title" content="Peter Pal Hermann - Portfolio">
-    <meta property="og:description" content="Welcome to my personal portfolio.">
+    <meta property="og:title" content="Peter Pal Hermann — Data Scientist">
+    <meta property="og:description" content="I build recommenders, game-playing AI, and full-stack apps to ship my data science work.">
     <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://PeterHermannGithub.github.io/">
-    <meta property="twitter:title" content="Peter Pal Hermann - Portfolio">
-    <meta property="twitter:description" content="Welcome to my personal portfolio.">
+    <meta property="twitter:title" content="Peter Pal Hermann — Data Scientist">
+    <meta property="twitter:description" content="I build recommenders, game-playing AI, and full-stack apps to ship my data science work.">
     <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
-    <!-- Critical: Prevent theme flash -->
+    <!-- Critical: set theme before paint (dark is the default) -->
     <script>
-        (function() {
-            const theme = localStorage.getItem('theme') || 
-                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark-mode');
-            }
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
         })();
     </script>
-    
-    <!-- Styles, Fonts, and Icons -->
+
+    <!-- Styles, Fonts -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
     <!-- JSON-LD Structured Data -->
@@ -71,189 +71,116 @@
     </script>
 </head>
 <body>
-    <header class="sticky-header">
-        <nav class="container">
-            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
-            <ul class="nav-links">
-                <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
-                <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
-                <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
-            </ul>
-            <div class="nav-controls">
-                <!-- Search Bar -->
-                <div class="search-container">
-                    <input type="text" id="site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
-                    <div class="search-results" id="search-results" aria-live="polite">
-                        <!-- Search results will be populated here -->
-                    </div>
-                </div>
-                <button id="theme-toggle" aria-label="Toggle theme">
-                    <!-- Icons will be injected by JS -->
-                </button>
-                <button id="lang-toggle" aria-label="Toggle language">EN</button>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <!-- Mobile Navigation Menu -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-    <nav class="mobile-nav-menu" id="mobile-nav-menu">
-        <div class="mobile-nav-header">
-            <a href="index.html" class="logo" data-i18n-key="nav_home">Home</a>
-            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close mobile menu">×</button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="about.html" data-i18n-key="nav_about">About</a></li>
-            <li><a href="projects.html" data-i18n-key="nav_projects">Projects</a></li>
-            <li><a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
-        </ul>
-        <div class="mobile-nav-controls">
-            <!-- ✅ FIX: Mobile Search with results container -->
-            <div class="mobile-search-container">
-                <input type="text" id="mobile-site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
-                <div class="search-results mobile-search-results" id="mobile-search-results" aria-live="polite">
-                    <!-- Mobile search results will be populated here -->
-                </div>
-            </div>
-            <div>
-                <button id="mobile-theme-toggle" aria-label="Toggle theme">
-                    <!-- Icons will be injected by JS -->
-                </button>
-                <button id="mobile-lang-toggle" aria-label="Toggle language">EN</button>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero container">
-            <div class="hero-text">
-                <h1 class="animate-typing" data-i18n-key="home_greeting">Hello, I'm Peter Pal Hermann.</h1>
-                <p data-i18n-key="home_intro">I'm a passionate developer creating modern web experiences. Welcome to my digital space.</p>
-                <a href="#contact" class="btn btn-primary" data-i18n-key="home_contact_btn">Get in Touch</a>
+        <!-- Hero -->
+        <section class="hero-editorial container">
+            <div class="hero-main">
+                <p class="kicker"><span class="dash">//</span> Data Scientist &amp; ML Engineer · Budapest</p>
+                <h1 class="hero-headline" data-i18n-key="home_headline">I build things that <em>think</em>.</h1>
+                <p class="hero-sub" data-i18n-key="home_intro">Recommender systems, a Slay-the-Spire AI, and the full-stack apps that ship them. I care about models that work in production — fast, measured, and honest about their numbers.</p>
+                <div class="hero-cta-row">
+                    <a href="projects.html" class="btn btn-primary" data-i18n-key="home_work_btn">See the work</a>
+                    <a href="#contact" class="btn btn-ghost" data-i18n-key="home_contact_btn">Get in touch</a>
+                </div>
+            </div>
+            <aside class="hero-aside">
+                <p class="mono-label">Selected / 2024—26</p>
+                <ul class="hero-index">
+                    <li><a href="projects/anime-recommender.html"><span class="num">01</span> Anime recommender</a></li>
+                    <li><a href="projects.html"><span class="num">02</span> Slay-the-Spire AI</a></li>
+                    <li><a href="play.html"><span class="num">03</span> Playable games</a></li>
+                </ul>
+                <div class="ext-links">
+                    <a href="https://github.com/PeterHermannGithub" target="_blank" rel="noopener noreferrer">github ↗</a>
+                    <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" rel="noopener noreferrer">linkedin ↗</a>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Stat strip -->
+        <section class="container">
+            <div class="stat-strip">
+                <div class="stat-cell">
+                    <div class="stat-num">95<span>%</span></div>
+                    <div class="stat-key" data-i18n-key="stat_memory">memory reduction (Go vs Python)</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="stat-num">0.986<span> R²</span></div>
+                    <div class="stat-key" data-i18n-key="stat_r2">solar forecast model</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="stat-num">1200<span>+</span></div>
+                    <div class="stat-key" data-i18n-key="stat_tests">tests passing on the STS bot</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="stat-num">37<span>k</span></div>
+                    <div class="stat-key" data-i18n-key="stat_anime">anime in the recommender</div>
+                </div>
             </div>
         </section>
 
         <!-- Quick Navigation Cards -->
         <section class="container card-grid">
             <a href="about.html" class="nav-card animate-on-scroll">
-                <h3 data-i18n-key="card_about_title">About Me</h3>
-                <p data-i18n-key="card_about_desc">Learn more about my journey, skills, and passions.</p>
+                <h3 data-i18n-key="card_about_title">About</h3>
+                <p data-i18n-key="card_about_desc">Background, the tools I reach for, and how I work.</p>
             </a>
             <a href="projects.html" class="nav-card animate-on-scroll">
-                <h3 data-i18n-key="card_projects_title">My Projects</h3>
-                <p data-i18n-key="card_projects_desc">Explore a selection of my recent work.</p>
+                <h3 data-i18n-key="card_projects_title">Work</h3>
+                <p data-i18n-key="card_projects_desc">Recommenders, a game-playing AI, automation pipelines.</p>
             </a>
-            <a href="achievements.html" class="nav-card animate-on-scroll">
-                <h3 data-i18n-key="card_achievements_title">Personal Bests</h3>
-                <p data-i18n-key="card_achievements_desc">Check out my athletic and academic accomplishments.</p>
+            <a href="play.html" class="nav-card animate-on-scroll">
+                <h3 data-i18n-key="card_play_title">Play</h3>
+                <p data-i18n-key="card_play_desc">Word games I built in the browser. Go on, take a guess.</p>
             </a>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="skills-section container">
-            <h2 class="section-title animate-on-scroll" data-i18n-key="skills_title">Technologies I Use</h2>
-            <div class="skills-grid">
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/python.svg" alt="Python Icon">
-                    <span>Python</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/rust.svg" alt="Rust Icon">
-                    <span>Rust</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/tensorflow.svg" alt="TensorFlow Icon">
-                    <span>TensorFlow</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/pandas.svg" alt="Pandas Icon">
-                    <span>Pandas</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/docker.svg" alt="Docker Icon">
-                    <span>Docker</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/fastapi.svg" alt="FastAPI Icon">
-                    <span>FastAPI</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/react.svg" alt="React Icon">
-                    <span>React</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/javascript.svg" alt="JavaScript Icon">
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/openai.svg" alt="OpenAI Icon">
-                    <span>OpenAI</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/git.svg" alt="Git Icon">
-                    <span>Git</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/kotlin.svg" alt="Kotlin Icon">
-                    <span>Kotlin</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/android.svg" alt="Android Icon">
-                    <span>Android</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/kafka.svg" alt="Apache Kafka Icon">
-                    <span>Apache Kafka</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/spark.svg" alt="Apache Spark Icon">
-                    <span>Apache Spark</span>
-                </div>
-                <div class="skill-item animate-on-scroll">
-                    <img src="assets/icons/redis.svg" alt="Redis Icon">
-                    <span>Redis</span>
-                </div>
-            </div>
         </section>
 
         <!-- Featured Project -->
         <section class="featured-project container">
-            <h2 class="section-title animate-on-scroll" data-i18n-key="featured_title">Featured Project</h2>
+            <h2 class="section-title animate-on-scroll" data-i18n-key="featured_title">Featured</h2>
             <div class="project-card-large animate-on-scroll">
-                <img src="assets/images/project-anime-recommender.png" alt="Production Anime Recommendation Engine Screenshot">
+                <img src="assets/images/project-anime-recommender.png" alt="Anime recommendation engine screenshot">
                 <div class="project-info">
                     <h3 data-i18n-key="featured_project_title">Anime Recommendation Engine</h3>
-                    <p data-i18n-key="featured_project_desc">Pure Rust engine processing 649M similarity pairs across 37k anime with streaming JSON architecture. Features sub-100ms API responses and FastAPI backend with Docker deployment.</p>
+                    <p data-i18n-key="featured_project_desc">A Go backend serving multi-signal recommendations over 28k+ anime in ~58 MB of memory and 60 ms per query — a 95% memory cut over the Python version. Semantic + behavioral embeddings, MMR diversity, and a franchise graph, with a React front end.</p>
                     <div class="tech-stack">
-                        <span>Pure Rust</span> <span>Streaming JSON</span> <span>FastAPI</span> <span>Redis</span> <span>Docker</span> <span>React 19</span>
+                        <span>Go</span> <span>embeddings</span> <span>FastAPI</span> <span>Redis</span> <span>Docker</span> <span>React</span>
                     </div>
-                    <a href="projects/anime-recommender.html" class="btn" data-i18n-key="view_project_btn">View Project</a>
+                    <a href="projects/anime-recommender.html" class="btn btn-secondary" data-i18n-key="view_project_btn">View project</a>
                 </div>
             </div>
         </section>
 
-    </main>
-    
-    <footer id="contact">
-        <div class="container">
-            <h2 data-i18n-key="contact_title">Let's Connect</h2>
-            <p data-i18n-key="contact_text">Find me on social media or send me an email.</p>
-            <div class="social-links">
-                <a href="https://github.com/PeterHermannGithub" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="assets/icons/github.svg" alt="GitHub"></a>
-                <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
-                <a href="mailto:hermannpeter17@gmail.com" aria-label="Email"><img src="assets/icons/mail.svg" alt="Email"></a>
+        <!-- Skills -->
+        <section class="skills-section container">
+            <h2 class="section-title animate-on-scroll" data-i18n-key="skills_title">Tools I reach for</h2>
+            <div class="skills-grid">
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/python.svg" alt="Python"><span>Python</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/pandas.svg" alt="Pandas"><span>Pandas</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/tensorflow.svg" alt="TensorFlow"><span>TensorFlow</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/sql.svg" alt="SQL"><span>SQL</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/rust.svg" alt="Rust"><span>Rust</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/fastapi.svg" alt="FastAPI"><span>FastAPI</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/docker.svg" alt="Docker"><span>Docker</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/redis.svg" alt="Redis"><span>Redis</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/spark.svg" alt="Apache Spark"><span>Spark</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/kafka.svg" alt="Apache Kafka"><span>Kafka</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/react.svg" alt="React"><span>React</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/git.svg" alt="Git"><span>Git</span></div>
             </div>
-            <p class="copyright">© 2025 Peter Pal Hermann. All rights reserved.</p>
-        </div>
-    </footer>
+        </section>
+    </main>
 
-    <!-- Scripts -->
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
+
+    <!-- Scripts: components.js first so header/footer exist before i18n/main run -->
+    <script src="assets/js/components.js" defer></script>
     <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 </body>

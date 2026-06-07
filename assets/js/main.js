@@ -1,73 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. THEME SWITCHER ---
-    console.log('🌗 Theme System: Initializing...');
+    console.log('Theme System: Initializing...');
     
     const themeToggle = document.getElementById('theme-toggle');
-    console.log('🔍 Theme Toggle Button:', themeToggle ? 'Found ✅' : 'Missing ❌');
+    console.log('Theme Toggle Button:', themeToggle ? 'Found ' : 'Missing ');
     
     if (!themeToggle) {
-        console.error('❌ Theme toggle button not found! Theme system will not work.');
+        console.error('Theme toggle button not found! Theme system will not work.');
         return; // Exit early if theme toggle doesn't exist
     }
     
     const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="currentColor" d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 011.06-1.06l1.591 1.59a.75.75 0 01-1.06 1.061l-1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.894 17.894a.75.75 0 011.06 1.06l-1.59 1.591a.75.75 0 01-1.061-1.06l1.59-1.591zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM6.106 17.894a.75.75 0 011.06-1.06l-1.591 1.59a.75.75 0 01-1.06 1.061l1.591-1.59zM3.75 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H4.5a.75.75 0 01-.75-.75zM6.106 6.106a.75.75 0 01-1.06 1.06l-1.591-1.59a.75.75 0 111.06-1.061l1.591 1.59z"/></svg>`;
     const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="currentColor" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>`;
 
+    // Dark is the default theme; light is opt-in via the .light-mode class.
     const setTheme = (isDark) => {
-        console.log(`🎨 Setting theme: ${isDark ? 'Dark' : 'Light'}`);
-        
-        // Apply/remove dark-mode class
-        document.documentElement.classList.toggle('dark-mode', isDark);
-        console.log('📋 Dark mode class applied:', document.documentElement.classList.contains('dark-mode'));
-        
-        // Update button icon
+        document.documentElement.classList.toggle('light-mode', !isDark);
+
+        // Icon shows the theme you'll switch TO: sun while dark, moon while light.
         if (themeToggle) {
             themeToggle.innerHTML = isDark ? sunIcon : moonIcon;
-            console.log('🔆 Button icon updated:', isDark ? 'Sun (for dark mode)' : 'Moon (for light mode)');
         }
-        
-        // Save to localStorage with error handling
+
         try {
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            console.log('💾 Theme saved to localStorage:', localStorage.getItem('theme'));
         } catch (error) {
-            console.error('❌ Failed to save theme to localStorage:', error);
+            console.error('Failed to save theme to localStorage:', error);
         }
-        
-        // Log computed background color to verify CSS is working
-        const computedStyle = window.getComputedStyle(document.body);
-        const bgColor = computedStyle.backgroundColor;
-        console.log('🎨 Body background color:', bgColor);
     };
 
-    // Add click event listener with debugging
     themeToggle.addEventListener('click', () => {
-        console.log('🖱️ Theme toggle clicked!');
-        const currentlyDark = document.documentElement.classList.contains('dark-mode');
-        console.log('📊 Current state: Currently dark?', currentlyDark);
+        const currentlyDark = !document.documentElement.classList.contains('light-mode');
         setTheme(!currentlyDark);
     });
 
-    // Initial theme setup with enhanced debugging
-    console.log('🔧 Setting up initial theme...');
-    
+    // Initial theme: respect saved choice, otherwise default to dark.
     let savedTheme = null;
     try {
         savedTheme = localStorage.getItem('theme');
-        console.log('💾 Saved theme from localStorage:', savedTheme);
     } catch (error) {
-        console.error('❌ Failed to read from localStorage:', error);
+        console.error('Failed to read from localStorage:', error);
     }
-    
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    console.log('🖥️ System prefers dark mode:', prefersDark);
-    
-    const shouldUseDark = savedTheme ? savedTheme === 'dark' : prefersDark;
-    console.log('🎯 Final decision: Use dark mode?', shouldUseDark);
-    
+
+    const shouldUseDark = savedTheme ? savedTheme === 'dark' : true;
     setTheme(shouldUseDark);
-    console.log('✅ Theme system initialization complete!');
 
     // --- 2. SCROLL ANIMATIONS ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -95,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile theme and language toggles
     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
     const mobileLangToggle = document.getElementById('mobile-lang-toggle');
-    console.log('📱 Mobile theme toggle:', mobileThemeToggle ? 'Found ✅' : 'Missing ❌');
+    console.log('Mobile theme toggle:', mobileThemeToggle ? 'Found ' : 'Missing ');
     
     function openMobileMenu() {
         mobileMenuToggle.classList.add('active');
@@ -103,17 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileNavMenu.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // ✅ FIX: Enhanced mobile controls synchronization
+        // FIX: Enhanced mobile controls synchronization
         if (mobileThemeToggle && themeToggle) {
             mobileThemeToggle.innerHTML = themeToggle.innerHTML;
-            console.log('📱 Mobile theme toggle synced with desktop:', mobileThemeToggle.innerHTML);
+            console.log('Mobile theme toggle synced with desktop:', mobileThemeToggle.innerHTML);
         }
-        // ✅ FIX: Language sync handled by i18n.js - no manual sync needed
+        // FIX: Language sync handled by i18n.js - no manual sync needed
         if (mobileLangToggle) {
             const langToggle = document.getElementById('lang-toggle');
             if (langToggle) {
                 mobileLangToggle.textContent = langToggle.textContent;
-                console.log('📱 Mobile lang toggle synced:', mobileLangToggle.textContent);
+                console.log('Mobile lang toggle synced:', mobileLangToggle.textContent);
             }
         }
     }
@@ -143,13 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', closeMobileMenu);
     });
     
-    // ✅ FIX: Enhanced mobile theme toggle functionality
+    // FIX: Enhanced mobile theme toggle functionality
     if (mobileThemeToggle && themeToggle) {
         mobileThemeToggle.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('📱 Mobile theme toggle clicked!');
-            console.log('📱 Current desktop toggle state:', document.documentElement.classList.contains('dark-mode'));
+            console.log('Mobile theme toggle clicked!');
+            console.log('Current desktop toggle state:', document.documentElement.classList.contains('dark-mode'));
             
             // Trigger desktop theme toggle
             themeToggle.click();
@@ -157,26 +134,26 @@ document.addEventListener('DOMContentLoaded', () => {
             // Sync the mobile button icon after theme change
             setTimeout(() => {
                 mobileThemeToggle.innerHTML = themeToggle.innerHTML;
-                console.log('📱 Mobile theme icon updated to:', mobileThemeToggle.innerHTML);
-                console.log('📱 New theme state:', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+                console.log('Mobile theme icon updated to:', mobileThemeToggle.innerHTML);
+                console.log('New theme state:', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
             }, 100);
         });
         
         // Initial sync when mobile menu is available
         if (themeToggle.innerHTML) {
             mobileThemeToggle.innerHTML = themeToggle.innerHTML;
-            console.log('📱 Initial mobile theme sync completed');
+            console.log('Initial mobile theme sync completed');
         }
     } else {
         if (mobileThemeToggle) {
-            console.warn('⚠️ Mobile theme toggle exists but desktop toggle missing');
+            console.warn('Mobile theme toggle exists but desktop toggle missing');
         }
         if (!mobileThemeToggle) {
-            console.log('ℹ️ Mobile theme toggle not found on this page');
+            console.log('Mobile theme toggle not found on this page');
         }
     }
     
-    // ✅ FIX: Mobile language toggle is handled by i18n.js - removed conflicting event listener
+    // FIX: Mobile language toggle is handled by i18n.js - removed conflicting event listener
     // Language toggle functionality is managed in i18n.js to avoid conflicts
     
     // Close mobile menu on escape key
@@ -192,11 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
             closeMobileMenu();
         }
         
-        // ✅ MEDIUM-TERM: Responsive text optimization for filter buttons
+        // MEDIUM-TERM: Responsive text optimization for filter buttons
         optimizeFilterButtonText();
     });
     
-    // ✅ MEDIUM-TERM: Mobile text optimization for achievement filter buttons
+    // MEDIUM-TERM: Mobile text optimization for achievement filter buttons
     const optimizeFilterButtonText = () => {
         // Only apply on achievements page
         if (!window.location.pathname.includes('achievements')) return;
@@ -236,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
-    // ✅ Initialize mobile text optimization on page load
+    // Initialize mobile text optimization on page load
     optimizeFilterButtonText();
 
     // --- 4. ACTIVE NAV LINK HIGHLIGHTING ---
@@ -300,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners to filter buttons
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            console.log('🔽 Filter button clicked:', button.getAttribute('data-filter'));
+            console.log('Filter button clicked:', button.getAttribute('data-filter'));
             const category = button.getAttribute('data-filter');
             // Determine if we're on projects or achievements page
             if (projectCards.length > 0) {
@@ -391,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pdfMessage.className = 'pdf-loading-message';
             pdfMessage.innerHTML = `
                 <div class="pdf-loading-content">
-                    <div class="pdf-loading-icon">📄</div>
+                    <div class="pdf-loading-icon"></div>
                     <h4>Opening PDF Document</h4>
                     <p>The document will open in a new tab...</p>
                     <button class="pdf-open-btn">Open PDF Manually</button>
@@ -455,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     pdfMessage.className = 'pdf-loading-message';
                     pdfMessage.innerHTML = `
                         <div class="pdf-loading-content">
-                            <div class="pdf-loading-icon">📄</div>
+                            <div class="pdf-loading-icon"></div>
                             <h4>Opening PDF Document (English Version)</h4>
                             <p>The document will open in a new tab...</p>
                             <button class="pdf-open-btn">Open PDF Manually</button>
@@ -548,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const achievementTitle = titleElement ? titleElement.textContent : 'Achievement';
 
             if (proofImage) {
-                console.log('📱 Achievement card clicked:', achievementTitle);
+                console.log('Achievement card clicked:', achievementTitle);
                 openProofModal(proofImage, achievementTitle, isBilingual);
             }
         });
@@ -626,8 +603,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update the button href
         cvButton.setAttribute('href', languageSpecificHref);
         
-        console.log(`📄 CV button updated for language: ${currentLang}`);
-        console.log(`📄 New CV path: ${languageSpecificHref}`);
+        console.log(`CV button updated for language: ${currentLang}`);
+        console.log(`New CV path: ${languageSpecificHref}`);
     }
 
     // Initialize CV button on page load
@@ -637,19 +614,19 @@ document.addEventListener('DOMContentLoaded', () => {
     window.updateCVButton = updateCVButton;
 
     // --- SEARCH FUNCTIONALITY ---
-    console.log('🔍 Search System: Initializing...');
+    console.log('Search System: Initializing...');
     
-    // ✅ FIX: Search elements with mobile search results support
+    // FIX: Search elements with mobile search results support
     const searchInput = document.getElementById('site-search');
     const mobileSearchInput = document.getElementById('mobile-site-search');
     const searchResults = document.getElementById('search-results');
     const mobileSearchResults = document.getElementById('mobile-search-results');
     
-    console.log('🔍 Search Elements:', {
-        desktop: searchInput ? 'Found ✅' : 'Missing ❌',
-        mobile: mobileSearchInput ? 'Found ✅' : 'Missing ❌',
-        desktopResults: searchResults ? 'Found ✅' : 'Missing ❌',
-        mobileResults: mobileSearchResults ? 'Found ✅' : 'Missing ❌'
+    console.log('Search Elements:', {
+        desktop: searchInput ? 'Found ' : 'Missing ',
+        mobile: mobileSearchInput ? 'Found ' : 'Missing ',
+        desktopResults: searchResults ? 'Found ' : 'Missing ',
+        mobileResults: mobileSearchResults ? 'Found ' : 'Missing '
     });
 
     // Search index and configuration
@@ -696,7 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isIndexBuilding) return;
         isIndexBuilding = true;
         
-        console.log('🏗️ Building search index...');
+        console.log('Building search index...');
         
         const pages = [
             { url: 'index.html', title: 'Home' },
@@ -731,18 +708,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             searchText: (page.title + ' ' + content).toLowerCase()
                         });
                         
-                        console.log(`📄 Indexed: ${page.title} (${content.length} chars)`);
+                        console.log(`Indexed: ${page.title} (${content.length} chars)`);
                     }
                 } catch (error) {
-                    console.warn(`⚠️ Failed to index ${page.url}:`, error);
+                    console.warn(`Failed to index ${page.url}:`, error);
                 }
             }
             
-            console.log(`✅ Search index built: ${searchIndex.length} pages indexed`);
+            console.log(`Search index built: ${searchIndex.length} pages indexed`);
             isIndexBuilding = false;
             
         } catch (error) {
-            console.error('❌ Error building search index:', error);
+            console.error('Error building search index:', error);
             isIndexBuilding = false;
         }
     }
@@ -855,7 +832,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return score;
     }
 
-    // ✅ FIX: Enhanced search results display with proper desktop/mobile detection
+    // FIX: Enhanced search results display with proper desktop/mobile detection
     function displaySearchResults(results, query) {
         const currentLang = localStorage.getItem('lang') || 'en';
         const t = window.translations?.[currentLang] || window.translations?.en || {};
@@ -865,7 +842,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
         const isMobileScreen = window.innerWidth <= 768;
         
-        // ✅ FIX: More intelligent container selection
+        // FIX: More intelligent container selection
         let shouldUseMobileResults = false;
         
         // If mobile sidebar is active on desktop, use mobile results for mobile search input
@@ -920,7 +897,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ✅ FIX: Hide search results from both containers
+    // FIX: Hide search results from both containers
     function hideSearchResults() {
         if (searchResults) {
             searchResults.classList.remove('show');
@@ -950,7 +927,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ✅ FIX: Enhanced keyboard navigation with proper container detection
+    // FIX: Enhanced keyboard navigation with proper container detection
     function handleSearchKeyboard(e) {
         // Use same logic as displaySearchResults for consistency
         const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
@@ -1005,16 +982,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ✅ FIX: Enhanced setup search input handlers with debugging
+    // FIX: Enhanced setup search input handlers with debugging
     function setupSearchInput(input) {
         if (!input) {
-            console.log('⚠️ setupSearchInput called with null/undefined input');
+            console.log('setupSearchInput called with null/undefined input');
             return;
         }
         
-        console.log(`🔍 Setting up search input: ${input.id} (${input.type})`);
-        console.log(`🔍 Input element exists: ${!!input}`);
-        console.log(`🔍 Input parent: ${input.parentElement?.className || 'none'}`);
+        console.log(`Setting up search input: ${input.id} (${input.type})`);
+        console.log(`Input element exists: ${!!input}`);
+        console.log(`Input parent: ${input.parentElement?.className || 'none'}`);
         
         // Search on input
         input.addEventListener('input', (e) => {
@@ -1060,15 +1037,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize search system
     function initializeSearch() {
-        console.log('🚀 Initializing search system...');
+        console.log('Initializing search system...');
         
         // Setup search inputs
         setupSearchInput(searchInput);
         setupSearchInput(mobileSearchInput);
         
-        // ✅ FIX: Enhanced sync between mobile and desktop search with conflict prevention
+        // FIX: Enhanced sync between mobile and desktop search with conflict prevention
         if (searchInput && mobileSearchInput) {
-            console.log('🔗 Setting up search input synchronization');
+            console.log('Setting up search input synchronization');
             
             let syncInProgress = false;
             
@@ -1076,7 +1053,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (syncInProgress) return;
                 syncInProgress = true;
                 mobileSearchInput.value = e.target.value;
-                console.log('🔗 Desktop → Mobile sync:', e.target.value);
+                console.log('Desktop Mobile sync:', e.target.value);
                 setTimeout(() => { syncInProgress = false; }, 10);
             });
             
@@ -1084,11 +1061,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (syncInProgress) return;
                 syncInProgress = true;
                 searchInput.value = e.target.value;
-                console.log('🔗 Mobile → Desktop sync:', e.target.value);
+                console.log('Mobile Desktop sync:', e.target.value);
                 setTimeout(() => { syncInProgress = false; }, 10);
             });
         } else {
-            console.log('⚠️ Search input sync not available:', {
+            console.log('Search input sync not available:', {
                 desktop: !!searchInput,
                 mobile: !!mobileSearchInput
             });
@@ -1097,7 +1074,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Build search index
         buildSearchIndex();
         
-        // ✅ FIX: Hide results when clicking outside (supports both containers)
+        // FIX: Hide results when clicking outside (supports both containers)
         document.addEventListener('click', (e) => {
             const isSearchRelated = e.target.closest('.search-container') || 
                                   e.target.closest('.search-results') ||
@@ -1109,7 +1086,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // ✅ FIX: Enhanced global keyboard shortcuts with proper focus detection
+        // FIX: Enhanced global keyboard shortcuts with proper focus detection
         document.addEventListener('keydown', (e) => {
             // Ctrl+K or Cmd+K to focus search
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -1134,20 +1111,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (activeSearch) {
                     activeSearch.focus();
                     activeSearch.select();
-                    console.log('🔍 Focused search input:', shouldUseMobileSearch ? 'mobile' : 'desktop');
+                    console.log('Focused search input:', shouldUseMobileSearch ? 'mobile' : 'desktop');
                 }
             }
         });
         
-        console.log('✅ Search system initialized!');
-        console.log('💡 Tip: Press Ctrl+K to focus search');
+        console.log('Search system initialized!');
+        console.log('Tip: Press Ctrl+K to focus search');
     }
 
     // Initialize search if elements exist
     if (searchInput || mobileSearchInput) {
         initializeSearch();
     } else {
-        console.log('ℹ️ Search elements not found on this page');
+        console.log('Search elements not found on this page');
     }
 
 });

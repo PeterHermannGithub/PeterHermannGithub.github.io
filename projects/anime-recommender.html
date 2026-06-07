@@ -34,17 +34,17 @@
     <link rel="stylesheet" href="../assets/css/project-page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
     
-    <!-- Critical: Prevent theme flash -->
+    <!-- Critical: set theme before paint (dark is the default) -->
     <script>
-        (function() {
-            const theme = localStorage.getItem('theme') || 
-                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark-mode');
-            }
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
         })();
     </script>
     
@@ -149,56 +149,10 @@
 </head>
 <body>
 
-    <header class="sticky-header">
-        <nav class="container">
-            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
-            <ul class="nav-links">
-                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
-                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
-                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
-            </ul>
-            <div class="nav-controls">
-                <!-- Search Bar -->
-                <div class="search-container">
-                    <input type="text" id="site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
-                    <div class="search-results" id="search-results" aria-live="polite">
-                        <!-- Search results will be populated here -->
-                    </div>
-                </div>
-                <button id="theme-toggle" aria-label="Toggle theme"></button>
-                <button id="lang-toggle" aria-label="Toggle language">EN</button>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <!-- Mobile Navigation Menu -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-    <nav class="mobile-nav-menu" id="mobile-nav-menu">
-        <div class="mobile-nav-header">
-            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
-            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close mobile menu">×</button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
-            <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
-            <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
-        </ul>
-        <div class="mobile-nav-controls">
-            <!-- Mobile Search -->
-            <div class="mobile-search-container">
-                <input type="text" id="mobile-site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">
-            </div>
-            <button id="mobile-theme-toggle" aria-label="Toggle theme">
-                <!-- Icons will be injected by JS -->
-            </button>
-            <button id="mobile-lang-toggle" aria-label="Toggle language">EN</button>
-        </div>
-    </nav>
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
 
     <main class="project-page-main">
         <div class="container">
@@ -297,7 +251,7 @@
                 </div>
                 
                 <div class="evolution-insight" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; padding: 2rem; margin: 2rem 0;">
-                    <h3 style="color: white; margin-top: 0;">🦀 → 🧠 Evolution Insight</h3>
+                    <h3 style="color: white; margin-top: 0;"> →  Evolution Insight</h3>
                     <p style="margin-bottom: 0;">The Rust engine phase was crucial for handling large-scale similarity computations and became the foundation for ML advancement. The V2 similarity matrix (649M pairs) was used to generate 500,000 high-quality training triplets for V4 fine-tuning, creating a "Rosetta Stone" that translated engineered similarities into learned representations. This demonstrates architectural synergy - each phase building upon previous innovations rather than starting from scratch.</p>
                 </div>
             </section>
@@ -309,7 +263,7 @@
                 <div class="project-details-col">
                     
                     <div class="breakthrough-highlight">
-                        <h3>🧠 ML Embeddings Architecture</h3>
+                        <h3> ML Embeddings Architecture</h3>
                         <p>Current V5.1 system leverages fine-tuned 768-dimensional semantic embeddings trained specifically on anime data. Achieving 18x performance improvement through architectural optimization, the system delivers <300ms production SLA compliance while maintaining superior recommendation quality through semantic understanding.</p>
                     </div>
                     
@@ -360,22 +314,22 @@
                                 <tr style="border-bottom: 1px solid var(--border-color);">
                                     <td style="padding: 0.5rem;">Python V1 System</td>
                                     <td style="padding: 0.5rem;">9 seconds</td>
-                                    <td style="padding: 0.5rem; color: #f39c12;">🏗️ Traditional similarity algorithms (Jaccard/cosine/TF-IDF)</td>
+                                    <td style="padding: 0.5rem; color: #f39c12;"> Traditional similarity algorithms (Jaccard/cosine/TF-IDF)</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid var(--border-color);">
                                     <td style="padding: 0.5rem;">Rust V2 Engine</td>
                                     <td style="padding: 0.5rem;"><strong>5.2ms average</strong></td>
-                                    <td style="padding: 0.5rem; color: #27ae60;">🦀 Multifeature algorithm + 649M pairs processing</td>
+                                    <td style="padding: 0.5rem; color: #27ae60;"> Multifeature algorithm + 649M pairs processing</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid var(--border-color);">
                                     <td style="padding: 0.5rem;">V4 ML (Factory Bug)</td>
                                     <td style="padding: 0.5rem;">4,667ms</td>
-                                    <td style="padding: 0.5rem; color: #e74c3c;">⚠️ Per-request initialization overhead (140MB embeddings)</td>
+                                    <td style="padding: 0.5rem; color: #e74c3c;"> Per-request initialization overhead (140MB embeddings)</td>
                                 </tr>
                                 <tr>
                                     <td style="padding: 0.5rem;"><strong>V4.5 Optimized</strong></td>
                                     <td style="padding: 0.5rem;"><strong>264ms / 4ms cached</strong></td>
-                                    <td style="padding: 0.5rem; color: #27ae60;"><strong>🚀 Singleton architecture + semantic embeddings</strong></td>
+                                    <td style="padding: 0.5rem; color: #27ae60;"><strong> Singleton architecture + semantic embeddings</strong></td>
                                 </tr>
                             </table>
                         </div>
@@ -388,7 +342,7 @@
                         <h2 data-i18n-key="project_section_tech">Technology Stack</h2>
                         <div class="tech-stack-grid">
                             <div class="tech-category">
-                                <h4>🧠 ML Core</h4>
+                                <h4> ML Core</h4>
                                 <ul class="tech-list">
                                     <li>Fine-tuned Embeddings</li>
                                     <li>FAISS Vector Search</li>
@@ -397,7 +351,7 @@
                                 </ul>
                             </div>
                             <div class="tech-category">
-                                <h4>⚡ Backend</h4>
+                                <h4> Backend</h4>
                                 <ul class="tech-list">
                                     <li>FastAPI + Python</li>
                                     <li>Singleton Architecture</li>
@@ -406,7 +360,7 @@
                                 </ul>
                             </div>
                             <div class="tech-category">
-                                <h4>🌐 Frontend</h4>
+                                <h4> Frontend</h4>
                                 <ul class="tech-list">
                                     <li>React 19</li>
                                     <li>TypeScript</li>
@@ -415,7 +369,7 @@
                                 </ul>
                             </div>
                             <div class="tech-category">
-                                <h4>🐳 Production</h4>
+                                <h4> Production</h4>
                                 <ul class="tech-list">
                                     <li>Docker + Monitoring</li>
                                     <li>Redis Caching</li>
@@ -431,7 +385,7 @@
                         <p>Three distinct algorithmic approaches showcase the system's evolution from traditional NLP to advanced ML:</p>
                         
                         <div class="tech-category" style="margin-bottom: 1.5rem;">
-                            <h4>🐍 Python V1: Traditional Similarity</h4>
+                            <h4> Python V1: Traditional Similarity</h4>
                             <ul class="tech-list">
                                 <li><strong>Jaccard Similarity:</strong> |intersection| / |union| for tag sets</li>
                                 <li><strong>Cosine Similarity:</strong> Binary vector approach (tags as 1/0 features)</li>
@@ -441,7 +395,7 @@
                         </div>
                         
                         <div class="tech-category" style="margin-bottom: 1.5rem;">
-                            <h4>🦀 Rust V2: Multifeature Engineering</h4>
+                            <h4> Rust V2: Multifeature Engineering</h4>
                             <ul class="tech-list">
                                 <li><strong>Tag Similarity (60%):</strong> Weighted popularity-adjusted tag matching</li>
                                 <li><strong>Score Proximity (20%):</strong> Normalized MAL score difference</li>
@@ -452,7 +406,7 @@
                         </div>
                         
                         <div class="tech-category">
-                            <h4>🧠 ML V3/V4: Semantic Understanding</h4>
+                            <h4> ML V3/V4: Semantic Understanding</h4>
                             <ul class="tech-list">
                                 <li><strong>V3 Baseline:</strong> all-mpnet-base-v2 embeddings (768-dim)</li>
                                 <li><strong>V4 Enhanced:</strong> Fine-tuned on V2 similarity triplets (68.4% accuracy)</li>
@@ -489,27 +443,11 @@
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4 data-i18n-key="footer_connect">Connect</h4>
-                    <a href="https://github.com/PeterHermannGithub" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/in/peterpalhermanndev" target="_blank">LinkedIn</a>
-                </div>
-                <div class="footer-section">
-                    <h4 data-i18n-key="footer_projects">Projects</h4>
-                    <a href="projects.html" data-i18n-key="nav_projects">All Projects</a>
-                    <a href="achievements.html" data-i18n-key="nav_achievements">Achievements</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Peter Pal Hermann. <span data-i18n-key="footer_rights">All rights reserved.</span></p>
-            </div>
-        </div>
-    </footer>
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
 
     <!-- Scripts -->
+    <script src="../assets/js/components.js" defer></script>
     <script src="../assets/js/i18n.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
 

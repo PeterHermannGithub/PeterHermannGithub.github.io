@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+    <title>Play — Peter Pal Hermann</title>
+    <meta name="description" content="Word games built in the browser — Wordle variants and other small puzzles by Peter Pal Hermann.">
+
+    <!-- Critical: set theme before paint (dark is the default) -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
+
+    <main id="main-content">
+        <section class="page-header container">
+            <p class="kicker"><span class="dash">//</span> Browser games · vanilla JS, no framework</p>
+            <h1>Play</h1>
+            <p>Small word puzzles I build to keep the front-end muscles warm. Each one is self-contained — open the page, no install, no sign-in.</p>
+        </section>
+
+        <section class="container">
+            <!--
+              GAME CARD TEMPLATE — duplicate a card below for each variant.
+              When a game is ready, point the card's <a> at its page (e.g. games/wordle.html)
+              and remove the `is-wip` class + the "in progress" badge.
+            -->
+            <div class="games-grid">
+
+                <article class="game-card is-wip">
+                    <div class="game-card-top">
+                        <span class="game-tag">word</span>
+                        <span class="game-badge">in progress</span>
+                    </div>
+                    <h3>Wordle</h3>
+                    <p>The classic. Six guesses, five letters, green / yellow / grey.</p>
+                    <span class="game-cta" aria-disabled="true">Coming soon</span>
+                </article>
+
+                <article class="game-card is-wip">
+                    <div class="game-card-top">
+                        <span class="game-tag">word</span>
+                        <span class="game-badge">in progress</span>
+                    </div>
+                    <h3>Variant #2</h3>
+                    <p>A twist on the formula — your call. Themed word list, extra rows, harder mode.</p>
+                    <span class="game-cta" aria-disabled="true">Coming soon</span>
+                </article>
+
+                <article class="game-card is-wip">
+                    <div class="game-card-top">
+                        <span class="game-tag">word</span>
+                        <span class="game-badge">in progress</span>
+                    </div>
+                    <h3>Variant #3</h3>
+                    <p>Another idea slot. Plug a new game in by copying a card and adding its page.</p>
+                    <span class="game-cta" aria-disabled="true">Coming soon</span>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
+
+    <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+</body>
+</html>

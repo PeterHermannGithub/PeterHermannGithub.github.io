@@ -41,7 +41,7 @@ class CodeViewer {
 
     async initializeCodeViewer() {
         try {
-            console.log('🎯 Initializing Code Viewer...');
+            console.log('Initializing Code Viewer...');
             
             // Show loading state
             this.showLoading();
@@ -60,17 +60,17 @@ class CodeViewer {
             // Hide loading and show interface
             this.hideLoading();
             
-            console.log('✅ Code Viewer initialized successfully');
+            console.log('Code Viewer initialized successfully');
             
         } catch (error) {
-            console.error('❌ Failed to initialize Code Viewer:', error);
+            console.error('Failed to initialize Code Viewer:', error);
             this.showError('Failed to load code viewer. Please try again.');
         }
     }
 
     async loadCodeData() {
         try {
-            console.log('📥 Loading code snippets data...');
+            console.log('Loading code snippets data...');
             const response = await fetch('assets/data/code-snippets.json');
             
             if (!response.ok) {
@@ -78,10 +78,10 @@ class CodeViewer {
             }
             
             this.codeData = await response.json();
-            console.log('✅ Code data loaded:', Object.keys(this.codeData.files).length, 'files');
+            console.log('Code data loaded:', Object.keys(this.codeData.files).length, 'files');
             
         } catch (error) {
-            console.error('❌ Error loading code data:', error);
+            console.error('Error loading code data:', error);
             throw error;
         }
     }
@@ -131,7 +131,7 @@ class CodeViewer {
     renderFileTree() {
         if (!this.codeData || !this.elements.fileTree) return;
 
-        console.log('🌳 Rendering file tree...');
+        console.log('Rendering file tree...');
         const treeHtml = this.generateTreeHTML(this.codeData.fileTree, '');
         this.elements.fileTree.innerHTML = treeHtml;
 
@@ -140,7 +140,7 @@ class CodeViewer {
             this.handleTreeClick(e);
         });
 
-        console.log('✅ File tree rendered');
+        console.log('File tree rendered');
     }
 
     generateTreeHTML(node, path) {
@@ -186,17 +186,17 @@ class CodeViewer {
     getFileIcon(filename) {
         const ext = filename.split('.').pop().toLowerCase();
         const iconMap = {
-            'py': '🐍',
-            'txt': '📄',
-            'md': '📝',
-            'json': '📋',
-            'js': '📜',
-            'html': '🌐',
-            'css': '🎨',
-            'yml': '⚙️',
-            'yaml': '⚙️'
+            'py': '',
+            'txt': '',
+            'md': '',
+            'json': '',
+            'js': '',
+            'html': '',
+            'css': '',
+            'yml': '',
+            'yaml': ''
         };
-        return iconMap[ext] || '📄';
+        return iconMap[ext] || '';
     }
 
     getFileType(filename) {
@@ -242,12 +242,12 @@ class CodeViewer {
 
     async openFile(filePath) {
         try {
-            console.log(`📂 Opening file: ${filePath}`);
+            console.log(`Opening file: ${filePath}`);
 
             // Get file content
             const content = this.codeData.files[filePath];
             if (!content) {
-                console.warn(`⚠️ File content not found: ${filePath}`);
+                console.warn(`File content not found: ${filePath}`);
                 return;
             }
 
@@ -267,10 +267,10 @@ class CodeViewer {
             // Update URL
             this.updateURL(filePath);
 
-            console.log(`✅ File opened: ${filePath}`);
+            console.log(`File opened: ${filePath}`);
 
         } catch (error) {
-            console.error(`❌ Error opening file ${filePath}:`, error);
+            console.error(`Error opening file ${filePath}:`, error);
             this.showError(`Failed to open file: ${filePath}`);
         }
     }
@@ -361,10 +361,10 @@ class CodeViewer {
             // Update status bar
             this.updateStatusBar(filePath, content);
 
-            console.log(`✅ Code displayed for: ${filePath}`);
+            console.log(`Code displayed for: ${filePath}`);
 
         } catch (error) {
-            console.error(`❌ Error displaying code for ${filePath}:`, error);
+            console.error(`Error displaying code for ${filePath}:`, error);
             this.showError('Failed to display code');
         }
     }
@@ -497,7 +497,7 @@ class CodeViewer {
 
         const mobileButton = document.createElement('button');
         mobileButton.className = 'status-item mobile-file-btn';
-        mobileButton.textContent = '📁 Files';
+        mobileButton.textContent = 'Files';
         mobileButton.addEventListener('click', () => {
             this.showMobileSelector();
         });
@@ -553,7 +553,7 @@ class CodeViewer {
         if (header && window.innerWidth <= 768) {
             const mobileToggle = document.createElement('button');
             mobileToggle.className = 'mobile-sidebar-toggle';
-            mobileToggle.innerHTML = '📁';
+            mobileToggle.innerHTML = '';
             mobileToggle.addEventListener('click', () => {
                 this.elements.sidebar.classList.toggle('mobile-open');
             });
@@ -564,7 +564,7 @@ class CodeViewer {
 
     async copyCurrentCode() {
         if (!this.currentFile || !this.codeData.files[this.currentFile]) {
-            console.warn('⚠️ No code to copy');
+            console.warn('No code to copy');
             return;
         }
 
@@ -574,16 +574,16 @@ class CodeViewer {
             
             // Show feedback
             const originalText = this.elements.copyCodeBtn.querySelector('.action-icon').textContent;
-            this.elements.copyCodeBtn.querySelector('.action-icon').textContent = '✅';
+            this.elements.copyCodeBtn.querySelector('.action-icon').textContent = '';
             
             setTimeout(() => {
                 this.elements.copyCodeBtn.querySelector('.action-icon').textContent = originalText;
             }, 2000);
             
-            console.log('✅ Code copied to clipboard');
+            console.log('Code copied to clipboard');
             
         } catch (error) {
-            console.error('❌ Failed to copy code:', error);
+            console.error('Failed to copy code:', error);
             this.showError('Failed to copy code to clipboard');
         }
     }
@@ -593,7 +593,7 @@ class CodeViewer {
         
         if (!document.fullscreenElement) {
             container.requestFullscreen().catch(err => {
-                console.error('❌ Error attempting to enable fullscreen:', err);
+                console.error('Error attempting to enable fullscreen:', err);
             });
         } else {
             document.exitFullscreen();
@@ -670,12 +670,12 @@ class CodeViewer {
     }
 
     showError(message) {
-        console.error('💥 Code Viewer Error:', message);
+        console.error('Code Viewer Error:', message);
         
         // Create error display
         const errorHtml = `
             <div class="error-state">
-                <div class="error-icon">⚠️</div>
+                <div class="error-icon"></div>
                 <h3>Something went wrong</h3>
                 <p>${message}</p>
                 <button onclick="location.reload()" class="retry-btn">Retry</button>
@@ -691,7 +691,7 @@ class CodeViewer {
 
 // Initialize the code viewer when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Initializing Code Viewer...');
+    console.log('Initializing Code Viewer...');
     new CodeViewer();
 });
 

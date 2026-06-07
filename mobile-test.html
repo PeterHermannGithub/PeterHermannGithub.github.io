@@ -119,11 +119,11 @@
     </div>
 
     <div class="mobile-test-container">
-        <h1>📱 Mobile Features Test</h1>
+        <h1> Mobile Features Test</h1>
         
         <!-- Filter Buttons Test -->
         <div class="test-section">
-            <h2>🔽 Filter Buttons Test</h2>
+            <h2> Filter Buttons Test</h2>
             <div class="project-filters">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="web">Web Dev</button>
@@ -136,7 +136,7 @@
 
         <!-- Achievement Filters Test -->
         <div class="test-section">
-            <h2>🏆 Achievement Filters Test</h2>
+            <h2> Achievement Filters Test</h2>
             <div class="achievement-filters">
                 <button class="filter-btn active" data-filter="all">All Achievements</button>
                 <button class="filter-btn" data-filter="athletic">Athletic</button>
@@ -148,35 +148,35 @@
 
         <!-- Touch Target Size Test -->
         <div class="test-section">
-            <h2>👆 Touch Target Test</h2>
+            <h2> Touch Target Test</h2>
             <p>All interactive elements should be at least 44px × 44px for mobile accessibility:</p>
             <div id="touch-test-results"></div>
         </div>
 
         <!-- Proof Modal Test -->
         <div class="test-section">
-            <h2>🖼️ Proof Modal Test</h2>
+            <h2> Proof Modal Test</h2>
             <div class="test-achievement-card" data-proof-image="degree-certificate" data-proof-bilingual="true">
                 <h3>Test Achievement Card</h3>
                 <p>Click this card to test the proof modal on mobile</p>
-                <div class="proof-indicator">📷 Click to view proof</div>
+                <div class="proof-indicator"> Click to view proof</div>
             </div>
             <div id="proof-test-results"></div>
         </div>
 
         <!-- Mobile Navigation Test -->
         <div class="test-section">
-            <h2>📱 Mobile Navigation Test</h2>
+            <h2> Mobile Navigation Test</h2>
             <button class="touch-target" onclick="testMobileNav()">Test Mobile Menu</button>
             <div id="nav-test-results"></div>
         </div>
 
         <!-- Results Summary -->
         <div class="test-section">
-            <h2>📊 Test Results Summary</h2>
+            <h2> Test Results Summary</h2>
             <div id="summary-results"></div>
             <button class="touch-target" onclick="runAllTests()" style="width: 100%; margin-top: 15px;">
-                🧪 Run All Mobile Tests
+                 Run All Mobile Tests
             </button>
         </div>
     </div>
@@ -193,7 +193,7 @@
                 <img id="proof-modal-image" src="" alt="Achievement proof" />
                 <div class="proof-modal-fallback">
                     <div class="proof-placeholder">
-                        <div class="proof-placeholder-icon">📷</div>
+                        <div class="proof-placeholder-icon"></div>
                         <h4>Proof Coming Soon</h4>
                         <p>This achievement proof will be available shortly.</p>
                     </div>
@@ -226,13 +226,13 @@
             const isMobile = width <= 768;
             info.innerHTML = `
                 ${width} × ${height}px<br>
-                ${isMobile ? '📱 Mobile' : '🖥️ Desktop'}<br>
+                ${isMobile ? ' Mobile' : ' Desktop'}<br>
                 Touch: ${('ontouchstart' in window) ? 'Yes' : 'No'}
             `;
         }
 
         function testFilterButtons() {
-            logResult('filter', '🔍 Testing filter button functionality...', 'info');
+            logResult('filter', ' Testing filter button functionality...', 'info');
             
             const projectFilters = document.querySelectorAll('.project-filters .filter-btn');
             const achievementFilters = document.querySelectorAll('.achievement-filters .filter-btn');
@@ -246,9 +246,9 @@
                 
                 if (!isTouch) {
                     touchIssues++;
-                    logResult('filter', `❌ Filter button ${index + 1}: ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px (too small)`, 'fail');
+                    logResult('filter', ` Filter button ${index + 1}: ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px (too small)`, 'fail');
                 } else {
-                    logResult('filter', `✅ Filter button ${index + 1}: ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px (good)`, 'pass');
+                    logResult('filter', ` Filter button ${index + 1}: ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px (good)`, 'pass');
                 }
             });
 
@@ -258,18 +258,18 @@
                 setTimeout(() => {
                     const isActive = projectFilters[1].classList.contains('active');
                     if (isActive) {
-                        logResult('filter', '✅ Filter button click and active state works', 'pass');
+                        logResult('filter', ' Filter button click and active state works', 'pass');
                     } else {
-                        logResult('filter', '❌ Filter button click failed', 'fail');
+                        logResult('filter', ' Filter button click failed', 'fail');
                     }
                 }, 100);
             }
 
-            logResult('filter', `📊 Touch target issues: ${touchIssues} buttons need improvement`, touchIssues > 0 ? 'fail' : 'pass');
+            logResult('filter', ` Touch target issues: ${touchIssues} buttons need improvement`, touchIssues > 0 ? 'fail' : 'pass');
         }
 
         function testTouchTargets() {
-            logResult('touch-test', '👆 Testing touch target sizes...', 'info');
+            logResult('touch-test', ' Testing touch target sizes...', 'info');
             
             const interactiveElements = document.querySelectorAll('button, a, .achievement-card, [onclick]');
             let violations = 0;
@@ -283,7 +283,7 @@
                 if (!isGoodSize && rect.width > 0 && rect.height > 0) {
                     violations++;
                     logResult('touch-test', 
-                        `❌ Element ${index + 1} (${element.tagName}): ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px`, 
+                        ` Element ${index + 1} (${element.tagName}): ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px`, 
                         'fail'
                     );
                 }
@@ -291,19 +291,19 @@
 
             const passRate = ((total - violations) / total * 100).toFixed(1);
             logResult('touch-test', 
-                `📊 Touch accessibility: ${passRate}% (${total - violations}/${total} elements compliant)`, 
+                ` Touch accessibility: ${passRate}% (${total - violations}/${total} elements compliant)`, 
                 violations === 0 ? 'pass' : (violations < total * 0.2 ? 'info' : 'fail')
             );
         }
 
         function testProofModal() {
-            logResult('proof-test', '🖼️ Testing proof modal on mobile...', 'info');
+            logResult('proof-test', ' Testing proof modal on mobile...', 'info');
             
             const testCard = document.querySelector('.test-achievement-card');
             const modal = document.getElementById('proof-modal');
             
             if (!testCard || !modal) {
-                logResult('proof-test', '❌ Test card or modal not found', 'fail');
+                logResult('proof-test', ' Test card or modal not found', 'fail');
                 return;
             }
 
@@ -313,7 +313,7 @@
             setTimeout(() => {
                 const isModalActive = modal.classList.contains('active');
                 if (isModalActive) {
-                    logResult('proof-test', '✅ Proof modal opens correctly', 'pass');
+                    logResult('proof-test', ' Proof modal opens correctly', 'pass');
                     
                     // Test modal responsiveness
                     const modalContent = modal.querySelector('.proof-modal-content');
@@ -322,7 +322,7 @@
                     
                     const fitsScreen = rect.width <= viewport.width * 0.95 && rect.height <= viewport.height * 0.95;
                     logResult('proof-test', 
-                        `${fitsScreen ? '✅' : '❌'} Modal size: ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px`, 
+                        `${fitsScreen ? '' : ''} Modal size: ${rect.width.toFixed(0)}×${rect.height.toFixed(0)}px`, 
                         fitsScreen ? 'pass' : 'fail'
                     );
                     
@@ -332,7 +332,7 @@
                     const closeGoodSize = closeBtnRect.width >= 44 && closeBtnRect.height >= 44;
                     
                     logResult('proof-test', 
-                        `${closeGoodSize ? '✅' : '❌'} Close button: ${closeBtnRect.width.toFixed(0)}×${closeBtnRect.height.toFixed(0)}px`,
+                        `${closeGoodSize ? '' : ''} Close button: ${closeBtnRect.width.toFixed(0)}×${closeBtnRect.height.toFixed(0)}px`,
                         closeGoodSize ? 'pass' : 'fail'
                     );
                     
@@ -342,24 +342,24 @@
                     setTimeout(() => {
                         const isClosed = !modal.classList.contains('active');
                         logResult('proof-test', 
-                            `${isClosed ? '✅' : '❌'} Modal closes correctly`,
+                            `${isClosed ? '' : ''} Modal closes correctly`,
                             isClosed ? 'pass' : 'fail'
                         );
                     }, 300);
                 } else {
-                    logResult('proof-test', '❌ Proof modal failed to open', 'fail');
+                    logResult('proof-test', ' Proof modal failed to open', 'fail');
                 }
             }, 500);
         }
 
         function testMobileNav() {
-            logResult('nav-test', '📱 Testing mobile navigation...', 'info');
+            logResult('nav-test', ' Testing mobile navigation...', 'info');
             
             const mobileToggle = document.getElementById('mobile-menu-toggle');
             const mobileMenu = document.getElementById('mobile-nav-menu');
             
             if (!mobileToggle || !mobileMenu) {
-                logResult('nav-test', '❌ Mobile navigation elements not found', 'fail');
+                logResult('nav-test', ' Mobile navigation elements not found', 'fail');
                 return;
             }
 
@@ -369,7 +369,7 @@
             setTimeout(() => {
                 const isMenuActive = mobileMenu.classList.contains('active');
                 if (isMenuActive) {
-                    logResult('nav-test', '✅ Mobile menu opens correctly', 'pass');
+                    logResult('nav-test', ' Mobile menu opens correctly', 'pass');
                     
                     // Test close
                     const closeBtn = document.getElementById('mobile-nav-close');
@@ -378,13 +378,13 @@
                         setTimeout(() => {
                             const isClosed = !mobileMenu.classList.contains('active');
                             logResult('nav-test', 
-                                `${isClosed ? '✅' : '❌'} Mobile menu closes correctly`,
+                                `${isClosed ? '' : ''} Mobile menu closes correctly`,
                                 isClosed ? 'pass' : 'fail'
                             );
                         }, 300);
                     }
                 } else {
-                    logResult('nav-test', '❌ Mobile menu failed to open', 'fail');
+                    logResult('nav-test', ' Mobile menu failed to open', 'fail');
                 }
             }, 300);
         }
@@ -402,8 +402,8 @@
             
             summary.innerHTML = `
                 <div class="test-result ${status}">
-                    📊 Overall Mobile Score: ${score}%<br>
-                    ✅ Passed: ${passCount} | ❌ Failed: ${failCount} | 📝 Total: ${total}
+                     Overall Mobile Score: ${score}%<br>
+                     Passed: ${passCount} |  Failed: ${failCount} |  Total: ${total}
                 </div>
             `;
         }
@@ -431,7 +431,7 @@
 
         // Auto-run basic tests on load
         setTimeout(() => {
-            logResult('filter', '📱 Mobile test page loaded. Click "Run All Mobile Tests" for comprehensive testing.', 'info');
+            logResult('filter', ' Mobile test page loaded. Click "Run All Mobile Tests" for comprehensive testing.', 'info');
             updateViewportInfo();
         }, 500);
     </script>

@@ -58,7 +58,7 @@
     </header>
 
     <div class="test-container">
-        <h1>🌗 Dark/Light Mode Test</h1>
+        <h1> Dark/Light Mode Test</h1>
         
         <div class="theme-indicator">
             <strong>Current Theme:</strong> <span id="current-theme">Loading...</span><br>
@@ -69,7 +69,7 @@
         <div class="manual-test">
             <h3>Manual Test Instructions:</h3>
             <ol style="text-align: left;">
-                <li>Click the theme toggle button above ☝️</li>
+                <li>Click the theme toggle button above </li>
                 <li>Observe immediate background color change</li>
                 <li>Check that the button icon switches</li>
                 <li>Reload page - theme should persist</li>
@@ -78,7 +78,7 @@
         </div>
 
         <div class="console-output" id="console-log">
-            <div>🧪 Theme Test Console Output:</div>
+            <div> Theme Test Console Output:</div>
         </div>
 
         <button onclick="clearConsole()" style="margin: 10px;">Clear Console</button>
@@ -95,7 +95,7 @@
         function logToDiv(message, type = 'log') {
             const div = document.getElementById('console-log');
             const timestamp = new Date().toLocaleTimeString();
-            const prefix = type === 'error' ? '❌' : type === 'warn' ? '⚠️' : '📝';
+            const prefix = type === 'error' ? '' : type === 'warn' ? '' : '';
             div.innerHTML += `<div>[${timestamp}] ${prefix} ${message}</div>`;
             div.scrollTop = div.scrollHeight;
         }
@@ -120,40 +120,40 @@
             const bgColor = window.getComputedStyle(document.body).backgroundColor;
             const textColor = window.getComputedStyle(document.body).color;
             
-            document.getElementById('current-theme').textContent = isDark ? 'Dark Mode 🌙' : 'Light Mode ☀️';
+            document.getElementById('current-theme').textContent = isDark ? 'Dark Mode ' : 'Light Mode ';
             document.getElementById('bg-color').textContent = bgColor;
             document.getElementById('text-color').textContent = textColor;
         }
 
         function testThemeToggle() {
-            console.log('🧪 Manual theme toggle test started');
+            console.log(' Manual theme toggle test started');
             const themeToggle = document.getElementById('theme-toggle');
             if (themeToggle) {
                 const beforeDark = document.documentElement.classList.contains('dark-mode');
-                console.log(`🔍 Before click: ${beforeDark ? 'Dark' : 'Light'} mode`);
+                console.log(` Before click: ${beforeDark ? 'Dark' : 'Light'} mode`);
                 
                 themeToggle.click();
                 
                 setTimeout(() => {
                     const afterDark = document.documentElement.classList.contains('dark-mode');
-                    console.log(`🔍 After click: ${afterDark ? 'Dark' : 'Light'} mode`);
+                    console.log(` After click: ${afterDark ? 'Dark' : 'Light'} mode`);
                     
                     if (beforeDark !== afterDark) {
-                        console.log('✅ Theme toggle test PASSED');
+                        console.log(' Theme toggle test PASSED');
                     } else {
-                        console.error('❌ Theme toggle test FAILED - no change detected');
+                        console.error(' Theme toggle test FAILED - no change detected');
                     }
                     updateThemeIndicator();
                 }, 100);
             } else {
-                console.error('❌ Theme toggle button not found');
+                console.error(' Theme toggle button not found');
             }
         }
 
         function checkLocalStorage() {
             try {
                 const savedTheme = localStorage.getItem('theme');
-                console.log(`💾 LocalStorage theme: ${savedTheme || 'Not set'}`);
+                console.log(` LocalStorage theme: ${savedTheme || 'Not set'}`);
                 
                 // Test write
                 localStorage.setItem('theme-test', 'test-value');
@@ -161,28 +161,28 @@
                 localStorage.removeItem('theme-test');
                 
                 if (testValue === 'test-value') {
-                    console.log('✅ LocalStorage read/write test PASSED');
+                    console.log(' LocalStorage read/write test PASSED');
                 } else {
-                    console.error('❌ LocalStorage read/write test FAILED');
+                    console.error(' LocalStorage read/write test FAILED');
                 }
             } catch (error) {
-                console.error('❌ LocalStorage error:', error.message);
+                console.error(' LocalStorage error:', error.message);
             }
         }
 
         function clearConsole() {
-            document.getElementById('console-log').innerHTML = '<div>🧪 Theme Test Console Output:</div>';
+            document.getElementById('console-log').innerHTML = '<div> Theme Test Console Output:</div>';
         }
 
         function runTests() {
-            console.log('🚀 Starting comprehensive theme tests...');
+            console.log(' Starting comprehensive theme tests...');
             updateThemeIndicator();
             
             setTimeout(() => {
                 testThemeToggle();
                 setTimeout(() => {
                     checkLocalStorage();
-                    console.log('🏁 All tests completed!');
+                    console.log(' All tests completed!');
                 }, 500);
             }, 100);
         }
@@ -193,7 +193,7 @@
         // Initial update
         setTimeout(updateThemeIndicator, 500);
         
-        console.log('🎯 Theme test page loaded - click "Run Tests" to start');
+        console.log(' Theme test page loaded - click "Run Tests" to start');
     </script>
 
     <!-- Load the actual theme system -->

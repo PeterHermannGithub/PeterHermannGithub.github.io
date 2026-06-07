@@ -69,7 +69,7 @@
     </style>
 </head>
 <body>
-    <h1>🧪 PeterHermannGithub.github.io Website Test Suite</h1>
+    <h1> PeterHermannGithub.github.io Website Test Suite</h1>
     
     <div class="stats">
         <div class="stat-card">
@@ -91,7 +91,7 @@
     </div>
 
     <div class="test-container">
-        <h2>🚀 Test Controls</h2>
+        <h2> Test Controls</h2>
         <button onclick="runAllTests()">Run All Tests</button>
         <button onclick="testThemeSystem()">Test Theme System</button>
         <button onclick="testResponsiveDesign()">Test Responsive Design</button>
@@ -101,12 +101,12 @@
     </div>
 
     <div class="test-container">
-        <h2>📋 Test Results</h2>
+        <h2> Test Results</h2>
         <div id="testResults"></div>
     </div>
 
     <div class="test-container">
-        <h2>🌐 Live Preview</h2>
+        <h2> Live Preview</h2>
         <select id="pageSelector" onchange="loadPage()">
             <option value="index.html">Home Page</option>
             <option value="about.html">About Page</option>
@@ -156,7 +156,7 @@
         }
 
         async function testAssets() {
-            logResult('🖼️ Testing Asset Availability...', 'info');
+            logResult(' Testing Asset Availability...', 'info');
             
             const requiredAssets = [
                 'assets/css/style.css',
@@ -187,12 +187,12 @@
                 try {
                     const response = await fetch(asset);
                     if (response.ok) {
-                        logResult(`✅ Required asset exists: ${asset}`, 'pass');
+                        logResult(` Required asset exists: ${asset}`, 'pass');
                     } else {
-                        logResult(`❌ Required asset missing: ${asset}`, 'fail');
+                        logResult(` Required asset missing: ${asset}`, 'fail');
                     }
                 } catch (error) {
-                    logResult(`❌ Error loading required asset: ${asset}`, 'fail');
+                    logResult(` Error loading required asset: ${asset}`, 'fail');
                 }
             }
 
@@ -201,12 +201,12 @@
                 try {
                     const response = await fetch(asset);
                     if (response.ok) {
-                        logResult(`🔄 Previously missing asset now exists: ${asset}`, 'warning');
+                        logResult(` Previously missing asset now exists: ${asset}`, 'warning');
                     } else {
-                        logResult(`⚠️ Expected missing asset: ${asset}`, 'warning');
+                        logResult(` Expected missing asset: ${asset}`, 'warning');
                     }
                 } catch (error) {
-                    logResult(`⚠️ Confirmed missing asset: ${asset}`, 'warning');
+                    logResult(` Confirmed missing asset: ${asset}`, 'warning');
                 }
             }
 
@@ -215,18 +215,18 @@
                 try {
                     const response = await fetch(asset);
                     if (response.ok) {
-                        logResult(`✅ Proof asset exists: ${asset}`, 'pass');
+                        logResult(` Proof asset exists: ${asset}`, 'pass');
                     } else {
-                        logResult(`❌ Proof asset missing: ${asset}`, 'fail');
+                        logResult(` Proof asset missing: ${asset}`, 'fail');
                     }
                 } catch (error) {
-                    logResult(`❌ Error loading proof asset: ${asset}`, 'fail');
+                    logResult(` Error loading proof asset: ${asset}`, 'fail');
                 }
             }
         }
 
         function testThemeSystem() {
-            logResult('🌗 Testing Theme System...', 'info');
+            logResult(' Testing Theme System...', 'info');
             
             const iframe = document.getElementById('previewFrame');
             
@@ -237,23 +237,23 @@
                     const themeToggle = iframeDoc.getElementById('theme-toggle');
                     
                     if (themeToggle) {
-                        logResult('✅ Theme toggle button found', 'pass');
+                        logResult(' Theme toggle button found', 'pass');
                         
                         // Check if button has content (SVG icon)
                         const buttonContent = themeToggle.innerHTML.trim();
                         if (buttonContent && buttonContent.includes('svg')) {
-                            logResult('✅ Theme toggle has SVG icon', 'pass');
+                            logResult(' Theme toggle has SVG icon', 'pass');
                         } else {
-                            logResult('❌ Theme toggle missing SVG icon', 'fail');
+                            logResult(' Theme toggle missing SVG icon', 'fail');
                         }
                         
                         // Test initial theme state
                         const initialDark = htmlElement.classList.contains('dark-mode');
-                        logResult(`🔍 Initial theme: ${initialDark ? 'Dark' : 'Light'}`, 'info');
+                        logResult(` Initial theme: ${initialDark ? 'Dark' : 'Light'}`, 'info');
                         
                         // Get initial background color
                         const initialBgColor = iframeDoc.defaultView.getComputedStyle(iframeDoc.body).backgroundColor;
-                        logResult(`🎨 Initial background color: ${initialBgColor}`, 'info');
+                        logResult(` Initial background color: ${initialBgColor}`, 'info');
                         
                         // Simulate theme toggle
                         themeToggle.click();
@@ -263,54 +263,54 @@
                             const newBgColor = iframeDoc.defaultView.getComputedStyle(iframeDoc.body).backgroundColor;
                             
                             if (newDark !== initialDark) {
-                                logResult('✅ Theme class toggle works correctly', 'pass');
+                                logResult(' Theme class toggle works correctly', 'pass');
                             } else {
-                                logResult('❌ Theme class toggle failed', 'fail');
+                                logResult(' Theme class toggle failed', 'fail');
                             }
                             
                             if (newBgColor !== initialBgColor) {
-                                logResult('✅ Background color changed correctly', 'pass');
-                                logResult(`🎨 New background color: ${newBgColor}`, 'info');
+                                logResult(' Background color changed correctly', 'pass');
+                                logResult(` New background color: ${newBgColor}`, 'info');
                             } else {
-                                logResult('❌ Background color did not change', 'fail');
+                                logResult(' Background color did not change', 'fail');
                             }
                             
                             // Check localStorage
                             const savedTheme = iframeDoc.defaultView.localStorage.getItem('theme');
                             if (savedTheme) {
-                                logResult(`✅ Theme saved to localStorage: ${savedTheme}`, 'pass');
+                                logResult(` Theme saved to localStorage: ${savedTheme}`, 'pass');
                             } else {
-                                logResult('❌ Theme not saved to localStorage', 'fail');
+                                logResult(' Theme not saved to localStorage', 'fail');
                             }
                             
                             // Test icon change
                             const newButtonContent = themeToggle.innerHTML.trim();
                             if (newButtonContent !== buttonContent) {
-                                logResult('✅ Theme toggle icon updated', 'pass');
+                                logResult(' Theme toggle icon updated', 'pass');
                             } else {
-                                logResult('❌ Theme toggle icon did not update', 'fail');
+                                logResult(' Theme toggle icon did not update', 'fail');
                             }
                             
                         }, 300); // Increased timeout for transitions
                         
                     } else {
-                        logResult('❌ Theme toggle button not found', 'fail');
+                        logResult(' Theme toggle button not found', 'fail');
                     }
                 } catch (error) {
-                    logResult(`❌ Theme system test error: ${error.message}`, 'fail');
+                    logResult(` Theme system test error: ${error.message}`, 'fail');
                 }
             }, 1500); // Increased timeout for page load
         }
 
         function testResponsiveDesign() {
-            logResult('📱 Testing Responsive Design...', 'info');
+            logResult(' Testing Responsive Design...', 'info');
             
             const iframe = document.getElementById('previewFrame');
             const originalWidth = iframe.style.width;
             
             // Test mobile viewport
             iframe.style.width = '375px';
-            logResult('📱 Testing mobile viewport (375px)', 'info');
+            logResult(' Testing mobile viewport (375px)', 'info');
             
             setTimeout(() => {
                 try {
@@ -320,12 +320,12 @@
                     if (mobileMenuToggle) {
                         const isVisible = iframeDoc.defaultView.getComputedStyle(mobileMenuToggle).display !== 'none';
                         if (isVisible) {
-                            logResult('✅ Mobile navigation visible on mobile viewport', 'pass');
+                            logResult(' Mobile navigation visible on mobile viewport', 'pass');
                         } else {
-                            logResult('❌ Mobile navigation not visible on mobile viewport', 'fail');
+                            logResult(' Mobile navigation not visible on mobile viewport', 'fail');
                         }
                     } else {
-                        logResult('❌ Mobile menu toggle not found', 'fail');
+                        logResult(' Mobile menu toggle not found', 'fail');
                     }
 
                     // Test filter buttons touch targets
@@ -340,31 +340,31 @@
                     });
                     
                     if (mobileFilterIssues === 0 && filterButtons.length > 0) {
-                        logResult('✅ Filter buttons are touch-friendly on mobile', 'pass');
+                        logResult(' Filter buttons are touch-friendly on mobile', 'pass');
                     } else if (filterButtons.length > 0) {
-                        logResult(`❌ ${mobileFilterIssues} filter buttons need mobile improvement`, 'fail');
+                        logResult(` ${mobileFilterIssues} filter buttons need mobile improvement`, 'fail');
                     }
 
                     // Test achievement cards on mobile
                     const achievementCards = iframeDoc.querySelectorAll('.achievement-card[data-proof-image]');
                     if (achievementCards.length > 0) {
-                        logResult(`✅ Found ${achievementCards.length} achievement cards with proof`, 'pass');
+                        logResult(` Found ${achievementCards.length} achievement cards with proof`, 'pass');
                     }
                     
                 } catch (error) {
-                    logResult(`❌ Mobile test error: ${error.message}`, 'fail');
+                    logResult(` Mobile test error: ${error.message}`, 'fail');
                 }
                 
                 // Restore original width
                 setTimeout(() => {
                     iframe.style.width = originalWidth;
-                    logResult('🖥️ Restored desktop viewport', 'info');
+                    logResult(' Restored desktop viewport', 'info');
                 }, 500);
             }, 1000);
         }
 
         function testProofModal() {
-            logResult('🖼️ Testing Proof Modal System...', 'info');
+            logResult(' Testing Proof Modal System...', 'info');
             
             // Load achievements page first
             const iframe = document.getElementById('previewFrame');
@@ -377,25 +377,25 @@
                     const achievementCards = iframeDoc.querySelectorAll('.achievement-card[data-proof-image]');
                     
                     if (proofModal) {
-                        logResult('✅ Proof modal structure found', 'pass');
+                        logResult(' Proof modal structure found', 'pass');
                     } else {
-                        logResult('❌ Proof modal structure missing', 'fail');
+                        logResult(' Proof modal structure missing', 'fail');
                     }
                     
-                    logResult(`🔍 Found ${achievementCards.length} achievement cards with proof`, 'info');
+                    logResult(` Found ${achievementCards.length} achievement cards with proof`, 'info');
                     
                     if (achievementCards.length > 0) {
                         // Test clicking first achievement card
                         const firstCard = achievementCards[0];
                         const proofImage = firstCard.getAttribute('data-proof-image');
                         
-                        logResult(`🖱️ Testing click on achievement with proof: ${proofImage}`, 'info');
+                        logResult(` Testing click on achievement with proof: ${proofImage}`, 'info');
                         firstCard.click();
                         
                         setTimeout(() => {
                             const modalActive = proofModal.classList.contains('active');
                             if (modalActive) {
-                                logResult('✅ Proof modal opens correctly', 'pass');
+                                logResult(' Proof modal opens correctly', 'pass');
                                 
                                 // Test closing modal
                                 const closeBtn = iframeDoc.querySelector('.proof-modal-close');
@@ -404,27 +404,27 @@
                                     setTimeout(() => {
                                         const stillActive = proofModal.classList.contains('active');
                                         if (!stillActive) {
-                                            logResult('✅ Proof modal closes correctly', 'pass');
+                                            logResult(' Proof modal closes correctly', 'pass');
                                         } else {
-                                            logResult('❌ Proof modal failed to close', 'fail');
+                                            logResult(' Proof modal failed to close', 'fail');
                                         }
                                     }, 300);
                                 }
                             } else {
-                                logResult('❌ Proof modal failed to open', 'fail');
+                                logResult(' Proof modal failed to open', 'fail');
                             }
                         }, 500);
                     }
                     
                 } catch (error) {
-                    logResult(`❌ Proof modal test error: ${error.message}`, 'fail');
+                    logResult(` Proof modal test error: ${error.message}`, 'fail');
                 }
             }, 2000);
         }
 
         async function runAllTests() {
             clearResults();
-            logResult('🧪 Starting comprehensive website test suite...', 'info');
+            logResult(' Starting comprehensive website test suite...', 'info');
             
             await testAssets();
             
@@ -438,17 +438,17 @@
                         testProofModal();
                         
                         setTimeout(() => {
-                            logResult('🏁 All tests completed!', 'info');
+                            logResult(' All tests completed!', 'info');
                             
                             const { pass, fail, warning, total } = testStats;
                             const score = total > 0 ? Math.round((pass / total) * 100) : 0;
                             
                             if (score >= 80) {
-                                logResult(`🎉 Overall Score: ${score}% - Website is functioning well!`, 'pass');
+                                logResult(` Overall Score: ${score}% - Website is functioning well!`, 'pass');
                             } else if (score >= 60) {
-                                logResult(`⚠️ Overall Score: ${score}% - Website needs some improvements`, 'warning');
+                                logResult(` Overall Score: ${score}% - Website needs some improvements`, 'warning');
                             } else {
-                                logResult(`❌ Overall Score: ${score}% - Website has significant issues`, 'fail');
+                                logResult(` Overall Score: ${score}% - Website has significant issues`, 'fail');
                             }
                         }, 3000);
                     }, 2000);
@@ -458,7 +458,7 @@
 
         // Initialize
         updateStats();
-        logResult('🚀 Website Test Suite Ready - Click "Run All Tests" to begin', 'info');
+        logResult(' Website Test Suite Ready - Click "Run All Tests" to begin', 'info');
     </script>
 </body>
 </html>

@@ -9,30 +9,31 @@
     <meta name="description" content="Detailed description of this specific project." data-i18n-key="project_template_meta_desc">
     
     <!-- Links to CSS, Fonts, etc. (Same as other pages) -->
+    <!-- Critical: set theme before paint (dark is the default) -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/project-page.css"> <!-- Specific styles for project pages -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
     <!-- The header is identical on all pages for consistency -->
-    <header class="sticky-header">
-        <nav class="container">
-            <a href="../index.html" class="logo" data-i18n-key="nav_home">Home</a>
-            <ul class="nav-links">
-                <li><a href="../about.html" data-i18n-key="nav_about">About</a></li>
-                <li><a href="../projects.html" data-i18n-key="nav_projects">Projects</a></li>
-                <li><a href="../achievements.html" data-i18n-key="nav_achievements">Achievements</a></li>
-            </ul>
-            <div class="nav-controls">
-                <button id="theme-toggle" aria-label="Toggle theme"></button>
-                <button id="lang-toggle" aria-label="Toggle language">EN</button>
-            </div>
-        </nav>
-    </header>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
 
     <main class="project-page-main">
         <div class="container">
@@ -121,11 +122,11 @@
     </main>
 
     <!-- The footer is also identical on all pages -->
-    <footer id="contact">
-        <!-- ... (copy footer code from index.html) ... -->
-    </footer>
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
 
     <!-- Scripts (note the ../ path to go up one directory) -->
+    <script src="../assets/js/components.js" defer></script>
     <script src="../assets/js/i18n.js"></script>
     <script src="../assets/js/main.js"></script>
     
