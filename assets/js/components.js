@@ -30,6 +30,7 @@
         { href: 'about.html',        key: 'nav_about',        label: 'About' },
         { href: 'projects.html',     key: 'nav_projects',     label: 'Work' },
         { href: 'play.html',         key: 'nav_play',         label: 'Play' },
+        { href: 'blogs.html',        key: 'nav_blogs',        label: 'Blog' },
         { href: 'achievements.html', key: 'nav_achievements', label: 'Achievements' }
     ];
 

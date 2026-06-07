@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+    <!-- SEO Meta Tags -->
+    <title data-i18n-key="meta_title_blogs">Blogs - Peter Pal Hermann</title>
+    <meta name="description" content="Articles and insights on data science, AI, software engineering, and technology." data-i18n-key="meta_description_blogs">
+    <meta name="keywords" content="blog, articles, data science, AI, machine learning, software engineering, programming, technology">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PeterHermannGithub.github.io/blogs.html">
+    <meta property="og:title" content="Blogs - Peter Pal Hermann">
+    <meta property="og:description" content="Articles and insights on data science, AI, software engineering, and technology.">
+    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/blogs.html">
+    <meta property="twitter:title" content="Blogs - Peter Pal Hermann">
+    <meta property="twitter:description" content="Articles and insights on data science, AI, software engineering, and technology.">
+    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
+
+    <!-- Critical: set theme before paint (dark is the default) -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Styles, Fonts, and Icons -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blogs - Peter Pal Hermann",
+      "url": "https://PeterHermannGithub.github.io/blogs.html",
+      "author": {
+        "@type": "Person",
+        "name": "Peter Pal Hermann"
+      }
+    }
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header container">
+            <h1 data-i18n-key="blogs_title">Blogs</h1>
+            <p data-i18n-key="blogs_subtitle">Articles and insights on data science, AI, software engineering, and technology.</p>
+        </section>
+
+        <!-- Filter Buttons -->
+        <section class="container">
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all" data-i18n-key="blog_filter_all">All Articles</button>
+                <button class="filter-btn" data-filter="data-science" data-i18n-key="blog_filter_data_science">Data Science</button>
+                <button class="filter-btn" data-filter="ai" data-i18n-key="blog_filter_ai">AI & ML</button>
+                <button class="filter-btn" data-filter="web" data-i18n-key="blog_filter_web">Web Development</button>
+                <button class="filter-btn" data-filter="tutorials" data-i18n-key="blog_filter_tutorials">Tutorials</button>
+            </div>
+        </section>
+
+        <!-- Blog Posts Grid -->
+        <section class="projects-grid container">
+
+            <!-- Example Blog Post 1 -->
+            <div class="project-card animate-on-scroll" data-category="data-science">
+                <div class="project-info">
+                    <div class="blog-meta">
+                        <span class="blog-date">October 31, 2025</span>
+                        <span class="blog-category" data-i18n-key="blog_category_data_science">Data Science</span>
+                    </div>
+                    <h3 data-i18n-key="blog_example_title">Building a Production-Scale Recommendation Engine with Rust</h3>
+                    <p data-i18n-key="blog_example_desc">Explore the journey of building a high-performance anime recommendation engine that processes 649M similarity pairs. Learn about the architecture decisions, optimization techniques, and lessons learned when scaling from prototype to production.</p>
+                    <div class="tech-stack">
+                        <span>Rust</span>
+                        <span>Performance</span>
+                        <span>Architecture</span>
+                        <span>Scaling</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="blogs/building-recommendation-engine-rust.html" class="btn btn-primary" data-i18n-key="read_article_btn">Read Article</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section container">
+            <h2 data-i18n-key="blogs_cta_title">Want to Stay Updated?</h2>
+            <p data-i18n-key="blogs_cta_text">Connect with me on LinkedIn or GitHub to get notified about new articles.</p>
+            <a href="#contact" class="btn btn-primary" data-i18n-key="blogs_cta_btn">Get in Touch</a>
+        </section>
+
+    </main>
+
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+</body>
+</html>
