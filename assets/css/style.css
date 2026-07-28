@@ -290,8 +290,15 @@ img {
 }
 
 .search-result-item {
+    display: block;
+    width: 100%;
     padding: 0.75rem 1rem;
+    background: transparent;
+    border: 0;
     border-bottom: 1px solid var(--border-color);
+    color: inherit;
+    font: inherit;
+    text-align: left;
     cursor: pointer;
     transition: background-color var(--transition-speed) ease;
 }
@@ -306,6 +313,7 @@ img {
 }
 
 .search-result-title {
+    display: block;
     font-weight: 600;
     color: var(--text-color);
     margin-bottom: 0.25rem;
@@ -313,12 +321,14 @@ img {
 }
 
 .search-result-page {
+    display: block;
     font-size: 0.8rem;
     color: var(--primary-color);
     margin-bottom: 0.25rem;
 }
 
 .search-result-snippet {
+    display: block;
     font-size: 0.8rem;
     color: var(--text-muted-color);
     line-height: 1.4;
@@ -687,6 +697,12 @@ html.dark-mode .social-links a img {
     transition: background-color var(--transition-speed) ease;
 }
 
+/* Keep the mobile trigger out of the desktop header. The more specific
+   .nav-controls button rule otherwise overrides display:none. */
+.site-nav .mobile-menu-toggle {
+    display: none;
+}
+
 .mobile-menu-toggle:hover {
     background-color: var(--bg-color);
 }
@@ -927,7 +943,7 @@ html.dark-mode .social-links a img {
         display: none;
     }
     
-    .mobile-menu-toggle {
+    .site-nav .mobile-menu-toggle {
         display: flex;
     }
     
@@ -2812,6 +2828,15 @@ a:hover { color: var(--accent-text); opacity: 0.75; }
     background: transparent;
     transform: translateY(-2px);
 }
+.btn-disabled,
+.btn-disabled:hover {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+    color: var(--text-muted-color);
+    border: 1px solid var(--border-color);
+    background: transparent;
+}
 
 /* ---- Hero (editorial, asymmetric) ---- */
 .hero-editorial {
@@ -2931,6 +2956,62 @@ a:hover { color: var(--accent-text); opacity: 0.75; }
 .project-card-large { overflow: hidden; }
 .project-card-large .project-info h3 { font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -0.02em; }
 
+/* Project visuals are honest, lightweight summaries used until real product
+   screenshots are available. They avoid broken image requests and preserve the
+   editorial design language. */
+.project-visual {
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.45rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+    background:
+        linear-gradient(135deg, transparent 0 48%, color-mix(in srgb, var(--accent) 10%, transparent) 48% 52%, transparent 52%),
+        repeating-linear-gradient(0deg, transparent 0 31px, var(--border-color) 31px 32px),
+        var(--bg-elevated-color);
+    color: var(--text-color);
+}
+.project-visual::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -50px;
+    top: -60px;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    transform: rotate(18deg);
+    z-index: -1;
+}
+.project-visual strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 4vw, 2.7rem);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: var(--accent-text);
+}
+.project-visual > span:last-child {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted-color);
+    letter-spacing: 0.05em;
+}
+.project-visual-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted-color);
+}
+.project-card-large .project-visual {
+    width: 50%;
+    min-height: 330px;
+}
+
 /* skills: restyle the icon grid into a calmer mono-labelled set */
 .skill-item { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; }
 .skill-item img { width: 44px; height: 44px; }
@@ -2987,6 +3068,7 @@ a:hover { color: var(--accent-text); opacity: 0.75; }
     /* keep the new mono nav links hidden on mobile; mobile menu takes over */
     .site-nav .nav-links { display: none; }
     body { background-size: 100% 64px; }
+    .project-card-large .project-visual { width: 100%; min-height: 250px; }
 }
 
 /* Kill the blue gradient-text on interior page headers; editorial instead */

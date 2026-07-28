@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://peterpalhermann.com/achievements.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
     
     <!-- SEO Meta Tags -->
     <title data-i18n-key="meta_title_achievements">Achievements - Peter Pal Hermann</title>
     <meta name="description" content="Explore my athletic achievements, academic accomplishments, and personal milestones in sports and technology." data-i18n-key="meta_description_achievements">
-    <meta name="keywords" content="achievements, sports, athletics, academic, accomplishments, personal bests, running, swimming">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://PeterHermannGithub.github.io/achievements.html">
+    <meta property="og:url" content="https://peterpalhermann.com/achievements.html">
     <meta property="og:title" content="Achievements - Peter Pal Hermann">
     <meta property="og:description" content="Explore my athletic achievements, academic accomplishments, and personal milestones.">
-    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/achievements.html">
+    <meta property="twitter:url" content="https://peterpalhermann.com/achievements.html">
     <meta property="twitter:title" content="Achievements - Peter Pal Hermann">
     <meta property="twitter:description" content="Explore my athletic achievements, academic accomplishments, and personal milestones.">
-    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
@@ -53,7 +49,7 @@
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Achievements - Peter Pal Hermann",
-      "url": "https://PeterHermannGithub.github.io/achievements.html",
+      "url": "https://peterpalhermann.com/achievements.html",
       "author": {
         "@type": "Person",
         "name": "Peter Pal Hermann"
@@ -177,7 +173,7 @@
             </div>
 
             <!-- Professional Achievement: V2 Breakthrough -->
-            <div class="achievement-card featured" data-category="professional" data-proof-image="rust-performance.png">
+            <div class="achievement-card featured" data-category="professional">
                 <div class="achievement-icon"></div>
                 <div class="achievement-content">
                     <h3 data-i18n-key="achievement_v2_title">Pure Rust Engine Breakthrough</h3>
@@ -191,12 +187,12 @@
                         <span class="achievement-location" data-i18n-key="achievement_v2_location">Production Recommendation System</span>
                     </div>
                 </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
+                <div class="proof-indicator" data-i18n-key="proof_coming_soon">Proof coming soon</div>
             </div>
 
 
             <!-- Professional Achievements -->
-            <div class="achievement-card featured" data-category="professional" data-proof-image="performance-benchmark.png">
+            <div class="achievement-card featured" data-category="professional">
                 <div class="achievement-icon"></div>
                 <div class="achievement-content">
                     <h3 data-i18n-key="achievement_performance_title">Performance Optimization Mastery</h3>
@@ -210,7 +206,7 @@
                         <span class="achievement-location" data-i18n-key="achievement_performance_location">Anime Recommender System</span>
                     </div>
                 </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
+                <div class="proof-indicator" data-i18n-key="proof_coming_soon">Proof coming soon</div>
             </div>
 
 
@@ -252,7 +248,7 @@
     </main>
 
     <!-- Proof Modal -->
-    <div id="proof-modal" class="proof-modal">
+    <div id="proof-modal" class="proof-modal" role="dialog" aria-modal="true" aria-labelledby="proof-modal-title" aria-hidden="true">
         <div class="proof-modal-overlay"></div>
         <div class="proof-modal-content">
             <button class="proof-modal-close" aria-label="Close proof modal">&times;</button>
@@ -260,7 +256,7 @@
                 <h3 id="proof-modal-title" data-i18n-key="proof_modal_title">Achievement Proof</h3>
             </div>
             <div class="proof-modal-body">
-                <img id="proof-modal-image" src="" alt="Achievement proof" />
+                <img id="proof-modal-image" alt="Achievement proof" />
                 <div class="proof-modal-fallback">
                     <div class="proof-placeholder">
                         <div class="proof-placeholder-icon"></div>

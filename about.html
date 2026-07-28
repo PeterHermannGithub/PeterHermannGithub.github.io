@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://peterpalhermann.com/about.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
     
     <!-- SEO Meta Tags -->
     <title data-i18n-key="meta_title_about">About Me - Peter Pal Hermann</title>
     <meta name="description" content="Learn about my journey as a data scientist and AI specialist. Risk modeller at Fundamenta, former Morgan Stanley analyst with MSc Computer Science." data-i18n-key="meta_description_about">
-    <meta name="keywords" content="about, data scientist, artificial intelligence, risk modelling, Morgan Stanley, Fundamenta, computer science, machine learning">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://PeterHermannGithub.github.io/about.html">
+    <meta property="og:url" content="https://peterpalhermann.com/about.html">
     <meta property="og:title" content="About Me - Peter Pal Hermann">
     <meta property="og:description" content="Learn about my journey as a data scientist and developer.">
-    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/about.html">
+    <meta property="twitter:url" content="https://peterpalhermann.com/about.html">
     <meta property="twitter:title" content="About Me - Peter Pal Hermann">
     <meta property="twitter:description" content="Learn about my journey as a data scientist and developer.">
-    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
@@ -53,7 +49,7 @@
       "@context": "https://schema.org",
       "@type": "AboutPage",
       "name": "About Me - Peter Pal Hermann",
-      "url": "https://PeterHermannGithub.github.io/about.html",
+      "url": "https://peterpalhermann.com/about.html",
       "author": {
         "@type": "Person",
         "name": "Peter Pal Hermann",
@@ -95,7 +91,7 @@
                     <span class="stat-label" data-i18n-key="about_stat_projects">Projects</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number"></span>
+                    <span class="stat-number">2023</span>
                     <span class="stat-label" data-i18n-key="about_stat_award">Best Employee 2023</span>
                 </div>
             </div>
@@ -211,7 +207,7 @@
 
             <!-- Call to Action -->
             <div class="about-cta">
-                <a href="./assets/cv/PeterHermann_Budapest_cv.pdf" target="_blank" class="btn btn-primary" data-i18n-key="about_download_cv" data-cv-bilingual="true" id="cv-download-btn">Download CV</a>
+                <a href="./assets/cv/PeterHermann_Budapest_cv_en.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n-key="about_download_cv" data-cv-bilingual="true" data-cv-base="./assets/cv/PeterHermann_Budapest_cv" id="cv-download-btn">Download CV</a>
                 <a href="#contact" class="btn btn-secondary" data-i18n-key="about_contact_btn">Get in Touch</a>
             </div>
 

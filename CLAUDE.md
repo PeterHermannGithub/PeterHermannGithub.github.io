@@ -85,8 +85,8 @@ chrome. Each page contains only two placeholders — `<div id="site-header"></di
 and `<div id="site-footer"></div>` — plus a skip link. To add a nav tab or change
 the footer, edit `components.js` once instead of every HTML file.
 
-`components.js` is path-aware: pages under `projects/` get a `../` link prefix
-automatically.
+`components.js` is path-aware: pages under `projects/`, `games/`, or `blogs/` get a
+`../` link prefix automatically.
 
 ### Script load order (do not reorder)
 
@@ -133,7 +133,8 @@ persists the choice. When you add visible text, add the key to both languages.
 
 `main.js` also powers: theme toggle, scroll animations, mobile nav, project/achievement
 filtering, the proof modal, the bilingual CV button, and a client-side fetch-based
-search index.
+search index. The index is built lazily on first search focus so normal page loads
+do not fetch every indexed HTML page.
 
 ---
 
@@ -155,14 +156,15 @@ Deploy = push to the default branch; GitHub Pages serves it.
 - New nav tab or footer change -> edit `components.js` only.
 - New page in a subfolder (like `games/`) -> use `../` asset paths, and make sure
   `components.js`'s `inSubdir` regex matches the folder so the injected header/footer
-  links resolve. It currently matches `projects` and `games`.
+  links resolve. It currently matches `projects`, `games`, and `blogs`.
 - Stick to the design language above (especially: no emoji, no Inter, no blue gradients).
 
 ---
 
 ## Known follow-ups / could-improve
 
-- Replace the placeholder/"coming soon" project screenshots with real ones.
+- Replace the lightweight project-summary visuals with real product screenshots
+  when representative images are available.
 - Build the Wordle variants behind the `play.html` scaffold (Anidle is live).
 - Anidle ships with ~119 characters across 4 series (Frieren 20, Naruto 36,
   Bleach 32, JJK 31) and is English-only (no `data-i18n-key`s on the dynamic game
@@ -175,5 +177,5 @@ Deploy = push to the default branch; GitHub Pages serves it.
   `test-phase1-improvements`) are scratch pages and can be deleted.
 - Some legacy CSS above the overhaul block is now unused (old `.hero`, `.sticky-header`);
   safe to prune later.
-- Add a real social-preview image (`assets/images/social-preview.jpg` is referenced
-  by Open Graph tags but may be missing).
+- Add a real social-preview image and restore `og:image` / `twitter:image` metadata.
+  Broken image metadata is intentionally omitted until that asset exists.

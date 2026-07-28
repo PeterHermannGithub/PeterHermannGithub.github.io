@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavMenu = document.getElementById('mobile-nav-menu');
     const mobileNavClose = document.getElementById('mobile-nav-close');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+    let mobileMenuWasOpened = false;
     
     // Mobile theme and language toggles
     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
@@ -78,8 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuToggle.classList.add('active');
         mobileNavOverlay.classList.add('active');
         mobileNavMenu.classList.add('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+        mobileMenuToggle.setAttribute('aria-label', 'Close menu');
+        mobileNavMenu.setAttribute('aria-hidden', 'false');
+        mobileNavMenu.removeAttribute('inert');
         document.body.style.overflow = 'hidden';
-        
+        mobileMenuWasOpened = true;
+
         // FIX: Enhanced mobile controls synchronization
         if (mobileThemeToggle && themeToggle) {
             mobileThemeToggle.innerHTML = themeToggle.innerHTML;
@@ -93,13 +99,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Mobile lang toggle synced:', mobileLangToggle.textContent);
             }
         }
+
+        mobileNavClose?.focus();
     }
     
     function closeMobileMenu() {
         mobileMenuToggle.classList.remove('active');
         mobileNavOverlay.classList.remove('active');
         mobileNavMenu.classList.remove('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+        mobileNavMenu.setAttribute('aria-hidden', 'true');
+        mobileNavMenu.setAttribute('inert', '');
         document.body.style.overflow = '';
+
+        if (mobileMenuWasOpened) {
+            mobileMenuToggle.focus();
+            mobileMenuWasOpened = false;
+        }
     }
     
     // Mobile menu event listeners
@@ -322,6 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const proofModalFallback = document.querySelector('.proof-modal-fallback');
     const proofModalBody = document.querySelector('.proof-modal-body');
     const clickableAchievementCards  = document.querySelectorAll('.achievement-card[data-proof-image]');
+    let proofModalPreviousFocus = null;
 
     function openProofModal(imagePath, achievementTitle, isBilingual = false) {
         if (!proofModal) return;
@@ -346,8 +364,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Show modal
+        proofModalPreviousFocus = document.activeElement;
         proofModal.classList.add('active');
+        proofModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        proofModalClose?.focus();
 
         // Add loading state
         proofModalBody.classList.add('loading');
@@ -497,6 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!proofModal) return;
 
         proofModal.classList.remove('active');
+        proofModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = ''; // Restore scrolling
         
         // Reset modal state
@@ -508,12 +530,21 @@ document.addEventListener('DOMContentLoaded', () => {
             // Clean up any PDF loading messages
             const pdfMessages = proofModalBody.querySelectorAll('.pdf-loading-message');
             pdfMessages.forEach(msg => msg.remove());
+
+            if (proofModalPreviousFocus instanceof HTMLElement) {
+                proofModalPreviousFocus.focus();
+            }
+            proofModalPreviousFocus = null;
         }, 300); // Wait for modal animation
     }
 
     // Add click event listeners to achievement cards
-    clickableAchievementCards .forEach(card => {
-        card.addEventListener('click', (e) => {
+    clickableAchievementCards.forEach(card => {
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-haspopup', 'dialog');
+
+        const activateCard = (e) => {
             // Don't trigger if clicking on links or buttons within the card
             if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
                 return;
@@ -527,6 +558,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (proofImage) {
                 console.log('Achievement card clicked:', achievementTitle);
                 openProofModal(proofImage, achievementTitle, isBilingual);
+            }
+        };
+
+        card.addEventListener('click', activateCard);
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                activateCard(e);
             }
         });
 
@@ -562,6 +601,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    proofModal?.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab') return;
+
+        const focusable = Array.from(
+            proofModal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')
+        ).filter((element) => !element.hasAttribute('disabled'));
+
+        if (focusable.length === 0) {
+            e.preventDefault();
+            return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    });
+
     // Prevent modal content clicks from closing modal
     const proofModalContent = document.querySelector('.proof-modal-content');
     if (proofModalContent) {
@@ -593,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentLang = localStorage.getItem('lang') || 'en';
         
         // Get the base href path
-        const baseHref = cvButton.getAttribute('href');
+        const baseHref = cvButton.dataset.cvBase || cvButton.getAttribute('href');
         
         // Create language-specific path
         // Convert "assets/cv/filename.pdf" to "assets/cv/filename_en.pdf" or "assets/cv/filename_hu.pdf"
@@ -621,6 +683,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileSearchInput = document.getElementById('mobile-site-search');
     const searchResults = document.getElementById('search-results');
     const mobileSearchResults = document.getElementById('mobile-search-results');
+    const searchRootPrefix = /\/(projects|games|blogs)\//.test(window.location.pathname) ? '../' : '';
+    const fromSiteRoot = (path) => `${searchRootPrefix}${path}`;
     
     console.log('Search Elements:', {
         desktop: searchInput ? 'Found ' : 'Missing ',
@@ -631,7 +695,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Search index and configuration
     let searchIndex = [];
-    let isIndexBuilding = false;
+    let searchIndexPromise = null;
     let searchTimeout = null;
     let currentHighlightIndex = -1;
 
@@ -673,12 +737,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Build search index from all pages
-    async function buildSearchIndex() {
-        if (isIndexBuilding) return;
-        isIndexBuilding = true;
-        
-        console.log('Building search index...');
-        
+    function buildSearchIndex() {
+        if (searchIndexPromise) return searchIndexPromise;
+
         const pages = [
             { url: 'index.html', title: 'Home' },
             { url: 'about.html', title: 'About' },
@@ -694,40 +755,36 @@ document.addEventListener('DOMContentLoaded', () => {
             { url: 'blogs/building-recommendation-engine-rust.html', title: 'Building a Production-Scale Recommendation Engine with Rust' }
         ];
 
-        try {
-            for (const page of pages) {
-                try {
-                    const response = await fetch(page.url);
-                    if (response.ok) {
-                        const html = await response.text();
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(html, 'text/html');
-                        
-                        // Extract searchable content
-                        const content = extractSearchableContent(doc);
-                        
-                        // Add to search index
-                        searchIndex.push({
-                            url: page.url,
-                            title: page.title,
-                            content: content,
-                            searchText: (page.title + ' ' + content).toLowerCase()
-                        });
-                        
-                        console.log(`Indexed: ${page.title} (${content.length} chars)`);
-                    }
-                } catch (error) {
-                    console.warn(`Failed to index ${page.url}:`, error);
-                }
+        searchIndexPromise = Promise.all(pages.map(async (page) => {
+            try {
+                const response = await fetch(fromSiteRoot(page.url));
+                if (!response.ok) return null;
+
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const content = extractSearchableContent(doc);
+
+                return {
+                    url: page.url,
+                    title: page.title,
+                    content,
+                    searchText: `${page.title} ${content}`.toLowerCase()
+                };
+            } catch (error) {
+                console.warn(`Failed to index ${page.url}:`, error);
+                return null;
             }
-            
-            console.log(`Search index built: ${searchIndex.length} pages indexed`);
-            isIndexBuilding = false;
-            
-        } catch (error) {
+        })).then((items) => {
+            searchIndex = items.filter(Boolean);
+            return searchIndex;
+        }).catch((error) => {
+            searchIndexPromise = null;
             console.error('Error building search index:', error);
-            isIndexBuilding = false;
-        }
+            return searchIndex;
+        });
+
+        return searchIndexPromise;
     }
 
     // Extract searchable text content from page
@@ -815,10 +872,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (start > 0) snippet = '...' + snippet;
         if (end < content.length) snippet = snippet + '...';
         
-        // Highlight search term
-        const regex = new RegExp(`(${query})`, 'gi');
-        snippet = snippet.replace(regex, '<span class="search-highlight">$1</span>');
-        
         return snippet;
     }
 
@@ -872,25 +925,40 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetContainer = activeResultsContainer || fallbackContainer;
         
         if (results.length === 0) {
-            const noResultsHTML = `
-                <div class="search-no-results">
-                    ${t.search_no_results || 'No results found'} "${query}"
-                </div>
-            `;
-            targetContainer.innerHTML = noResultsHTML;
+            targetContainer.replaceChildren();
+            const noResults = document.createElement('div');
+            noResults.className = 'search-no-results';
+            noResults.textContent = `${t.search_no_results || 'No results found'} "${query}"`;
+            targetContainer.appendChild(noResults);
             targetContainer.classList.add('show');
             return;
         }
-        
-        const resultsHTML = results.map((result, index) => `
-            <div class="search-result-item" data-url="${result.url}" data-index="${index}">
-                <div class="search-result-title">${result.title}</div>
-                <div class="search-result-page">${result.page}</div>
-                <div class="search-result-snippet">${result.snippet}</div>
-            </div>
-        `).join('');
-        
-        targetContainer.innerHTML = resultsHTML;
+
+        const fragment = document.createDocumentFragment();
+        results.forEach((result, index) => {
+            const item = document.createElement('button');
+            item.type = 'button';
+            item.className = 'search-result-item';
+            item.dataset.url = result.url;
+            item.dataset.index = String(index);
+
+            const title = document.createElement('span');
+            title.className = 'search-result-title';
+            title.textContent = result.title;
+
+            const page = document.createElement('span');
+            page.className = 'search-result-page';
+            page.textContent = result.page;
+
+            const snippet = document.createElement('span');
+            snippet.className = 'search-result-snippet';
+            snippet.textContent = result.snippet;
+
+            item.append(title, page, snippet);
+            fragment.appendChild(item);
+        });
+
+        targetContainer.replaceChildren(fragment);
         targetContainer.classList.add('show');
         currentHighlightIndex = -1;
         
@@ -929,7 +997,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
             // Different page, navigate
-            window.location.href = url;
+            window.location.href = fromSiteRoot(url);
         }
     }
 
@@ -1009,8 +1077,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // Debounce search
-            searchTimeout = setTimeout(() => {
+            searchTimeout = setTimeout(async () => {
                 if (query.length >= 2) {
+                    await buildSearchIndex();
+                    if (input.value.trim() !== query) return;
                     const results = performSearch(query);
                     displaySearchResults(results, query);
                 } else {
@@ -1032,7 +1102,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Show results when input gains focus (if has value)
-        input.addEventListener('focus', () => {
+        input.addEventListener('focus', async () => {
+            await buildSearchIndex();
             const query = input.value.trim();
             if (query.length >= 2) {
                 const results = performSearch(query);
@@ -1076,9 +1147,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobile: !!mobileSearchInput
             });
         }
-        
-        // Build search index
-        buildSearchIndex();
         
         // FIX: Hide results when clicking outside (supports both containers)
         document.addEventListener('click', (e) => {

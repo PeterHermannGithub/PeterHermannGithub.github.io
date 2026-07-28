@@ -31,6 +31,9 @@ projects.html         Filterable project grid
 play.html             Landing for browser games (Wordle variants — scaffold)
 achievements.html     Filterable cards with a proof-image modal
 code-viewer.html      VS Code-style code viewer
+404.html              Branded not-found page
+robots.txt            Search-crawler policy and sitemap location
+sitemap.xml           Canonical production URLs
 projects/*.html       Per-project detail pages
 assets/
   css/style.css       Design tokens + all styles (editorial overhaul block at the end)
@@ -59,8 +62,8 @@ blue/purple gradients. Dark is the default; light is the `.light-mode` opt-in.
 ## Browser support
 
 Modern evergreen browsers (Chrome, Firefox, Safari, Edge) on desktop and mobile.
-Core content is readable without JavaScript; the chrome, theme, search, and games
-need it.
+Page content remains readable without JavaScript. Shared navigation/contact chrome,
+theme switching, search, filtering, proof modals, and games require JavaScript.
 
 ---
 

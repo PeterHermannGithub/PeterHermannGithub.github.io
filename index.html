@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://peterpalhermann.com/">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
 
     <!-- SEO Meta Tags -->
     <title data-i18n-key="meta_title_home">Peter Pal Hermann — Data Scientist</title>
     <meta name="description" content="Peter Pal Hermann — Data Scientist & ML engineer. I build recommenders, game-playing AI, and full-stack apps to ship my data science work." data-i18n-key="meta_description_home">
-    <meta name="keywords" content="data scientist, machine learning, portfolio, recommender systems, Peter Hermann">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://PeterHermannGithub.github.io/">
+    <meta property="og:url" content="https://peterpalhermann.com/">
     <meta property="og:title" content="Peter Pal Hermann — Data Scientist">
     <meta property="og:description" content="I build recommenders, game-playing AI, and full-stack apps to ship my data science work.">
-    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/">
+    <meta property="twitter:url" content="https://peterpalhermann.com/">
     <meta property="twitter:title" content="Peter Pal Hermann — Data Scientist">
     <meta property="twitter:description" content="I build recommenders, game-playing AI, and full-stack apps to ship my data science work.">
-    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
@@ -53,7 +49,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Peter Pal Hermann",
-      "url": "https://PeterHermannGithub.github.io/",
+      "url": "https://peterpalhermann.com/",
       "sameAs": [
         "https://github.com/PeterHermannGithub",
         "https://www.linkedin.com/in/peter-hermann-170hp/"
@@ -122,7 +118,11 @@
         <section class="featured-project container">
             <h2 class="section-title animate-on-scroll" data-i18n-key="featured_title">Featured</h2>
             <div class="project-card-large animate-on-scroll">
-                <img src="assets/images/project-anime-recommender.png" alt="Anime recommendation engine screenshot">
+                <div class="project-visual project-visual-featured" role="img" aria-label="Anime recommender: 649 million similarity pairs processed">
+                    <span class="project-visual-kicker">// recommender engine</span>
+                    <strong>649M</strong>
+                    <span>similarity pairs processed</span>
+                </div>
                 <div class="project-info">
                     <h3 data-i18n-key="featured_project_title">Anime Recommendation Engine</h3>
                     <p data-i18n-key="featured_project_desc">A Go backend serving multi-signal recommendations across a large anime catalogue. Semantic and behavioral embeddings, MMR diversity, and a franchise graph, with a React front end.</p>
@@ -138,18 +138,18 @@
         <section class="skills-section container">
             <h2 class="section-title animate-on-scroll" data-i18n-key="skills_title">Tools I reach for</h2>
             <div class="skills-grid">
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/python.svg" alt="Python"><span>Python</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/pandas.svg" alt="Pandas"><span>Pandas</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/tensorflow.svg" alt="TensorFlow"><span>TensorFlow</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/sql.svg" alt="SQL"><span>SQL</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/rust.svg" alt="Rust"><span>Rust</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/fastapi.svg" alt="FastAPI"><span>FastAPI</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/docker.svg" alt="Docker"><span>Docker</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/redis.svg" alt="Redis"><span>Redis</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/spark.svg" alt="Apache Spark"><span>Spark</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/kafka.svg" alt="Apache Kafka"><span>Kafka</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/react.svg" alt="React"><span>React</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/git.svg" alt="Git"><span>Git</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/python.svg" alt="" loading="lazy" decoding="async"><span>Python</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/pandas.svg" alt="" loading="lazy" decoding="async"><span>Pandas</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/tensorflow.svg" alt="" loading="lazy" decoding="async"><span>TensorFlow</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/sql.svg" alt="" loading="lazy" decoding="async"><span>SQL</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/rust.svg" alt="" loading="lazy" decoding="async"><span>Rust</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/fastapi.svg" alt="" loading="lazy" decoding="async"><span>FastAPI</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/docker.svg" alt="" loading="lazy" decoding="async"><span>Docker</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/redis.svg" alt="" loading="lazy" decoding="async"><span>Redis</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/spark.svg" alt="" loading="lazy" decoding="async"><span>Spark</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/kafka.svg" alt="" loading="lazy" decoding="async"><span>Kafka</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/react.svg" alt="" loading="lazy" decoding="async"><span>React</span></div>
+                <div class="skill-item animate-on-scroll"><img src="assets/icons/git.svg" alt="" loading="lazy" decoding="async"><span>Git</span></div>
             </div>
         </section>
     </main>

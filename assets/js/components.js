@@ -19,8 +19,8 @@
 (function () {
     'use strict';
 
-    // Path-aware base prefix: pages under /projects/ or /games/ climb one level.
-    var inSubdir = /\/(projects|games)\//.test(window.location.pathname);
+    // Path-aware base prefix: pages in content subdirectories climb one level.
+    var inSubdir = /\/(projects|games|blogs)\//.test(window.location.pathname);
     var base = inSubdir ? '../' : '';
 
     // Primary navigation. `key` maps to an i18n translation key (falls back to
@@ -56,7 +56,7 @@
                     '</div>' +
                     '<button id="theme-toggle" aria-label="Toggle theme"></button>' +
                     '<button id="lang-toggle" aria-label="Toggle language">EN</button>' +
-                    '<button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">' +
+                    '<button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-controls="mobile-nav-menu" aria-expanded="false">' +
                         '<span class="hamburger-line"></span>' +
                         '<span class="hamburger-line"></span>' +
                         '<span class="hamburger-line"></span>' +
@@ -65,7 +65,7 @@
             '</nav>' +
         '</header>' +
         '<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>' +
-        '<nav class="mobile-nav-menu" id="mobile-nav-menu">' +
+        '<nav class="mobile-nav-menu" id="mobile-nav-menu" aria-label="Mobile navigation" aria-hidden="true" inert>' +
             '<div class="mobile-nav-header">' +
                 '<a href="' + base + 'index.html" class="logo"><span class="logo-mark">PH</span></a>' +
                 '<button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close mobile menu">&times;</button>' +

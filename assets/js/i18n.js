@@ -283,6 +283,7 @@ const translations = {
         // Project Pages Common
         view_source_code: "Source Code",
         download_apk: "Download APK",
+        download_apk_unavailable: "APK not published",
         view_demo: "View Demo",
         view_analysis: "View Analysis",
         view_pipeline: "View Pipeline",
@@ -926,6 +927,7 @@ const translations = {
         // Project Pages Common - Hungarian
         view_source_code: "Forráskód",
         download_apk: "APK Letöltése",
+        download_apk_unavailable: "Az APK még nem elérhető",
         view_demo: "Demó Megtekintése",
         view_analysis: "Elemzés Megtekintése",
         view_pipeline: "Pipeline Megtekintése",

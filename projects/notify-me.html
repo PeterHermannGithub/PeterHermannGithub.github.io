@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://peterpalhermann.com/projects/notify-me.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- SEO Meta Tags -->
     <title data-i18n-key="project_notify_meta_title">Notify Me Android App - Peter Pal Hermann</title>
     <meta name="description" content="Android notification app with WorkManager integration for background tasks. Features modern Material Design and fragment-based architecture." data-i18n-key="project_notify_meta_desc">
-    <meta name="keywords" content="Android app, notifications, WorkManager, Material Design, Kotlin, mobile development">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://PeterHermannGithub.github.io/projects/notify-me.html">
+    <meta property="og:url" content="https://peterpalhermann.com/projects/notify-me.html">
     <meta property="og:title" content="Notify Me Android App - Peter Pal Hermann">
     <meta property="og:description" content="Android notification app with WorkManager integration for background tasks.">
-    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/project-notify-me.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/projects/notify-me.html">
+    <meta property="twitter:url" content="https://peterpalhermann.com/projects/notify-me.html">
     <meta property="twitter:title" content="Notify Me Android App - Peter Pal Hermann">
     <meta property="twitter:description" content="Android notification app with WorkManager integration for background tasks.">
-    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/project-notify-me.png">
 
     <!-- Styles, Fonts, and Icons -->
     <!-- Critical: set theme before paint (dark is the default) -->
@@ -57,14 +56,18 @@
                 <h1 data-i18n-key="project_notify_title">Notify Me - Android App</h1>
                 <p class="project-tagline" data-i18n-key="project_notify_tagline">Smart notification management with background task scheduling</p>
                 <div class="project-links">
-                    <a href="https://github.com/PeterHermannGithub/Notify_me" target="_blank" class="btn btn-primary" data-i18n-key="view_source_code">Source Code</a>
-                    <a href="#" class="btn" data-i18n-key="download_apk">Download APK</a>
+                    <a href="https://github.com/PeterHermannGithub/Notify_me" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n-key="view_source_code">Source Code</a>
+                    <span class="btn btn-disabled" aria-disabled="true" data-i18n-key="download_apk_unavailable">APK not published</span>
                 </div>
             </header>
 
             <!-- Main Project Image -->
             <div class="project-hero-media">
-                <img src="../assets/images/project-notify-me.png" alt="Notify Me Android App Screenshot">
+                <div class="project-visual" role="img" aria-label="Notify Me Android application">
+                    <span class="project-visual-kicker">// android</span>
+                    <strong>Kotlin</strong>
+                    <span>scheduled notifications</span>
+                </div>
             </div>
 
             <!-- Project Details -->

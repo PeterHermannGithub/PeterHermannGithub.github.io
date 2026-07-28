@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://peterpalhermann.com/projects.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
     
     <!-- SEO Meta Tags -->
     <title data-i18n-key="meta_title_projects">Projects - Peter Pal Hermann</title>
     <meta name="description" content="Explore my portfolio of projects including web development, data science, and automation solutions." data-i18n-key="meta_description_projects">
-    <meta name="keywords" content="projects, portfolio, web development, data science, automation, programming">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://PeterHermannGithub.github.io/projects.html">
+    <meta property="og:url" content="https://peterpalhermann.com/projects.html">
     <meta property="og:title" content="Projects - Peter Pal Hermann">
     <meta property="og:description" content="Explore my portfolio of projects including web development, data science, and automation solutions.">
-    <meta property="og:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://PeterHermannGithub.github.io/projects.html">
+    <meta property="twitter:url" content="https://peterpalhermann.com/projects.html">
     <meta property="twitter:title" content="Projects - Peter Pal Hermann">
     <meta property="twitter:description" content="Explore my portfolio of projects including web development, data science, and automation solutions.">
-    <meta property="twitter:image" content="https://PeterHermannGithub.github.io/assets/images/social-preview.jpg">
 
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
@@ -53,7 +49,7 @@
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       "name": "Projects - Peter Pal Hermann",
-      "url": "https://PeterHermannGithub.github.io/projects.html",
+      "url": "https://peterpalhermann.com/projects.html",
       "author": {
         "@type": "Person",
         "name": "Peter Pal Hermann"
@@ -90,7 +86,11 @@
             
             <!-- Featured Project: Anime Recommender V2 -->
             <div class="project-card featured animate-on-scroll" data-category="data">
-                <img src="assets/images/project-anime-recommender.png" alt="Anime Recommender V2 Screenshot" class="project-image">
+                <div class="project-visual" role="img" aria-label="Anime recommender: 649 million similarity pairs processed">
+                    <span class="project-visual-kicker">// recommender engine</span>
+                    <strong>649M</strong>
+                    <span>similarity pairs</span>
+                </div>
                 <div class="project-info">
                     <h3 data-i18n-key="project_anime_recommender_title">Production-Scale Anime Recommendation Engine</h3>
                     <p data-i18n-key="project_anime_recommender_desc">Processing 649M similarity pairs across 37k anime with Pure Rust engine and sub-100ms API responses. Features streaming JSON architecture and production-grade FastAPI backend.</p>
@@ -106,14 +106,18 @@
                     <div class="project-links">
                         <a href="projects/anime-recommender.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
                         <a href="code-viewer.html" class="btn btn-secondary" data-i18n-key="view_code_viewer_btn">Code Viewer</a>
-                        <a href="https://github.com/PeterHermannGithub/anime-recommender" target="_blank" class="btn" data-i18n-key="view_code_btn">GitHub</a>
+                        <a href="https://github.com/PeterHermannGithub/anime-recommender" target="_blank" rel="noopener noreferrer" class="btn" data-i18n-key="view_code_btn">GitHub</a>
                     </div>
                 </div>
             </div>
             
             <!-- Project 1: Portfolio Website -->
             <div class="project-card animate-on-scroll" data-category="web">
-                <img src="assets/images/project-portfolio.png" alt="Portfolio Website Screenshot" class="project-image">
+                <div class="project-visual" role="img" aria-label="Portfolio website built with HTML, CSS, and JavaScript">
+                    <span class="project-visual-kicker">// portfolio</span>
+                    <strong>HTML / CSS / JS</strong>
+                    <span>bilingual static site</span>
+                </div>
                 <div class="project-info">
                     <h3 data-i18n-key="project_portfolio_title">Portfolio Website</h3>
                     <p data-i18n-key="project_portfolio_desc">A modern, bilingual portfolio website built with vanilla HTML, CSS, and JavaScript. Features dark mode, responsive design, and internationalization.</p>
@@ -124,15 +128,19 @@
                         <span>GitHub Pages</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://PeterHermannGithub.github.io" target="_blank" class="btn btn-primary" data-i18n-key="view_live_btn">View Live</a>
-                        <a href="https://github.com/PeterHermannGithub/PeterHermannGithub.github.io" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                        <a href="https://peterpalhermann.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n-key="view_live_btn">View Live</a>
+                        <a href="https://github.com/PeterHermannGithub/PeterHermannGithub.github.io" target="_blank" rel="noopener noreferrer" class="btn" data-i18n-key="view_code_btn">View Code</a>
                     </div>
                 </div>
             </div>
 
             <!-- Project 2: Notify Me Android App -->
             <div class="project-card animate-on-scroll" data-category="mobile">
-                <img src="assets/images/project-notify-me.png" alt="Notify Me App Screenshot" class="project-image">
+                <div class="project-visual" role="img" aria-label="Notify Me Android application">
+                    <span class="project-visual-kicker">// android</span>
+                    <strong>Kotlin</strong>
+                    <span>scheduled notifications</span>
+                </div>
                 <div class="project-info">
                     <h3 data-i18n-key="project_notify_title">Notify Me - Android App</h3>
                     <p data-i18n-key="project_notify_desc">An Android notification app with WorkManager integration for background tasks. Features modern Material Design and fragment-based architecture.</p>
@@ -144,14 +152,18 @@
                     </div>
                     <div class="project-links">
                         <a href="projects/notify-me.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
-                        <a href="https://github.com/PeterHermannGithub/Notify_me" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                        <a href="https://github.com/PeterHermannGithub/Notify_me" target="_blank" rel="noopener noreferrer" class="btn" data-i18n-key="view_code_btn">View Code</a>
                     </div>
                 </div>
             </div>
 
             <!-- Project 3: AI-Powered Audiobook Generation System -->
             <div class="project-card animate-on-scroll" data-category="data">
-                <img src="assets/images/project-audiobook.png" alt="AI-Powered Audiobook Generation System Screenshot" class="project-image">
+                <div class="project-visual" role="img" aria-label="AI-powered audiobook generation pipeline">
+                    <span class="project-visual-kicker">// audiobook pipeline</span>
+                    <strong>LLM → TTS</strong>
+                    <span>distributed processing</span>
+                </div>
                 <div class="project-info">
                     <h3 data-i18n-key="project_audiobook_title">AI-Powered Audiobook Generation System</h3>
                     <p data-i18n-key="project_audiobook_desc">Sophisticated distributed processing system with LLM integration for multi-format audiobook generation. Features enterprise architecture with deterministic segmentation and distributed scaling.</p>
@@ -167,7 +179,7 @@
                     </div>
                     <div class="project-links">
                         <a href="projects/audiobook-converter.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
-                        <a href="https://github.com/PeterHermannGithub/Text_to_audiobook" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                        <a href="https://github.com/PeterHermannGithub/Text_to_audiobook" target="_blank" rel="noopener noreferrer" class="btn" data-i18n-key="view_code_btn">View Code</a>
                     </div>
                 </div>
             </div>
@@ -175,7 +187,11 @@
 
             <!-- Project 5: History Channel Automation -->
             <div class="project-card animate-on-scroll" data-category="automation">
-                <img src="assets/images/project-history-automation.png" alt="History Channel Automation Screenshot" class="project-image">
+                <div class="project-visual" role="img" aria-label="Automated YouTube content pipeline">
+                    <span class="project-visual-kicker">// automation</span>
+                    <strong>SCRIPT → VOICE → VIDEO</strong>
+                    <span>end-to-end pipeline</span>
+                </div>
                 <div class="project-info">
                     <h3 data-i18n-key="project_history_title">YouTube Content Automation</h3>
                     <p data-i18n-key="project_history_desc">Automated pipeline for generating historical YouTube content. Uses AI for script generation, voice synthesis, and video creation.</p>
@@ -188,14 +204,18 @@
                     </div>
                     <div class="project-links">
                         <a href="projects/history-automation.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
-                        <a href="https://github.com/PeterHermannGithub/history_channel_automation" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                        <a href="https://github.com/PeterHermannGithub/history_channel_automation" target="_blank" rel="noopener noreferrer" class="btn" data-i18n-key="view_code_btn">View Code</a>
                     </div>
                 </div>
             </div>
 
             <!-- Project 6: Tab Timer Extension -->
             <div class="project-card animate-on-scroll" data-category="web">
-                <img src="assets/images/project-tab-timer.png" alt="Tab Timer Extension Screenshot" class="project-image">
+                <div class="project-visual" role="img" aria-label="Tab Timer browser extension using Manifest V3">
+                    <span class="project-visual-kicker">// browser extension</span>
+                    <strong>Manifest V3</strong>
+                    <span>time by domain</span>
+                </div>
                 <div class="project-info">
                     <h3 data-i18n-key="project_timer_title">Tab Timer Chrome Extension</h3>
                     <p data-i18n-key="project_timer_desc">Chrome extension for tracking time spent on website domains. Features service worker architecture and persistent storage.</p>
@@ -207,7 +227,7 @@
                     </div>
                     <div class="project-links">
                         <a href="projects/tab-timer.html" class="btn btn-primary" data-i18n-key="view_details_btn">View Details</a>
-                        <a href="https://github.com/PeterHermannGithub/tab-timer-extension" target="_blank" class="btn" data-i18n-key="view_code_btn">View Code</a>
+                        <a href="https://github.com/PeterHermannGithub/tab-timer-extension" target="_blank" rel="noopener noreferrer" class="btn" data-i18n-key="view_code_btn">View Code</a>
                     </div>
                 </div>
             </div>
