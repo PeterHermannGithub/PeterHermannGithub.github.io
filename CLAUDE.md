@@ -77,6 +77,12 @@ page.
   via `.light-mode`, set pre-paint by an inline script and toggled by `main.js`. Do not
   invert this without updating the inline scripts in every page *and* `main.js`.
 
+## Browser support
+
+Modern evergreen browsers (Chrome, Firefox, Safari, Edge), desktop and mobile. Page content
+stays readable without JavaScript; the shared chrome, theme switching, search, filtering,
+proof modals and games all require it.
+
 ## Design language
 
 **Read `.claude/rules/design.md` before changing anything visual.** The site uses a
