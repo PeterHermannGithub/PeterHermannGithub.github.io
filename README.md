@@ -1,70 +1,107 @@
-# Peter Pal Hermann — Portfolio
+# PeterHermannGithub.github.io
 
-A personal portfolio for a data scientist / ML engineer, built as a static site in
-plain HTML, CSS, and JavaScript and deployed on GitHub Pages. No build step, no
-framework. It is bilingual (English/Hungarian), has a dark/light theme, a client-side
-search, an interactive code viewer, and a Play section for browser games.
+> `README.md` is a generated copy of this file. Edit `CLAUDE.md` only.
 
-The look is deliberately **editorial-technical** — Space Grotesk + Space Mono, an
-acid-lime accent, sharp flat surfaces, dark by default. See `CLAUDE.md` for the full
-design language and the rules that keep it from drifting back into generic territory.
+Personal portfolio for Peter Pal Hermann (data scientist / ML engineer): a static site in
+plain HTML/CSS/JS on GitHub Pages. **No build step, no framework, no bundler** — edit files,
+push, done. Custom domain in `CNAME`.
 
-## Quick start
+Bilingual (EN/HU), dark/light theme, client-side search, interactive code viewer.
 
-No build process — serve the folder and open it:
+## Commands
 
 ```bash
-git clone https://github.com/PeterHermannGithub/PeterHermannGithub.github.io.git
-cd PeterHermannGithub.github.io
-python3 -m http.server 8000          # then open http://localhost:8000
+python3 -m http.server 8000   # http://localhost:8000
 ```
 
-Deploy by pushing to the default branch; GitHub Pages serves it. The custom domain
-is in `CNAME`.
+Deploy = push to the default branch; GitHub Pages serves it.
 
-## File structure
+## Architecture
+
+### Shared chrome (`assets/js/components.js`)
+
+The header (nav, search, toggles, mobile menu) and footer are **injected at runtime**.
+Each page contains only `<div id="site-header"></div>`, `<div id="site-footer"></div>` and a
+skip link. **To add a nav tab or change the footer, edit `components.js` once** rather than
+every HTML file. It is path-aware: pages under `projects/`, `games/` or `blogs/` get a `../`
+link prefix automatically.
+
+### Script load order — do not reorder
+
+All three are `defer`, so they run in document order before `DOMContentLoaded`:
 
 ```
-index.html            Homepage: hero, stat strip, nav cards, featured project, skills
-about.html            Background, experience, skills, CV download
-projects.html         Filterable project grid
-play.html             Landing for browser games (Wordle variants — scaffold)
-achievements.html     Filterable cards with a proof-image modal
-code-viewer.html      VS Code-style code viewer
-404.html              Branded not-found page
-robots.txt            Search-crawler policy and sitemap location
-sitemap.xml           Canonical production URLs
-projects/*.html       Per-project detail pages
-assets/
-  css/style.css       Design tokens + all styles (editorial overhaul block at the end)
-  css/*.css           code-viewer / project-page / performance-demo styles
-  js/components.js    Shared header + footer (single source of truth, injected at runtime)
-  js/i18n.js          EN/HU translation system
-  js/main.js          Theme, animations, mobile nav, filtering, proof modal, search
-  js/code-viewer.js   Code viewer logic
-  data/, icons/, images/, cv/
+components.js   injects header/footer DOM (top level, runs first)
+i18n.js         translates [data-i18n-key] incl. injected nav, wires lang toggle
+main.js         on DOMContentLoaded: theme, scroll anims, mobile nav, search, filters, modal
 ```
 
-## Working on it
+`components.js` must come first so the chrome exists before the other two query it. The IDs
+and classes the scripts depend on (`#theme-toggle`, `#lang-toggle`, `#site-search`,
+`#mobile-*`, `.nav-links`, `.mobile-nav-links`, …) are listed in a comment at the top of
+`components.js` — keep them if you edit the markup.
 
-- **Colors / fonts / spacing:** edit the CSS variables at the top of
-  `assets/css/style.css`. They cascade across the whole site and both themes.
-- **Nav tabs / footer:** edit `assets/js/components.js` once — the chrome is injected
-  into `#site-header` / `#site-footer` placeholders on every page.
-- **Text:** add a `data-i18n-key` to the element and an entry in both languages in
-  `assets/js/i18n.js`.
-- **A new project page:** copy `projects/project-template.html`, add a card to
-  `projects.html`, add translations.
+### Internationalization (`assets/js/i18n.js`)
 
-Keep to the design language in `CLAUDE.md`: no emoji in the UI, no Inter, no
-blue/purple gradients. Dark is the default; light is the `.light-mode` opt-in.
+`translations.en` / `translations.hu` objects; elements carry `data-i18n-key` (and
+`data-i18n-placeholder`). `setLanguage()` swaps `innerHTML`/placeholders and persists the
+choice. **When you add visible text, add the key to both languages.**
 
-## Browser support
+### Pages
 
-Modern evergreen browsers (Chrome, Firefox, Safari, Edge) on desktop and mobile.
-Page content remains readable without JavaScript. Shared navigation/contact chrome,
-theme switching, search, filtering, proof modals, and games require JavaScript.
+- `index.html` — asymmetric hero, stat strip, nav cards, featured project, skills
+- `about.html` — background, experience timeline, skills, bilingual CV download
+- `projects.html` — filterable project grid; `projects/*.html` are the detail pages
+- `play.html` — browser-games landing. Cards are scaffolds marked `is-wip`; point a card's
+  link at its game page and drop `is-wip` when ready
+- `games/anidle.html` — **Anidle**, a Wordle-style anime character guessing game.
+  Self-contained: roster and logic in `assets/js/anidle.js` (a `CHARACTERS` array and
+  `COLUMNS` list — extend those), styles in the `Anidle` block at the end of `style.css`
+- `achievements.html` — filterable cards with a proof-image modal
+- `code-viewer.html` — VS Code-style viewer driven by `assets/data/code-snippets.json`
 
----
+`main.js` also powers the theme toggle, scroll animations, mobile nav, project/achievement
+filtering, the proof modal, the bilingual CV button, and a client-side fetch-based search
+index — built lazily on first search focus so normal page loads do not fetch every indexed
+page.
 
-This README and `CLAUDE.md` are the only two documentation files for the project.
+## Conventions
+
+- Keep using CSS variables; never hardcode colours.
+- New UI text → `data-i18n-key` plus entries in **both** languages.
+- New nav tab or footer change → edit `components.js` only.
+- New page in a subfolder → use `../` asset paths, and make sure `components.js`'s
+  `inSubdir` regex matches the folder so injected header/footer links resolve. It currently
+  matches `projects`, `games` and `blogs`.
+- **Dark is the default theme.** The page is dark with no class on `<html>`; light is opt-in
+  via `.light-mode`, set pre-paint by an inline script and toggled by `main.js`. Do not
+  invert this without updating the inline scripts in every page *and* `main.js`.
+
+## Design language
+
+**Read `.claude/rules/design.md` before changing anything visual.** The site uses a
+deliberate editorial-technical look chosen specifically so it does not read as
+AI-generated boilerplate, and the rules there are the point — regressing them undoes the
+whole design.
+
+The one-line version: Space Grotesk + Space Mono, one acid-lime accent (`#c8f751`), sharp
+flat surfaces, no emoji anywhere, no gradients, no filler copy.
+
+## Known follow-ups
+
+- Replace lightweight project-summary visuals with real product screenshots.
+- Build the Wordle variants behind the `play.html` scaffold (Anidle is live).
+- Anidle ships ~119 characters across 4 series (Frieren 20, Naruto 36, Bleach 32, JJK 31)
+  and is English-only — the dynamic game UI has no `data-i18n-key`s. Ages for long-lived and
+  curse characters are approximate canonical values.
+- The `*-test.html` files (`mobile-test`, `theme-test`, `test-website`,
+  `test-phase1-improvements`) are scratch pages and can be deleted.
+- Some legacy CSS above the overhaul block is unused (old `.hero`, `.sticky-header`).
+- Add a real social-preview image and restore `og:image` / `twitter:image`. The broken image
+  metadata is intentionally omitted until that asset exists.
+
+## Note
+
+Several projects featured here are archived locally under `_archive/`. That reflects local
+development status only — the deployed artifacts still work, so do not remove a project from
+the site because its repo is archived.
