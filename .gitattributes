@@ -1,0 +1,23 @@
+# Line endings are pinned here because this tree is edited from both native
+# Windows and WSL. Without it, the same file flips between CRLF and LF and shows
+# up as a whole-file diff containing no actual change.
+#
+# `text=auto` lets Git normalise to LF in the repository and check out whatever
+# the platform wants; the explicit rules below override that where a file format
+# or a tool requires one specific ending.
+
+* text=auto
+
+# Always LF: source, config and documentation.
+*.css   text eol=lf
+*.html  text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.svg   text eol=lf
+*.txt   text eol=lf
+*.xml   text eol=lf
+
+# Binary: never normalise, never diff as text.
+*.jpg  binary
+*.pdf  binary
