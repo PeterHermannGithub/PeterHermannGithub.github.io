@@ -2,11 +2,13 @@
 # Windows and WSL. Without it, the same file flips between CRLF and LF and shows
 # up as a whole-file diff containing no actual change.
 #
-# `text=auto` lets Git normalise to LF in the repository and check out whatever
-# the platform wants; the explicit rules below override that where a file format
-# or a tool requires one specific ending.
+# `text=auto` normalises to LF in the repository; `eol=lf` is what forces the
+# CHECKOUT side to LF too. Without it, checkout follows core.eol, which is
+# `native` by default -- CRLF on Windows - and every file below that has no
+# explicit rule comes back out as CRLF. The explicit rules below still win,
+# because the last matching line takes precedence.
 
-* text=auto
+* text=auto eol=lf
 
 # Always LF: source, config and documentation.
 *.css   text eol=lf
