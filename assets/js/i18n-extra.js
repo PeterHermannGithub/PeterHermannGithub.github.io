@@ -130,7 +130,7 @@ window.__i18nExtra = {
   "nb_k": "Browser game · the recommender's formula, as a quiz",
   "nb_lede": "Every round shows a title and four candidates. Pick the one the V2 similarity formula ranks closest: tags count for 60%, score 20%, year 15%, type 5%. After each answer you see the actual scores, so you learn what the formula rewards and where your taste disagrees.",
   "rd_nb_d": "Ten rounds against the recommender's similarity formula: which of four titles does it think is closest? You see the scores afterwards.",
-  "rd_wip4": "A snippet of code, five languages, one guess. Tell Rust from Go from Kotlin by the shape of the punctuation alone.",
+  "rd_wip4": "A snippet of code, four candidates, one guess. Tell Rust from Go from Kotlin by the shape of the punctuation alone.",
   "meta_title_colophon": "Colophon — Peter Pal Hermann",
   "meta_description_colophon": "How this site is made: no framework, no build step, two languages, one accent colour, and a live readout of what this page weighed.",
   "co_k": "Colophon",
@@ -181,7 +181,12 @@ window.__i18nExtra = {
   "rd_r3_h": "Give the model a referee",
   "rd_r3_p": "The Slay the Spire bot is checked against a simulator. When the bot's picture of the rules and the simulator's disagree, the bot is the one that is wrong.",
   "nn_hint": "press Ctrl K for the menu",
-  "co_t4": "The Hungarian dictionary and the English one ship together, about 120 KB of script between them. They could load per page."
+  "co_t4": "The Hungarian dictionary and the English one ship together, about 120 KB of script between them. They could load per page.",
+  "meta_title_language": "Which language? — Peter Pal Hermann",
+  "meta_description_language": "Ten code snippets, four choices each: can you tell Rust from Go from Kotlin by the shape of the punctuation alone?",
+  "lg_k": "Browser game · vanilla JS · eight languages",
+  "lg_h1": "Which language?",
+  "lg_lede": "A snippet, four candidates, one guess. Every answer names the token that gave the language away, so even the misses teach you something."
  },
  "hu": {
   "rd_role": "Adattudós és ML mérnök · Budapest",
@@ -312,7 +317,7 @@ window.__i18nExtra = {
   "nb_k": "Böngészős játék · az ajánló képlete, kvízként",
   "nb_lede": "Minden kör egy címet és négy jelöltet mutat. Válaszd azt, amelyiket a V2 hasonlósági képlet a legközelebbinek rangsorol: a címkék 60%-ot, a pontszám 20%-ot, az év 15%-ot, a típus 5%-ot ér. Minden válasz után látod a valódi pontszámokat, így megtanulod, mit jutalmaz a képlet, és hol tér el az ízlésed.",
   "rd_nb_d": "Tíz kör az ajánló hasonlósági képlete ellen: a négy cím közül melyiket tartja a legközelebbinek? Utána látod a pontszámokat.",
-  "rd_wip4": "Egy kódrészlet, öt nyelv, egy tipp. Különböztesd meg a Rustot a Gótól és a Kotlintól pusztán az írásjelek alakja alapján.",
+  "rd_wip4": "Egy kódrészlet, négy jelölt, egy tipp. Különböztesd meg a Rustot a Gótól és a Kotlintól pusztán az írásjelek alakja alapján.",
   "meta_title_colophon": "Impresszum — Hermann Péter Pál",
   "meta_description_colophon": "Hogyan készült ez az oldal: keretrendszer és build lépés nélkül, két nyelven, egyetlen kiemelőszínnel, és élő kimutatással arról, mennyi az oldal súlya.",
   "co_k": "Impresszum",
@@ -363,6 +368,11 @@ window.__i18nExtra = {
   "rd_r3_h": "Adj a modellnek játékvezetőt",
   "rd_r3_p": "A Slay the Spire bot egy szimulátorhoz van mérve. Ha a bot szabályképe és a szimulátoré eltér, a bot téved.",
   "nn_hint": "Ctrl K: menü",
-  "co_t4": "A magyar és az angol szótár együtt töltődik, mintegy 120 KB szkript. Oldalanként is betölthetők lennének."
+  "co_t4": "A magyar és az angol szótár együtt töltődik, mintegy 120 KB szkript. Oldalanként is betölthetők lennének.",
+  "meta_title_language": "Melyik nyelv? — Hermann Péter Pál",
+  "meta_description_language": "Tíz kódrészlet, mindegyikhez négy válasz: meg tudod különböztetni a Rustot a Gótól és a Kotlintól pusztán az írásjelek alakja alapján?",
+  "lg_k": "Böngészős játék · vanilla JS · nyolc nyelv",
+  "lg_h1": "Melyik nyelv?",
+  "lg_lede": "Egy kódrészlet, négy jelölt, egy tipp. Minden válasz megnevezi azt a jelet, ami elárulta a nyelvet, így a melléfogásból is tanulsz."
  }
 };

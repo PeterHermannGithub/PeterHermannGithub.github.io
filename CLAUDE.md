@@ -68,6 +68,8 @@ choice. **When you add visible text, add the key to both languages.**
 - `games/neighbours.html` — **Neighbours**, ten rounds against the recommender's V2 similarity
   formula. It and the explorer on `projects/anime-recommender.html` share `assets/js/anime-data.js`
   (40 hand-tagged titles, rounded illustrative scores — not a data source)
+- `games/language.html` — **Which language?**, ten snippets with four choices (`assets/js/language.js`;
+  `SNIPPETS` rows are `[language, code, tell-en, tell-hu]`)
 - `colophon.html` — how the site is made, with numbers read from the Performance API
 - `achievements.html` — filterable `.ach-card` grid with a proof-image modal
 - `blogs.html` + `blogs/*.html` — post list and articles (`.article-body`, reading-progress bar)
@@ -117,7 +119,7 @@ owns the chrome plus everything under `body.rd`. Pages must not reuse a class th
 ## Known follow-ups
 
 - Replace lightweight project-summary visuals with real product screenshots.
-- Build the Wordle variants behind the `play.html` scaffold (Anidle is live).
+- `play.html` has no scaffold tiles left; add a `.game-tile.wip` back when the next game is planned.
 - Anidle ships ~119 characters across 4 series (Frieren 20, Naruto 36, Bleach 32, JJK 31)
   and is English-only — the dynamic game UI has no `data-i18n-key`s. Ages for long-lived and
   curse characters are approximate canonical values.

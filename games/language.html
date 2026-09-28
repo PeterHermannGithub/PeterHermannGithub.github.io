@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://peterpalhermann.com/games/language.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+
+    <title data-i18n-key="meta_title_language">Which language? — Peter Pal Hermann</title>
+    <meta name="description" content="Ten code snippets, four choices each: can you tell Rust from Go from Kotlin by the shape of the punctuation alone?" data-i18n-key="meta_description_language">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peterpalhermann.com/games/language.html">
+    <meta property="og:title" content="Which language? — Peter Pal Hermann">
+    <meta property="og:description" content="Ten code snippets, four choices each: can you tell Rust from Go from Kotlin by the shape of the punctuation alone?">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
+
+    <!-- Critical: set theme before paint (dark is the default) -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVSZK3HJ4Q');
+    </script>
+</head>
+<body class="rd">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
+
+    <main id="main-content">
+        <header class="wrap pagehead">
+            <p class="kicker"><span class="dash">//</span> <span data-i18n-key="lg_k">Browser game · vanilla JS · eight languages</span></p>
+            <h1><span data-i18n-key="lg_h1">Which language?</span></h1>
+            <p class="lede" data-i18n-key="lg_lede">A snippet, four candidates, one guess. Every answer names the token that gave the language away, so even the misses teach you something.</p>
+        </header>
+        <div class="wrap nb">
+            <div id="lg-root" class="nb-root"></div>
+        </div>
+    </main>
+
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
+
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
+    <script src="../assets/js/components.js" defer></script>
+    <script src="../assets/js/i18n-extra.js" defer></script>
+    <script src="../assets/js/i18n.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/fx.js" defer></script>
+    <script src="../assets/js/language.js" defer></script>
+</body>
+</html>

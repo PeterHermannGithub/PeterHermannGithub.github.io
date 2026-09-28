@@ -248,6 +248,8 @@
             });
             out.push({ label: 'Anidle', hint: 'game', href: base + 'games/anidle.html' });
             out.push({ label: 'Quint', hint: 'game', href: base + 'games/quint.html' });
+            out.push({ label: 'Neighbours', hint: 'game', href: base + 'games/neighbours.html' });
+            out.push({ label: isHu() ? 'Melyik nyelv?' : 'Which language?', hint: 'game', href: base + 'games/language.html' });
             out.push({ label: isHu() ? 'Impresszum: hogyan készült' : 'Colophon: how this is made', hint: 'page', href: base + 'colophon.html' });
             out.push({ label: isHu() ? 'Kódböngésző' : 'Code viewer', hint: 'page', href: base + 'code-viewer.html' });
             return out;

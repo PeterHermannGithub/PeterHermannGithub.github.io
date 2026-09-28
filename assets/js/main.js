@@ -752,6 +752,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { url: 'games/anidle.html', title: 'Anidle' },
             { url: 'games/quint.html', title: 'Quint' },
             { url: 'games/neighbours.html', title: 'Neighbours' },
+            { url: 'games/language.html', title: 'Which language?' },
             { url: 'colophon.html', title: 'Colophon' },
             { url: 'blogs.html', title: 'Blogs' },
             { url: 'code-viewer.html', title: 'Code Viewer' },
