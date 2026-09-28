@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://peterpalhermann.com/projects/anime-recommender.html">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
-    
+
     <!-- SEO Meta Tags -->
     <title data-i18n-key="project_anime_recommender_meta_title">V5.1 Production Anime Recommendation System - Peter Pal Hermann</title>
     <meta name="description" content="AI-powered recommendation system with fine-tuned semantic embeddings across 37,030 anime, achieving 18x performance improvement and <300ms response times." data-i18n-key="project_anime_recommender_meta_desc">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://peterpalhermann.com/projects/anime-recommender.html">
@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
-    
+
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
         (function () {
@@ -54,12 +54,12 @@
 
     <main id="main-content" class="project-page-main">
         <div class="wrap">
-            
+
             <!-- Project Header -->
             <header class="project-hero">
                 <p class="kicker"><span class="dash">//</span> <span data-i18n-key="rd_k_project">Project</span></p>
                 <h1 data-i18n-key="project_anime_recommender_title">V5.1 Production Anime Recommendation System</h1>
-                <p class="project-tagline" data-i18n-key="project_anime_recommender_tagline">AI-powered semantic embeddings with 18x performance improvement, covering 37,030 anime with <300ms production SLA compliance</p>
+                <p class="project-tagline" data-i18n-key="project_anime_recommender_tagline">37,030 anime, 649 million similarity pairs, and an API that answers in 264 ms cold and 4 ms cached.<300ms production SLA compliance</p>
                 <div class="project-links">
                     <a href="../code-viewer.html" class="btn btn-primary" data-i18n-key="view_code_viewer_btn">Code Viewer</a>
                     <a href="https://github.com/PeterHermannGithub/anime-recommender" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" data-i18n-key="view_source_code">GitHub Repository</a>
@@ -94,6 +94,12 @@
                 </div>
             </div>
 
+            <section class="project-details-section" id="explorer" style="margin-top:clamp(2rem,5vw,3.5rem)">
+                <h2 data-i18n-key="ex_h">Try it: a toy similarity explorer</h2>
+                <p data-i18n-key="ex_p">Pick a title and see its nearest neighbours under the same four-part formula the Rust engine used. Drag the weights and watch the list rearrange: that is most of what tuning a recommender feels like.</p>
+                <div class="explorer" id="explorer-root"></div>
+            </section>
+
             <!-- Technical Evolution Timeline -->
             <section class="project-details-section" style="margin-top:clamp(2rem,5vw,3.5rem)">
                 <h2>Technical Evolution Journey</h2>
@@ -114,21 +120,21 @@
 
             <!-- Project Details -->
             <div class="project-details-grid">
-                
+
                 <!-- Left Column: Architecture & Innovation -->
                 <div class="project-details-col">
-                    
+
                     <div class="callout">
                         <h3> ML Embeddings Architecture</h3>
                         <p>Current V5.1 system leverages fine-tuned 768-dimensional semantic embeddings trained specifically on anime data. Achieving 18x performance improvement through architectural optimization, the system delivers <300ms production SLA compliance while maintaining superior recommendation quality through semantic understanding.</p>
                     </div>
-                    
+
                     <section class="project-details-section">
                         <h2 data-i18n-key="project_section_about">V5.1 System Architecture</h2>
                         <p data-i18n-key="project_anime_recommender_about_p1">
                             This recommendation system leverages fine-tuned semantic embeddings for superior recommendation quality. The V5.1 architecture combines ML-powered similarity search with a FastAPI backend and React 19 frontend, delivering sub-300ms responses across 37,030 anime entries with 18x performance improvement.
                         </p>
-                        
+
                         <div class="architecture-diagram">
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐<br>
 │   ML Pipeline   │    │  V4 Embeddings   │    │   Real-time API │<br>
@@ -139,12 +145,12 @@
 │ • Delta updates │    │ • FAISS index   │    │ • 4ms cached     │<br>
 └─────────────────┘    └──────────────────┘    └─────────────────┘
                         </div>
-                        
+
                         <p data-i18n-key="project_anime_recommender_about_p2">
                             The core innovation combines fine-tuned semantic embeddings with optimized vector similarity search. Heavy ML training happens offline, while the real-time API leverages FAISS indexing for sub-millisecond vector lookups. Singleton service architecture eliminates initialization overhead, achieving 18x performance improvement with 4ms cached responses.
                         </p>
                     </section>
-                    
+
                     <section class="project-details-section">
                         <h2 data-i18n-key="project_section_features">V5.1 Key Innovations</h2>
                         <ul class="feature-list">
@@ -156,7 +162,7 @@
                             <li><strong>Delta-Aware Updates:</strong> Intelligent incremental processing achieving 18,000x efficiency for data updates</li>
                         </ul>
                     </section>
-                    
+
                     <section class="project-details-section">
                         <h2>Performance Journey: Architectural Evolution</h2>
                         <div class="performance-comparison">
@@ -191,7 +197,7 @@
                         </div>
                     </section>
                 </div>
-                
+
                 <!-- Right Column: Technical Details -->
                 <div class="project-details-col">
                     <section class="project-details-section">
@@ -235,11 +241,11 @@
                             </div>
                         </div>
                     </section>
-                    
+
                     <section class="project-details-section">
                         <h2>Algorithm Evolution</h2>
                         <p>Three distinct algorithmic approaches showcase the system's evolution from traditional NLP to advanced ML:</p>
-                        
+
                         <div class="tech-category">
                             <h4> Python V1: Traditional Similarity</h4>
                             <ul class="tech-list">
@@ -249,7 +255,7 @@
                                 <li><strong>Performance:</strong> 9 seconds for 3,000x3,000 matrix</li>
                             </ul>
                         </div>
-                        
+
                         <div class="tech-category">
                             <h4> Rust V2: Multifeature Engineering</h4>
                             <ul class="tech-list">
@@ -260,7 +266,7 @@
                                 <li><strong>Performance:</strong> 649M pairs in 16 minutes, 5.2ms responses</li>
                             </ul>
                         </div>
-                        
+
                         <div class="tech-category">
                             <h4> ML V3/V4: Semantic Understanding</h4>
                             <ul class="tech-list">
@@ -272,16 +278,16 @@
                             </ul>
                         </div>
                     </section>
-                    
+
                     <section class="project-details-section">
                         <h2 data-i18n-key="project_section_challenges">Engineering Challenges Solved</h2>
                         <p><strong>Semantic Understanding:</strong> Transitioning from matrix-based similarity to fine-tuned ML embeddings enabled semantic comprehension of anime relationships, dramatically improving recommendation quality through understanding of thematic and narrative connections.</p>
-                        
+
                         <p><strong>Performance Bottleneck Resolution:</strong> V4.5 singleton architecture eliminated per-request initialization overhead, achieving 18x improvement by loading 140MB embeddings once at startup rather than per request (4,667ms → 264ms).</p>
-                        
+
                         <p><strong>Production Scalability:</strong> Professional deployment with Docker containerization, monitoring stack, security headers, and comprehensive backup systems ensures reliable operation under production loads with <300ms SLA compliance.</p>
                     </section>
-                    
+
                     <section class="project-details-section">
                         <h2>Production Features</h2>
                         <p>Production-ready deployment with comprehensive optimization:</p>
@@ -308,5 +314,7 @@
     <script src="../assets/js/i18n.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
     <script src="../assets/js/fx.js" defer></script>
+    <script src="../assets/js/anime-data.js" defer></script>
+    <script src="../assets/js/explorer.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://peterpalhermann.com/games/quint.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+
+    <title data-i18n-key="meta_title_quint">Quint — a five-letter puzzle — Peter Pal Hermann</title>
+    <meta name="description" content="Quint is a five-letter guessing game with a closed vocabulary: you may only guess words from the bank, so it is elimination, not spelling luck. One word a day." data-i18n-key="meta_description_quint">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peterpalhermann.com/games/quint.html">
+    <meta property="og:title" content="Quint — a five-letter puzzle — Peter Pal Hermann">
+    <meta property="og:description" content="Quint is a five-letter guessing game with a closed vocabulary: you may only guess words from the bank, so it is elimination, not spelling luck. One word a day.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
+
+    <!-- Critical: set theme before paint (dark is the default) -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVSZK3HJ4Q');
+    </script>
+</head>
+<body class="rd">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
+
+    <main id="main-content">
+        <header class="wrap pagehead">
+            <p class="kicker"><span class="dash">//</span> <span data-i18n-key="q_k">Browser game · vanilla JS · one word a day</span></p>
+            <h1>Quint</h1>
+            <p class="lede" data-i18n-key="q_lede">Six guesses, five letters, and a vocabulary you can see. You may only guess words from the bank below, so every guess is also a way of crossing words off it. Green is right, amber is in the word, grey is out.</p>
+        </header>
+
+        <div class="wrap quint">
+            <div class="q-main">
+                <div class="q-modes">
+                    <button type="button" class="filter-btn active" data-quint-mode="daily"><span data-i18n-key="q_daily">Daily</span></button>
+                    <button type="button" class="filter-btn" data-quint-mode="random"><span data-i18n-key="q_random">Random</span></button>
+                </div>
+                <div id="quint-board" class="q-board" aria-label="Guess board"></div>
+                <p id="quint-msg" class="q-msg" role="status" aria-live="polite"></p>
+                <div id="quint-after" class="q-after" hidden>
+                    <button type="button" class="btn" id="quint-share"><span data-i18n-key="q_share">Copy result</span></button>
+                    <button type="button" class="btn btn-primary" id="quint-again"><span data-i18n-key="q_again">Play a random word</span></button>
+                </div>
+                <div id="quint-keys" class="q-keys"></div>
+            </div>
+            <aside class="q-side">
+                <div id="quint-stats" class="q-stats"></div>
+                <p class="mono"><span data-i18n-key="q_bank_h">The bank</span></p>
+                <p class="q-note" data-i18n-key="q_bank_p">Every word you may guess, and every word the answer can be. Words with a letter you have ruled out fade.</p>
+                <div id="quint-bank" class="q-bank"></div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
+
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
+    <script src="../assets/js/components.js" defer></script>
+    <script src="../assets/js/i18n-extra.js" defer></script>
+    <script src="../assets/js/i18n.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/fx.js" defer></script>
+    <script src="../assets/js/quint.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://peterpalhermann.com/colophon.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+
+    <title data-i18n-key="meta_title_colophon">Colophon — Peter Pal Hermann</title>
+    <meta name="description" content="How this site is made: no framework, no build step, two languages, one accent colour, and a live readout of what this page weighed." data-i18n-key="meta_description_colophon">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peterpalhermann.com/colophon.html">
+    <meta property="og:title" content="Colophon — Peter Pal Hermann">
+    <meta property="og:description" content="How this site is made: no framework, no build step, two languages, one accent colour, and a live readout of what this page weighed.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
+
+    <!-- Critical: set theme before paint (dark is the default) -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVSZK3HJ4Q');
+    </script>
+</head>
+<body class="rd">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
+
+    <main id="main-content">
+        <header class="wrap pagehead">
+            <p class="kicker"><span class="dash">§ 08</span> <span data-i18n-key="co_k">Colophon</span></p>
+            <h1><span data-i18n-key="co_h1">How this is made</span></h1>
+            <p class="lede" data-i18n-key="co_lede">A short, honest account of the parts, the choices, and what the choices cost. The numbers below are measured from your browser as you read, not remembered.</p>
+        </header>
+
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 01</b></p>
+                <h2 data-i18n-key="co_live_h">This page, as loaded</h2>
+            </div>
+            <div class="co-live" id="co-live" aria-live="polite">
+                <div><b id="co-req">-</b><span data-i18n-key="co_req">requests</span></div>
+                <div><b id="co-kb">-</b><span data-i18n-key="co_kb">KB transferred</span></div>
+                <div><b id="co-js">-</b><span data-i18n-key="co_js">KB of JavaScript</span></div>
+                <div><b id="co-dcl">-</b><span data-i18n-key="co_dcl">ms to interactive</span></div>
+            </div>
+            <p class="co-note" data-i18n-key="co_live_note">Measured with the browser's Performance API, so it includes fonts and analytics and varies with your cache. Reload to see the cold number.</p>
+        </section>
+
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 02</b></p>
+                <h2 data-i18n-key="co_parts_h">The parts</h2>
+            </div>
+            <dl class="co-list">
+                <div class="co-row animate-on-scroll"><dt data-i18n-key="co_p1k">Markup</dt><dd data-i18n-key="co_p1v">Hand-written HTML. The header and footer are injected once by a small script, so a new nav tab is one line.</dd></div>
+                <div class="co-row animate-on-scroll"><dt data-i18n-key="co_p2k">Style</dt><dd data-i18n-key="co_p2v">The current design system is one stylesheet on CSS custom properties, layered over an older one that is being retired. Dark by default, light on request, no preprocessor.</dd></div>
+                <div class="co-row animate-on-scroll"><dt data-i18n-key="co_p3k">Type</dt><dd data-i18n-key="co_p3v">Space Grotesk for reading and shouting, Space Mono for everything that is metadata.</dd></div>
+                <div class="co-row animate-on-scroll"><dt data-i18n-key="co_p4k">Motion</dt><dd data-i18n-key="co_p4v">CSS transitions, cross-page view transitions where the browser supports them, and one canvas: the hero. All of it stops under reduced-motion.</dd></div>
+                <div class="co-row animate-on-scroll"><dt data-i18n-key="co_p5k">Language</dt><dd data-i18n-key="co_p5v">English and Hungarian from one dictionary. Nearly every visible string has both and the toggle swaps them without a reload; Anidle and some project-page body copy are still English only.</dd></div>
+                <div class="co-row animate-on-scroll"><dt data-i18n-key="co_p6k">Search</dt><dd data-i18n-key="co_p6v">Client-side. The index is built the first time you focus the box, so an ordinary page load fetches nothing extra. Press / to focus it, or Ctrl K for the menu.</dd></div>
+                <div class="co-row animate-on-scroll"><dt data-i18n-key="co_p7k">Hosting</dt><dd data-i18n-key="co_p7v">GitHub Pages on a custom domain. Deploying is pushing.</dd></div>
+            </dl>
+        </section>
+
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 03</b></p>
+                <h2 data-i18n-key="co_dec_h">Decisions, and what they cost</h2>
+            </div>
+            <div class="co-decs">
+                <article class="co-dec animate-on-scroll"><span class="co-n">A</span><div><h3 data-i18n-key="co_d1h">No build step</h3><p data-i18n-key="co_d1p">A portfolio that needs an install to change a sentence is a portfolio nobody updates. The cost is real: no minification, no shared components beyond the injected chrome, and a stylesheet that grows by accretion.</p></div></article>
+                <article class="co-dec animate-on-scroll"><span class="co-n">B</span><div><h3 data-i18n-key="co_d2h">Two languages from day one</h3><p data-i18n-key="co_d2p">Hungarian is my first language, and the people who most deserve to read this site in it are not the ones who will ask. The cost: nearly every sentence is written twice, and the second one is where the drift hides.</p></div></article>
+                <article class="co-dec animate-on-scroll"><span class="co-n">C</span><div><h3 data-i18n-key="co_d3h">The hero does real work</h3><p data-i18n-key="co_d3p">The graph on the home page is a brute-force nearest-neighbour search: distance from your cursor to each word, top five lit. It is the operation the recommender performs, at a size where brute force is the right answer.</p></div></article>
+                <article class="co-dec animate-on-scroll"><span class="co-n">D</span><div><h3 data-i18n-key="co_d4h">One accent, used like a highlighter</h3><p data-i18n-key="co_d4p">Acid lime marks what you can act on and what matters most; when it floods a whole band, that band is the point of the page. Everything else is ink on paper. The cost: no colour-coding, so meaning has to come from layout.</p></div></article>
+            </div>
+        </section>
+
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 04</b></p>
+                <h2 data-i18n-key="co_todo_h">Still unfinished</h2>
+            </div>
+            <ul class="co-todo">
+                <li data-i18n-key="co_t1">The oldest stylesheet still ships everything it ever had; only a fraction is used.</li>
+                <li data-i18n-key="co_t2">Project pages describe products with words and diagrams. They want real screenshots.</li>
+                <li data-i18n-key="co_t3">There is one article. Writing is slower than building.</li>
+            <li data-i18n-key="co_t4">The Hungarian dictionary and the English one ship together, about 120 KB of script between them. They could load per page.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
+
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
+    <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n-extra.js" defer></script>
+    <script src="assets/js/i18n.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/fx.js" defer></script>
+</body>
+</html>

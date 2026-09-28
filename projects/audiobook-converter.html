@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://peterpalhermann.com/projects/audiobook-converter.html">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
     <!-- SEO Meta Tags -->
     <title data-i18n-key="project_audiobook_meta_title">AI-Powered Audiobook Generation System - Peter Pal Hermann</title>
     <meta name="description" content="Sophisticated distributed processing system with LLM integration for multi-format audiobook generation. Features enterprise architecture with deterministic segmentation and distributed scaling." data-i18n-key="project_audiobook_meta_desc">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://peterpalhermann.com/projects/audiobook-converter.html">
@@ -51,12 +51,12 @@
 
     <main id="main-content" class="project-page-main">
         <div class="wrap">
-            
+
             <!-- Project Header -->
             <header class="project-hero">
                 <p class="kicker"><span class="dash">//</span> <span data-i18n-key="rd_k_project">Project</span></p>
                 <h1 data-i18n-key="project_audiobook_title">AI-Powered Audiobook Generation System</h1>
-                <p class="project-tagline" data-i18n-key="project_audiobook_tagline">Sophisticated distributed processing system with LLM integration for multi-format audiobook generation</p>
+                <p class="project-tagline" data-i18n-key="project_audiobook_tagline">A novel goes in, a full cast comes out.</p>
                 <div class="project-links">
                     <a href="https://github.com/PeterHermannGithub/Text_to_audiobook" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n-key="view_source_code">Source Code</a>
                     <a href="#architecture" class="btn" data-i18n-key="view_architecture">View Architecture</a>
@@ -66,7 +66,7 @@
 
             <!-- Project Details -->
             <div class="project-details-grid">
-                
+
                 <!-- Left Column: Description & Story -->
                 <div class="project-details-col">
                     <section class="project-details-section">
@@ -81,7 +81,7 @@
                             Built with enterprise patterns including dependency injection, distributed pipeline orchestration, and professional code organization, this system demonstrates advanced AI/ML integration with natural language processing, character profiling, and intelligent content filtering for accessibility and educational applications.
                         </p>
                     </section>
-                    
+
                     <section class="project-details-section">
                         <h2 data-i18n-key="project_section_features">Key Features</h2>
                         <ul class="feature-list">
@@ -95,7 +95,7 @@
                             <li data-i18n-key="project_audiobook_feature8">Professional code organization with dependency injection and testing infrastructure</li>
                         </ul>
                     </section>
-                    
+
                     <section class="project-details-section">
                         <h2 data-i18n-key="project_section_challenges">Technical Challenges</h2>
                         <p data-i18n-key="project_audiobook_challenges">
@@ -106,7 +106,7 @@
                         </p>
                     </section>
                 </div>
-                
+
                 <!-- Right Column: Tech Stack & Details -->
                 <aside class="project-details-col">
                     <section class="project-details-section">
@@ -153,7 +153,7 @@
                         </ul>
                     </section>
                 </aside>
-                
+
             </div>
 
             <!-- Process Flow -->
@@ -200,11 +200,11 @@
         self.spark_session = SparkSession.builder.config(spark_config).getOrCreate()
         self.redis_client = redis.Redis(**redis_config)
         self.llm_pool = LLMPoolManager()
-    
+
     async def process_document(self, document_path):
         # Enhanced text extraction with content filtering
         text = await self.extract_with_intelligence(document_path)
-        
+
         # Distributed processing with Kafka events
         await self.kafka_producer.send('text_processing', {
             'document_id': document_path,
@@ -219,15 +219,15 @@
         self.local_pool = [OllamaClient() for _ in range(4)]
         self.cloud_pool = [VertexAIClient() for _ in range(2)]
         self.load_balancer = LoadBalancer()
-    
+
     async def process_chunk(self, chunk, context):
         # Connection pooling and load balancing
         client = await self.load_balancer.get_available_client()
-        
+
         # Deterministic attribution first
         if self.rule_based_attributor.can_handle(chunk):
             return self.rule_based_attributor.process(chunk)
-        
+
         # LLM processing for ambiguous content
         return await client.classify_speakers(chunk, context)</code></pre>
                     </div>
@@ -242,7 +242,7 @@ class ProductionMonitoring:
         self.processing_time = Histogram('processing_time_seconds')
         self.active_workers = Gauge('active_workers')
         self.logger = structlog.get_logger()
-    
+
     @self.processing_time.time()
     async def monitored_processing(self, document):
         self.logger.info("Processing started", document_id=document.id)

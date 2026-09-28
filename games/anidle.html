@@ -24,25 +24,26 @@
     </script>
 
     <link rel="stylesheet" href="../assets/css/style.css?v=anidle-4">
+    <link rel="stylesheet" href="../assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="rd">
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
     <main id="main-content">
-        <section class="page-header container">
+        <header class="wrap pagehead">
             <p class="kicker"><span class="dash">//</span> Browser game · vanilla JS, no framework</p>
             <h1>Anidle</h1>
-            <p>Guess the hidden anime character. Each guess reveals how it lines up on series, gender, species, hair, class, affiliation, and age — green means a match. Choose which series the game pulls from.</p>
-        </section>
+            <p class="lede">Guess the hidden anime character. Each guess reveals how it lines up on series, gender, species, hair, class, affiliation, and age — green means a match. Choose which series the game pulls from.</p>
+        </header>
 
-        <section class="container anidle">
+        <section class="wrap anidle">
             <!-- Setup panel: series picker + guess input -->
             <div class="anidle-panel">
                 <div class="anidle-panel-row">
@@ -91,8 +92,10 @@
     <div id="site-footer"></div>
 
     <script src="../assets/js/components.js" defer></script>
+    <script src="../assets/js/i18n-extra.js" defer></script>
     <script src="../assets/js/i18n.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/fx.js" defer></script>
     <script src="../assets/js/anidle.js?v=anidle-4" defer></script>
 </body>
 </html>

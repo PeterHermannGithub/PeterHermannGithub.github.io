@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- 1. THEME SWITCHER ---
     console.log('Theme System: Initializing...');
-    
+
     const themeToggle = document.getElementById('theme-toggle');
     console.log('Theme Toggle Button:', themeToggle ? 'Found ' : 'Missing ');
-    
+
     if (!themeToggle) {
         console.error('Theme toggle button not found! Theme system will not work.');
         return; // Exit early if theme toggle doesn't exist
     }
-    
+
     const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="currentColor" d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 011.06-1.06l1.591 1.59a.75.75 0 01-1.06 1.061l-1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.894 17.894a.75.75 0 011.06 1.06l-1.59 1.591a.75.75 0 01-1.061-1.06l1.59-1.591zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM6.106 17.894a.75.75 0 011.06-1.06l-1.591 1.59a.75.75 0 01-1.06 1.061l1.591-1.59zM3.75 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H4.5a.75.75 0 01-.75-.75zM6.106 6.106a.75.75 0 01-1.06 1.06l-1.591-1.59a.75.75 0 111.06-1.061l1.591 1.59z"/></svg>`;
     const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="currentColor" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>`;
 
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     animatedElements.forEach(el => observer.observe(el));
-    
+
     // --- 3. MOBILE NAVIGATION ---
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
@@ -69,12 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavClose = document.getElementById('mobile-nav-close');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
     let mobileMenuWasOpened = false;
-    
+
     // Mobile theme and language toggles
     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
     const mobileLangToggle = document.getElementById('mobile-lang-toggle');
     console.log('Mobile theme toggle:', mobileThemeToggle ? 'Found ' : 'Missing ');
-    
+
     function openMobileMenu() {
         mobileMenuToggle.classList.add('active');
         mobileNavOverlay.classList.add('active');
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mobileNavClose?.focus();
     }
-    
+
     function closeMobileMenu() {
         mobileMenuToggle.classList.remove('active');
         mobileNavOverlay.classList.remove('active');
@@ -118,25 +118,25 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenuWasOpened = false;
         }
     }
-    
+
     // Mobile menu event listeners
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', openMobileMenu);
     }
-    
+
     if (mobileNavClose) {
         mobileNavClose.addEventListener('click', closeMobileMenu);
     }
-    
+
     if (mobileNavOverlay) {
         mobileNavOverlay.addEventListener('click', closeMobileMenu);
     }
-    
+
     // Close mobile menu when clicking nav links
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', closeMobileMenu);
     });
-    
+
     // FIX: Enhanced mobile theme toggle functionality
     if (mobileThemeToggle && themeToggle) {
         mobileThemeToggle.addEventListener('click', (e) => {
@@ -144,10 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             console.log('Mobile theme toggle clicked!');
             console.log('Current desktop toggle state:', document.documentElement.classList.contains('dark-mode'));
-            
+
             // Trigger desktop theme toggle
             themeToggle.click();
-            
+
             // Sync the mobile button icon after theme change
             setTimeout(() => {
                 mobileThemeToggle.innerHTML = themeToggle.innerHTML;
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('New theme state:', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
             }, 100);
         });
-        
+
         // Initial sync when mobile menu is available
         if (themeToggle.innerHTML) {
             mobileThemeToggle.innerHTML = themeToggle.innerHTML;
@@ -169,42 +169,42 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Mobile theme toggle not found on this page');
         }
     }
-    
+
     // FIX: Mobile language toggle is handled by i18n.js - removed conflicting event listener
     // Language toggle functionality is managed in i18n.js to avoid conflicts
-    
+
     // Close mobile menu on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && mobileNavMenu.classList.contains('active')) {
             closeMobileMenu();
         }
     });
-    
+
     // Handle window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768 && mobileNavMenu.classList.contains('active')) {
             closeMobileMenu();
         }
-        
+
         // MEDIUM-TERM: Responsive text optimization for filter buttons
         optimizeFilterButtonText();
     });
-    
+
     // MEDIUM-TERM: Mobile text optimization for achievement filter buttons
     const optimizeFilterButtonText = () => {
         // Only apply on achievements page
         if (!window.location.pathname.includes('achievements')) return;
-        
+
         const filterButtons = document.querySelectorAll('.achievement-filters .filter-btn');
         const isMobile = window.innerWidth <= 480;
-        
+
         filterButtons.forEach(button => {
             const key = button.dataset.i18nKey;
             if (!key) return;
-            
+
             // Get current language
             const currentLang = document.documentElement.lang || 'en';
-            
+
             // Use mobile-optimized translations for problematic buttons
             let optimizedKey = key;
             if (isMobile) {
@@ -220,23 +220,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         break;
                 }
             }
-            
+
             // Update button text if translation exists
-            if (window.translations && 
-                window.translations[currentLang] && 
+            if (window.translations &&
+                window.translations[currentLang] &&
                 window.translations[currentLang][optimizedKey]) {
                 button.textContent = window.translations[currentLang][optimizedKey];
             }
         });
     };
-    
+
     // Initialize mobile text optimization on page load
     optimizeFilterButtonText();
 
     // --- 4. ACTIVE NAV LINK HIGHLIGHTING ---
     const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    
+
     navLinks.forEach(link => {
         if (link.getAttribute('href') === currentPath) {
             link.classList.add('active');
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         projectCards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
             const shouldShow = category === 'all' || cardCategory === category;
-            
+
             if (shouldShow) {
                 card.style.display = '';
                 card.classList.add('fade-in');
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         achievementCards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
             const shouldShow = category === 'all' || cardCategory === category;
-            
+
             if (shouldShow) {
                 card.style.display = '';
                 card.classList.add('fade-in');
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('touchstart', (e) => {
             button.style.transform = 'scale(0.95)';
         });
-        
+
         button.addEventListener('touchend', (e) => {
             setTimeout(() => {
                 button.style.transform = '';
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Detect current language
         const currentLang = localStorage.getItem('lang') || 'en';
-        
+
         // For bilingual certificates, select appropriate version
         let finalImagePath = imagePath;
         if (isBilingual) {
@@ -378,12 +378,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Check if it's a PDF file and handle differently
         const fullImagePath = `assets/images/proofs/${finalImagePath}`;
         const isPDF = finalImagePath.toLowerCase().endsWith('.pdf');
-        
+
         if (isPDF) {
             // For PDFs, show a loading message and then open in new tab
             proofModalBody.classList.add('loading');
             proofModalImage.style.display = 'none';
-            
+
             // Add PDF loading message
             const pdfMessage = document.createElement('div');
             pdfMessage.className = 'pdf-loading-message';
@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             proofModalBody.appendChild(pdfMessage);
-            
+
             // Add event listener to the manual open button
             const manualOpenBtn = pdfMessage.querySelector('.pdf-open-btn');
             if (manualOpenBtn) {
@@ -405,11 +405,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     closeProofModal();
                 });
             }
-            
+
             // Automatically try to open PDF after a short delay
             setTimeout(() => {
                 const pdfWindow = window.open(fullImagePath, '_blank');
-                
+
                 // Check if PDF opened successfully
                 setTimeout(() => {
                     if (!pdfWindow || pdfWindow.closed) {
@@ -424,10 +424,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }, 500);
             }, 800);
-            
+
             return;
         }
-        
+
         // Try to load the proof image
         const testImage = new Image();
 
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const baseName = imagePath.replace(/\.(jpg|jpeg|png|pdf)$/i, '');
                 const extension = imagePath.match(/\.(jpg|jpeg|png|pdf)$/i)?.[1] || 'jpg';
                 const fallbackPath = `assets/images/proofs/${baseName}-en.${extension}`;
-                
+
                 // Check if fallback is PDF
                 if (extension.toLowerCase() === 'pdf') {
                     // Use improved PDF handling for fallback too
@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
                     proofModalBody.appendChild(pdfMessage);
-                    
+
                     // Add event listener to the fallback manual open button
                     const fallbackManualOpenBtn = pdfMessage.querySelector('.pdf-open-btn');
                     if (fallbackManualOpenBtn) {
@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             closeProofModal();
                         });
                     }
-                    
+
                     setTimeout(() => {
                         const pdfWindow = window.open(fallbackPath, '_blank');
                         setTimeout(() => {
@@ -485,23 +485,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 800);
                     return;
                 }
-                
+
                 const fallbackImage = new Image();
-                
+
                 fallbackImage.onload = function() {
                     proofModalImage.src = fallbackPath;
                     proofModalImage.alt = `Proof of ${achievementTitle}`;
                     proofModalImage.style.display = 'block';
                     proofModalBody.classList.remove('loading');
                 };
-                
+
                 fallbackImage.onerror = function() {
                     // Final fallback to placeholder
                     proofModalImage.style.display = 'none';
                     proofModalFallback.classList.add('active');
                     proofModalBody.classList.remove('loading');
                 };
-                
+
                 fallbackImage.src = fallbackPath;
             } else {
                 // Image failed to load, show fallback
@@ -520,13 +520,13 @@ document.addEventListener('DOMContentLoaded', () => {
         proofModal.classList.remove('active');
         proofModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = ''; // Restore scrolling
-        
+
         // Reset modal state
         setTimeout(() => {
             proofModalImage.src = '';
             proofModalFallback.classList.remove('active');
             proofModalBody.classList.remove('loading');
-            
+
             // Clean up any PDF loading messages
             const pdfMessages = proofModalBody.querySelectorAll('.pdf-loading-message');
             pdfMessages.forEach(msg => msg.remove());
@@ -573,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('touchstart', (e) => {
             card.style.transform = 'scale(0.98)';
         });
-        
+
         card.addEventListener('touchend', (e) => {
             setTimeout(() => {
                 card.style.transform = '';
@@ -653,31 +653,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Get current language
         const currentLang = localStorage.getItem('lang') || 'en';
-        
+
         // Get the base href path
         const baseHref = cvButton.dataset.cvBase || cvButton.getAttribute('href');
-        
+
         // Create language-specific path
         // Convert "assets/cv/filename.pdf" to "assets/cv/filename_en.pdf" or "assets/cv/filename_hu.pdf"
         const baseName = baseHref.replace(/\.pdf$/i, '');
         const languageSpecificHref = `${baseName}_${currentLang}.pdf`;
-        
+
         // Update the button href
         cvButton.setAttribute('href', languageSpecificHref);
-        
+
         console.log(`CV button updated for language: ${currentLang}`);
         console.log(`New CV path: ${languageSpecificHref}`);
     }
 
     // Initialize CV button on page load
     updateCVButton();
-    
+
     // Make updateCVButton available globally for i18n.js to call
     window.updateCVButton = updateCVButton;
 
     // --- SEARCH FUNCTIONALITY ---
     console.log('Search System: Initializing...');
-    
+
     // FIX: Search elements with mobile search results support
     const searchInput = document.getElementById('site-search');
     const mobileSearchInput = document.getElementById('mobile-site-search');
@@ -685,7 +685,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileSearchResults = document.getElementById('mobile-search-results');
     const searchRootPrefix = /\/(projects|games|blogs)\//.test(window.location.pathname) ? '../' : '';
     const fromSiteRoot = (path) => `${searchRootPrefix}${path}`;
-    
+
     console.log('Search Elements:', {
         desktop: searchInput ? 'Found ' : 'Missing ',
         mobile: mobileSearchInput ? 'Found ' : 'Missing ',
@@ -703,7 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function getKeywordMappings() {
         const currentLang = localStorage.getItem('lang') || 'en';
         const t = window.translations?.[currentLang] || window.translations?.en || {};
-        
+
         return {
             'cv': { page: 'about.html', section: '', description: t.search_keyword_cv || 'Download CV' },
             'curriculum': { page: 'about.html', section: '', description: t.search_keyword_cv || 'Download CV' },
@@ -750,6 +750,9 @@ document.addEventListener('DOMContentLoaded', () => {
             { url: 'lab.html', title: 'Lab' },
             { url: 'play.html', title: 'Play' },
             { url: 'games/anidle.html', title: 'Anidle' },
+            { url: 'games/quint.html', title: 'Quint' },
+            { url: 'games/neighbours.html', title: 'Neighbours' },
+            { url: 'colophon.html', title: 'Colophon' },
             { url: 'blogs.html', title: 'Blogs' },
             { url: 'code-viewer.html', title: 'Code Viewer' },
             { url: 'projects/anime-recommender.html', title: 'Anime Recommender' },
@@ -797,32 +800,32 @@ document.addEventListener('DOMContentLoaded', () => {
         // Remove script and style elements
         const scripts = doc.querySelectorAll('script, style, nav, header, footer');
         scripts.forEach(el => el.remove());
-        
+
         // Get main content
         const main = doc.querySelector('main') || doc.body;
-        
+
         // Extract text content and clean it up
         let content = main.textContent || main.innerText || '';
-        
+
         // Clean up whitespace and special characters
         content = content
             .replace(/\s+/g, ' ')  // Multiple spaces to single space
             .replace(/\n+/g, ' ')  // Newlines to spaces
             .trim();
-            
+
         return content;
     }
 
     // Perform search and return results
     function performSearch(query) {
         if (!query || query.length < 2) return [];
-        
+
         const queryLower = query.toLowerCase();
         const results = [];
         const keywordMappings = getKeywordMappings();
         const currentLang = localStorage.getItem('lang') || 'en';
         const t = window.translations?.[currentLang] || window.translations?.en || {};
-        
+
         // Check keyword mappings first
         if (keywordMappings[queryLower]) {
             const mapping = keywordMappings[queryLower];
@@ -835,16 +838,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 relevance: 100
             });
         }
-        
+
         // Search through indexed content
         searchIndex.forEach(item => {
             const titleMatch = item.title.toLowerCase().includes(queryLower);
             const contentMatch = item.searchText.includes(queryLower);
-            
+
             if (titleMatch || contentMatch) {
                 const snippet = createSnippet(item.content, query);
                 const relevance = calculateRelevance(item, queryLower, titleMatch, contentMatch);
-                
+
                 results.push({
                     type: 'content',
                     title: item.title,
@@ -855,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-        
+
         // Sort by relevance
         return results.sort((a, b) => b.relevance - a.relevance).slice(0, 8);
     }
@@ -865,34 +868,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const queryLower = query.toLowerCase();
         const contentLower = content.toLowerCase();
         const index = contentLower.indexOf(queryLower);
-        
+
         if (index === -1) {
             return content.substring(0, maxLength) + (content.length > maxLength ? '...' : '');
         }
-        
+
         const start = Math.max(0, index - 60);
         const end = Math.min(content.length, start + maxLength);
-        
+
         let snippet = content.substring(start, end);
         if (start > 0) snippet = '...' + snippet;
         if (end < content.length) snippet = snippet + '...';
-        
+
         return snippet;
     }
 
     // Calculate search relevance score
     function calculateRelevance(item, query, titleMatch, contentMatch) {
         let score = 0;
-        
+
         if (titleMatch) score += 50;
         if (contentMatch) score += 20;
-        
+
         // Boost score for exact matches
         if (item.title.toLowerCase() === query) score += 30;
-        
+
         // Boost score for matches at the beginning
         if (item.title.toLowerCase().startsWith(query)) score += 20;
-        
+
         return score;
     }
 
@@ -900,20 +903,20 @@ document.addEventListener('DOMContentLoaded', () => {
     function displaySearchResults(results, query) {
         const currentLang = localStorage.getItem('lang') || 'en';
         const t = window.translations?.[currentLang] || window.translations?.en || {};
-        
+
         // Determine which search results container to use
         // Priority: 1) Check which search input was used, 2) Check mobile sidebar state, 3) Check screen size
         const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
         const isMobileScreen = window.innerWidth <= 768;
-        
+
         // FIX: More intelligent container selection
         let shouldUseMobileResults = false;
-        
+
         // If mobile sidebar is active on desktop, use mobile results for mobile search input
         if (isMobileSidebarActive && !isMobileScreen) {
             // Desktop with mobile sidebar open - check which input has focus or was used
-            const mobileInputActive = document.activeElement === mobileSearchInput || 
-                                    (mobileSearchInput && mobileSearchInput.value.length > 0 && 
+            const mobileInputActive = document.activeElement === mobileSearchInput ||
+                                    (mobileSearchInput && mobileSearchInput.value.length > 0 &&
                                      searchInput && searchInput.value.length === 0);
             shouldUseMobileResults = mobileInputActive;
         } else if (isMobileScreen) {
@@ -921,14 +924,14 @@ document.addEventListener('DOMContentLoaded', () => {
             shouldUseMobileResults = true;
         }
         // Desktop without mobile sidebar - use desktop results (shouldUseMobileResults = false)
-        
+
         const activeResultsContainer = shouldUseMobileResults ? mobileSearchResults : searchResults;
         const fallbackContainer = shouldUseMobileResults ? searchResults : mobileSearchResults;
-        
+
         if (!activeResultsContainer && !fallbackContainer) return;
-        
+
         const targetContainer = activeResultsContainer || fallbackContainer;
-        
+
         if (results.length === 0) {
             targetContainer.replaceChildren();
             const noResults = document.createElement('div');
@@ -966,7 +969,7 @@ document.addEventListener('DOMContentLoaded', () => {
         targetContainer.replaceChildren(fragment);
         targetContainer.classList.add('show');
         currentHighlightIndex = -1;
-        
+
         // Add click listeners to results
         targetContainer.querySelectorAll('.search-result-item').forEach(item => {
             item.addEventListener('click', () => {
@@ -990,13 +993,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navigate to search result
     function navigateToResult(url) {
         hideSearchResults();
-        
+
         // Clear search inputs
         if (searchInput) searchInput.value = '';
         if (mobileSearchInput) mobileSearchInput.value = '';
-        
+
         // Navigate to URL
-        if (url === window.location.pathname.split('/').pop() || 
+        if (url === window.location.pathname.split('/').pop() ||
            (url === 'index.html' && window.location.pathname.endsWith('/'))) {
             // Same page, just scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1011,23 +1014,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Use same logic as displaySearchResults for consistency
         const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
         const isMobileScreen = window.innerWidth <= 768;
-        
+
         let shouldUseMobileResults = false;
-        
+
         if (isMobileSidebarActive && !isMobileScreen) {
             // Desktop with mobile sidebar open - check which input has focus
-            const mobileInputActive = document.activeElement === mobileSearchInput || 
-                                    (mobileSearchInput && mobileSearchInput.value.length > 0 && 
+            const mobileInputActive = document.activeElement === mobileSearchInput ||
+                                    (mobileSearchInput && mobileSearchInput.value.length > 0 &&
                                      searchInput && searchInput.value.length === 0);
             shouldUseMobileResults = mobileInputActive;
         } else if (isMobileScreen) {
             shouldUseMobileResults = true;
         }
-        
+
         const activeContainer = shouldUseMobileResults ? mobileSearchResults : searchResults;
         const items = activeContainer?.querySelectorAll('.search-result-item');
         if (!items || items.length === 0) return;
-        
+
         switch (e.key) {
             case 'ArrowDown':
                 e.preventDefault();
@@ -1067,20 +1070,20 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('setupSearchInput called with null/undefined input');
             return;
         }
-        
+
         console.log(`Setting up search input: ${input.id} (${input.type})`);
         console.log(`Input element exists: ${!!input}`);
         console.log(`Input parent: ${input.parentElement?.className || 'none'}`);
-        
+
         // Search on input
         input.addEventListener('input', (e) => {
             const query = e.target.value.trim();
-            
+
             // Clear previous timeout
             if (searchTimeout) {
                 clearTimeout(searchTimeout);
             }
-            
+
             // Debounce search
             searchTimeout = setTimeout(async () => {
                 if (query.length >= 2) {
@@ -1093,10 +1096,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 300);
         });
-        
+
         // Keyboard navigation
         input.addEventListener('keydown', handleSearchKeyboard);
-        
+
         // Hide results when input loses focus (with delay)
         input.addEventListener('blur', () => {
             setTimeout(() => {
@@ -1105,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 150);
         });
-        
+
         // Show results when input gains focus (if has value)
         input.addEventListener('focus', async () => {
             await buildSearchIndex();
@@ -1120,17 +1123,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize search system
     function initializeSearch() {
         console.log('Initializing search system...');
-        
+
         // Setup search inputs
         setupSearchInput(searchInput);
         setupSearchInput(mobileSearchInput);
-        
+
         // FIX: Enhanced sync between mobile and desktop search with conflict prevention
         if (searchInput && mobileSearchInput) {
             console.log('Setting up search input synchronization');
-            
+
             let syncInProgress = false;
-            
+
             searchInput.addEventListener('input', (e) => {
                 if (syncInProgress) return;
                 syncInProgress = true;
@@ -1138,7 +1141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Desktop Mobile sync:', e.target.value);
                 setTimeout(() => { syncInProgress = false; }, 10);
             });
-            
+
             mobileSearchInput.addEventListener('input', (e) => {
                 if (syncInProgress) return;
                 syncInProgress = true;
@@ -1152,31 +1155,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobile: !!mobileSearchInput
             });
         }
-        
+
         // FIX: Hide results when clicking outside (supports both containers)
         document.addEventListener('click', (e) => {
-            const isSearchRelated = e.target.closest('.search-container') || 
+            const isSearchRelated = e.target.closest('.search-container') ||
                                   e.target.closest('.search-results') ||
                                   e.target.closest('.mobile-search-container') ||
                                   e.target.closest('.mobile-search-results');
-            
+
             if (!isSearchRelated) {
                 hideSearchResults();
             }
         });
-        
+
         // FIX: Enhanced global keyboard shortcuts with proper focus detection
         document.addEventListener('keydown', (e) => {
             // Ctrl+K or Cmd+K to focus search
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
-                
+
                 // Use same logic as other functions for consistency
                 const isMobileSidebarActive = mobileNavMenu && mobileNavMenu.classList.contains('active');
                 const isMobileScreen = window.innerWidth <= 768;
-                
+
                 let shouldUseMobileSearch = false;
-                
+
                 if (isMobileSidebarActive && !isMobileScreen) {
                     // Desktop with mobile sidebar open - focus mobile search
                     shouldUseMobileSearch = true;
@@ -1185,7 +1188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     shouldUseMobileSearch = true;
                 }
                 // Desktop without sidebar - use desktop search (shouldUseMobileSearch = false)
-                
+
                 const activeSearch = shouldUseMobileSearch ? mobileSearchInput : searchInput;
                 if (activeSearch) {
                     activeSearch.focus();
@@ -1194,7 +1197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        
+
         console.log('Search system initialized!');
         console.log('Tip: Press Ctrl+K to focus search');
     }

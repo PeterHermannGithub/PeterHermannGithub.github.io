@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://peterpalhermann.com/code-viewer.html">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
-    
+
     <!-- SEO Meta Tags -->
     <title data-i18n-key="code_viewer_title">Code Viewer - Anime Recommender | Peter Pal Hermann</title>
     <meta name="description" content="Interactive VS Code-style viewer showcasing production-scale Python code from the anime recommendation system." data-i18n-key="code_viewer_description">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://peterpalhermann.com/code-viewer.html">
@@ -35,9 +35,10 @@
             } catch (e) {}
         })();
     </script>
-    
+
     <!-- Styles, Fonts, and Icons -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site.css">
     <link rel="stylesheet" href="assets/css/code-viewer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +65,7 @@
     }
     </script>
 </head>
-<body>
+<body class="rd">
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Shared header injected by components.js -->
@@ -72,7 +73,7 @@
 
     <main id="main-content">
         <!-- Page Header -->
-        <section class="page-header container">
+        <section class="wrap pagehead compact">
             <div class="breadcrumb">
                 <a href="projects.html" data-i18n-key="nav_projects">Projects</a>
                 <span class="breadcrumb-separator">></span>
@@ -267,14 +268,16 @@
             </div>
         </section>
     </main>
-    
+
     <!-- Shared footer injected by components.js -->
     <div id="site-footer"></div>
 
     <!-- Scripts -->
     <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n-extra.js" defer></script>
     <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/fx.js" defer></script>
     <script src="assets/js/code-viewer.js" defer></script>
 </body>
 </html>

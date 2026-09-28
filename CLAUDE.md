@@ -35,7 +35,8 @@ components.js   injects header/footer DOM (top level, runs first)
 i18n-extra.js   sets window.__i18nExtra (page-level strings); must precede i18n.js
 i18n.js         merges the extras, translates [data-i18n-key], wires lang toggle
 main.js         on DOMContentLoaded: theme, scroll anims, mobile nav, search, filters, modal
-fx.js           independent: hero canvas, Budapest clock, sample-round flip, "/" search
+fx.js           independent: hero canvas, Budapest clock, sample-round flip, "/" search,
+                Ctrl/Cmd+K command palette, colophon's live page-weight readout
 ```
 
 `components.js` must come first so the chrome exists before the other two query it. The IDs
@@ -62,6 +63,12 @@ choice. **When you add visible text, add the key to both languages.**
 - `games/anidle.html` — **Anidle**, a Wordle-style anime character guessing game.
   Self-contained: roster and logic in `assets/js/anidle.js` (a `CHARACTERS` array and
   `COLUMNS` list — extend those), styles in the `Anidle` block at the end of `style.css`
+- `games/quint.html` — **Quint**, a five-letter game with a closed, visible word bank (`assets/js/quint.js`;
+  the `BANK` string is both the guess list and the answer list; daily word from the local date)
+- `games/neighbours.html` — **Neighbours**, ten rounds against the recommender's V2 similarity
+  formula. It and the explorer on `projects/anime-recommender.html` share `assets/js/anime-data.js`
+  (40 hand-tagged titles, rounded illustrative scores — not a data source)
+- `colophon.html` — how the site is made, with numbers read from the Performance API
 - `achievements.html` — filterable `.ach-card` grid with a proof-image modal
 - `blogs.html` + `blogs/*.html` — post list and articles (`.article-body`, reading-progress bar)
 - `code-viewer.html` — VS Code-style viewer driven by `assets/data/code-snippets.json`

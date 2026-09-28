@@ -55,6 +55,7 @@
                         '<input type="text" id="site-search" placeholder="Search..." aria-label="Search site content" data-i18n-placeholder="search_placeholder">' +
                         '<div class="search-results" id="search-results" aria-live="polite"></div>' +
                     '</div>' +
+                    '<button class="kbd-btn" data-open-palette aria-label="Open menu (Ctrl K)"><span>Ctrl</span> K</button>' +
                     '<button id="theme-toggle" aria-label="Toggle theme"></button>' +
                     '<button id="lang-toggle" aria-label="Toggle language">EN</button>' +
                     '<button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open menu" aria-controls="mobile-nav-menu" aria-expanded="false">' +
@@ -104,6 +105,7 @@
                     '<a href="' + base + 'about.html" data-i18n-key="nav_about">About</a>' +
                     '<a href="' + base + 'achievements.html" data-i18n-key="nav_achievements">Achievements</a>' +
                     '<a href="' + base + 'blogs.html" data-i18n-key="nav_blogs">Blog</a>' +
+                    '<a href="' + base + 'colophon.html" data-i18n-key="co_k">Colophon</a>' +
                 '</div>' +
                 '<div>' +
                     '<span class="footer-label" data-i18n-key="footer_elsewhere">Elsewhere</span>' +

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://peterpalhermann.com/projects/notify-me.html">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
     <!-- SEO Meta Tags -->
     <title data-i18n-key="project_notify_meta_title">Notify Me Android App - Peter Pal Hermann</title>
     <meta name="description" content="Android notification app with WorkManager integration for background tasks. Features modern Material Design and fragment-based architecture." data-i18n-key="project_notify_meta_desc">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://peterpalhermann.com/projects/notify-me.html">
@@ -51,12 +51,12 @@
 
     <main id="main-content" class="project-page-main">
         <div class="wrap">
-            
+
             <!-- Project Header -->
             <header class="project-hero">
                 <p class="kicker"><span class="dash">//</span> <span data-i18n-key="rd_k_project">Project</span></p>
                 <h1 data-i18n-key="project_notify_title">Notify Me - Android App</h1>
-                <p class="project-tagline" data-i18n-key="project_notify_tagline">Smart notification management with background task scheduling</p>
+                <p class="project-tagline" data-i18n-key="project_notify_tagline">Notifications on your schedule, handled in the background by WorkManager.</p>
                 <div class="project-links">
                     <a href="https://github.com/PeterHermannGithub/Notify_me" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n-key="view_source_code">Source Code</a>
                     <span class="btn btn-disabled" aria-disabled="true" data-i18n-key="download_apk_unavailable">APK not published</span>
@@ -66,7 +66,7 @@
 
             <!-- Project Details -->
             <div class="project-details-grid">
-                
+
                 <!-- Left Column: Description & Story -->
                 <div class="project-details-col">
                     <section class="project-details-section">
@@ -78,7 +78,7 @@
                             The application demonstrates advanced Android concepts including fragment-based architecture, ViewPager2 navigation, and efficient background task management. It serves as a practical example of how to build scalable Android applications with proper separation of concerns and modern UI patterns.
                         </p>
                     </section>
-                    
+
                     <section class="project-details-section">
                         <h2 data-i18n-key="project_section_features">Key Features</h2>
                         <ul class="feature-list">
@@ -90,7 +90,7 @@
                             <li data-i18n-key="project_notify_feature6">Modern Android development practices</li>
                         </ul>
                     </section>
-                    
+
                     <section class="project-details-section">
                         <h2 data-i18n-key="project_section_challenges">Technical Challenges</h2>
                         <p data-i18n-key="project_notify_challenges">
@@ -98,7 +98,7 @@
                         </p>
                     </section>
                 </div>
-                
+
                 <!-- Right Column: Tech Stack & Details -->
                 <aside class="project-details-col">
                     <section class="project-details-section">
@@ -135,7 +135,7 @@
                         </ul>
                     </section>
                 </aside>
-                
+
             </div>
 
             <!-- Code Snippets -->
@@ -148,7 +148,7 @@
     context: Context,
     params: WorkerParameters
 ) : Worker(context, params) {
-    
+
     override fun doWork(): Result {
         // Background notification logic
         return Result.success()
@@ -158,15 +158,15 @@
                     <div class="code-example">
                         <h3 data-i18n-key="project_notify_code_fragment">Fragment Architecture</h3>
                         <pre><code>class MainFragment : Fragment() {
-    
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(
-            R.layout.fragment_main, 
-            container, 
+            R.layout.fragment_main,
+            container,
             false
         )
     }

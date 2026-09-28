@@ -63,7 +63,7 @@
             <canvas id="nn-canvas" aria-hidden="true"></canvas>
             <div class="wrap hero-top">
                 <p class="kicker"><span class="dash">//</span> <span data-i18n-key="rd_role">Data Scientist &amp; ML Engineer · Budapest</span></p>
-                <p class="kicker nn-readout" aria-hidden="true"><span data-i18n-key="nn_label">nearest to your cursor</span> <span class="dash">→</span> <b id="nn-names">Rust · Go · Redis</b></p>
+                <p class="kicker nn-readout" aria-hidden="true"><span data-i18n-key="nn_label">nearest to your cursor</span> <span class="dash">→</span> <b id="nn-names">Rust · Go · Redis</b><br><span class="nn-hint"><span data-i18n-key="nn_hint">press Ctrl K for the menu</span></span></p>
             </div>
             <div class="wrap hero-body">
                 <h1 class="hero-headline" data-i18n-key="home_headline">I build things that <em>think</em>.</h1>
@@ -97,7 +97,7 @@
                 <article class="work-row feature animate-on-scroll">
                     <div>
                         <h3 data-i18n-key="featured_project_title">Anime Recommendation Engine</h3>
-                        <p class="work-desc" data-i18n-key="featured_project_desc">A Go backend serving multi-signal recommendations across a large anime catalogue. Semantic and behavioral embeddings, MMR diversity, and a franchise graph, with a React front end.</p>
+                        <p class="work-desc" data-i18n-key="featured_project_desc">Tell it a show you loved and it tells you what to watch next. A Rust engine precomputed 649 million pairwise similarities across 37,000 titles in 16 minutes; fine-tuned 768-dimension embeddings, FAISS and Redis serve the answer in 4 ms when it is cached.</p>
                         <div class="work-tags"><span>Go</span><span>embeddings</span><span>FastAPI</span><span>Redis</span><span>Docker</span><span>React</span></div>
                     </div>
                     <div class="work-stat">649M<small><span data-i18n-key="ledger_pairs">similarity pairs processed</span></small></div>
@@ -110,7 +110,7 @@
                 <article class="work-row animate-on-scroll">
                     <div>
                         <h3><span data-i18n-key="rd_sts_title">Slay the Spire bot</span></h3>
-                        <p class="work-desc" data-i18n-key="rd_sts_desc">A bot that plays Ironclad through CommunicationMod, with a learning pipeline behind it and a C++ simulator as its conformance oracle. Nothing counts until it has been watched running.</p>
+                        <p class="work-desc" data-i18n-key="rd_sts_desc">A bot that plays Slay the Spire as the Ironclad, talking to the game through CommunicationMod. A learning pipeline trains it; a C++ simulator is the referee, because a bot that misunderstands the rules learns the wrong game.</p>
                         <div class="work-tags"><span>Python</span><span>PyTorch</span><span>C++</span><span>CUDA</span></div>
                     </div>
                     <div class="work-stat">A0<small><span data-i18n-key="rd_sts_stat">Ironclad, ascension zero</span></small></div>
@@ -122,7 +122,7 @@
                 <article class="work-row animate-on-scroll">
                     <div>
                         <h3>Dailiverse</h3>
-                        <p class="work-desc" data-i18n-key="rd_daily_desc">A server-authoritative platform for daily browser puzzles: one finished game keeps your streak. Live on Vercel with Postgres behind it.</p>
+                        <p class="work-desc" data-i18n-key="rd_daily_desc">Daily puzzles with one rule: the server decides. It owns the puzzle, the date and your streak, and a single finished game is enough to keep the streak alive. Next.js on Vercel, Postgres behind it.</p>
                         <div class="work-tags"><span>Next.js</span><span>TypeScript</span><span>Postgres</span><span>Vercel</span></div>
                     </div>
                     <div class="work-stat"><span data-i18n-key="rd_live">live</span><small>www.dailiverse.com</small></div>
@@ -134,7 +134,7 @@
                 <article class="work-row animate-on-scroll">
                     <div>
                         <h3>Anidle</h3>
-                        <p class="work-desc" data-i18n-key="rd_anidle_desc">A Wordle-style anime character guesser, about 120 characters across four series, in vanilla JS. Playable right here.</p>
+                        <p class="work-desc" data-i18n-key="rd_anidle_desc">Wordle for anime characters: guess the hidden one, and every guess shows how close its series, species, hair, class and age are. About 120 characters, vanilla JavaScript, no framework.</p>
                         <div class="work-tags"><span>JavaScript</span><span>no framework</span></div>
                     </div>
                     <div class="work-stat">120<small><span data-i18n-key="rd_characters">characters</span></small></div>
@@ -144,11 +144,39 @@
                 </article>
             </div>
         </section>
+        <!-- Working rules, each with the evidence -->
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 02</b></p>
+                <h2 data-i18n-key="rd_sec_rules">Working rules</h2>
+            </div>
+            <div class="tenets">
+                <div class="tenet animate-on-scroll">
+                    <span class="tenet-stat">264<small>ms</small></span>
+                    <span class="tenet-lab" data-i18n-key="rd_r1_lab">down from 4,667 ms</span>
+                    <h3 data-i18n-key="rd_r1_h">Profile before you optimise</h3>
+                    <p data-i18n-key="rd_r1_p">The slow request was not the model's fault. A factory built a new 140 MB embedding object on every call. Initialise it once and the same request takes 264 ms.</p>
+                </div>
+                <div class="tenet animate-on-scroll">
+                    <span class="tenet-stat">&lt;500<small>MB</small></span>
+                    <span class="tenet-lab" data-i18n-key="rd_r2_lab">down from over 12 GB</span>
+                    <h3 data-i18n-key="rd_r2_h">Change the architecture, not the loop</h3>
+                    <p data-i18n-key="rd_r2_p">Holding 649 million similarity pairs in memory was the problem, so the fix was to stop holding them: stream the JSON as it is produced.</p>
+                </div>
+                <div class="tenet animate-on-scroll">
+                    <span class="tenet-stat">1<small>ref</small></span>
+                    <span class="tenet-lab" data-i18n-key="rd_r3_lab">a C++ simulator</span>
+                    <h3 data-i18n-key="rd_r3_h">Give the model a referee</h3>
+                    <p data-i18n-key="rd_r3_p">The Slay the Spire bot is checked against a simulator. When the bot's picture of the rules and the simulator's disagree, the bot is the one that is wrong.</p>
+                </div>
+            </div>
+        </section>
+
 
         <!-- Path -->
         <section class="wrap sec">
             <div class="sec-head">
-                <p class="sec-num"><b>§ 02</b></p>
+                <p class="sec-num"><b>§ 03</b></p>
                 <h2 data-i18n-key="rd_sec_path">Path so far</h2>
             </div>
             <div class="tline">
@@ -163,7 +191,7 @@
         <!-- Tools -->
         <section class="wrap sec">
             <div class="sec-head">
-                <p class="sec-num"><b>§ 03</b></p>
+                <p class="sec-num"><b>§ 04</b></p>
                 <h2 data-i18n-key="skills_title">Tools I reach for</h2>
             </div>
             <ul class="toolbelt">
@@ -185,7 +213,7 @@
         <!-- Play teaser -->
         <section class="wrap sec">
             <div class="sec-head">
-                <p class="sec-num"><b>§ 04</b></p>
+                <p class="sec-num"><b>§ 05</b></p>
                 <h2 data-i18n-key="rd_sec_play">Take a guess</h2>
             </div>
             <div class="round">

@@ -8,6 +8,7 @@
  *   .grid-mock     home: flip the sample Anidle round when it scrolls into view
  *   .read-progress project/blog pages: reading progress bar
  *   "/"            focuses the search box
+ *   Ctrl/Cmd+K     command palette (pages, games, theme, language, email, CV)
  */
 (function () {
     'use strict';
@@ -86,7 +87,7 @@
 
         function readColors() {
             var cs = getComputedStyle(document.documentElement);
-            colors.accent = cs.getPropertyValue('--accent').trim() || '#c8f751';
+            colors.accent = cs.getPropertyValue('--accent-text').trim() || '#c8f751';
             colors.text = cs.getPropertyValue('--text-color').trim() || '#f1f0ea';
             colors.muted = cs.getPropertyValue('--text-muted-color').trim() || '#94968f';
         }
@@ -232,7 +233,140 @@
         start();
     }
 
+
+    /* ---- command palette (Ctrl/Cmd+K) ----------------------------------- */
+    function commandPalette() {
+        var inSub = /\/(projects|games|blogs)\//.test(location.pathname);
+        var base = inSub ? '../' : '';
+        var isHu = function () { return document.documentElement.lang === 'hu'; };
+        var root = null, input, list, items = [], shown = [], sel = 0, lastFocus = null;
+
+        function pageItems() {
+            var out = [];
+            document.querySelectorAll('.nav-links a').forEach(function (a) {
+                out.push({ label: a.textContent.replace(/^\d+\s*/, ''), hint: 'page', href: a.getAttribute('href') });
+            });
+            out.push({ label: 'Anidle', hint: 'game', href: base + 'games/anidle.html' });
+            out.push({ label: 'Quint', hint: 'game', href: base + 'games/quint.html' });
+            out.push({ label: isHu() ? 'Impresszum: hogyan készült' : 'Colophon: how this is made', hint: 'page', href: base + 'colophon.html' });
+            out.push({ label: isHu() ? 'Kódböngésző' : 'Code viewer', hint: 'page', href: base + 'code-viewer.html' });
+            return out;
+        }
+        function actionItems() {
+            var hu = isHu();
+            return [
+                { label: hu ? 'Téma váltása' : 'Toggle theme', hint: 'action', run: function () { var b = document.getElementById('theme-toggle'); if (b) b.click(); } },
+                { label: hu ? 'Nyelv váltása (EN / HU)' : 'Switch language (EN / HU)', hint: 'action', run: function () { var b = document.getElementById('lang-toggle'); if (b) b.click(); } },
+                { label: hu ? 'E-mail cím másolása' : 'Copy email address', hint: 'action', run: function () {
+                    try { navigator.clipboard.writeText('hermannpeter17@gmail.com'); } catch (e) {}
+                } },
+                { label: hu ? 'Önéletrajz (PDF)' : 'CV (PDF)', hint: 'file', href: base + 'assets/cv/PeterHermann_Budapest_cv_' + (hu ? 'hu' : 'en') + '.pdf', blank: true },
+                { label: 'GitHub', hint: 'link', href: 'https://github.com/PeterHermannGithub', blank: true },
+                { label: 'LinkedIn', hint: 'link', href: 'https://www.linkedin.com/in/peter-hermann-170hp/', blank: true }
+            ];
+        }
+
+        function build() {
+            root = document.createElement('div');
+            root.className = 'pal';
+            root.hidden = true;
+            root.innerHTML = '<div class="pal-box" role="dialog" aria-modal="true" aria-label="Menu">' +
+                '<input class="pal-input" type="text" autocomplete="off" spellcheck="false" aria-controls="pal-list" aria-label="Menu">' +
+                '<ul class="pal-list" id="pal-list" role="listbox"></ul>' +
+                '<p class="pal-foot"><span>↑ ↓</span> <span>↵</span> <span>esc</span></p></div>';
+            document.body.appendChild(root);
+            input = root.querySelector('.pal-input');
+            list = root.querySelector('.pal-list');
+            root.addEventListener('mousedown', function (e) { if (e.target === root) close(); });
+            input.addEventListener('input', render);
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowDown') { sel = Math.min(shown.length - 1, sel + 1); paint(); e.preventDefault(); }
+                else if (e.key === 'ArrowUp') { sel = Math.max(0, sel - 1); paint(); e.preventDefault(); }
+                else if (e.key === 'Enter') { choose(shown[sel]); e.preventDefault(); }
+                else if (e.key === 'Escape') { close(); e.preventDefault(); }
+                else if (e.key === 'Tab') { e.preventDefault(); }
+            });
+        }
+        function render() {
+            var q = input.value.trim().toLowerCase();
+            shown = items.filter(function (it) { return !q || it.label.toLowerCase().indexOf(q) !== -1 || it.hint.indexOf(q) !== -1; });
+            sel = 0; paint();
+        }
+        function paint() {
+            list.innerHTML = '';
+            if (!shown.length) { list.innerHTML = '<li class="pal-empty">' + (isHu() ? 'Nincs találat' : 'Nothing matches') + '</li>'; return; }
+            shown.forEach(function (it, i) {
+                var li = document.createElement('li');
+                li.setAttribute('role', 'option');
+                li.className = 'pal-item' + (i === sel ? ' is-sel' : '');
+                li.innerHTML = '<span></span><em></em>';
+                li.firstChild.textContent = it.label;
+                li.lastChild.textContent = it.hint;
+                li.addEventListener('mousemove', function () { if (sel !== i) { sel = i; paint(); } });
+                li.addEventListener('mousedown', function (e) { e.preventDefault(); choose(it); });
+                list.appendChild(li);
+            });
+            var cur = list.querySelector('.is-sel'); if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: 'nearest' });
+        }
+        function choose(it) {
+            if (!it) return;
+            close();
+            if (it.run) it.run();
+            else if (it.blank) window.open(it.href, '_blank', 'noopener');
+            else location.href = it.href;
+        }
+        function open() {
+            if (!root) build();
+            items = pageItems().concat(actionItems());
+            lastFocus = document.activeElement;
+            root.hidden = false;
+            document.documentElement.classList.add('pal-open');
+            input.value = '';
+            input.placeholder = isHu() ? 'Ugrás, vagy parancs…' : 'Jump to a page, or run a command…';
+            render();
+            input.focus();
+        }
+        function close() {
+            if (!root) return;
+            root.hidden = true;
+            document.documentElement.classList.remove('pal-open');
+            if (lastFocus && lastFocus.focus) lastFocus.focus();
+        }
+        document.addEventListener('keydown', function (e) {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                if (root && !root.hidden) close(); else open();
+            }
+        });
+        document.addEventListener('click', function (e) {
+            var t = e.target.closest && e.target.closest('[data-open-palette]');
+            if (t) { e.preventDefault(); open(); }
+        });
+    }
+
+    /* ---- colophon: what this page actually weighed ------------------------ */
+    function colophonStats() {
+        var box = document.getElementById('co-live');
+        if (!box || !window.performance || !performance.getEntriesByType) return;
+        function fill() {
+            var res = performance.getEntriesByType('resource');
+            var nav = performance.getEntriesByType('navigation')[0];
+            var bytes = (nav ? nav.transferSize : 0), js = 0;
+            res.forEach(function (r) {
+                bytes += r.transferSize || 0;
+                if (/\.js(\?|$)/.test(r.name) && r.name.indexOf(location.origin) === 0) js += r.decodedBodySize || 0;
+            });
+            document.getElementById('co-req').textContent = res.length + 1;
+            document.getElementById('co-kb').textContent = bytes ? Math.round(bytes / 1024) : '0';
+            document.getElementById('co-js').textContent = Math.round(js / 1024);
+            document.getElementById('co-dcl').textContent = nav ? Math.round(nav.domContentLoadedEventEnd) : '-';
+        }
+        if (document.readyState === 'complete') fill(); else window.addEventListener('load', function () { setTimeout(fill, 50); });
+    }
+
     function init() {
+        commandPalette();
+        colophonStats();
         startClock();
         watchGridMock();
         readProgress();
