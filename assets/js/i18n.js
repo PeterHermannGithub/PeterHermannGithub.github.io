@@ -1289,6 +1289,13 @@ const translations = {
     }
 };
 
+// Merge page-level strings from i18n-extra.js (loaded before this file)
+if (window.__i18nExtra) {
+    Object.keys(window.__i18nExtra).forEach((lang) => {
+        Object.assign(translations[lang] = translations[lang] || {}, window.__i18nExtra[lang]);
+    });
+}
+
 // Expose translations to global scope for search system
 window.translations = translations;
 

@@ -7,7 +7,8 @@ paths:
 
 # Design language
 
-The site uses an **editorial-technical** look, chosen specifically so it does *not* read as
+The site uses an **editorial-technical** look (the 2026-09 "Signal" redesign: giant type, a
+visible four-column grid, numbered `§` sections, lime bands), chosen specifically so it does *not* read as
 AI-generated boilerplate. When you touch the design, hold the line on these.
 
 ## The anti-slop principles
@@ -20,12 +21,13 @@ AI-generated boilerplate. When you touch the design, hold the line on these.
    (`--accent: #c8f751`), marking interaction and emphasis. No purple/blue gradients, no
    "make it pop" gradient text, no rainbow.
 3. **Hierarchy through variation, not uniformity.** Vary type scale and layout (the
-   asymmetric hero, the stat strip). Avoid every-card-identical grids with one radius and
+   giant hero, the lime ledger, index-style rows). Avoid every-card-identical grids with one radius and
    one shadow everywhere — another classic tell.
 4. **Sharp, flat surfaces.** Small radii (`--radius: 6px`), hairline borders, no soft
    drop-shadows. Hover = border turns accent plus a small lift, nothing more.
-5. **Intentional motion only.** One subtle scroll-in (`.animate-on-scroll`) and
-   micro-interactions. No typing animation, no decorative blanket fades. Everything respects
+5. **Intentional motion only.** One subtle scroll-in (`.animate-on-scroll`), micro-interactions,
+   and motion that *is* the content (the hero's k-NN field, the flipping sample round).
+   No typing animation, no decorative blanket fades. Everything respects
    `prefers-reduced-motion`.
 6. **Specific, human copy.** Real numbers and a real voice. No "passionate developer creating
    modern web experiences", no vague aspirational filler.
@@ -44,13 +46,12 @@ Key tokens: `--bg-color`, `--bg-secondary-color`, `--bg-elevated-color`, `--text
 `--accent-ink` (text placed on an accent fill), `--font-display`, `--font-body`,
 `--font-mono`, `--radius`/`--radius-sm`/`--radius-lg`, `--ease`.
 
-`--primary-color` / `--primary-hover-color` are back-compat aliases for `--accent` so older
-rules keep working.
+`--primary-color` / `--primary-hover-color` are back-compat aliases for `--accent`.
 
-The bulk of the editorial look lives in the **`EDITORIAL-TECHNICAL OVERHAUL`** block at the
-end of `style.css`. It is loaded last and intentionally wins the cascade over the legacy
-component rules above it — if a change appears not to apply, check whether an overhaul rule
-is overriding it rather than adding `!important`.
+`assets/css/site.css` is the current system and loads **after** `style.css`. It restyles the
+header/footer globally and everything else under `body.rd`. Legacy `style.css` selectors
+still match by class name, so a new component must not reuse one (see CLAUDE.md); prefer a
+new name over `!important`.
 
 ## Theme
 

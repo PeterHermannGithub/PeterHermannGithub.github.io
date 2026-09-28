@@ -30,6 +30,7 @@
         { href: 'about.html',        key: 'nav_about',        label: 'About' },
         { href: 'projects.html',     key: 'nav_projects',     label: 'Work' },
         { href: 'play.html',         key: 'nav_play',         label: 'Play' },
+        { href: 'lab.html',          key: 'nav_lab',          label: 'Lab' },
         { href: 'blogs.html',        key: 'nav_blogs',        label: 'Blog' },
         { href: 'achievements.html', key: 'nav_achievements', label: 'Achievements' }
     ];
@@ -43,7 +44,7 @@
 
     var headerHTML =
         '<header class="site-header">' +
-            '<nav class="container site-nav">' +
+            '<nav class="site-nav" aria-label="Primary">' +
                 '<a href="' + base + 'index.html" class="logo">' +
                     '<span class="logo-mark">PH</span>' +
                     '<span class="logo-text">Peter Hermann</span>' +
@@ -86,21 +87,38 @@
     var year = new Date().getFullYear();
     var footerHTML =
         '<footer class="site-footer" id="contact">' +
-            '<div class="container footer-grid">' +
-                '<div class="footer-lead">' +
-                    '<h2 data-i18n-key="contact_title">Let’s build something</h2>' +
-                    '<p data-i18n-key="contact_text">Open to data science &amp; ML engineering work. Reach out.</p>' +
-                    '<a href="mailto:hermannpeter17@gmail.com" class="footer-email">hermannpeter17@gmail.com</a>' +
+            '<div class="wrap footer-cta">' +
+                '<h2 data-i18n-key="contact_title">Let’s build something</h2>' +
+                '<p data-i18n-key="contact_text">Open to data science &amp; ML engineering work. Reach out.</p>' +
+                '<a href="mailto:hermannpeter17@gmail.com" class="footer-email">hermannpeter17@gmail.com</a>' +
+            '</div>' +
+            '<div class="wrap footer-grid">' +
+                '<div>' +
+                    '<span class="footer-label" data-i18n-key="footer_site">Site</span>' +
+                    '<a href="' + base + 'projects.html" data-i18n-key="nav_projects">Work</a>' +
+                    '<a href="' + base + 'lab.html" data-i18n-key="nav_lab">Lab</a>' +
+                    '<a href="' + base + 'play.html" data-i18n-key="nav_play">Play</a>' +
                 '</div>' +
-                '<div class="footer-links">' +
-                    '<span class="footer-label">Elsewhere</span>' +
+                '<div>' +
+                    '<span class="footer-label" data-i18n-key="footer_about">Me</span>' +
+                    '<a href="' + base + 'about.html" data-i18n-key="nav_about">About</a>' +
+                    '<a href="' + base + 'achievements.html" data-i18n-key="nav_achievements">Achievements</a>' +
+                    '<a href="' + base + 'blogs.html" data-i18n-key="nav_blogs">Blog</a>' +
+                '</div>' +
+                '<div>' +
+                    '<span class="footer-label" data-i18n-key="footer_elsewhere">Elsewhere</span>' +
                     '<a href="https://github.com/PeterHermannGithub" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">&#8599;</span></a>' +
                     '<a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">&#8599;</span></a>' +
-                    '<a href="mailto:hermannpeter17@gmail.com">Email <span aria-hidden="true">&#8599;</span></a>' +
+                '</div>' +
+                '<div>' +
+                    '<span class="footer-label" data-i18n-key="footer_cv">CV</span>' +
+                    '<a href="' + base + 'assets/cv/PeterHermann_Budapest_cv_en.pdf" target="_blank" rel="noopener noreferrer">English PDF</a>' +
+                    '<a href="' + base + 'assets/cv/PeterHermann_Budapest_cv_hu.pdf" target="_blank" rel="noopener noreferrer">Magyar PDF</a>' +
                 '</div>' +
             '</div>' +
-            '<div class="container footer-base">' +
+            '<div class="wrap footer-base">' +
                 '<span class="copyright">© ' + year + ' Peter Pal Hermann</span>' +
+                '<span class="clock"><span class="pulse-dot" aria-hidden="true"></span><span data-i18n-key="footer_budapest">Budapest</span> <b id="bud-clock">--:--</b></span>' +
             '</div>' +
         '</footer>';
 

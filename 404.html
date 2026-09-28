@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
-    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://peterpalhermann.com/404.html">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
-    <title>Page Not Found — Peter Pal Hermann</title>
-    <meta name="description" content="The requested page could not be found.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
 
+    <title data-i18n-key="meta_title_404">Page not found — Peter Pal Hermann</title>
+    <meta name="robots" content="noindex">
+    <meta name="description" content="This page does not exist." data-i18n-key="meta_description_404">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peterpalhermann.com/404.html">
+    <meta property="og:title" content="Page not found — Peter Pal Hermann">
+    <meta property="og:description" content="This page does not exist.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
+
+    <!-- Critical: set theme before paint (dark is the default) -->
     <script>
         (function () {
             try {
@@ -21,30 +29,42 @@
     </script>
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVSZK3HJ4Q');
+    </script>
 </head>
-<body>
+<body class="rd">
     <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
     <main id="main-content">
-        <header class="page-header container">
-            <p class="kicker"><span class="dash">//</span> Error 404</p>
-            <h1>That page isn’t here.</h1>
-            <p>The address may have changed, or the link may be out of date.</p>
-            <div class="hero-cta-row">
-                <a href="/index.html" class="btn btn-primary">Go home</a>
-                <a href="/projects.html" class="btn btn-ghost">See the work</a>
-            </div>
-        </header>
+        <div class="wrap nf">
+            <p class="kicker"><span class="dash">//</span> <span data-i18n-key="rd_404_k">nearest neighbour: none found</span></p>
+            <div class="big">404</div>
+            <p data-i18n-key="rd_404_p">Whatever you were looking for is not at this address. It may have moved, or it may never have been here.</p>
+            <div><a href="/index.html" class="btn btn-primary"><span data-i18n-key="rd_404_home">Back to the start</span></a></div>
+        </div>
     </main>
 
+    <!-- Shared footer injected by components.js -->
     <div id="site-footer"></div>
+
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
     <script src="/assets/js/components.js" defer></script>
+    <script src="/assets/js/i18n-extra.js" defer></script>
     <script src="/assets/js/i18n.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/fx.js" defer></script>
 </body>
 </html>

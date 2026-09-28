@@ -5,25 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://peterpalhermann.com/">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-
-    <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
 
-    <!-- SEO Meta Tags -->
     <title data-i18n-key="meta_title_home">Peter Pal Hermann — Data Scientist</title>
-    <meta name="description" content="Peter Pal Hermann — Data Scientist & ML engineer. I build recommenders, game-playing AI, and full-stack apps to ship my data science work." data-i18n-key="meta_description_home">
-
-    <!-- Open Graph / Facebook -->
+    <meta name="description" content="Peter Pal Hermann — Data Scientist &amp; ML engineer. I build recommenders, game-playing AI, and full-stack apps to ship my data science work." data-i18n-key="meta_description_home">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://peterpalhermann.com/">
     <meta property="og:title" content="Peter Pal Hermann — Data Scientist">
-    <meta property="og:description" content="I build recommenders, game-playing AI, and full-stack apps to ship my data science work.">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://peterpalhermann.com/">
-    <meta property="twitter:title" content="Peter Pal Hermann — Data Scientist">
-    <meta property="twitter:description" content="I build recommenders, game-playing AI, and full-stack apps to ship my data science work.">
+    <meta property="og:description" content="Peter Pal Hermann — Data Scientist &amp; ML engineer. I build recommenders, game-playing AI, and full-stack apps to ship my data science work.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
 
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
@@ -36,28 +27,22 @@
         })();
     </script>
 
-    <!-- Styles, Fonts -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Peter Pal Hermann",
       "url": "https://peterpalhermann.com/",
-      "sameAs": [
-        "https://github.com/PeterHermannGithub",
-        "https://www.linkedin.com/in/peter-hermann-170hp/"
-      ],
+      "sameAs": ["https://github.com/PeterHermannGithub", "https://www.linkedin.com/in/peter-hermann-170hp/"],
       "jobTitle": "Data Scientist"
     }
     </script>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -66,90 +51,157 @@
         gtag('config', 'G-NVSZK3HJ4Q');
     </script>
 </head>
-<body>
+<body class="rd">
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
     <main id="main-content">
-        <!-- Hero -->
-        <section class="hero-editorial container">
-            <div class="hero-main">
-                <p class="kicker"><span class="dash">//</span> Data Scientist &amp; ML Engineer · Budapest</p>
+        <!-- Hero: a k-nearest-neighbour field you steer with the cursor -->
+        <section class="stage">
+            <canvas id="nn-canvas" aria-hidden="true"></canvas>
+            <div class="wrap hero-top">
+                <p class="kicker"><span class="dash">//</span> <span data-i18n-key="rd_role">Data Scientist &amp; ML Engineer · Budapest</span></p>
+                <p class="kicker nn-readout" aria-hidden="true"><span data-i18n-key="nn_label">nearest to your cursor</span> <span class="dash">→</span> <b id="nn-names">Rust · Go · Redis</b></p>
+            </div>
+            <div class="wrap hero-body">
                 <h1 class="hero-headline" data-i18n-key="home_headline">I build things that <em>think</em>.</h1>
-                <p class="hero-sub" data-i18n-key="home_intro">Recommender systems, a Slay-the-Spire AI, and the full-stack apps that ship them. I care about building models that are clear, measured, and honest about what they do.</p>
-                <div class="hero-cta-row">
-                    <a href="projects.html" class="btn btn-primary" data-i18n-key="home_work_btn">See the work</a>
-                    <a href="#contact" class="btn btn-ghost" data-i18n-key="home_contact_btn">Get in touch</a>
-                </div>
-            </div>
-            <aside class="hero-aside">
-                <p class="mono-label">Selected / 2024—26</p>
-                <ul class="hero-index">
-                    <li><a href="projects/anime-recommender.html"><span class="num">01</span> Anime recommender</a></li>
-                    <li><a href="projects.html"><span class="num">02</span> Slay-the-Spire AI</a></li>
-                    <li><a href="play.html"><span class="num">03</span> Playable games</a></li>
-                </ul>
-                <div class="ext-links">
-                    <a href="https://github.com/PeterHermannGithub" target="_blank" rel="noopener noreferrer">github ↗</a>
-                    <a href="https://www.linkedin.com/in/peter-hermann-170hp/" target="_blank" rel="noopener noreferrer">linkedin ↗</a>
-                </div>
-            </aside>
-        </section>
-
-        <!-- Quick Navigation Cards -->
-        <section class="container card-grid">
-            <a href="about.html" class="nav-card animate-on-scroll">
-                <h3 data-i18n-key="card_about_title">About</h3>
-                <p data-i18n-key="card_about_desc">Background, the tools I reach for, and how I work.</p>
-            </a>
-            <a href="projects.html" class="nav-card animate-on-scroll">
-                <h3 data-i18n-key="card_projects_title">Work</h3>
-                <p data-i18n-key="card_projects_desc">Recommenders, a game-playing AI, automation pipelines.</p>
-            </a>
-            <a href="play.html" class="nav-card animate-on-scroll">
-                <h3 data-i18n-key="card_play_title">Play</h3>
-                <p data-i18n-key="card_play_desc">Word games I built in the browser. Go on, take a guess.</p>
-            </a>
-        </section>
-
-        <!-- Featured Project -->
-        <section class="featured-project container">
-            <h2 class="section-title animate-on-scroll" data-i18n-key="featured_title">Featured</h2>
-            <div class="project-card-large animate-on-scroll">
-                <div class="project-visual project-visual-featured" role="img" aria-label="Anime recommender: 649 million similarity pairs processed">
-                    <span class="project-visual-kicker">// recommender engine</span>
-                    <strong>649M</strong>
-                    <span>similarity pairs processed</span>
-                </div>
-                <div class="project-info">
-                    <h3 data-i18n-key="featured_project_title">Anime Recommendation Engine</h3>
-                    <p data-i18n-key="featured_project_desc">A Go backend serving multi-signal recommendations across a large anime catalogue. Semantic and behavioral embeddings, MMR diversity, and a franchise graph, with a React front end.</p>
-                    <div class="tech-stack">
-                        <span>Go</span> <span>embeddings</span> <span>FastAPI</span> <span>Redis</span> <span>Docker</span> <span>React</span>
+                <div class="hero-foot">
+                    <p class="stage-sub" data-i18n-key="home_intro">Recommender systems, a Slay-the-Spire AI, and the full-stack apps that ship them. I care about building models that are clear, measured, and honest about what they do.</p>
+                    <div class="hero-actions">
+                        <a href="projects.html" class="btn btn-primary" data-i18n-key="home_work_btn">See the work</a>
+                        <a href="#contact" class="btn" data-i18n-key="home_contact_btn">Get in touch</a>
                     </div>
-                    <a href="projects/anime-recommender.html" class="btn btn-secondary" data-i18n-key="view_project_btn">View project</a>
                 </div>
             </div>
         </section>
 
-        <!-- Skills -->
-        <section class="skills-section container">
-            <h2 class="section-title animate-on-scroll" data-i18n-key="skills_title">Tools I reach for</h2>
-            <div class="skills-grid">
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/python.svg" alt="" loading="lazy" decoding="async"><span>Python</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/pandas.svg" alt="" loading="lazy" decoding="async"><span>Pandas</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/tensorflow.svg" alt="" loading="lazy" decoding="async"><span>TensorFlow</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/sql.svg" alt="" loading="lazy" decoding="async"><span>SQL</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/rust.svg" alt="" loading="lazy" decoding="async"><span>Rust</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/fastapi.svg" alt="" loading="lazy" decoding="async"><span>FastAPI</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/docker.svg" alt="" loading="lazy" decoding="async"><span>Docker</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/redis.svg" alt="" loading="lazy" decoding="async"><span>Redis</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/spark.svg" alt="" loading="lazy" decoding="async"><span>Spark</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/kafka.svg" alt="" loading="lazy" decoding="async"><span>Kafka</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/react.svg" alt="" loading="lazy" decoding="async"><span>React</span></div>
-                <div class="skill-item animate-on-scroll"><img src="assets/icons/git.svg" alt="" loading="lazy" decoding="async"><span>Git</span></div>
+        <!-- Ledger: four numbers, all from the recommender -->
+        <section class="ledger" aria-label="Recommender in numbers">
+            <div class="wrap ledger-grid">
+                <div class="ledger-cell"><span class="ledger-num">649<small>M</small></span><span class="ledger-label" data-i18n-key="ledger_pairs">similarity pairs processed</span></div>
+                <div class="ledger-cell"><span class="ledger-num">16<small>min</small></span><span class="ledger-label" data-i18n-key="ledger_min">to do it — 36x faster than Python</span></div>
+                <div class="ledger-cell"><span class="ledger-num">37<small>k</small></span><span class="ledger-label" data-i18n-key="ledger_cat">anime in the catalogue</span></div>
+                <div class="ledger-cell"><span class="ledger-num">18<small>x</small></span><span class="ledger-label" data-i18n-key="ledger_api">API speedup, 4,667 ms → 264 ms</span></div>
+            </div>
+        </section>
+
+        <!-- Selected work -->
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 01</b></p>
+                <h2 data-i18n-key="rd_sec_work">Selected work</h2>
+            </div>
+            <div class="worklist">
+                <article class="work-row feature animate-on-scroll">
+                    <div>
+                        <h3 data-i18n-key="featured_project_title">Anime Recommendation Engine</h3>
+                        <p class="work-desc" data-i18n-key="featured_project_desc">A Go backend serving multi-signal recommendations across a large anime catalogue. Semantic and behavioral embeddings, MMR diversity, and a franchise graph, with a React front end.</p>
+                        <div class="work-tags"><span>Go</span><span>embeddings</span><span>FastAPI</span><span>Redis</span><span>Docker</span><span>React</span></div>
+                    </div>
+                    <div class="work-stat">649M<small><span data-i18n-key="ledger_pairs">similarity pairs processed</span></small></div>
+                    <div class="work-links">
+                        <a href="projects/anime-recommender.html" data-i18n-key="view_project_btn">View project</a>
+                        <a href="https://github.com/PeterHermannGithub/anime-recommender" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    </div>
+                </article>
+
+                <article class="work-row animate-on-scroll">
+                    <div>
+                        <h3><span data-i18n-key="rd_sts_title">Slay the Spire bot</span></h3>
+                        <p class="work-desc" data-i18n-key="rd_sts_desc">A bot that plays Ironclad through CommunicationMod, with a learning pipeline behind it and a C++ simulator as its conformance oracle. Nothing counts until it has been watched running.</p>
+                        <div class="work-tags"><span>Python</span><span>PyTorch</span><span>C++</span><span>CUDA</span></div>
+                    </div>
+                    <div class="work-stat">A0<small><span data-i18n-key="rd_sts_stat">Ironclad, ascension zero</span></small></div>
+                    <div class="work-links">
+                        <a href="lab.html" data-i18n-key="rd_see_lab">See the lab</a>
+                    </div>
+                </article>
+
+                <article class="work-row animate-on-scroll">
+                    <div>
+                        <h3>Dailiverse</h3>
+                        <p class="work-desc" data-i18n-key="rd_daily_desc">A server-authoritative platform for daily browser puzzles: one finished game keeps your streak. Live on Vercel with Postgres behind it.</p>
+                        <div class="work-tags"><span>Next.js</span><span>TypeScript</span><span>Postgres</span><span>Vercel</span></div>
+                    </div>
+                    <div class="work-stat"><span data-i18n-key="rd_live">live</span><small>www.dailiverse.com</small></div>
+                    <div class="work-links">
+                        <a href="https://www.dailiverse.com" target="_blank" rel="noopener noreferrer" data-i18n-key="view_live_btn">View Live</a>
+                    </div>
+                </article>
+
+                <article class="work-row animate-on-scroll">
+                    <div>
+                        <h3>Anidle</h3>
+                        <p class="work-desc" data-i18n-key="rd_anidle_desc">A Wordle-style anime character guesser, about 120 characters across four series, in vanilla JS. Playable right here.</p>
+                        <div class="work-tags"><span>JavaScript</span><span>no framework</span></div>
+                    </div>
+                    <div class="work-stat">120<small><span data-i18n-key="rd_characters">characters</span></small></div>
+                    <div class="work-links">
+                        <a href="games/anidle.html" data-i18n-key="rd_play_now">Play now</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Path -->
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 02</b></p>
+                <h2 data-i18n-key="rd_sec_path">Path so far</h2>
+            </div>
+            <div class="tline">
+                <div class="tl-row animate-on-scroll"><span class="tl-date">2024 — 25</span><div><h3 data-i18n-key="about_education_msc_erasmus">Erasmus at Humboldt University, Berlin</h3><p data-i18n-key="rd_path_erasmus">Third semester abroad, AI and machine learning coursework.</p></div></div>
+                <div class="tl-row animate-on-scroll"><span class="tl-date">2023 — now</span><div><h3 data-i18n-key="about_education_msc_title">MSc Computer Science</h3><p data-i18n-key="rd_path_msc">AI specialization at Eötvös Loránd University.</p></div></div>
+                <div class="tl-row animate-on-scroll"><span class="tl-date">2023</span><div><h3 data-i18n-key="about_best_employee_title">Best Employee Award</h3><p data-i18n-key="about_best_employee_desc">Risk Management Division, Fundamenta Housing Savings Bank - recognized for outstanding performance in risk modeling</p></div></div>
+                <div class="tl-row animate-on-scroll"><span class="tl-date">2021 — 22</span><div><h3 data-i18n-key="about_morgan_experience_title">Morgan Stanley Experience</h3><p data-i18n-key="about_morgan_experience_desc">Risk Analyst developing internal knowledge systems and database optimization for enhanced data accessibility</p></div></div>
+            </div>
+            <p style="margin-top:1.4rem"><a href="about.html" class="btn"><span data-i18n-key="rd_full_story">The full story</span></a></p>
+        </section>
+
+        <!-- Tools -->
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 03</b></p>
+                <h2 data-i18n-key="skills_title">Tools I reach for</h2>
+            </div>
+            <ul class="toolbelt">
+                <li class="tool animate-on-scroll"><img src="assets/icons/python.svg" alt="" loading="lazy" decoding="async"><span>Python</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/pandas.svg" alt="" loading="lazy" decoding="async"><span>Pandas</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/tensorflow.svg" alt="" loading="lazy" decoding="async"><span>TensorFlow</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/sql.svg" alt="" loading="lazy" decoding="async"><span>SQL</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/rust.svg" alt="" loading="lazy" decoding="async"><span>Rust</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/fastapi.svg" alt="" loading="lazy" decoding="async"><span>FastAPI</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/docker.svg" alt="" loading="lazy" decoding="async"><span>Docker</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/redis.svg" alt="" loading="lazy" decoding="async"><span>Redis</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/spark.svg" alt="" loading="lazy" decoding="async"><span>Spark</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/kafka.svg" alt="" loading="lazy" decoding="async"><span>Kafka</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/react.svg" alt="" loading="lazy" decoding="async"><span>React</span></li>
+                <li class="tool animate-on-scroll"><img src="assets/icons/git.svg" alt="" loading="lazy" decoding="async"><span>Git</span></li>
+            </ul>
+        </section>
+
+        <!-- Play teaser -->
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 04</b></p>
+                <h2 data-i18n-key="rd_sec_play">Take a guess</h2>
+            </div>
+            <div class="round">
+                <div>
+                    <h3 data-i18n-key="rd_round_h">Four guesses is a good day.</h3>
+                    <p data-i18n-key="rd_round_p">Anidle gives you attribute clues instead of letters. Green is a match, amber is close, and the arrows tell you which way the age lies. This round is a sample; the real one is a click away.</p>
+                    <a href="play.html" class="btn btn-primary"><span data-i18n-key="rd_play_btn">Open the arcade</span></a>
+                </div>
+                <div class="grid-mock" role="img" aria-label="A sample round of Anidle: four guesses, cells turn green as attributes match">
+                    <div class="gm-row gm-head"><div class="gm-cell"></div>
+                        <div class="gm-cell">series</div><div class="gm-cell">species</div><div class="gm-cell">hair</div><div class="gm-cell">class</div><div class="gm-cell">age</div></div>
+                    <div class="gm-row"><div class="gm-cell gm-name">Naruto</div><div class="gm-cell miss" style="--i:0;--r:0">Naruto</div><div class="gm-cell hit" style="--i:1;--r:0">Human</div><div class="gm-cell miss" style="--i:2;--r:0">Blond</div><div class="gm-cell miss" style="--i:3;--r:0">Ninja</div><div class="gm-cell miss" style="--i:4;--r:0">12 ↑</div></div>
+                    <div class="gm-row"><div class="gm-cell gm-name">Frieren</div><div class="gm-cell miss" style="--i:0;--r:1">Frieren</div><div class="gm-cell miss" style="--i:1;--r:1">Elf</div><div class="gm-cell miss" style="--i:2;--r:1">Green</div><div class="gm-cell miss" style="--i:3;--r:1">Mage</div><div class="gm-cell miss" style="--i:4;--r:1">1000+ ↓</div></div>
+                    <div class="gm-row"><div class="gm-cell gm-name">Nanami</div><div class="gm-cell hit" style="--i:0;--r:2">JJK</div><div class="gm-cell hit" style="--i:1;--r:2">Human</div><div class="gm-cell miss" style="--i:2;--r:2">Blond</div><div class="gm-cell hit" style="--i:3;--r:2">Sorcerer</div><div class="gm-cell near" style="--i:4;--r:2">27 ↑</div></div>
+                    <div class="gm-row"><div class="gm-cell gm-name">Gojo</div><div class="gm-cell hit" style="--i:0;--r:3">JJK</div><div class="gm-cell hit" style="--i:1;--r:3">Human</div><div class="gm-cell hit" style="--i:2;--r:3">White</div><div class="gm-cell hit" style="--i:3;--r:3">Sorcerer</div><div class="gm-cell hit" style="--i:4;--r:3">28</div></div>
+                </div>
             </div>
         </section>
     </main>
@@ -157,9 +209,11 @@
     <!-- Shared footer injected by components.js -->
     <div id="site-footer"></div>
 
-    <!-- Scripts: components.js first so header/footer exist before i18n/main run -->
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
     <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n-extra.js" defer></script>
     <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/fx.js" defer></script>
 </body>
 </html>

@@ -5,25 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://peterpalhermann.com/achievements.html">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
-    
-    <!-- SEO Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+
     <title data-i18n-key="meta_title_achievements">Achievements - Peter Pal Hermann</title>
     <meta name="description" content="Explore my athletic achievements, academic accomplishments, and personal milestones in sports and technology." data-i18n-key="meta_description_achievements">
-    
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://peterpalhermann.com/achievements.html">
     <meta property="og:title" content="Achievements - Peter Pal Hermann">
-    <meta property="og:description" content="Explore my athletic achievements, academic accomplishments, and personal milestones.">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://peterpalhermann.com/achievements.html">
-    <meta property="twitter:title" content="Achievements - Peter Pal Hermann">
-    <meta property="twitter:description" content="Explore my athletic achievements, academic accomplishments, and personal milestones.">
+    <meta property="og:description" content="Explore my athletic achievements, academic accomplishments, and personal milestones in sports and technology.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
 
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
@@ -35,216 +26,112 @@
             } catch (e) {}
         })();
     </script>
-    
-    <!-- Styles, Fonts, and Icons -->
+
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Achievements - Peter Pal Hermann",
-      "url": "https://peterpalhermann.com/achievements.html",
-      "author": {
-        "@type": "Person",
-        "name": "Peter Pal Hermann"
-      }
-    }
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVSZK3HJ4Q');
     </script>
 </head>
-<body>
+<body class="rd">
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
     <main id="main-content">
-        <!-- Page Header -->
-        <section class="page-header container">
-            <h1 data-i18n-key="achievements_title">My Achievements</h1>
-            <p data-i18n-key="achievements_subtitle">Athletic accomplishments, academic milestones, and personal records that drive my passion for excellence.</p>
-        </section>
+        <header class="wrap pagehead">
+            <p class="kicker"><span class="dash">§ 07</span> <span data-i18n-key="rd_k_ach">Receipts</span></p>
+            <h1 data-i18n-key="nav_achievements">Achievements</h1>
+            <p class="lede" data-i18n-key="achievements_subtitle">Athletic accomplishments, academic milestones, and personal records that drive my passion for excellence.</p>
+        </header>
 
-        <!-- Achievement Categories -->
-        <section class="container">
-            <div class="achievement-filters">
+        <div class="wrap">
+            <div class="chips achievement-filters">
                 <button class="filter-btn active" data-filter="all" data-i18n-key="filter_all_achievements">All Achievements</button>
                 <button class="filter-btn" data-filter="athletic" data-i18n-key="filter_athletic">Athletic</button>
                 <button class="filter-btn" data-filter="academic" data-i18n-key="filter_academic">Academic</button>
-                <button class="filter-btn" data-filter="personal" data-i18n-key="filter_personal">Personal</button>
                 <button class="filter-btn" data-filter="professional" data-i18n-key="filter_professional">Professional</button>
             </div>
-        </section>
-
-        <!-- Achievements Grid -->
-        <section class="achievements-grid container">
-            
-            <!-- Athletic Achievements -->
-            <div class="achievement-card featured" data-category="athletic" data-proof-image="running-certificate.jpg">
-                <div class="achievement-icon"></div>
-                <div class="achievement-content">
-                    <h3 data-i18n-key="achievement_running_title">Best Running Performance</h3>
-                    <div class="achievement-stats">
-                        <span class="stat-highlight">48:55</span>
-                        <span class="stat-label" data-i18n-key="achievement_running_distance">7.96km Run</span>
-                    </div>
-                    <p data-i18n-key="achievement_running_desc">Completed a 7.96km run in 48:55 with a consistent 6:00/km pace in Szeged, demonstrating excellent endurance and pacing strategy.</p>
-                    <div class="achievement-meta">
-                        <span class="achievement-date" data-i18n-key="achievement_running_date">Recent</span>
-                        <span class="achievement-location" data-i18n-key="achievement_running_location">Szeged, Hungary</span>
-                    </div>
-                </div>
+            <div class="ach-grid achievements-grid">
+            <div class="ach-card featured" data-category="athletic" data-proof-image="running-certificate.jpg">
+                <span class="ach-num">48:55</span>
+                <span class="ach-lab" data-i18n-key="achievement_running_distance">7.96km Run</span>
+                <h3 data-i18n-key="achievement_running_title">Best Running Performance</h3>
+                <p data-i18n-key="achievement_running_desc">Completed a 7.96km run in 48:55 with a consistent 6:00/km pace in Szeged, demonstrating excellent endurance and pacing strategy.</p>
+                <div class="ach-meta"><span data-i18n-key="achievement_running_date">Recent</span><span data-i18n-key="achievement_running_location">Szeged, Hungary</span></div>
                 <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
             </div>
-
-
-            <!-- Academic Achievements -->
-            <div class="achievement-card" data-category="academic" data-proof-image="degree-certificate" data-proof-bilingual="true">
-                <div class="achievement-icon"></div>
-                <div class="achievement-content">
-                    <h3 data-i18n-key="achievement_degree_title">BSc Mathematics Degree</h3>
-                    <div class="achievement-stats">
-                        <span class="stat-highlight" data-i18n-key="achievement_degree_grade">Excellent Grade</span>
-                        <span class="stat-label" data-i18n-key="achievement_degree_honors">Economics Specialization</span>
-                    </div>
-                    <p data-i18n-key="achievement_degree_desc">Graduated with BSc in Mathematics with Economics specialization from University of Szeged. Completed all academic requirements with excellent grade and qualified as a Mathematician.</p>
-                    <div class="achievement-meta">
-                        <span class="achievement-date" data-i18n-key="achievement_degree_date">July 2022</span>
-                        <span class="achievement-location" data-i18n-key="achievement_degree_location">University of Szeged</span>
-                    </div>
-                </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
-            </div>
-
-            <div class="achievement-card" data-category="academic" data-proof-image="msc-progress.pdf" data-proof-bilingual="true">
-                <div class="achievement-icon"></div>
-                <div class="achievement-content">
-                    <h3 data-i18n-key="achievement_msc_title">MSc Computer Science</h3>
-                    <div class="achievement-stats">
-                        <span class="stat-highlight" data-i18n-key="achievement_msc_grade">AI Specialization</span>
-                        <span class="stat-label" data-i18n-key="achievement_msc_honors">In Progress</span>
-                    </div>
-                    <p data-i18n-key="achievement_msc_desc">Currently pursuing MSc in Computer Science with AI and Machine Learning specialization at Eötvös Loránd University. Includes Erasmus exchange program at Humboldt University, Germany.</p>
-                    <div class="achievement-meta">
-                        <span class="achievement-date" data-i18n-key="achievement_msc_date">2023-ongoing</span>
-                        <span class="achievement-location" data-i18n-key="achievement_msc_location">Eötvös Loránd University</span>
-                    </div>
-                </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
-            </div>
-
-            <div class="achievement-card" data-category="academic" data-proof-image="erasmus-exchange.pdf">
-                <div class="achievement-icon"></div>
-                <div class="achievement-content">
-                    <h3 data-i18n-key="achievement_erasmus_title">Erasmus Exchange Program</h3>
-                    <div class="achievement-stats">
-                        <span class="stat-highlight" data-i18n-key="achievement_erasmus_duration">6 Months</span>
-                        <span class="stat-label" data-i18n-key="achievement_erasmus_semester">3rd Semester</span>
-                    </div>
-                    <p data-i18n-key="achievement_erasmus_desc">Completed international exchange program at Humboldt University Berlin as part of MSc Computer Science studies. Third semester abroad focusing on AI and Machine Learning coursework in an international academic environment.</p>
-                    <div class="achievement-meta">
-                        <span class="achievement-date" data-i18n-key="achievement_erasmus_date">September 2024 - March 2025</span>
-                        <span class="achievement-location" data-i18n-key="achievement_erasmus_location">Humboldt University, Berlin</span>
-                    </div>
-                </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
-            </div>
-
-            <div class="achievement-card" data-category="professional" data-proof-image="employee-award.jpg">
-                <div class="achievement-icon"></div>
-                <div class="achievement-content">
-                    <h3 data-i18n-key="achievement_employee_title">Best Employee Award</h3>
-                    <div class="achievement-stats">
-                        <span class="stat-highlight" data-i18n-key="achievement_employee_grade">Best Employee</span>
-                        <span class="stat-label" data-i18n-key="achievement_employee_honors">Risk Management Division</span>
-                    </div>
-                    <p data-i18n-key="achievement_employee_desc">Recognized as Best Employee of the Financial and Risk Management Division at Fundamenta Housing Savings Bank for outstanding performance in risk modelling and regulatory compliance.</p>
-                    <div class="achievement-meta">
-                        <span class="achievement-date" data-i18n-key="achievement_employee_date">November 20, 2023</span>
-                        <span class="achievement-location" data-i18n-key="achievement_employee_location">Fundamenta Housing Savings Bank</span>
-                    </div>
-                </div>
-                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
-            </div>
-
-            <!-- Professional Achievement: V2 Breakthrough -->
-            <div class="achievement-card featured" data-category="professional">
-                <div class="achievement-icon"></div>
-                <div class="achievement-content">
-                    <h3 data-i18n-key="achievement_v2_title">Pure Rust Engine Breakthrough</h3>
-                    <div class="achievement-stats">
-                        <span class="stat-highlight">649M</span>
-                        <span class="stat-label" data-i18n-key="achievement_v2_pairs">Similarity Pairs Processed</span>
-                    </div>
-                    <p data-i18n-key="achievement_v2_desc">Achieved breakthrough performance optimization: developed Pure Rust similarity engine with streaming JSON architecture, processing 649 million similarity pairs across 37k anime in 16 minutes. 36x faster than original Python implementation.</p>
-                    <div class="achievement-meta">
-                        <span class="achievement-date" data-i18n-key="achievement_v2_date">December 2024</span>
-                        <span class="achievement-location" data-i18n-key="achievement_v2_location">Production Recommendation System</span>
-                    </div>
-                </div>
+            <div class="ach-card featured" data-category="professional">
+                <span class="ach-num">649M</span>
+                <span class="ach-lab" data-i18n-key="achievement_v2_pairs">Similarity Pairs Processed</span>
+                <h3 data-i18n-key="achievement_v2_title">Pure Rust Engine Breakthrough</h3>
+                <p data-i18n-key="achievement_v2_desc">Achieved breakthrough performance optimization: developed Pure Rust similarity engine with streaming JSON architecture, processing 649 million similarity pairs across 37k anime in 16 minutes. 36x faster than original Python implementation.</p>
+                <div class="ach-meta"><span data-i18n-key="achievement_v2_date">December 2024</span><span data-i18n-key="achievement_v2_location">Production Recommendation System</span></div>
                 <div class="proof-indicator" data-i18n-key="proof_coming_soon">Proof coming soon</div>
             </div>
-
-
-            <!-- Professional Achievements -->
-            <div class="achievement-card featured" data-category="professional">
-                <div class="achievement-icon"></div>
-                <div class="achievement-content">
-                    <h3 data-i18n-key="achievement_performance_title">Performance Optimization Mastery</h3>
-                    <div class="achievement-stats">
-                        <span class="stat-highlight">50-100x</span>
-                        <span class="stat-label" data-i18n-key="achievement_performance_speedup">Speedup Achieved</span>
-                    </div>
-                    <p data-i18n-key="achievement_performance_desc">Optimized Jaccard similarity computation from 9 seconds to under 100ms using multi-language implementations in Python, C++, and Rust with parallel processing.</p>
-                    <div class="achievement-meta">
-                        <span class="achievement-date" data-i18n-key="achievement_performance_date">2024</span>
-                        <span class="achievement-location" data-i18n-key="achievement_performance_location">Anime Recommender System</span>
-                    </div>
-                </div>
+            <div class="ach-card" data-category="academic" data-proof-image="degree-certificate" data-proof-bilingual="true">
+                <span class="ach-num">BSc</span>
+                <span class="ach-lab" data-i18n-key="achievement_degree_honors">Economics Specialization</span>
+                <h3 data-i18n-key="achievement_degree_title">BSc Mathematics Degree</h3>
+                <p data-i18n-key="achievement_degree_desc">Graduated with BSc in Mathematics with Economics specialization from University of Szeged. Completed all academic requirements with excellent grade and qualified as a Mathematician.</p>
+                <div class="ach-meta"><span data-i18n-key="achievement_degree_date">July 2022</span><span data-i18n-key="achievement_degree_location">University of Szeged</span></div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
+            </div>
+            <div class="ach-card" data-category="academic" data-proof-image="msc-progress.pdf" data-proof-bilingual="true">
+                <span class="ach-num">MSc</span>
+                <span class="ach-lab" data-i18n-key="achievement_msc_honors">In Progress</span>
+                <h3 data-i18n-key="achievement_msc_title">MSc Computer Science</h3>
+                <p data-i18n-key="achievement_msc_desc">Currently pursuing MSc in Computer Science with AI and Machine Learning specialization at Eötvös Loránd University. Includes Erasmus exchange program at Humboldt University, Germany.</p>
+                <div class="ach-meta"><span data-i18n-key="achievement_msc_date">2023-ongoing</span><span data-i18n-key="achievement_msc_location">Eötvös Loránd University</span></div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
+            </div>
+            <div class="ach-card" data-category="academic" data-proof-image="erasmus-exchange.pdf">
+                <span class="ach-num">6 mo</span>
+                <span class="ach-lab" data-i18n-key="achievement_erasmus_semester">3rd Semester</span>
+                <h3 data-i18n-key="achievement_erasmus_title">Erasmus Exchange Program</h3>
+                <p data-i18n-key="achievement_erasmus_desc">Completed international exchange program at Humboldt University Berlin as part of MSc Computer Science studies. Third semester abroad focusing on AI and Machine Learning coursework in an international academic environment.</p>
+                <div class="ach-meta"><span data-i18n-key="achievement_erasmus_date">September 2024 - March 2025</span><span data-i18n-key="achievement_erasmus_location">Humboldt University, Berlin</span></div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
+            </div>
+            <div class="ach-card" data-category="professional" data-proof-image="employee-award.jpg">
+                <span class="ach-num">#1</span>
+                <span class="ach-lab" data-i18n-key="achievement_employee_honors">Risk Management Division</span>
+                <h3 data-i18n-key="achievement_employee_title">Best Employee Award</h3>
+                <p data-i18n-key="achievement_employee_desc">Recognized as Best Employee of the Financial and Risk Management Division at Fundamenta Housing Savings Bank for outstanding performance in risk modelling and regulatory compliance.</p>
+                <div class="ach-meta"><span data-i18n-key="achievement_employee_date">November 20, 2023</span><span data-i18n-key="achievement_employee_location">Fundamenta Housing Savings Bank</span></div>
+                <div class="proof-indicator" data-i18n-key="proof_click_view"> Click to view proof</div>
+            </div>
+            <div class="ach-card featured" data-category="professional">
+                <span class="ach-num">50–100x</span>
+                <span class="ach-lab" data-i18n-key="achievement_performance_speedup">Speedup Achieved</span>
+                <h3 data-i18n-key="achievement_performance_title">Performance Optimization Mastery</h3>
+                <p data-i18n-key="achievement_performance_desc">Optimized Jaccard similarity computation from 9 seconds to under 100ms using multi-language implementations in Python, C++, and Rust with parallel processing.</p>
+                <div class="ach-meta"><span data-i18n-key="achievement_performance_date">2024</span><span data-i18n-key="achievement_performance_location">Anime Recommender System</span></div>
                 <div class="proof-indicator" data-i18n-key="proof_coming_soon">Proof coming soon</div>
             </div>
+            </div>
+        </div>
 
-
-            <!-- Personal Achievements -->
-
-        </section>
-
-
-        <!-- Motivation Section -->
-        <section class="motivation-section container">
-            <div class="motivation-content">
+        <section class="wrap sec">
+            <div class="sec-head">
+                <p class="sec-num"><b>§ 01</b></p>
                 <h2 data-i18n-key="achievements_motivation_title">What Drives Me</h2>
-                <p data-i18n-key="achievements_motivation_text">Every achievement represents a journey of dedication, learning, and growth. Whether it's pushing physical limits in athletics or solving complex technical challenges, I believe in setting ambitious goals and working consistently towards them. These accomplishments reflect not just the destinations reached, but the character built along the way.</p>
-                
-                <div class="motivation-principles">
-                    <div class="principle">
-                        <h3 data-i18n-key="principle_consistency_title">Consistency</h3>
-                        <p data-i18n-key="principle_consistency_desc">Small daily improvements compound into extraordinary results over time.</p>
-                    </div>
-                    <div class="principle">
-                        <h3 data-i18n-key="principle_challenge_title">Challenge</h3>
-                        <p data-i18n-key="principle_challenge_desc">Embracing difficult goals pushes boundaries and reveals hidden potential.</p>
-                    </div>
-                    <div class="principle">
-                        <h3 data-i18n-key="principle_balance_title">Balance</h3>
-                        <p data-i18n-key="principle_balance_desc">Excellence in multiple areas creates a well-rounded and fulfilling life.</p>
-                    </div>
-                </div>
+            </div>
+            <div class="tenets">
+                <div class="tenet animate-on-scroll"><h3 data-i18n-key="principle_consistency_title">Consistency</h3><p data-i18n-key="principle_consistency_desc">Small daily improvements compound into extraordinary results over time.</p></div>
+                <div class="tenet animate-on-scroll"><h3 data-i18n-key="principle_challenge_title">Challenge</h3><p data-i18n-key="principle_challenge_desc">Embracing difficult goals pushes boundaries and reveals hidden potential.</p></div>
+                <div class="tenet animate-on-scroll"><h3 data-i18n-key="principle_balance_title">Balance</h3><p data-i18n-key="principle_balance_desc">Excellence in multiple areas creates a well-rounded and fulfilling life.</p></div>
             </div>
         </section>
-
-        <!-- Call to Action -->
-        <section class="cta-section container">
-            <h2 data-i18n-key="achievements_cta_title">Ready for New Challenges</h2>
-            <p data-i18n-key="achievements_cta_text">I'm always looking for the next opportunity to grow, learn, and achieve something meaningful. Let's connect and explore how we can create success together.</p>
-            <a href="#contact" class="btn btn-primary" data-i18n-key="achievements_cta_btn">Get in Touch</a>
-        </section>
-
     </main>
 
     <!-- Proof Modal -->
@@ -259,7 +146,7 @@
                 <img id="proof-modal-image" alt="Achievement proof" />
                 <div class="proof-modal-fallback">
                     <div class="proof-placeholder">
-                        <div class="proof-placeholder-icon"></div>
+
                         <h4 data-i18n-key="proof_coming_soon">Proof Coming Soon</h4>
                         <p data-i18n-key="proof_placeholder_desc">This achievement proof will be available shortly. Thank you for your interest!</p>
                     </div>
@@ -270,13 +157,16 @@
             </div>
         </div>
     </div>
-    
+
+
     <!-- Shared footer injected by components.js -->
     <div id="site-footer"></div>
 
-    <!-- Scripts -->
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
     <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n-extra.js" defer></script>
     <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/fx.js" defer></script>
 </body>
 </html>

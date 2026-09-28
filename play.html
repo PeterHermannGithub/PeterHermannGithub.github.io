@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://peterpalhermann.com/play.html">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
 
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
-
-    <title>Play — Peter Pal Hermann</title>
-    <meta name="description" content="Word games built in the browser — Wordle variants and other small puzzles by Peter Pal Hermann.">
+    <title data-i18n-key="meta_title_play">Play — Peter Pal Hermann</title>
+    <meta name="description" content="Word games built in the browser — Wordle variants and other small puzzles by Peter Pal Hermann." data-i18n-key="meta_description_play">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peterpalhermann.com/play.html">
+    <meta property="og:title" content="Play — Peter Pal Hermann">
+    <meta property="og:description" content="Word games built in the browser — Wordle variants and other small puzzles by Peter Pal Hermann.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
 
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
@@ -24,80 +28,66 @@
     </script>
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVSZK3HJ4Q');
+    </script>
 </head>
-<body>
+<body class="rd">
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
     <main id="main-content">
-        <section class="page-header container">
-            <p class="kicker"><span class="dash">//</span> Browser games · vanilla JS, no framework</p>
-            <h1>Play</h1>
-            <p>Small word puzzles I build to keep the front-end muscles warm. Each one is self-contained — open the page, no install, no sign-in.</p>
-        </section>
+        <header class="wrap pagehead">
+            <p class="kicker"><span class="dash">§ 04</span> <span data-i18n-key="rd_k_play">Arcade</span></p>
+            <h1><span data-i18n-key="nav_play">Play</span></h1>
+            <p class="lede" data-i18n-key="rd_play_lede">Small games I built for the fun of it, all vanilla JavaScript, all running in your browser. No account, no tracking of your guesses.</p>
+        </header>
 
-        <section class="container">
-            <!--
-              GAME CARD TEMPLATE — duplicate a card below for each variant.
-              When a game is ready, point the card's <a> at its page (e.g. games/wordle.html)
-              and remove the `is-wip` class + the "in progress" badge.
-            -->
-            <div class="games-grid">
-
-                <article class="game-card">
-                    <div class="game-card-top">
-                        <span class="game-tag">anime</span>
-                    </div>
-                    <h3>Anidle</h3>
-                    <p>Guess the hidden anime character from attribute clues. Pick your series — Frieren, Naruto, Bleach, JJK — and narrow it down.</p>
-                    <a class="game-cta" href="games/anidle.html">Play</a>
-                </article>
-
-                <article class="game-card is-wip">
-                    <div class="game-card-top">
-                        <span class="game-tag">word</span>
-                        <span class="game-badge">in progress</span>
-                    </div>
-                    <h3>Wordle</h3>
-                    <p>The classic. Six guesses, five letters, green / yellow / grey.</p>
-                    <span class="game-cta" aria-disabled="true">Coming soon</span>
-                </article>
-
-                <article class="game-card is-wip">
-                    <div class="game-card-top">
-                        <span class="game-tag">word</span>
-                        <span class="game-badge">in progress</span>
-                    </div>
-                    <h3>Variant #2</h3>
-                    <p>A twist on the formula — your call. Themed word list, extra rows, harder mode.</p>
-                    <span class="game-cta" aria-disabled="true">Coming soon</span>
-                </article>
-
-                <article class="game-card is-wip">
-                    <div class="game-card-top">
-                        <span class="game-tag">word</span>
-                        <span class="game-badge">in progress</span>
-                    </div>
-                    <h3>Variant #3</h3>
-                    <p>Another idea slot. Plug a new game in by copying a card and adding its page.</p>
-                    <span class="game-cta" aria-disabled="true">Coming soon</span>
-                </article>
-
+        <div class="wrap sec" style="padding-top:clamp(2rem,5vw,4rem)">
+            <div class="game-grid">
+                <a class="game-tile live" href="games/anidle.html">
+                    <div class="top"><span class="tag">anime</span><span class="tag" data-i18n-key="rd_playable">playable</span></div>
+                    <div><h3>Anidle</h3><p data-i18n-key="rd_anidle_long">Guess the hidden anime character from attribute clues. Pick your series — Frieren, Naruto, Bleach, JJK — and narrow it down.</p></div>
+                    <span class="go" data-i18n-key="rd_play">Play</span>
+                </a>
+                <div class="game-tile wip">
+                    <div class="top"><span class="tag">word</span><span class="tag" data-i18n-key="rd_soon">in progress</span></div>
+                    <div><h3>Wordle</h3><p data-i18n-key="rd_wordle">The classic. Six guesses, five letters, green / yellow / grey.</p></div>
+                    <span class="go" data-i18n-key="rd_soon_go">Coming soon</span>
+                </div>
+                <div class="game-tile wip">
+                    <div class="top"><span class="tag">word</span><span class="tag" data-i18n-key="rd_soon">in progress</span></div>
+                    <div><h3>Variant 02</h3><p data-i18n-key="rd_var2">A twist on the formula: a themed word list, extra rows, a harder mode.</p></div>
+                    <span class="go" data-i18n-key="rd_soon_go">Coming soon</span>
+                </div>
+                <div class="game-tile wip">
+                    <div class="top"><span class="tag">word</span><span class="tag" data-i18n-key="rd_soon">in progress</span></div>
+                    <div><h3>Variant 03</h3><p data-i18n-key="rd_var3">Another idea slot. Copy a tile, add its page, ship it.</p></div>
+                    <span class="go" data-i18n-key="rd_soon_go">Coming soon</span>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <!-- Shared footer injected by components.js -->
     <div id="site-footer"></div>
 
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
     <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n-extra.js" defer></script>
     <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/fx.js" defer></script>
 </body>
 </html>

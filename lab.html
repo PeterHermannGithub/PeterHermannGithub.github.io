@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://peterpalhermann.com/lab.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+
+    <title data-i18n-key="meta_title_lab">Lab — Peter Pal Hermann</title>
+    <meta name="description" content="What Peter Pal Hermann is building right now: a daily-puzzle platform, a public-money evidence graph, a taste-cluster recommender, a Slay the Spire bot and two Android apps." data-i18n-key="meta_description_lab">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peterpalhermann.com/lab.html">
+    <meta property="og:title" content="Lab — Peter Pal Hermann">
+    <meta property="og:description" content="What Peter Pal Hermann is building right now: a daily-puzzle platform, a public-money evidence graph, a taste-cluster recommender, a Slay the Spire bot and two Android apps.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
+
+    <!-- Critical: set theme before paint (dark is the default) -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVSZK3HJ4Q');
+    </script>
+</head>
+<body class="rd">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Shared header injected by components.js -->
+    <div id="site-header"></div>
+
+    <main id="main-content">
+        <header class="wrap pagehead">
+            <p class="kicker"><span class="dash">§ 05</span> <span data-i18n-key="rd_k_lab">Workbench</span></p>
+            <h1><span data-i18n-key="nav_lab">Lab</span></h1>
+            <p class="lede" data-i18n-key="rd_lab_lede">The work-in-progress shelf. Less polished than the projects page, more honest about status. Private repositories are described but not linked.</p>
+        </header>
+
+        <div class="wrap sec" style="padding-top:clamp(2rem,5vw,4rem)">
+            <div class="lab-grid">
+                <article class="lab-card animate-on-scroll">
+                    <div class="top"><span class="status live" data-i18n-key="rd_lab_daily">live</span></div>
+                    <h3>Dailiverse</h3>
+                    <p data-i18n-key="rd_lab_daily_d">Server-authoritative platform for daily browser puzzles. The server, not the browser, is the authority on the puzzle, the date and your streak. The only project of mine that serves real traffic.</p>
+                    <a class="ext" href="https://www.dailiverse.com" target="_blank" rel="noopener noreferrer">www.dailiverse.com ↗</a>
+                    <div class="work-tags"><span>Next.js</span><span>TypeScript</span><span>Postgres</span><span>Vercel</span></div>
+                </article>
+                <article class="lab-card animate-on-scroll">
+                    <div class="top"><span class="status build" data-i18n-key="rd_lab_graph">in development</span></div>
+                    <h3>Public money graph</h3>
+                    <p data-i18n-key="rd_lab_graph_d">A Hungarian public-money evidence graph: eight ingest adapters into PostgreSQL and a FastAPI + Cytoscape explorer. No edge exists without the retained source bytes that produced it, enforced by a foreign key.</p>
+
+                    <div class="work-tags"><span>Python</span><span>PostgreSQL</span><span>FastAPI</span><span>Cytoscape</span></div>
+                </article>
+                <article class="lab-card animate-on-scroll">
+                    <div class="top"><span class="status build" data-i18n-key="rd_lab_taste">in development</span></div>
+                    <h3>Taste-cluster recommender</h3>
+                    <p data-i18n-key="rd_lab_taste_d">The Go successor to the anime recommender: reactions become tastes, tastes become explained, diversified lists, and none of it needs an account. Accounts and list linking sit behind a feature flag.</p>
+                    <a class="ext" href="projects/anime-recommender.html"><span data-i18n-key="rd_lab_predecessor">Read about the first version</span> →</a>
+                    <div class="work-tags"><span>Go</span><span>Postgres</span><span>MMR</span><span>React</span></div>
+                </article>
+                <article class="lab-card animate-on-scroll">
+                    <div class="top"><span class="status build" data-i18n-key="rd_lab_sts">in development</span></div>
+                    <h3>Slay the Spire bot</h3>
+                    <p data-i18n-key="rd_lab_sts_d">A bot for Ironclad at ascension 0, driven through CommunicationMod, with a learning pipeline. A fork of a C++ simulator serves as its conformance oracle: the bot's idea of the game must match the simulator's.</p>
+
+                    <div class="work-tags"><span>Python</span><span>PyTorch</span><span>C++</span><span>CUDA</span></div>
+                </article>
+                <article class="lab-card animate-on-scroll">
+                    <div class="top"><span class="status" data-i18n-key="rd_lab_horizons">released</span></div>
+                    <h3>Horizons</h3>
+                    <p data-i18n-key="rd_lab_horizons_d">An Android task manager on Room: horizons, priorities, recurrence, reminders, subtasks, a home-screen widget and JSON backup. Private repository, signed APK releases through v2.2.</p>
+
+                    <div class="work-tags"><span>Kotlin</span><span>Room</span><span>Android</span></div>
+                </article>
+                <article class="lab-card animate-on-scroll">
+                    <div class="top"><span class="status" data-i18n-key="rd_lab_enc">released</span></div>
+                    <h3>Random Encouragement</h3>
+                    <p data-i18n-key="rd_lab_enc_d">A one-screen Android app that shows one encouraging sentence at random. Built with Compose, run on API 36 and API 26. Private repository, signed APK release v1.0.1.</p>
+
+                    <div class="work-tags"><span>Kotlin</span><span>Compose</span><span>Android</span></div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared footer injected by components.js -->
+    <div id="site-footer"></div>
+
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
+    <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n-extra.js" defer></script>
+    <script src="assets/js/i18n.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/fx.js" defer></script>
+</body>
+</html>

@@ -27,7 +27,7 @@
 
     <!-- Styles, Fonts, and Icons -->
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/project-page.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -43,118 +43,21 @@
             } catch (e) {}
         })();
     </script>
-    
-    <style>
-        .v2-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .v2-stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .v2-stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-        .v2-stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .v2-stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-        .architecture-diagram {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            overflow-x: auto;
-        }
-        .code-highlight {
-            background: var(--code-bg, #f8f8f8);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            overflow-x: auto;
-        }
-        .tech-stack-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .tech-category {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-        .tech-category h4 {
-            margin: 0 0 1rem 0;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-        }
-        .tech-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .tech-list li {
-            padding: 0.25rem 0;
-            color: var(--text-color);
-        }
-        .performance-comparison {
-            background: linear-gradient(135deg, var(--card-bg) 0%, var(--secondary-bg, #f5f5f5) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-        .breakthrough-highlight {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-        .breakthrough-highlight h3 {
-            color: white;
-            margin-top: 0;
-        }
-    </style>
 </head>
-<body>
+<body class="rd">
+    <div class="read-progress" aria-hidden="true"></div>
 
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
-    <main class="project-page-main">
-        <div class="container">
+    <main id="main-content" class="project-page-main">
+        <div class="wrap">
             
             <!-- Project Header -->
-            <header class="project-header">
+            <header class="project-hero">
+                <p class="kicker"><span class="dash">//</span> <span data-i18n-key="rd_k_project">Project</span></p>
                 <h1 data-i18n-key="project_anime_recommender_title">V5.1 Production Anime Recommendation System</h1>
                 <p class="project-tagline" data-i18n-key="project_anime_recommender_tagline">AI-powered semantic embeddings with 18x performance improvement, covering 37,030 anime with <300ms production SLA compliance</p>
                 <div class="project-links">
@@ -192,63 +95,20 @@
             </div>
 
             <!-- Technical Evolution Timeline -->
-            <section class="project-details-section" style="margin: 3rem 0;">
+            <section class="project-details-section" style="margin-top:clamp(2rem,5vw,3.5rem)">
                 <h2>Technical Evolution Journey</h2>
-                <p>Rapid innovation cycle from June to July 2025, showcasing continuous architectural refinement and performance optimization:</p>
-                
-                <div class="evolution-timeline" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; margin: 2rem 0;">
-                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start;">
-                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #e74c3c20; border-radius: 6px;">June 18</div>
-                        <div>
-                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">Foundation</h4>
-                            <p style="margin: 0; color: var(--text-muted);">Initial Python similarity system with Jaccard, cosine, and TF-IDF algorithms</p>
-                        </div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
-                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #f39c1220; border-radius: 6px;">June 21</div>
-                        <div>
-                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">Rust Engine Breakthrough</h4>
-                            <p style="margin: 0; color: var(--text-muted);">V2 multifeature algorithm (tag 60%, score 20%, year 15%, type 5%) with streaming JSON writer - solved 649M pairs processing</p>
-                        </div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
-                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #3498db20; border-radius: 6px;">June-July</div>
-                        <div>
-                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">V3 Baseline ML</h4>
-                            <p style="margin: 0; color: var(--text-muted);">Semantic embeddings with all-mpnet-base-v2 (768-dim) - foundational ML system serving as fallback</p>
-                        </div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
-                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #8e44ad20; border-radius: 6px;">July 3</div>
-                        <div>
-                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">V4 Fine-Tuned ML</h4>
-                            <p style="margin: 0; color: var(--text-muted);">Fine-tuned semantic embeddings using V2 similarity matrix as training data - achieved 68.4% test accuracy</p>
-                        </div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
-                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #27ae6020; border-radius: 6px;">July 5</div>
-                        <div>
-                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">V4.5 Performance Mastery</h4>
-                            <p style="margin: 0; color: var(--text-muted);">Singleton architecture optimization - eliminated factory pattern bug achieving 18x improvement (4,667ms → 264ms)</p>
-                        </div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; margin-top: 1.5rem;">
-                        <div style="text-align: center; font-weight: bold; color: var(--primary-color); padding: 0.5rem; background: #9b59b620; border-radius: 6px;">July 6</div>
-                        <div>
-                            <h4 style="margin: 0 0 0.5rem 0; color: var(--primary-color);">V5.0 Production Excellence</h4>
-                            <p style="margin: 0; color: var(--text-muted);">Production deployment with Docker, monitoring, security headers, and comprehensive backup systems</p>
-                        </div>
-                    </div>
+                <p>Rapid innovation cycle from June to July 2025, with continuous architectural refinement and performance optimization:</p>
+                <div class="evo">
+                    <div class="evo-row"><time>June 18</time><div><h4>Foundation</h4><p>Initial Python similarity system with Jaccard, cosine, and TF-IDF algorithms</p></div></div>
+                    <div class="evo-row"><time>June 21</time><div><h4>Rust Engine Breakthrough</h4><p>V2 multifeature algorithm (tag 60%, score 20%, year 15%, type 5%) with streaming JSON writer - solved 649M pairs processing</p></div></div>
+                    <div class="evo-row"><time>June-July</time><div><h4>V3 Baseline ML</h4><p>Semantic embeddings with all-mpnet-base-v2 (768-dim) - foundational ML system serving as fallback</p></div></div>
+                    <div class="evo-row"><time>July 3</time><div><h4>V4 Fine-Tuned ML</h4><p>Fine-tuned semantic embeddings using V2 similarity matrix as training data - achieved 68.4% test accuracy</p></div></div>
+                    <div class="evo-row"><time>July 5</time><div><h4>V4.5 Performance Mastery</h4><p>Singleton architecture optimization - eliminated factory pattern bug achieving 18x improvement (4,667ms → 264ms)</p></div></div>
+                    <div class="evo-row"><time>July 6</time><div><h4>V5.0 Production Excellence</h4><p>Production deployment with Docker, monitoring, security headers, and comprehensive backup systems</p></div></div>
                 </div>
-                
-                <div class="evolution-insight" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; padding: 2rem; margin: 2rem 0;">
-                    <h3 style="color: white; margin-top: 0;"> →  Evolution Insight</h3>
-                    <p style="margin-bottom: 0;">The Rust engine phase was crucial for handling large-scale similarity computations and became the foundation for ML advancement. The V2 similarity matrix (649M pairs) was used to generate 500,000 high-quality training triplets for V4 fine-tuning, creating a "Rosetta Stone" that translated engineered similarities into learned representations. This demonstrates architectural synergy - each phase building upon previous innovations rather than starting from scratch.</p>
+                <div class="callout">
+                    <h3>Evolution Insight</h3>
+                    <p>The Rust engine phase was crucial for handling large-scale similarity computations and became the foundation for ML advancement. The V2 similarity matrix (649M pairs) was used to generate 500,000 high-quality training triplets for V4 fine-tuning, creating a "Rosetta Stone" that translated engineered similarities into learned representations. This demonstrates architectural synergy - each phase building upon previous innovations rather than starting from scratch.</p>
                 </div>
             </section>
 
@@ -258,7 +118,7 @@
                 <!-- Left Column: Architecture & Innovation -->
                 <div class="project-details-col">
                     
-                    <div class="breakthrough-highlight">
+                    <div class="callout">
                         <h3> ML Embeddings Architecture</h3>
                         <p>Current V5.1 system leverages fine-tuned 768-dimensional semantic embeddings trained specifically on anime data. Achieving 18x performance improvement through architectural optimization, the system delivers <300ms production SLA compliance while maintaining superior recommendation quality through semantic understanding.</p>
                     </div>
@@ -301,31 +161,31 @@
                         <h2>Performance Journey: Architectural Evolution</h2>
                         <div class="performance-comparison">
                             <h4>Response Time Evolution</h4>
-                            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <th style="text-align: left; padding: 0.5rem;">Phase</th>
-                                    <th style="text-align: left; padding: 0.5rem;">Response Time</th>
-                                    <th style="text-align: left; padding: 0.5rem;">Technical Achievement</th>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 0.5rem;">Python V1 System</td>
-                                    <td style="padding: 0.5rem;">9 seconds</td>
-                                    <td style="padding: 0.5rem; color: #f39c12;"> Traditional similarity algorithms (Jaccard/cosine/TF-IDF)</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 0.5rem;">Rust V2 Engine</td>
-                                    <td style="padding: 0.5rem;"><strong>5.2ms average</strong></td>
-                                    <td style="padding: 0.5rem; color: #27ae60;"> Multifeature algorithm + 649M pairs processing</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="padding: 0.5rem;">V4 ML (Factory Bug)</td>
-                                    <td style="padding: 0.5rem;">4,667ms</td>
-                                    <td style="padding: 0.5rem; color: #e74c3c;"> Per-request initialization overhead (140MB embeddings)</td>
+                            <table>
+                                <tr>
+                                    <th>Phase</th>
+                                    <th>Response Time</th>
+                                    <th>Technical Achievement</th>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 0.5rem;"><strong>V4.5 Optimized</strong></td>
-                                    <td style="padding: 0.5rem;"><strong>264ms / 4ms cached</strong></td>
-                                    <td style="padding: 0.5rem; color: #27ae60;"><strong> Singleton architecture + semantic embeddings</strong></td>
+                                    <td>Python V1 System</td>
+                                    <td>9 seconds</td>
+                                    <td> Traditional similarity algorithms (Jaccard/cosine/TF-IDF)</td>
+                                </tr>
+                                <tr>
+                                    <td>Rust V2 Engine</td>
+                                    <td><strong>5.2ms average</strong></td>
+                                    <td> Multifeature algorithm + 649M pairs processing</td>
+                                </tr>
+                                <tr>
+                                    <td>V4 ML (Factory Bug)</td>
+                                    <td>4,667ms</td>
+                                    <td> Per-request initialization overhead (140MB embeddings)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>V4.5 Optimized</strong></td>
+                                    <td><strong>264ms / 4ms cached</strong></td>
+                                    <td><strong> Singleton architecture + semantic embeddings</strong></td>
                                 </tr>
                             </table>
                         </div>
@@ -380,7 +240,7 @@
                         <h2>Algorithm Evolution</h2>
                         <p>Three distinct algorithmic approaches showcase the system's evolution from traditional NLP to advanced ML:</p>
                         
-                        <div class="tech-category" style="margin-bottom: 1.5rem;">
+                        <div class="tech-category">
                             <h4> Python V1: Traditional Similarity</h4>
                             <ul class="tech-list">
                                 <li><strong>Jaccard Similarity:</strong> |intersection| / |union| for tag sets</li>
@@ -390,7 +250,7 @@
                             </ul>
                         </div>
                         
-                        <div class="tech-category" style="margin-bottom: 1.5rem;">
+                        <div class="tech-category">
                             <h4> Rust V2: Multifeature Engineering</h4>
                             <ul class="tech-list">
                                 <li><strong>Tag Similarity (60%):</strong> Weighted popularity-adjusted tag matching</li>
@@ -442,10 +302,11 @@
     <!-- Shared footer injected by components.js -->
     <div id="site-footer"></div>
 
-    <!-- Scripts -->
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
     <script src="../assets/js/components.js" defer></script>
+    <script src="../assets/js/i18n-extra.js" defer></script>
     <script src="../assets/js/i18n.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
-
+    <script src="../assets/js/fx.js" defer></script>
 </body>
 </html>

@@ -5,25 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://peterpalhermann.com/about.html">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
-    
-    <!-- SEO Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+
     <title data-i18n-key="meta_title_about">About Me - Peter Pal Hermann</title>
     <meta name="description" content="Learn about my journey as a data scientist and AI specialist. Risk modeller at Fundamenta, former Morgan Stanley analyst with MSc Computer Science." data-i18n-key="meta_description_about">
-    
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://peterpalhermann.com/about.html">
     <meta property="og:title" content="About Me - Peter Pal Hermann">
-    <meta property="og:description" content="Learn about my journey as a data scientist and developer.">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://peterpalhermann.com/about.html">
-    <meta property="twitter:title" content="About Me - Peter Pal Hermann">
-    <meta property="twitter:description" content="Learn about my journey as a data scientist and developer.">
+    <meta property="og:description" content="Learn about my journey as a data scientist and AI specialist. Risk modeller at Fundamenta, former Morgan Stanley analyst with MSc Computer Science.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
 
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
@@ -35,192 +26,105 @@
             } catch (e) {}
         })();
     </script>
-    
-    <!-- Styles, Fonts, and Icons -->
+
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "AboutPage",
-      "name": "About Me - Peter Pal Hermann",
-      "url": "https://peterpalhermann.com/about.html",
-      "author": {
-        "@type": "Person",
-        "name": "Peter Pal Hermann",
-        "jobTitle": "Data Scientist"
-      }
-    }
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVSZK3HJ4Q');
     </script>
 </head>
-<body>
+<body class="rd">
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
     <main id="main-content">
-        <!-- Page Header -->
-        <section class="page-header container">
-            <h1 data-i18n-key="about_title">About Me</h1>
-            <p data-i18n-key="about_subtitle">Data Scientist & AI Specialist building production-scale solutions</p>
-        </section>
+        <header class="wrap pagehead">
+            <p class="kicker"><span class="dash">§ 02</span> <span data-i18n-key="rd_k_about">About</span></p>
+            <h1 data-i18n-key="about_intro_title">Hello, I'm Peter</h1>
+            <p class="lede" data-i18n-key="about_intro_text">Data Scientist and AI specialist with professional experience at Morgan Stanley and Fundamenta Housing Savings Bank. Currently pursuing MSc Computer Science with AI specialization at Eötvös Loránd University. I specialize in building production-scale data solutions and optimizing high-performance systems.</p>
+        </header>
 
-        <!-- About Content - Single Centered Card -->
-        <section class="about-card container">
-            
-            <!-- Hero Section -->
-            <div class="about-hero">
-                <h2 data-i18n-key="about_intro_title">Hello, I'm Peter</h2>
-                <p data-i18n-key="about_intro_text">Data Scientist and AI specialist with professional experience at Morgan Stanley and Fundamenta Housing Savings Bank. Currently pursuing MSc Computer Science with AI specialization at Eötvös Loránd University. I specialize in building production-scale data solutions and optimizing high-performance systems.</p>
+        <div class="wrap about-split">
+            <aside class="about-side">
+                <dl class="kv"><dt><span data-i18n-key="rd_f_where">Based in</span></dt><dd data-i18n-key="about_location_value">Budapest, Hungary</dd></dl>
+                <dl class="kv"><dt><span data-i18n-key="rd_f_lang">Languages</span></dt><dd data-i18n-key="about_languages">Hungarian (Native), English (Fluent)</dd></dl>
+                <dl class="kv"><dt><span data-i18n-key="rd_f_study">Studying</span></dt><dd><span data-i18n-key="rd_f_study_v">MSc Computer Science, ELTE</span></dd></dl>
+                <div style="display:flex;flex-direction:column;gap:.6rem;align-items:flex-start">
+                    <a href="./assets/cv/PeterHermann_Budapest_cv_en.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n-key="about_download_cv" data-cv-bilingual="true" data-cv-base="./assets/cv/PeterHermann_Budapest_cv" id="cv-download-btn">Download CV</a>
+                    <a href="#contact" class="btn" data-i18n-key="about_contact_btn">Get in Touch</a>
+                </div>
+            </aside>
+
+            <div class="about-main">
+                <section class="sec">
+                    <div class="big-stat-row">
+                        <div class="big-stat animate-on-scroll"><span class="n">3+</span><span class="l" data-i18n-key="about_stat_years">Years Experience</span></div>
+                        <div class="big-stat animate-on-scroll"><span class="n">6+</span><span class="l" data-i18n-key="about_stat_projects">Projects</span></div>
+                        <div class="big-stat animate-on-scroll"><span class="n">2023</span><span class="l" data-i18n-key="about_stat_award">Best Employee 2023</span></div>
+                    </div>
+                </section>
+
+                <section class="sec">
+                    <div class="sec-head">
+                <p class="sec-num"><b>§ 01</b></p>
+                <h2 data-i18n-key="rd_sec_timeline">Timeline</h2>
             </div>
+                    <div class="tline">
+                        <div class="tl-row animate-on-scroll"><span class="tl-date">2024 — 25</span><div><h3 data-i18n-key="about_education_msc_erasmus">Including Erasmus Exchange at Humboldt University, Berlin</h3><p data-i18n-key="achievement_erasmus_desc">Completed international exchange program at Humboldt University Berlin as part of MSc Computer Science studies.</p></div></div>
+                        <div class="tl-row animate-on-scroll"><span class="tl-date">2024</span><div><h3 data-i18n-key="about_rust_breakthrough_title">Pure Rust Engine Breakthrough</h3><p data-i18n-key="about_rust_breakthrough_desc">Developed production-scale similarity engine processing 649M pairs in 16 minutes - 36x faster than Python implementation</p></div></div>
+                        <div class="tl-row animate-on-scroll"><span class="tl-date">2023 — now</span><div><h3><span data-i18n-key="about_education_msc_title">MSc Computer Science</span> <span data-i18n-key="about_education_msc_details">(AI Specialization) - Eötvös Loránd University</span></h3></div></div>
+                        <div class="tl-row animate-on-scroll"><span class="tl-date">2023</span><div><h3 data-i18n-key="about_best_employee_title">Best Employee Award</h3><p data-i18n-key="about_best_employee_desc">Risk Management Division, Fundamenta Housing Savings Bank - recognized for outstanding performance in risk modeling</p></div></div>
+                        <div class="tl-row animate-on-scroll"><span class="tl-date">2022</span><div><h3><span data-i18n-key="about_education_bsc_title">BSc Mathematics</span> <span data-i18n-key="about_education_bsc_details">(Economics Minor) - University of Szeged</span></h3><p data-i18n-key="about_education_bsc_thesis">Thesis: Approximation of risk measures by recursion</p></div></div>
+                        <div class="tl-row animate-on-scroll"><span class="tl-date">2021 — 22</span><div><h3 data-i18n-key="about_morgan_experience_title">Morgan Stanley Experience</h3><p data-i18n-key="about_morgan_experience_desc">Risk Analyst developing internal knowledge systems and database optimization for enhanced data accessibility</p></div></div>
+                    </div>
+                </section>
 
-            <!-- Core Stats -->
-            <div class="about-stats">
-                <div class="stat-item">
-                    <span class="stat-number">3+</span>
-                    <span class="stat-label" data-i18n-key="about_stat_years">Years Experience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">6+</span>
-                    <span class="stat-label" data-i18n-key="about_stat_projects">Projects</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">2023</span>
-                    <span class="stat-label" data-i18n-key="about_stat_award">Best Employee 2023</span>
-                </div>
+                <section class="sec">
+                    <div class="sec-head">
+                <p class="sec-num"><b>§ 02</b></p>
+                <h2 data-i18n-key="about_skills_title">Core Expertise</h2>
             </div>
-
-            <!-- Core Skills -->
-            <div class="skills-section">
-                <h3 data-i18n-key="about_skills_title">Core Expertise</h3>
-                
-                <div class="skill-category">
-                    <h4 data-i18n-key="about_datascience_title">Data Science & AI</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">Risk Modeling</span>
-                        <span class="skill-tag">Statistical Analysis</span>
+                    <div class="skill-matrix">
+                        <div class="skill-col animate-on-scroll">
+                        <h3 data-i18n-key="about_datascience_title">Data Science &amp; AI</h3>
+                        <div class="work-tags"><span>Python</span><span>R</span><span>Machine Learning</span><span>TensorFlow</span><span>Risk Modeling</span><span>Statistical Analysis</span></div>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h4 data-i18n-key="about_enterprise_title">Production Development</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Rust</span>
-                        <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Microservices</span>
-                        <span class="skill-tag">Performance Optimization</span>
+                        <div class="skill-col animate-on-scroll">
+                        <h3 data-i18n-key="about_enterprise_title">Production Development</h3>
+                        <div class="work-tags"><span>Rust</span><span>FastAPI</span><span>React</span><span>Docker</span><span>Microservices</span><span>Performance Optimization</span></div>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h4 data-i18n-key="about_financial_title">Financial & Compliance</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">IFRS 9</span>
-                        <span class="skill-tag">Credit Risk</span>
-                        <span class="skill-tag">Regulatory Compliance</span>
-                        <span class="skill-tag">Banking Systems</span>
+                        <div class="skill-col animate-on-scroll">
+                        <h3 data-i18n-key="about_financial_title">Financial &amp; Compliance</h3>
+                        <div class="work-tags"><span>IFRS 9</span><span>Credit Risk</span><span>Regulatory Compliance</span><span>Banking Systems</span></div>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h4 data-i18n-key="about_tools_title">Development & Tools</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Jupyter</span>
-                        <span class="skill-tag">Android</span>
-                        <span class="skill-tag">Chrome Extensions</span>
-                        <span class="skill-tag">Automation</span>
+                        <div class="skill-col animate-on-scroll">
+                        <h3 data-i18n-key="about_tools_title">Development &amp; Tools</h3>
+                        <div class="work-tags"><span>Git</span><span>SQL</span><span>Jupyter</span><span>Android</span><span>Chrome Extensions</span><span>Automation</span></div>
                     </div>
-                </div>
+                    </div>
+                </section>
             </div>
-
-            <!-- Experience Highlights -->
-            <div class="experience-highlights">
-                <h3 data-i18n-key="about_experience_title">Key Achievements</h3>
-                
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <h4 data-i18n-key="about_rust_breakthrough_title"> Pure Rust Engine Breakthrough</h4>
-                        <span class="experience-year">2024</span>
-                    </div>
-                    <p data-i18n-key="about_rust_breakthrough_desc">Developed production-scale similarity engine processing 649M pairs in 16 minutes - 36x faster than Python implementation</p>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <h4 data-i18n-key="about_best_employee_title"> Best Employee Award</h4>
-                        <span class="experience-year">2023</span>
-                    </div>
-                    <p data-i18n-key="about_best_employee_desc">Risk Management Division, Fundamenta Housing Savings Bank - recognized for outstanding performance in risk modeling</p>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <h4 data-i18n-key="about_morgan_experience_title"> Morgan Stanley Experience</h4>
-                        <span class="experience-year">2021-2022</span>
-                    </div>
-                    <p data-i18n-key="about_morgan_experience_desc">Risk Analyst developing internal knowledge systems and database optimization for enhanced data accessibility</p>
-                </div>
-            </div>
-
-            <!-- Education & Background -->
-            <div class="education-section">
-                <h3 data-i18n-key="about_education_title">Education</h3>
-                <div class="education-items">
-                    <div class="education-item">
-                        <strong data-i18n-key="about_education_msc_title">MSc Computer Science</strong> <span data-i18n-key="about_education_msc_details">(AI Specialization) - Eötvös Loránd University</span>
-                        <span class="education-detail" data-i18n-key="about_education_msc_erasmus">Including Erasmus Exchange at Humboldt University, Berlin</span>
-                    </div>
-                    <div class="education-item">
-                        <strong data-i18n-key="about_education_bsc_title">BSc Mathematics</strong> <span data-i18n-key="about_education_bsc_details">(Economics Minor) - University of Szeged</span>
-                        <span class="education-detail" data-i18n-key="about_education_bsc_thesis">Thesis: Approximation of risk measures by recursion</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Facts -->
-            <div class="quick-facts">
-                <div class="fact-row">
-                    <div class="fact">
-                        <span class="fact-icon"></span>
-                        <span data-i18n-key="about_location_value">Budapest, Hungary</span>
-                    </div>
-                    <div class="fact">
-                        <span class="fact-icon"></span>
-                        <span data-i18n-key="about_languages">Hungarian (Native), English (Fluent)</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div class="about-cta">
-                <a href="./assets/cv/PeterHermann_Budapest_cv_en.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n-key="about_download_cv" data-cv-bilingual="true" data-cv-base="./assets/cv/PeterHermann_Budapest_cv" id="cv-download-btn">Download CV</a>
-                <a href="#contact" class="btn btn-secondary" data-i18n-key="about_contact_btn">Get in Touch</a>
-            </div>
-
-        </section>
-
+        </div>
     </main>
-    
+
     <!-- Shared footer injected by components.js -->
     <div id="site-footer"></div>
 
-    <!-- Scripts -->
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
     <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n-extra.js" defer></script>
     <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/fx.js" defer></script>
 </body>
 </html>

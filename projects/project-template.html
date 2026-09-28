@@ -21,13 +21,14 @@
     </script>
 
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/project-page.css"> <!-- Specific styles for project pages -->
+    <link rel="stylesheet" href="../assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="rd">
+    <div class="read-progress" aria-hidden="true"></div>
 
     <!-- The header is identical on all pages for consistency -->
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -35,11 +36,12 @@
     <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
-    <main class="project-page-main">
-        <div class="container">
+    <main id="main-content" class="project-page-main">
+        <div class="wrap">
             
             <!-- 1. Project Header -->
-            <header class="project-header">
+            <header class="project-hero">
+                <p class="kicker"><span class="dash">//</span> <span data-i18n-key="rd_k_project">Project</span></p>
                 <h1 data-i18n-key="project_template_title">Project Title Goes Here</h1>
                 <p class="project-tagline" data-i18n-key="project_template_tagline">A short, catchy tagline summarizing the project's purpose.</p>
                 <div class="project-links">

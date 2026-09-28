@@ -5,25 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://peterpalhermann.com/blogs.html">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';">
 
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
-
-    <!-- SEO Meta Tags -->
     <title data-i18n-key="meta_title_blogs">Blogs - Peter Pal Hermann</title>
     <meta name="description" content="Articles and insights on data science, AI, software engineering, and technology." data-i18n-key="meta_description_blogs">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://peterpalhermann.com/blogs.html">
     <meta property="og:title" content="Blogs - Peter Pal Hermann">
     <meta property="og:description" content="Articles and insights on data science, AI, software engineering, and technology.">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://peterpalhermann.com/blogs.html">
-    <meta property="twitter:title" content="Blogs - Peter Pal Hermann">
-    <meta property="twitter:description" content="Articles and insights on data science, AI, software engineering, and technology.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#09090a">
 
     <!-- Critical: set theme before paint (dark is the default) -->
     <script>
@@ -36,92 +27,55 @@
         })();
     </script>
 
-    <!-- Styles, Fonts, and Icons -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "Blogs - Peter Pal Hermann",
-      "url": "https://peterpalhermann.com/blogs.html",
-      "author": {
-        "@type": "Person",
-        "name": "Peter Pal Hermann"
-      }
-    }
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVSZK3HJ4Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NVSZK3HJ4Q');
     </script>
 </head>
-<body>
+<body class="rd">
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
     <main id="main-content">
-        <!-- Page Header -->
-        <section class="page-header container">
-            <h1 data-i18n-key="blogs_title">Blogs</h1>
-            <p data-i18n-key="blogs_subtitle">Articles and insights on data science, AI, software engineering, and technology.</p>
-        </section>
+        <header class="wrap pagehead">
+            <p class="kicker"><span class="dash">§ 06</span> <span data-i18n-key="rd_k_blog">Writing</span></p>
+            <h1 data-i18n-key="nav_blogs">Blog</h1>
+            <p class="lede" data-i18n-key="blogs_subtitle">Articles and insights on data science, AI, software engineering, and technology.</p>
+        </header>
 
-        <!-- Filter Buttons -->
-        <section class="container">
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all" data-i18n-key="blog_filter_all">All Articles</button>
-                <button class="filter-btn" data-filter="data-science" data-i18n-key="blog_filter_data_science">Data Science</button>
-                <button class="filter-btn" data-filter="ai" data-i18n-key="blog_filter_ai">AI & ML</button>
-                <button class="filter-btn" data-filter="web" data-i18n-key="blog_filter_web">Web Development</button>
-                <button class="filter-btn" data-filter="tutorials" data-i18n-key="blog_filter_tutorials">Tutorials</button>
-            </div>
-        </section>
-
-        <!-- Blog Posts Grid -->
-        <section class="projects-grid container">
-
-            <!-- Example Blog Post 1 -->
-            <div class="project-card animate-on-scroll" data-category="data-science">
-                <div class="project-info">
-                    <div class="blog-meta">
-                        <span class="blog-date">October 31, 2025</span>
-                        <span class="blog-category" data-i18n-key="blog_category_data_science">Data Science</span>
-                    </div>
+        <div class="wrap sec" style="padding-top:clamp(1.5rem,4vw,3rem)">
+            <a class="post-row animate-on-scroll" href="blogs/building-recommendation-engine-rust.html" data-category="data-science">
+                <div class="post-meta"><span class="blog-date">2025-10-31</span><span class="blog-category" data-i18n-key="blog_category_data_science">Data Science</span></div>
+                <div>
                     <h3 data-i18n-key="blog_example_title">Building a Production-Scale Recommendation Engine with Rust</h3>
                     <p data-i18n-key="blog_example_desc">Explore the journey of building a high-performance anime recommendation engine that processes 649M similarity pairs. Learn about the architecture decisions, optimization techniques, and lessons learned when scaling from prototype to production.</p>
-                    <div class="tech-stack">
-                        <span>Rust</span>
-                        <span>Performance</span>
-                        <span>Architecture</span>
-                        <span>Scaling</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="blogs/building-recommendation-engine-rust.html" class="btn btn-primary" data-i18n-key="read_article_btn">Read Article</a>
-                    </div>
+                    <div class="work-tags"><span>Rust</span><span>Performance</span><span>Architecture</span><span>Scaling</span></div>
                 </div>
-            </div>
-
-        </section>
-
-        <!-- Call to Action -->
-        <section class="cta-section container">
-            <h2 data-i18n-key="blogs_cta_title">Want to Stay Updated?</h2>
-            <p data-i18n-key="blogs_cta_text">Connect with me on LinkedIn or GitHub to get notified about new articles.</p>
-            <a href="#contact" class="btn btn-primary" data-i18n-key="blogs_cta_btn">Get in Touch</a>
-        </section>
-
+                <span class="tag" data-i18n-key="read_article_btn">Read Article</span>
+            </a>
+            <p class="mono" style="margin-top:2rem"><span data-i18n-key="rd_blog_more">One article so far. More when I have something measured to say.</span></p>
+        </div>
     </main>
 
     <!-- Shared footer injected by components.js -->
     <div id="site-footer"></div>
 
-    <!-- Scripts -->
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
     <script src="assets/js/components.js" defer></script>
+    <script src="assets/js/i18n-extra.js" defer></script>
     <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/fx.js" defer></script>
 </body>
 </html>

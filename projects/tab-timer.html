@@ -35,24 +35,26 @@
     </script>
 
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/project-page.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="rd">
+    <div class="read-progress" aria-hidden="true"></div>
 
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Shared header injected by components.js -->
     <div id="site-header"></div>
 
-    <main class="project-page-main">
-        <div class="container">
+    <main id="main-content" class="project-page-main">
+        <div class="wrap">
             
             <!-- Project Header -->
-            <header class="project-header">
+            <header class="project-hero">
+                <p class="kicker"><span class="dash">//</span> <span data-i18n-key="rd_k_project">Project</span></p>
                 <h1 data-i18n-key="project_timer_title">Tab Timer Chrome Extension</h1>
                 <p class="project-tagline" data-i18n-key="project_timer_tagline">Track your browsing habits and boost productivity with intelligent time monitoring</p>
                 <div class="project-links">
@@ -61,14 +63,6 @@
                 </div>
             </header>
 
-            <!-- Main Project Image -->
-            <div class="project-hero-media">
-                <div class="project-visual" role="img" aria-label="Tab Timer browser extension using Manifest V3">
-                    <span class="project-visual-kicker">// browser extension</span>
-                    <strong>Manifest V3</strong>
-                    <span>time by domain</span>
-                </div>
-            </div>
 
             <!-- Project Details -->
             <div class="project-details-grid">
@@ -241,9 +235,11 @@
     <!-- Shared footer injected by components.js -->
     <div id="site-footer"></div>
 
-    <!-- Scripts -->
+    <!-- Order matters: components.js builds the chrome, i18n-extra.js registers page strings for i18n.js -->
     <script src="../assets/js/components.js" defer></script>
-    <script src="../assets/js/i18n.js"></script>
-    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n-extra.js" defer></script>
+    <script src="../assets/js/i18n.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/fx.js" defer></script>
 </body>
 </html>

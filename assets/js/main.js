@@ -245,8 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 5. PROJECT AND ACHIEVEMENT FILTERING ---
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    const achievementCards = document.querySelectorAll('.achievement-card');
+    const projectCards = document.querySelectorAll('.work-row[data-category], .post-row[data-category]');
+    const achievementCards = document.querySelectorAll('.ach-card');
 
     function filterProjects(category) {
         projectCards.forEach(card => {
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const shouldShow = category === 'all' || cardCategory === category;
             
             if (shouldShow) {
-                card.style.display = 'block';
+                card.style.display = '';
                 card.classList.add('fade-in');
                 // Re-trigger scroll animation if element comes into view
                 if (card.classList.contains('animate-on-scroll') && !card.classList.contains('is-visible')) {
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const shouldShow = category === 'all' || cardCategory === category;
             
             if (shouldShow) {
-                card.style.display = 'block';
+                card.style.display = '';
                 card.classList.add('fade-in');
                 // Re-trigger scroll animation if element comes into view
                 if (card.classList.contains('animate-on-scroll') && !card.classList.contains('is-visible')) {
@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const proofModalImage = document.getElementById('proof-modal-image');
     const proofModalFallback = document.querySelector('.proof-modal-fallback');
     const proofModalBody = document.querySelector('.proof-modal-body');
-    const clickableAchievementCards  = document.querySelectorAll('.achievement-card[data-proof-image]');
+    const clickableAchievementCards  = document.querySelectorAll('.ach-card[data-proof-image]');
     let proofModalPreviousFocus = null;
 
     function openProofModal(imagePath, achievementTitle, isBilingual = false) {
@@ -729,6 +729,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'chrome': { page: 'projects/tab-timer.html', section: '', description: t.search_keyword_chrome || 'Chrome extension' },
             'home': { page: 'index.html', section: '', description: t.search_keyword_home || 'Homepage' },
             'kezdőlap': { page: 'index.html', section: '', description: t.search_keyword_home || 'Kezdőlap' },
+            'lab': { page: 'lab.html', section: '', description: 'What I am building right now' },
+            'play': { page: 'play.html', section: '', description: 'Browser games' },
             'blogs': { page: 'blogs.html', section: '', description: 'View all blog articles' },
             'blogok': { page: 'blogs.html', section: '', description: 'Összes blog cikk megtekintése' },
             'articles': { page: 'blogs.html', section: '', description: 'Blog articles and insights' },
@@ -745,6 +747,9 @@ document.addEventListener('DOMContentLoaded', () => {
             { url: 'about.html', title: 'About' },
             { url: 'projects.html', title: 'Projects' },
             { url: 'achievements.html', title: 'Achievements' },
+            { url: 'lab.html', title: 'Lab' },
+            { url: 'play.html', title: 'Play' },
+            { url: 'games/anidle.html', title: 'Anidle' },
             { url: 'blogs.html', title: 'Blogs' },
             { url: 'code-viewer.html', title: 'Code Viewer' },
             { url: 'projects/anime-recommender.html', title: 'Anime Recommender' },
